@@ -27,7 +27,7 @@ import estaticos.GestorSalida.ENVIAR_cs_CHAT_MENSAJE
 import estaticos.Mundo
 import estaticos.Mundo.Duo
 import sprites.Exchanger
-import utilidades.algoritmos.RandomCondicionado
+import utilites.algoritmos.RandomCondicionado
 import variables.mapa.Celda
 import variables.objeto.Objeto
 import variables.objeto.ObjetoModelo.CAPACIDAD_STATS

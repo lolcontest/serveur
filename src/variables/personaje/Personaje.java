@@ -9,7 +9,7 @@ import servidor.ServidorSocket.AccionDeJuego;
 import sprites.Exchanger;
 import sprites.PreLuchador;
 import sprites.Preguntador;
-import utilidades.economia.Economia;
+import utilites.economia.Economia;
 import variables.casa.Casa;
 import variables.casa.Cofre;
 import variables.encarnacion.Encarnacion;

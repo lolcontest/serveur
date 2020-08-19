@@ -3,7 +3,7 @@ package estaticos
 import servidor.ServidorServer
 import servidor.ServidorSocket
 import sprites.Exchanger
-import utilidades.economia.Economia
+import utilites.economia.Economia
 import variables.casa.Cofre
 import variables.gremio.Gremio
 import variables.gremio.MiembroGremio

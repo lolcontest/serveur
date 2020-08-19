@@ -125,7 +125,8 @@ import estaticos.database.GestorSQL.iniciarCommit
 import estaticos.database.GestorSQL.timerCommit
 import servidor.ServidorServer.Companion.clientes
 import sincronizador.ExchangeClient
-import utilidades.comandosAccion
+import utilites.comandosAccion
+import utilites.itemrarity.rarityTemplate
 import variables.casa.Casa
 import variables.casa.Cofre
 import variables.encarnacion.EncarnacionModelo
@@ -163,7 +164,6 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.regex.Pattern
 import kotlin.collections.HashMap
-import kotlin.concurrent.thread
 
 //import com.mysql.jdbc.PreparedStatement;
 //import variables.mob.GrupoMob;
@@ -304,6 +304,7 @@ object Mundo {
     var CREA_TU_ITEM_DATA = ""
     var CREAT_TU_ITEM_PRECIOS = ""
     var SALVANDO = false
+    val RARITYTEMPLATES = mutableMapOf<Int, rarityTemplate>()
 
     fun crearServidor() {
         try {
@@ -530,6 +531,10 @@ object Mundo {
         print("Cargando los comandos personalizados: ")
         GestorSQL.CARGAR_COMANDOS_ACCION() // Oa los cargo
         println("${COMANDOSACCION.size} comandos personalizados cargados")
+        GestorSQL.LOAD_RARITY_TEMPLATE()
+        GestorSQL.LOAD_RARITY_SPECIFICATIONS()
+        GestorSQL.LOAD_RARITY_STATS_PROBABILITY()
+        println("${RARITYTEMPLATES.size} Rarity Templates charged")
         SIG_ID_OBJETO = GET_SIG_ID_OBJETO()
         try {
             if (CUENTAS_A_BORRAR.isNotEmpty()) {

@@ -25,7 +25,6 @@ import variables.pelea.Luchador
 import variables.pelea.Pelea
 import variables.pelea.Reto.EstReto
 import variables.pelea.Trampa
-import java.lang.management.GarbageCollectorMXBean
 import java.util.*
 import kotlin.math.sqrt
 
@@ -1953,7 +1952,7 @@ open class EfectoHechizo {
             redactarLogServidorln("El Mob ID esta reparandose: $mobID")
             return
         }
-        val invocacion = Luchador(pelea, mob, false)
+        val invocacion = Luchador(pelea, mob!!, false)
         invocacion.equipoBin = lanzador.equipoBin
         invocacion.invocador = lanzador
         invocacion.celdaPelea = celdaObjetivo
@@ -2026,7 +2025,7 @@ open class EfectoHechizo {
             redactarLogServidorln("El Mob ID esta mal configurado: $mobID")
             return
         }
-        val invocacion = Luchador(pelea, mob, false)
+        val invocacion = Luchador(pelea, mob!!, false)
         val equipoLanz = lanzador.equipoBin
         invocacion.equipoBin = equipoLanz
         invocacion.invocador = lanzador

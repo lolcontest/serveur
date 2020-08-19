@@ -334,19 +334,19 @@ class ObjetoModelo(
                 if (Constantes.STAT_RECIBIDO_EL == statID) {
                     val actual = Calendar.getInstance()
                     statsObjeto.append(stats[0]).append("#").append(Integer.toHexString(actual[Calendar.YEAR]))
-                        .append("#").append(
-                            Integer
-                                .toHexString(actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH])
-                        ).append("#").append(
-                            Integer
-                                .toHexString(actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE])
-                        )
+                            .append("#").append(
+                                    Integer
+                                            .toHexString(actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH])
+                            ).append("#").append(
+                                    Integer
+                                            .toHexString(actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE])
+                            )
                     continue
                 }
                 if (Constantes.esStatRepetible(statID) || Constantes.esStatTexto(statID) || Constantes.esStatHechizo(
-                        statID
-                    )
-                    || statID == Constantes.STAT_RESISTENCIA
+                                statID
+                        )
+                        || statID == Constantes.STAT_RESISTENCIA
                 ) {
                     statsObjeto.append(s)
                     continue
@@ -359,7 +359,7 @@ class ObjetoModelo(
                 for (a in Constantes.BUFF_ARMAS) {
                     if (a == statID) {
                         statsObjeto.append(stats[0]).append("#").append(stats[1]).append("#").append(stats[2])
-                            .append("#0#").append(stats[4])
+                                .append("#0#").append(stats[4])
                         esEfecto = true
                         break
                     }
@@ -404,7 +404,7 @@ class ObjetoModelo(
                 } catch (ignored: Exception) {
                 }
                 statsObjeto.append(stats[0]).append("#").append(Integer.toHexString(valor)).append("#0#")
-                    .append(stats[3]).append("#0d0+").append(valor)
+                        .append(stats[3]).append("#0d0+").append(valor)
             } catch (ignored: Exception) {
             }
         }

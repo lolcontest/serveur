@@ -21,11 +21,13 @@ import estaticos.Constantes.getZonaEfectoArma
 import estaticos.Formulas.getRandomDecimal
 import estaticos.Formulas.getRandomInt
 import estaticos.GestorSalida.ENVIAR_OM_MOVER_OBJETO
+import estaticos.Mundo
 import estaticos.Mundo.getCreaTuItem
 import estaticos.Mundo.getEncarnacionModelo
 import estaticos.Mundo.getMascotaModelo
 import estaticos.Mundo.getObjeto
 import estaticos.Mundo.getObjetoModelo
+import utilites.itemrarity.rarityTemplate
 import variables.encarnacion.Encarnacion
 import variables.hechizo.EfectoHechizo
 import variables.objeto.ObjetoModelo.CAPACIDAD_STATS
@@ -37,6 +39,8 @@ import variables.personaje.Personaje
 import variables.stats.Stats
 import java.util.*
 import kotlin.math.ceil
+import kotlin.math.max
+import kotlin.math.min
 
 class Objeto {
     var objModelo: ObjetoModelo? = null
@@ -72,15 +76,15 @@ class Objeto {
     }
 
     constructor(
-        id: Int, idObjModelo: Int, cant: Int, pos: Byte, strStats: String,
-        idObjevi: Int, precio: Int
+            id: Int, idObjModelo: Int, cant: Int, pos: Byte, strStats: String,
+            idObjevi: Int, precio: Int
     ) {
         this.id = id
         objModelo = getObjetoModelo(idObjModelo)
         if (objModelo == null) {
             redactarLogServidorln(
-                "La id del objeto " + id + " esta bug porque no tiene objModelo "
-                        + idObjModelo
+                    "La id del objeto " + id + " esta bug porque no tiene objModelo "
+                            + idObjModelo
             )
             return
         }
@@ -103,19 +107,32 @@ class Objeto {
                 convertirStringAStats(strStats)
             }
         }
+        if (AtlantaMain.RARITY_SYSTEM) {
+            var s = convertirStatsAString(false)
+            val rarity: rarityTemplate
+            while (true) {
+                val random = Mundo.RARITYTEMPLATES.values.random()
+                if (Math.random() <= random.getdropProb()) {
+                    rarity = random
+                    break
+                }
+            }
+            s += "," + generateStats(rarity.getstats(objModelo?.nivel?.toInt() ?: 1), CAPACIDAD_STATS.RANDOM)
+            convertirStringAStats_Base(s)
+        }
         crearEncarnacion()
     }
 
     constructor(
-        id: Int, idObjModelo: Int, cant: Int, pos: Byte, strStats: String,
-        idObjevi: Int, precio: Int, esbase: Boolean
+            id: Int, idObjModelo: Int, cant: Int, pos: Byte, strStats: String,
+            idObjevi: Int, precio: Int, esbase: Boolean
     ) {
         this.id = id
         objModelo = getObjetoModelo(idObjModelo)
         if (objModelo == null) {
             redactarLogServidorln(
-                "La id del objeto " + id + " esta bug porque no tiene objModelo "
-                        + idObjModelo
+                    "La id del objeto " + id + " esta bug porque no tiene objModelo "
+                            + idObjModelo
             )
             return
         }
@@ -125,16 +142,114 @@ class Objeto {
         objevivoID = idObjevi
         objModeloID = idObjModelo
         this.precio = precio
-        if (AtlantaMain.IDS_OBJETOS_STATS_MAXIMOS.contains(idObjModelo)) {
-            convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.MAXIMO))
-        } else if (AtlantaMain.IDS_OBJETOS_STATS_MINIMOS.contains(idObjModelo)) {
-            convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.MINIMO))
-        } else if (AtlantaMain.IDS_OBJETOS_STATS_RANDOM.contains(idObjModelo)) {
-            convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.RANDOM))
-        } else {
-            convertirStringAStats_Base(strStats)
+        when {
+            AtlantaMain.IDS_OBJETOS_STATS_MAXIMOS.contains(idObjModelo) -> {
+                convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.MAXIMO))
+            }
+            AtlantaMain.IDS_OBJETOS_STATS_MINIMOS.contains(idObjModelo) -> {
+                convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.MINIMO))
+            }
+            AtlantaMain.IDS_OBJETOS_STATS_RANDOM.contains(idObjModelo) -> {
+                convertirStringAStats_Base(objModelo!!.generarStatsModelo(CAPACIDAD_STATS.RANDOM))
+            }
+            else -> {
+                convertirStringAStats_Base(strStats)
+            }
         }
         crearEncarnacion()
+    }
+
+    fun generateStats(extraStats: String, capStats: CAPACIDAD_STATS): String {
+        val statsObjeto = StringBuilder()
+        val ss = extraStats
+        for (s in ss.split(",".toRegex()).toTypedArray()) {
+            try {
+                if (s.isEmpty()) {
+                    continue
+                }
+                val stats = s.split("#".toRegex()).toTypedArray()
+                val statID = stats[0].toInt(16)
+                if (statsObjeto.isNotEmpty()) {
+                    statsObjeto.append(",")
+                }
+                if (Constantes.STAT_RECIBIDO_EL == statID) {
+                    val actual = Calendar.getInstance()
+                    statsObjeto.append(stats[0]).append("#").append(Integer.toHexString(actual[Calendar.YEAR]))
+                            .append("#").append(
+                                    Integer
+                                            .toHexString(actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH])
+                            ).append("#").append(
+                                    Integer
+                                            .toHexString(actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE])
+                            )
+                    continue
+                }
+                if (esStatRepetible(statID) || Constantes.esStatTexto(statID) || Constantes.esStatHechizo(
+                                statID
+                        )
+                        || statID == Constantes.STAT_RESISTENCIA
+                ) {
+                    statsObjeto.append(s)
+                    continue
+                }
+                if (statID == Constantes.STAT_TURNOS || statID == Constantes.STAT_PUNTOS_VIDA) {
+                    statsObjeto.append(stats[0]).append("#0#0#").append(stats[3])
+                    continue
+                }
+                var esEfecto = false
+                for (a in Constantes.BUFF_ARMAS) {
+                    if (a == statID) {
+                        statsObjeto.append(stats[0]).append("#").append(stats[1]).append("#").append(stats[2])
+                                .append("#0#").append(stats[4])
+                        esEfecto = true
+                        break
+                    }
+                }
+                if (esEfecto) {
+                    continue
+                }
+                val esNegativo = Constantes.getStatPositivoDeNegativo(statID) != statID
+                var valor = 1
+                var min = -1
+                var max = -1
+                try {
+                    try {
+                        min = stats[1].toInt(16)
+                    } catch (ignored: Exception) {
+                    }
+                    try {
+                        max = stats[2].toInt(16)
+                    } catch (ignored: Exception) {
+                    }
+                    if (max <= 0) {
+                        max = min
+                    }
+                    valor = if (capStats == CAPACIDAD_STATS.MAXIMO) { // stas maximos
+                        if (esNegativo) {
+                            min(min, max)
+                        } else {
+                            max(min, max)
+                        }
+                    } else if (capStats == CAPACIDAD_STATS.MINIMO) { // stats minimos
+                        if (esNegativo) {
+                            max(min, max)
+                        } else {
+                            min(min, max)
+                        }
+                    } else { // random
+                        getRandomInt(min, max)
+                    }
+                    if (valor < 0) {
+                        valor = 0
+                    }
+                } catch (ignored: Exception) {
+                }
+                statsObjeto.append(stats[0]).append("#").append(Integer.toHexString(valor)).append("#0#")
+                        .append(stats[3]).append("#0d0+").append(valor)
+            } catch (ignored: Exception) {
+            }
+        }
+        return statsObjeto.toString()
     }
 
     fun addDurabilidad(valor: Int): Boolean {
@@ -147,9 +262,9 @@ class Objeto {
 
     fun puedeTenerStatsIguales(): Boolean { // parece q es para q no se junten los items en 1 solo
         return objModelo?.tipo?.toInt() != Constantes.OBJETO_TIPO_PIEDRA_DE_ALMA_LLENA && objModelo
-            ?.tipo?.toInt() != Constantes.OBJETO_TIPO_MASCOTA && objModelo?.tipo?.toInt() != Constantes.OBJETO_TIPO_FANTASMA_MASCOTA && objModelo?.id?.let {
+                ?.tipo?.toInt() != Constantes.OBJETO_TIPO_MASCOTA && objModelo?.tipo?.toInt() != Constantes.OBJETO_TIPO_FANTASMA_MASCOTA && objModelo?.id?.let {
             getCreaTuItem(
-                it
+                    it
             )
         } == null && encarnacion == null
     }
@@ -245,8 +360,8 @@ class Objeto {
                                 dados = "1d" + (segundoValor - primerValor) + "+" + (primerValor - 1)
                             }
                             val eh = EfectoHechizo(
-                                EH.efectoID, primerValor.toString() + "," + segundoValor + ",-1,0,0,"
-                                        + dados, 0, -1, getZonaEfectoArma(objModelo!!.tipo.toInt())
+                                    EH.efectoID, primerValor.toString() + "," + segundoValor + ",-1,0,0,"
+                                    + dados, 0, -1, getZonaEfectoArma(objModelo!!.tipo.toInt())
                             )
                             eh.afectados = 2
                             efectos.add(eh)
@@ -331,11 +446,11 @@ class Objeto {
                     if (stats2.size > 1 && stats2[1] == "0") {
                         val actual = Calendar.getInstance()
                         str =
-                            stats2[0] + "#" + (Integer.toHexString(actual[Calendar.YEAR]) + "#" + Integer.toHexString(
-                                actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH]
-                            ) + "#" + Integer.toHexString(
-                                actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE]
-                            ))
+                                stats2[0] + "#" + (Integer.toHexString(actual[Calendar.YEAR]) + "#" + Integer.toHexString(
+                                        actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH]
+                                ) + "#" + Integer.toHexString(
+                                        actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE]
+                                ))
                     }
                 }
                 if (Constantes.STAT_RESISTENCIA == statID) {
@@ -358,8 +473,8 @@ class Objeto {
                         dados = "1d" + (segundoValor - primerValor) + "+" + (primerValor - 1)
                     }
                     val eh = EfectoHechizo(
-                        statID, "$primerValor,$segundoValor,-1,0,0,$dados", 0, -1,
-                        getZonaEfectoArma(objModelo!!.tipo.toInt())
+                            statID, "$primerValor,$segundoValor,-1,0,0,$dados", 0, -1,
+                            getZonaEfectoArma(objModelo!!.tipo.toInt())
                     )
                     eh.afectados = 2
                     if (efectosNormales == null) {
@@ -404,8 +519,8 @@ class Objeto {
                 }
             } catch (e: Exception) {
                 redactarLogServidorln(
-                    "BUG OBJETO ID: " + id + ", OBJMOD: " + objModeloID + ", STAT BUG: " + str
-                            + ", STATS: " + strStats + ", STATS MODELO: " + objModelo!!.statsModelo
+                        "BUG OBJETO ID: " + id + ", OBJMOD: " + objModeloID + ", STAT BUG: " + str
+                                + ", STATS: " + strStats + ", STATS MODELO: " + objModelo!!.statsModelo
                 )
                 e.printStackTrace()
             }
@@ -440,11 +555,11 @@ class Objeto {
                     if (stats2.size > 1 && stats2[1] == "0") {
                         val actual = Calendar.getInstance()
                         str =
-                            stats2[0] + "#" + (Integer.toHexString(actual[Calendar.YEAR]) + "#" + Integer.toHexString(
-                                actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH]
-                            ) + "#" + Integer.toHexString(
-                                actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE]
-                            ))
+                                stats2[0] + "#" + (Integer.toHexString(actual[Calendar.YEAR]) + "#" + Integer.toHexString(
+                                        actual[Calendar.MONTH] * 100 + actual[Calendar.DAY_OF_MONTH]
+                                ) + "#" + Integer.toHexString(
+                                        actual[Calendar.HOUR_OF_DAY] * 100 + actual[Calendar.MINUTE]
+                                ))
                     }
                 }
                 if (Constantes.STAT_RESISTENCIA == statID) {
@@ -467,8 +582,8 @@ class Objeto {
                         dados = "1d" + (segundoValor - primerValor) + "+" + (primerValor - 1)
                     }
                     val eh = EfectoHechizo(
-                        statID, "$primerValor,$segundoValor,-1,0,0,$dados", 0, -1,
-                        getZonaEfectoArma(objModelo!!.tipo.toInt())
+                            statID, "$primerValor,$segundoValor,-1,0,0,$dados", 0, -1,
+                            getZonaEfectoArma(objModelo!!.tipo.toInt())
                     )
                     eh.afectados = 2
                     if (efectosNormales == null) {
@@ -494,8 +609,8 @@ class Objeto {
                 }
             } catch (e: Exception) {
                 redactarLogServidorln(
-                    "BUG OBJETO ID: " + id + ", OBJMOD: " + objModeloID + ", STAT BUG: " + str
-                            + ", STATS: " + strStats + ", STATS MODELO: " + objModelo!!.statsModelo
+                        "BUG OBJETO ID: " + id + ", OBJMOD: " + objModeloID + ", STAT BUG: " + str
+                                + ", STATS: " + strStats + ", STATS MODELO: " + objModelo!!.statsModelo
                 )
                 e.printStackTrace()
             }
@@ -524,9 +639,9 @@ class Objeto {
         } else {
             if (encarnacion != null) {
                 addStatTexto(
-                    Constantes.STAT_ENCARNACION_NIVEL,
-                    Integer.toHexString(encarnacion!!.gfxID) + "#" + Integer
-                        .toHexString(encarnacion!!.exp) + "#" + Integer.toHexString(encarnacion!!.nivel)
+                        Constantes.STAT_ENCARNACION_NIVEL,
+                        Integer.toHexString(encarnacion!!.gfxID) + "#" + Integer
+                                .toHexString(encarnacion!!.exp) + "#" + Integer.toHexString(encarnacion!!.nivel)
                 )
             }
             if (efectosNormales != null) {
@@ -537,9 +652,9 @@ class Objeto {
                     val infos = EH.args.split(",".toRegex()).toTypedArray()
                     try {
                         stats2.append(Integer.toHexString(EH.efectoID)).append("#")
-                            .append(Integer.toHexString(infos[0].toInt())).append("#")
-                            .append(Integer.toHexString(infos[1].toInt())).append("#0#")
-                            .append(infos[5])
+                                .append(Integer.toHexString(infos[0].toInt())).append("#")
+                                .append(Integer.toHexString(infos[1].toInt())).append("#0#")
+                                .append(infos[5])
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -550,8 +665,8 @@ class Objeto {
                     stats2.append(",")
                 }
                 stats2.append(Integer.toHexString(Constantes.STAT_RESISTENCIA)).append("#0#")
-                    .append(Integer.toHexString(durabilidad)).append("#")
-                    .append(Integer.toHexString(durabilidadMax)).append("#0d0+").append(durabilidad)
+                        .append(Integer.toHexString(durabilidad)).append("#")
+                        .append(Integer.toHexString(durabilidadMax)).append("#0d0+").append(durabilidad)
             }
             val oStats: String = stats.getStringStats(this)
             if (!oStats.isEmpty()) {
@@ -590,8 +705,8 @@ class Objeto {
             try {
                 val s = str.split("#".toRegex()).toTypedArray()
                 if (s[0].toInt(16) != Constantes.STAT_INVOCA_MOB && s[0].toInt(
-                        16
-                    ) != Constantes.STAT_INVOCA_MOB_2
+                                16
+                        ) != Constantes.STAT_INVOCA_MOB_2
                 ) {
                     continue
                 }
@@ -599,7 +714,7 @@ class Objeto {
                     stats2.append(";")
                 }
                 stats2.append(s[3].toInt(16)).append(",").append(s[1].toInt(16)).append(",")
-                    .append(s[1].toInt(16))
+                        .append(s[1].toInt(16))
             } catch (ignored: Exception) {
             }
         }
@@ -658,7 +773,7 @@ class Objeto {
                 var factor: Byte = 1
                 when (statID) {
                     Constantes.STAT_MAS_RES_PORC_AGUA, Constantes.STAT_MAS_RES_PORC_TIERRA, Constantes.STAT_MAS_RES_PORC_AIRE, Constantes.STAT_MAS_RES_PORC_NEUTRAL, Constantes.STAT_MAS_RES_PORC_FUEGO -> factor =
-                        6
+                            6
                 }
                 maximo += value * factor
                 if (statID == efecto) {
@@ -706,15 +821,15 @@ class Objeto {
             }
         }
         stats.addStatRepetido(
-            Integer.toHexString(Constantes.STAT_NOMBRE_MOB) + "#" + Integer.toHexString(
-                idMobModelo
-            ) + "#0#" + Integer.toHexString(valorTemp + cantAlmasDevor) + "#0"
+                Integer.toHexString(Constantes.STAT_NOMBRE_MOB) + "#" + Integer.toHexString(
+                        idMobModelo
+                ) + "#0#" + Integer.toHexString(valorTemp + cantAlmasDevor) + "#0"
         )
         for ((statID, value) in stats.entrySet) {
             var por: Byte = 1
             when (statID) {
                 Constantes.STAT_MAS_RES_PORC_TIERRA, Constantes.STAT_MAS_RES_PORC_AGUA, Constantes.STAT_MAS_RES_PORC_AIRE, Constantes.STAT_MAS_RES_PORC_FUEGO, Constantes.STAT_MAS_RES_PORC_NEUTRAL -> por =
-                    6
+                        6
             }
             maximo += value * por
             if (statID == efecto) {
@@ -741,9 +856,9 @@ class Objeto {
 
     fun horaComer(forzado: Boolean, corpulencia1: Int): Boolean {
         if (forzado || getDiferenciaTiempo(
-                Constantes.STAT_SE_HA_COMIDO_EL, 60
+                        Constantes.STAT_SE_HA_COMIDO_EL, 60
                         * 1000
-            ) >= AtlantaMain.MINUTOS_ALIMENTACION_MASCOTA
+                ) >= AtlantaMain.MINUTOS_ALIMENTACION_MASCOTA
         ) {
             addStatTexto(Constantes.STAT_SE_HA_COMIDO_EL, getStatSegunFecha(Calendar.getInstance()))
             corpulencia = corpulencia1
@@ -756,8 +871,8 @@ class Objeto {
         get() = if (!tieneStatTexto(Constantes.STAT_PUNTOS_VIDA)) {
             -1
         } else getParamStatTexto(
-            Constantes.STAT_PUNTOS_VIDA,
-            3
+                Constantes.STAT_PUNTOS_VIDA,
+                3
         ).toInt(16)
         set(pdv) {
             addStatTexto(Constantes.STAT_PUNTOS_VIDA, "0#0#" + Integer.toHexString(pdv))
@@ -820,12 +935,12 @@ class Objeto {
                         val min = infos[0].toInt()
                         val max = infos[1].toInt()
                         var nuevoMin =
-                            (Math.floor((min - 1) * (potencia / 100f).toDouble()) + 1).toInt() // 50 y 78
+                                (Math.floor((min - 1) * (potencia / 100f).toDouble()) + 1).toInt() // 50 y 78
                         val nuevoMax =
-                            (Math.floor((min - 1) * (potencia / 100f).toDouble()) + Math.floor(
-                                ((max - min + 1)
-                                        * (potencia / 100f)).toDouble()
-                            )).toInt()
+                                (Math.floor((min - 1) * (potencia / 100f).toDouble()) + Math.floor(
+                                        ((max - min + 1)
+                                                * (potencia / 100f)).toDouble()
+                                )).toInt()
                         if (AtlantaMain.MODO_DEBUG) {
                             println("min $min")
                             println("max $max")
@@ -836,8 +951,8 @@ class Objeto {
                             nuevoMin = 1
                         }
                         val nuevosArgs =
-                            (nuevoMin.toString() + "," + nuevoMax + ",-1,0,0," + "1d" + (nuevoMax - nuevoMin + 1) + "+"
-                                    + (nuevoMin - 1))
+                                (nuevoMin.toString() + "," + nuevoMax + ",-1,0,0," + "1d" + (nuevoMax - nuevoMin + 1) + "+"
+                                        + (nuevoMin - 1))
                         if (AtlantaMain.MODO_DEBUG) {
                             println("Nuevo Args FM elemental $nuevosArgs")
                         }
@@ -883,7 +998,7 @@ class Objeto {
                         val v = getPotenciaRunaPorStat(statID)
                         val jet = getRandomDecimal(3)
                         val prob =
-                            getPorcCrearRuna(statID, pesoStat, tipoRuna, objModelo!!.nivel.toInt()).toInt()
+                                getPorcCrearRuna(statID, pesoStat, tipoRuna, objModelo!!.nivel.toInt()).toInt()
                         tipoRuna--
                         var red = 0f
                         if (prob >= jet) {
@@ -956,8 +1071,8 @@ class Objeto {
                 val maxPerder = Math.min(cantStatPerder, cantDebePerder)
                 if (AtlantaMain.MODO_DEBUG) {
                     println(
-                        "statPerder " + statPerder + " cantStatPerder " + cantStatPerder + " pesoRunaRestar "
-                                + pesoRunaRestar + " cantDebePerder " + cantDebePerder + " maxPerder " + maxPerder
+                            "statPerder " + statPerder + " cantStatPerder " + cantStatPerder + " pesoRunaRestar "
+                                    + pesoRunaRestar + " cantDebePerder " + cantDebePerder + " maxPerder " + maxPerder
                     )
                 }
                 if (maxPerder <= 0) {
@@ -984,8 +1099,8 @@ class Objeto {
     }
 
     private fun getStatElegidoAPerder(
-        pesoOrigRuna: Int, statRuna: Int,
-        statsCheckeados: ArrayList<Int>
+            pesoOrigRuna: Int, statRuna: Int,
+            statsCheckeados: ArrayList<Int>
     ): Int {
         val listaStats = ArrayList<Int>()
         for ((statID, valor) in stats.entrySet) {
@@ -1047,13 +1162,13 @@ class Objeto {
         val str = StringBuilder()
         try {
             str.append(Integer.toHexString(id)).append("~")
-                .append(Integer.toHexString(objModeloID)).append("~").append(
-                    Integer.toHexString(
-                        cantidad
-                    )
-                ).append("~").append(
-                    if (posicion == Constantes.OBJETO_POS_NO_EQUIPADO) "" else Integer.toHexString(posicion.toInt())
-                ).append("~").append(convertirStatsAString(false)).append("~").append(objModelo!!.kamas / 10)
+                    .append(Integer.toHexString(objModeloID)).append("~").append(
+                            Integer.toHexString(
+                                    cantidad
+                            )
+                    ).append("~").append(
+                            if (posicion == Constantes.OBJETO_POS_NO_EQUIPADO) "" else Integer.toHexString(posicion.toInt())
+                    ).append("~").append(convertirStatsAString(false)).append("~").append(objModelo!!.kamas / 10)
             str.append(";")
         } catch (e: Exception) {
             redactarLogServidorln("OBJETO BUG stringObjetoConGuiño " + id + " Exception: " + e.toString())
@@ -1065,7 +1180,7 @@ class Objeto {
         val str = StringBuilder()
         try {
             str.append(id).append("|").append(cantidad).append("|").append(objModeloID).append("|")
-                .append(convertirStatsAString(false))
+                    .append(convertirStatsAString(false))
         } catch (e: Exception) {
             redactarLogServidorln("OBJETO BUG stringObjetoConPalo " + id + " Exception: " + e.toString())
         }

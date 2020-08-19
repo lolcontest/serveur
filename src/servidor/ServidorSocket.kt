@@ -215,10 +215,10 @@ import org.apache.mina.core.session.IoSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import sprites.Preguntador
-import utilidades.buscadores.Comparador
-import utilidades.economia.Economia
-import utilidades.seguridad.IpsVerificator
-import utilidades.seguridad.tokenGenerator
+import utilites.buscadores.Comparador
+import utilites.economia.Economia
+import utilites.seguridad.IpsVerificator
+import utilites.seguridad.tokenGenerator
 import variables.casa.Casa
 import variables.gremio.Gremio
 import variables.gremio.Recaudador
@@ -7089,21 +7089,23 @@ class ServidorSocket(val session: IoSession) {
             val comando = cmd.substring(1).toLowerCase()
             for (cmda in Mundo.COMANDOSACCION.values) { // Se busca si la wea de comando esta dentro de los comandos personalizados primero
                 if (cmda.comando.equals(
-                        comando,
-                        ignoreCase = true
-                    )
+                                comando,
+                                ignoreCase = true
+                        )
                 ) { // se verifica si la wea de comando del jugador es = que el modelo
                     if (cmda.realizarAccion(personaje)) { // si se hizo, se retorna y era
                         return true
                     }
                 }
             }
-            if (AtlantaMain.COMANDOS_VIP.contains(comando)) {
-                if (!cuenta!!.esAbonado()) {
+            if (cuenta?.admin ?: 0 == 0) {
+                if (AtlantaMain.COMANDOS_VIP.contains(comando)) {
+                    if (!cuenta!!.esAbonado()) {
+                        return false
+                    }
+                } else if (!AtlantaMain.COMANDOS_PERMITIDOS.contains(comando)) {
                     return false
                 }
-            } else if (!AtlantaMain.COMANDOS_PERMITIDOS.contains(comando)) {
-                return false
             }
             try {
                 val objetivo = personaje
@@ -7115,8 +7117,69 @@ class ServidorSocket(val session: IoSession) {
                     return false
                 }
                 when (comando) {
-                    "recuperar"->{
-
+                    "banque", "banco" -> {
+                        try {
+                            if (personaje!!.estaDisponible(false, false)) {
+                                if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
+                                    ENVIAR_cs_CHAT_MENSAJE(personaje!!, "Vous êtes occupe", "B9121B")
+                                }
+                                return true
+                            }
+                            val costo = personaje!!.costoAbrirBanco
+                            if (personaje!!.kamas - costo < 0) {
+                                ENVIAR_Im_INFORMACION(personaje!!, "1128;$costo")
+                                ENVIAR_M1_MENSAJE_SERVER_SVR_MUESTRA_INSTANTANEO(
+                                        personaje!!,
+                                        10,
+                                        costo.toString() + "",
+                                        ""
+                                )
+                            } else {
+                                personaje!!.addKamas(-costo.toLong(), false, true)
+                                ENVIAR_Im_INFORMACION(personaje!!, "020;$costo")
+                                personaje!!.banco.abrirCofre(personaje!!)
+                            }
+                        } catch (e: Exception) {
+                            return true
+                        }
+                        return true
+                    }
+                    "transferir", "transfer" -> {
+                        personaje.let {
+                            if (it != null) {
+                                if (it.pelea != null) {
+                                    it.enviarmensajeRojo("Tienes que salir de pelea para usar este comando")
+                                    return true
+                                }
+                                var banquero = false
+                                for (npc in it.mapa.npCs?.values ?: emptyList<NPC>()) {
+                                    if (npc.modelo?.nombre?.contains("Banquero".toRegex()) == true) {
+                                        banquero = true
+                                        break
+                                    }
+                                }
+                                if (!banquero) {
+                                    it.enviarmensajeRojo("En este mapa no hay banqueros para realizar la transacción")
+                                    return true
+                                }
+                                loop@ for (objeto in it.objetosTodos) {
+                                    when (objeto.objModelo?.tipo?.toInt()) {
+                                        Constantes.OBJETO_TIPO_OBJETO_MISION, Constantes.OBJETO_TIPO_ROLEPLAY_BUFF, Constantes.OBJETO_TIPO_PERGAMINO_BUSQUEDA, Constantes.OBJETO_TIPO_OBJETO_DE_BUSQUEDA -> {
+                                            continue@loop
+                                        }
+                                        else -> {
+                                            if (objeto.posicion == Constantes.OBJETO_POS_NO_EQUIPADO) {
+                                                it.cuenta.banco.addObjetoRapido(objeto)
+                                                it.Objetos.remove(objeto.id)
+                                            }
+                                        }
+                                    }
+                                }
+                                it.conectarse() // Recarguemos todo, Why not?
+                                it.enviarmensajeVerde("Los objetos han sido correctamente transferidos al banco")
+                            }
+                        }
+                        return true
                     }
                     "convert", "convertir" -> {
                         if (AtlantaMain.VALOR_KAMAS_POR_OGRINA <= 0) {
@@ -7135,9 +7198,9 @@ class ServidorSocket(val session: IoSession) {
                                         return true
                                     }
                                     personaje!!.addKamas(
-                                        cantidad * AtlantaMain.VALOR_KAMAS_POR_OGRINA.toLong(),
-                                        true,
-                                        true
+                                            cantidad * AtlantaMain.VALOR_KAMAS_POR_OGRINA.toLong(),
+                                            true,
+                                            true
                                     )
                                 } catch (e: Exception) {
                                     ENVIAR_Im1223_MENSAJE_IMBORRABLE(personaje!!, "Valor invalido")

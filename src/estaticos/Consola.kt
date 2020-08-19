@@ -1,7 +1,7 @@
 package estaticos
 
 import servidor.ServidorServer
-import utilidades.algoritmos.FuncionesParaThreads
+import utilites.algoritmos.FuncionesParaThreads
 //import servidor.ServidorThread.SalvarServidor
 import java.io.BufferedReader
 import java.io.InputStreamReader

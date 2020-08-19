@@ -6,7 +6,7 @@ import estaticos.Mundo.Duo
 import estaticos.database.GestorSQL
 import servidor.ServidorSocket.AccionDeJuego
 import sprites.PreLuchador
-import utilidades.logdropeo
+import utilites.logdropeo
 import variables.gremio.Recaudador
 import variables.hechizo.EfectoHechizo
 import variables.hechizo.EfectoHechizo.TipoDaño

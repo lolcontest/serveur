@@ -4,8 +4,8 @@ package estaticos
 import estaticos.database.GestorSQL
 import servidor.ServidorServer
 import servidor.ServidorSocket
-import utilidades.algoritmos.FuncionesParaThreads
-import utilidades.buscadores.Buscador
+import utilites.algoritmos.FuncionesParaThreads
+import utilites.buscadores.Buscador
 import variables.casa.Casa
 import variables.hechizo.EfectoHechizo
 import variables.hechizo.Hechizo

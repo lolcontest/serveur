@@ -2,7 +2,6 @@ package estaticos
 
 import estaticos.GestorSalida.ENVIAR_BAT2_CONSOLA
 import estaticos.GestorSalida.ENVIAR_Im_INFORMACION_A_TODOS
-import estaticos.database.GestorSQL
 import estaticos.database.GestorSQL.LOG_SQL
 import estaticos.database.GestorSQL.iniciarCommit
 import estaticos.database.GestorSQL.iniciarConexion
@@ -10,7 +9,7 @@ import servidor.ServidorHandler
 import servidor.ServidorServer
 import servidor.ServidorSocket
 import sincronizador.ExchangeClient
-import utilidades.algoritmos.FuncionesParaThreads
+import utilites.algoritmos.FuncionesParaThreads
 import variables.hechizo.EfectoHechizo
 import variables.montura.Montura
 import variables.npc.NPC
@@ -1090,6 +1089,9 @@ object AtlantaMain {
     var ANUNCIO_NIVEL_MAX = true
     var OBJETOS_PELEA_PRISMA = ""
     var VALOR_RECAUDADOR = 1000
+    var RARITY_SYSTEM = true
+    var NO_RARITY_TEMPLATES = emptyList<Int>().toMutableList()
+    var RARITY_TYPES = Constantes.TIPOS_EQUIPABLES
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -1299,6 +1301,22 @@ object AtlantaMain {
                         "MODO_DEBUG" -> {
                             MODO_DEBUG = valor.equals("true", ignoreCase = true)
                             variable = "MODO_DEBUG"
+                        }
+                        "RARITY_SYSTEM" -> {
+                            RARITY_SYSTEM = valor.equals("true", ignoreCase = true)
+                            variable = "RARITY_SYSTEM"
+                        }
+                        "NO_RARITY_TEMPLATES" -> {
+                            NO_RARITY_TEMPLATES.clear()
+                            for (s in valor.split(",")) {
+                                try {
+                                    val id = s.toInt()
+                                    NO_RARITY_TEMPLATES.add(id)
+                                } catch (e: Exception) {
+                                    continue
+                                }
+                            }
+                            variable = "NO_RARITY_TEMPLATES"
                         }
                         "INICIO_NIVEL_MONTURA" -> {
                             INICIO_NIVEL_MONTURA = valor.toInt()
