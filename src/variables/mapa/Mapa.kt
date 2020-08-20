@@ -18,6 +18,7 @@ import estaticos.GestorSalida.enviarEnCola
 import estaticos.database.GestorSQL.CARGAR_TRIGGERS_POR_MAPA
 import estaticos.database.GestorSQL.DELETE_MAPA_HEROICO
 import estaticos.database.GestorSQL.DELETE_MOBS_FIX_MAPA
+import estaticos.database.GestorSQL.LOAD_STARS_MAP_MOBS
 import estaticos.database.GestorSQL.REPLACE_MAPAS_HEROICO
 import estaticos.database.GestorSQL.UPDATE_SET_MOBS_MAPA
 import sprites.PreLuchador
@@ -39,6 +40,7 @@ import variables.zotros.Prisma
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 import kotlin.system.exitProcess
 
 class Mapa {
@@ -178,7 +180,10 @@ class Mapa {
 
     private fun agregarMobsInicioServer() {
         val s1 = Mundo.getMapaEstrellas(id)
-        val s2 = Mundo.getMapaHeroico(id)
+        var s2 = Mundo.getMapaHeroico(id)
+        if (s2 == null || s2.isEmpty()) {
+            s2 = LOAD_STARS_MAP_MOBS(id)
+        }
         if (_mobPosibles!!.isNotEmpty()) {
             for (i in 0 until maxGrupoDeMobs) {
                 try {
@@ -187,13 +192,13 @@ class Mapa {
                     if (s1 != null && s1.isNotEmpty()) {
                         estrellas = s1[0]
                     }
-                    if (s2 != null && s2.isNotEmpty()) {
+                    if (s2.isNotEmpty()) {
                         heroico = s2[0]
                     }
                     if (AtlantaMain.MODO_DEBUG) {
                         println(
-                            "  --> Agregando grupoMob mapaID: " + id + ", estrellas: " + estrellas + ", heroico: "
-                                    + heroico
+                                "  --> Agregando grupoMob mapaID: " + id + ", estrellas: " + estrellas + ", heroico: "
+                                        + heroico
                         )
                     }
                     val grupoMob = getGrupoMobInicioServer(heroico, estrellas.toInt()) ?: break // neutral
@@ -1443,8 +1448,8 @@ class Mapa {
         if (_mobPosibles == null || _mobPosibles!!.isEmpty() || _grupoMobsTotales!!.size >= maxGrupoDeMobs) {
             return null
         }
-        var grupoMob: GrupoMob? = null
-        if (heroico.isNotEmpty()) {
+        var grupoMob: GrupoMob?
+        if (heroico.isNotEmpty() && heroico.split(Pattern.quote("|").toRegex()).toTypedArray()[0].isNotBlank()) {
             val strMob = heroico.split(Pattern.quote("|").toRegex()).toTypedArray()[0]
             grupoMob = addGrupoMobPorTipo((-1).toShort(), strMob, TipoGrupo.NORMAL, "", null)
             grupoMob!!.addObjetosKamasInicioServer(heroico)
@@ -1659,6 +1664,10 @@ class Mapa {
 // }
     fun borrarGrupoMob(id: Int) {
         _grupoMobsTotales!!.remove(id)
+    }
+
+    fun getOIlist(): ArrayList<ObjetoInteractivo> {
+        return objetosInteractivos!!
     }
 
     fun borrarTodosMobsNoFijos() {

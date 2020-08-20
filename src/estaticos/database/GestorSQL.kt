@@ -1,10 +1,7 @@
 package estaticos.database
 
 //import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const
-import estaticos.AtlantaMain
-import estaticos.Constantes
-import estaticos.GestorSalida
-import estaticos.Mundo
+import estaticos.*
 import estaticos.Mundo.Duo
 import estaticos.Mundo.Experiencia
 import servidor.ServidorServer
@@ -2518,6 +2515,16 @@ object GestorSQL {
 
     }
 
+    fun LOAD_STARS_MAP_MOBS(id: Short): java.util.ArrayList<String> {
+        val resultado = consultaSQL("select mobs from mapas_estrellas where mapa = $id", _bdDinamica!!)
+        var r: ArrayList<String> = arrayListOf()
+        while (resultado.next()) {
+            r = Mundo.ArrayFalseHeroic(id, resultado.getString("mobs"))
+        }
+        cerrarResultado(resultado)
+        return r
+    }
+
     fun CARGAR_MAPAS_IDS(ids: String) {
         if (ids.isEmpty()) {
             return
@@ -2532,9 +2539,13 @@ object GestorSQL {
                 if (Mundo.mapaExiste(resultado.getShort("id"))) {
                     continue
                 }
+                CARGAR_MAPAS_ESTRELLAS_BY_ID(resultado.getShort("id").toInt())
                 mapa = RESULSET_MAP(resultado)
                 Mundo.addMapa(mapa)
                 CARGAR_TRIGGERS_POR_MAPA(mapa.id)
+                CARGAR_ACCION_FINAL_DE_PELEA_POR_MAPA(mapa.id.toInt())
+                CARGAR_MOBS_FIJOS_POR_MAPA(mapa.id.toInt())
+                CARGAR_ESTRELLAS_POR_MAPA(mapa.id.toInt())
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {
@@ -2590,6 +2601,112 @@ object GestorSQL {
             exceptionNormal(e, "")
         }
 
+    }
+
+    fun CARGAR_ESTRELLAS_POR_MAPA(id: Int) {
+        try {
+            val resultado = consultaSQL("select * from mapas_estrellas where mapa = $id;", _bdDinamica!!)
+            while (resultado.next()) {
+                val mapa = Mundo.getMapa(id.toShort()) ?: continue
+                val oilist = mapa.getOIlist()
+                val starslist = resultado.getString("estrellasoi").split(",")
+                val lastcharge = resultado.getString("nextchargeoi").split(",")
+                for ((c, oi) in oilist.withIndex()) {
+                    oi.bonusEstrellas = starslist[c].toInt()
+                    val mult = Formulas.difSegundosLongType(System.currentTimeMillis(), lastcharge[c].toLong()) / AtlantaMain.SEGUNDOS_ESTRELLAS_RECURSOS
+                    oi.subirBonusEstrellas(20 * mult)
+                    oi.restartSubirEstrellas() // anotate the last charge
+                }
+                val diff = Formulas.difSegundosLongType(System.currentTimeMillis(), resultado.getString("nextchargemob").toLong())
+                val multmob = diff / AtlantaMain.SEGUNDOS_ESTRELLAS_GRUPO_MOBS
+                mapa.subirEstrellasMobs(multmob)
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+        }
+    }
+
+    fun CARGAR_MOBS_FIJOS_POR_MAPA(id: Int): Int {
+        var numero = 0
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM mobs_fix where mapa=$id;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                val mapas = ArrayList<Mapa>()
+                for (m in resultado.getString("mapa").split(",".toRegex()).dropLastWhile { it.isEmpty() }
+                        .toTypedArray()) {
+                    if (m.isEmpty()) {
+                        continue
+                    }
+                    try {
+                        val mapa = Mundo.getMapa(m.toShort())
+                        if (mapa != null) {
+                            mapas.add(mapa)
+                        }
+                    } catch (ignored: Exception) {
+                    }
+
+                }
+                if (mapas.isEmpty()) {
+                    continue
+                }
+                val mapa = mapas[0]
+                if (mapa == null) {
+                    AtlantaMain.redactarLogServidorln("EL MAPA " + resultado.getShort("mapa") + " NO EXISTE")
+                    continue
+                }
+                if (mapa.getCelda(resultado.getShort("celda")) == null) {
+                    AtlantaMain.redactarLogServidorln(
+                            "LA CELDA " + resultado.getShort("celda") + " DEL MAPA " + resultado.getShort(
+                                    "mapa"
+                            ) + " NO EXISTE"
+                    )
+                    continue
+                }
+                var tipoGrupo = Constantes.getTipoGrupoMob(resultado.getInt("tipo"))
+                if (tipoGrupo == TipoGrupo.NORMAL) {
+                    tipoGrupo = TipoGrupo.FIJO
+                }
+                val grupoMob = mapa.addGrupoMobPorTipo(
+                        resultado.getShort("celda"), resultado.getString("mobs"), tipoGrupo,
+                        resultado.getString("condicion"), mapas
+                )
+                if (grupoMob != null) {
+                    val s1 = Mundo.getMapaEstrellas(mapa.id)
+                    val s2 = Mundo.getMapaHeroico(mapa.id)
+                    val estrellas = if (s1 == null) -1 else if (s1.isEmpty()) -1 else s1[0]
+                    val heroico = if (s2 == null) "" else if (s2.isEmpty()) "" else s2[0]
+                    if (estrellas > -1) {
+                        grupoMob.bonusEstrellas = estrellas.toInt()
+                    }
+                    if (heroico.isNotEmpty()) {
+                        grupoMob.addObjetosKamasInicioServer(heroico)
+                    }
+                    if (s1 != null && s1.isNotEmpty()) {
+                        s1.removeAt(0)
+                    }
+                    if (s2 != null && s2.isNotEmpty()) {
+                        s2.removeAt(0)
+                    }
+                    grupoMob.segundosRespawn = resultado.getInt("segundosRespawn")
+                    numero++
+                } else {
+                    AtlantaMain.redactarLogServidorln(
+                            "NO SE PUDO AGREGAR EL GRUPOMOB FIJO " + resultado.getString("mobs")
+                                    + " EN EL MAPA " + resultado.getShort("mapa") + ", CELDA " + resultado.getShort(
+                                    "celda"
+                            )
+                    )
+                }
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+        return numero
     }
 
     fun CARGAR_MOBS_FIJOS(): Int {
@@ -3304,6 +3421,34 @@ object GestorSQL {
 
     }
 
+    fun CARGAR_ACCION_FINAL_DE_PELEA_POR_MAPA(id: Int): Int {
+        var numero = 0
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM accion_pelea where mapa = $id;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val accion = Accion(
+                        resultado.getInt("accion"),
+                        resultado.getString("args"),
+                        resultado.getString(
+                                "condicion"
+                        )
+                )
+                mapa.addAccionFinPelea(resultado.getInt("tipoPelea"), accion)
+                numero++
+            }
+            cerrarResultado(resultado)
+            return numero
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+        return numero
+    }
+
     fun CARGAR_ACCION_FINAL_DE_PELEA(): Int {
         var numero = 0
         try {
@@ -3616,6 +3761,30 @@ object GestorSQL {
                 )
             }
             cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun CARGAR_MAPAS_ESTRELLAS_BY_ID(id: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM mapas_estrellas where mapa = $id;",
+                    _bdDinamica!!
+            )
+            while (resultado.next()) {
+                try {
+                    Mundo.addMapaEstrellas(
+                            resultado.getShort("mapa"),
+                            resultado.getString("estrellas")
+                    )
+                } catch (ignored: Exception) {
+                }
+
+            }
+            cerrarResultado(resultado)
+            return
         } catch (e: Exception) {
             exceptionExit(e)
         }
@@ -4533,10 +4702,14 @@ object GestorSQL {
         return null
     }
 
-    fun REPLACE_MAPAS_ESTRELLAS_BATCH(declaracion: PreparedStatement, mapaID: Int, estrellas: String) {
+    fun REPLACE_MAPAS_ESTRELLAS_BATCH(declaracion: PreparedStatement, mapaID: Int, estrellas: String, oistars: String, oitime: String, mobtime: String, mobs: String) {
         try {
             declaracion.setInt(1, mapaID)
             declaracion.setString(2, estrellas)
+            declaracion.setString(3, oistars)
+            declaracion.setString(4, oitime)
+            declaracion.setString(5, mobtime)
+            declaracion.setString(6, mobs)
             declaracion.addBatch()
         } catch (ignored: Exception) {
         }
@@ -6288,7 +6461,7 @@ object GestorSQL {
         if (rango.equals("Maguz", ignoreCase = true) || rango.equals("SlimeS", ignoreCase = true)) {
             return
         }
-        val consultaSQL = "INSERT INTO comandos (nombre gm,comando,date) VALUES (?,?,?);"
+        val consultaSQL = "INSERT INTO comandos (`nombre gm`,comando,date) VALUES (?,?,?);"
         try {
             val declaracion = transaccionSQL(
                     consultaSQL,

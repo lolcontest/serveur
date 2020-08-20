@@ -24,7 +24,6 @@ import estaticos.GestorSalida.ENVIAR_ÑL_BOTON_LOTERIA_TODOS
 import estaticos.database.GestorSQL
 import estaticos.database.GestorSQL.ADD_OGRINAS_CUENTA
 import estaticos.database.GestorSQL.CARGAR_ACCIONES_USO_OBJETOS
-import estaticos.database.GestorSQL.CARGAR_ACCION_FINAL_DE_PELEA
 import estaticos.database.GestorSQL.CARGAR_ALMANAX
 import estaticos.database.GestorSQL.CARGAR_AREA
 import estaticos.database.GestorSQL.CARGAR_CASAS
@@ -47,14 +46,11 @@ import estaticos.database.GestorSQL.CARGAR_EXPERIENCIA
 import estaticos.database.GestorSQL.CARGAR_GREMIOS
 import estaticos.database.GestorSQL.CARGAR_HECHIZOS
 import estaticos.database.GestorSQL.CARGAR_INTERACTIVOS
-import estaticos.database.GestorSQL.CARGAR_MAPAS
-import estaticos.database.GestorSQL.CARGAR_MAPAS_ESTRELLAS
 import estaticos.database.GestorSQL.CARGAR_MAPAS_HEROICO
 import estaticos.database.GestorSQL.CARGAR_MIEMBROS_GREMIO
 import estaticos.database.GestorSQL.CARGAR_MISIONES
 import estaticos.database.GestorSQL.CARGAR_MISION_OBJETIVOS
 import estaticos.database.GestorSQL.CARGAR_MOBS_EVENTO
-import estaticos.database.GestorSQL.CARGAR_MOBS_FIJOS
 import estaticos.database.GestorSQL.CARGAR_MOBS_MODELOS
 import estaticos.database.GestorSQL.CARGAR_MOBS_RAROS
 import estaticos.database.GestorSQL.CARGAR_MONTURAS
@@ -77,7 +73,6 @@ import estaticos.database.GestorSQL.CARGAR_RESPUESTAS
 import estaticos.database.GestorSQL.CARGAR_SERVICIOS
 import estaticos.database.GestorSQL.CARGAR_SUBAREA
 import estaticos.database.GestorSQL.CARGAR_TITULOS
-import estaticos.database.GestorSQL.CARGAR_TRIGGERS
 import estaticos.database.GestorSQL.CARGAR_TUTORIALES
 import estaticos.database.GestorSQL.CARGAR_ZAAPS
 import estaticos.database.GestorSQL.DELETE_CERCADO
@@ -169,7 +164,7 @@ import kotlin.collections.HashMap
 //import variables.mob.GrupoMob;
 object Mundo {
     // Fijos
-    val MAPAS: MutableMap<Short, Mapa?> = TreeMap()
+    var MAPAS: MutableMap<Short, Mapa?> = TreeMap()
     val AREAS: MutableMap<Int, Area> = TreeMap()
     val SUPER_AREAS: MutableMap<Int, SuperArea> = TreeMap()
     val SUB_AREAS: MutableMap<Int, SubArea> = TreeMap()
@@ -187,7 +182,7 @@ object Mundo {
     val NPC_RESPUESTAS: MutableMap<Int, RespuestaNPC> = HashMap()
     val OFICIOS: MutableMap<Int, Oficio> = HashMap()
     val RECETAS: MutableMap<Int, ArrayList<Duo<Int, Int>>> =
-        HashMap()
+            HashMap()
     val OBJETOS_SETS: MutableMap<Int, ObjetoSet> = HashMap()
     val CASAS: MutableMap<Int, Casa> = HashMap()
     val MERCADILLOS: MutableMap<Int, Mercadillo> = HashMap()
@@ -196,7 +191,7 @@ object Mundo {
     val COFRES: MutableMap<Int, Cofre> = HashMap()
     val TUTORIALES: MutableMap<Int, Tutorial> = HashMap()
     val OBJETIVOS_MODELOS: MutableMap<Int, MisionObjetivoModelo> =
-        HashMap()
+            HashMap()
     val ENCARNACIONES_MODELOS: MutableMap<Int, EncarnacionModelo> = HashMap()
     val ETAPAS: MutableMap<Int, MisionEtapaModelo> = HashMap()
     val MISIONES_MODELOS: MutableMap<Int, MisionModelo> = HashMap()
@@ -204,15 +199,15 @@ object Mundo {
     val ESPECIALIDADES: MutableMap<Int, Especialidad> = TreeMap()
     val DONES_MODELOS: MutableMap<Int, Int> = TreeMap()
     val objInteractivos =
-        ArrayList<ObjetoInteractivoModelo>()
+            ArrayList<ObjetoInteractivoModelo>()
     val SERVICIOS: MutableMap<Int, Servicio> = HashMap()
     val COMANDOS: MutableMap<String, Int> = HashMap()
     val MAPAS_ESTRELLAS: MutableMap<Short, ArrayList<Short>> =
-        HashMap()
+            HashMap()
     val MAPAS_HEROICOS: MutableMap<Short, ArrayList<String>> =
-        HashMap()
+            HashMap()
     val MOBS_EVENTOS: MutableMap<Byte, ArrayList<Duo<Int, Int>>> =
-        HashMap()
+            HashMap()
     val ALMANAX: MutableMap<Int, Almanax> = HashMap()
 
     @JvmField
@@ -309,8 +304,8 @@ object Mundo {
     fun crearServidor() {
         try {
             println(
-                "TotalMemory: " + Runtime.getRuntime().totalMemory() / 1048576f + " MB\t" + "MaxMemory: "
-                        + Runtime.getRuntime().maxMemory() / 1048576f + " MB"
+                    "TotalMemory: " + Runtime.getRuntime().totalMemory() / 1048576f + " MB\t" + "MaxMemory: "
+                            + Runtime.getRuntime().maxMemory() / 1048576f + " MB"
             )
         } catch (ignored: Exception) {
         }
@@ -440,28 +435,28 @@ object Mundo {
         print("Cargando los misiones: ")
         CARGAR_MISIONES()
         println(MISIONES_MODELOS.size.toString() + " misiones cargados")
-        CARGAR_MAPAS_ESTRELLAS()
-        if (AtlantaMain.MODO_HEROICO || !AtlantaMain.MAPAS_MODO_HEROICO.isEmpty()) {
+//        CARGAR_MAPAS_ESTRELLAS()
+        if (AtlantaMain.MODO_HEROICO || AtlantaMain.MAPAS_MODO_HEROICO.isNotEmpty()) {
             print("Cargando los mapas heroicos: ")
             CARGAR_MAPAS_HEROICO()
             println(MAPAS_HEROICOS.size.toString() + " mapas heroicos cargados")
         }
         print("Cargando los mapas: ")
-        val xxxx = System.currentTimeMillis()
-        CARGAR_MAPAS()
-        println(
-            MAPAS.size.toString() + " mapas cargados ----> (en " + (System.currentTimeMillis() - xxxx)
-                    + ") milisegundos"
-        )
-        print("Cargando los grupo mobs fijos: ")
-        println(CARGAR_MOBS_FIJOS().toString() + " grupo mobs fijos cargados")
+//        val xxxx = System.currentTimeMillis()
+////        CARGAR_MAPAS()
+//        println(
+//                MAPAS.size.toString() + " mapas cargados ----> (en " + (System.currentTimeMillis() - xxxx)
+//                        + ") milisegundos"
+//        )
+//        print("Cargando los grupo mobs fijos: ")
+//        println(CARGAR_MOBS_FIJOS().toString() + " grupo mobs fijos cargados")
         print("Cargando los zaaps: ")
         CARGAR_ZAAPS()
         println(ZAAPS.size.toString() + " zaaps cargados")
-        print("Cargando los triggers: ")
-        println(CARGAR_TRIGGERS().toString() + " trigger cargados")
-        print("Cargando las acciones de pelea: ")
-        println(CARGAR_ACCION_FINAL_DE_PELEA().toString() + " acciones de pelea cargadas")
+//        print("Cargando los triggers: ")
+//        println(CARGAR_TRIGGERS().toString() + " trigger cargados")
+//        print("Cargando las acciones de pelea: ")
+//        println(CARGAR_ACCION_FINAL_DE_PELEA().toString() + " acciones de pelea cargadas")
         print("Cargando los NPCs: ")
         println(CARGAR_NPCS().toString() + " NPCs cargados")
         print("Cargando las acciones de objetos: ")
@@ -551,8 +546,8 @@ object Mundo {
                 }
                 if (eliminados > 0) {
                     redactarLogServidorln(
-                        "\nSe eliminaron " + eliminados
-                                + " personajes con sus objetos, dragopavos, casas\n"
+                            "\nSe eliminaron " + eliminados
+                                    + " personajes con sus objetos, dragopavos, casas\n"
                     )
                 }
                 Thread.sleep(100)
@@ -616,7 +611,7 @@ object Mundo {
         val s = StringBuilder()
         val s2 = StringBuilder()
         val param =
-            KAMAS_OBJ_CACERIA.split(Pattern.quote("|").toRegex()).toTypedArray()
+                KAMAS_OBJ_CACERIA.split(Pattern.quote("|").toRegex()).toTypedArray()
         if (param.size > 1) {
             var i: Byte = 0
             for (a in param[1].split(";".toRegex()).toTypedArray()) {
@@ -790,7 +785,7 @@ object Mundo {
 
     fun addMobEvento(evento: Byte, mobOriginal: Int, mobEvento: Int) {
         MOBS_EVENTOS.computeIfAbsent(
-            evento
+                evento
         ) { k: Byte? -> ArrayList() }
         MOBS_EVENTOS[evento]!!.add(Duo(mobOriginal, mobEvento))
     }
@@ -806,14 +801,13 @@ object Mundo {
 //		}
 //	}
     fun refrescarTodosMobs() {
-        for (mapa in MAPAS.values) {
-            if (mapa!!.grupoMobsTotales!!.isNotEmpty()) {
-                try {
+        try {
+            MAPAS.values.asSequence().forEach { mapa ->
+                if (mapa?.grupoMobsTotales?.isNotEmpty() == true) {
                     mapa.refrescarGrupoMobs()
-                } catch (e: Exception) {
-                    println("Mapa id: " + mapa.id + " Con problemas para refrescar mobs")
                 }
             }
+        } catch (e: Exception) {
         }
     }
 
@@ -829,12 +823,13 @@ object Mundo {
     }
 
     fun moverMobs() {
-        for (mapa in MAPAS.values) {
-            if (!mapa!!.arrayPersonajes!!.isEmpty() && !mapa.grupoMobsTotales!!.isEmpty()) {
-                mapa.moverGrupoMobs(AtlantaMain.CANTIDAD_GRUPO_MOBS_MOVER_POR_MAPA)
+        MAPAS.values.asSequence().forEach { mapa ->
+            if (mapa != null) {
+                if (mapa.arrayPersonajes?.isNotEmpty() == true && mapa.grupoMobsTotales?.isNotEmpty() == true) {
+                    mapa.moverGrupoMobs(AtlantaMain.CANTIDAD_GRUPO_MOBS_MOVER_POR_MAPA)
+                }
             }
         }
-        //        Mundo.pequeñosalvar(false);
     }
 
     fun AleatorizarMobs() {
@@ -904,7 +899,7 @@ object Mundo {
             return
         }
         val persos =
-            ArrayList(_RANKINGS_KOLISEO.values)
+                ArrayList(_RANKINGS_KOLISEO.values)
         persos.sortWith(CompKoliseoMasMenos())
         _LADDER_KOLISEO.clear()
         _LADDER_KOLISEO.addAll(persos)
@@ -912,15 +907,15 @@ object Mundo {
 
     private fun addPaginas(temp: StringBuilder, inicio: Int, add: Int) {
         temp.append("|").append(if (inicio == -1) 0 else 1).append("|")
-            .append(if (add == AtlantaMain.LIMITE_LADDER + 1) 1 else 0)
+                .append(if (add == AtlantaMain.LIMITE_LADDER + 1) 1 else 0)
     }
 
     private fun addStringParaLadder(
-        temp: StringBuilder,
-        perso: Personaje,
-        pos: Int,
-        ladderpvp: Boolean = false,
-        ladderxpdia: Boolean = false
+            temp: StringBuilder,
+            perso: Personaje,
+            pos: Int,
+            ladderpvp: Boolean = false,
+            ladderxpdia: Boolean = false
     ) {
         if (temp.isNotEmpty()) {
             temp.append("#")
@@ -929,22 +924,22 @@ object Mundo {
     }
 
     private fun getStringParaLadder(
-        perso: Personaje,
-        pos: Int,
-        ladderpvp: Boolean = false,
-        ladderxpdia: Boolean = false
+            perso: Personaje,
+            pos: Int,
+            ladderpvp: Boolean = false,
+            ladderxpdia: Boolean = false
     ): String {
         return if (ladderpvp) {
             (pos.toString() + ";" + perso.getGfxID(false) + ";" + perso.nombre + ";" + perso.getTitulo(false) + ";" + perso
-                .nivel + ";" + "[${rankingpj(perso.Id)?.victorias}]\t\t[${rankingpj(perso.Id)?.derrotas}]" + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
+                    .nivel + ";" + "[${rankingpj(perso.Id)?.victorias}]\t\t[${rankingpj(perso.Id)?.derrotas}]" + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
                     + perso.alineacion)
         } else if (ladderxpdia) {
             (pos.toString() + ";" + perso.getGfxID(false) + ";" + perso.nombre + ";" + perso.getTitulo(false) + ";" + perso
-                .nivel + ";" + perso.experienciaDia + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
+                    .nivel + ";" + perso.experienciaDia + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
                     + perso.alineacion)
         } else {
             (pos.toString() + ";" + perso.getGfxID(false) + ";" + perso.nombre + ";" + perso.getTitulo(false) + ";" + perso
-                .nivel + ";" + perso.experiencia + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
+                    .nivel + ";" + perso.experiencia + ";" + (if (perso.enLinea()) if (perso.pelea != null) 2 else 1 else 0) + ";"
                     + perso.alineacion)
         }
     }
@@ -1228,8 +1223,8 @@ object Mundo {
                         temp.append("#")
                     }
                     temp.append(pos).append(";").append(gremio.emblema).append(";").append(gremio.nombre)
-                        .append(";").append(gremio.cantidadMiembros).append(";").append(gremio.nivel.toInt())
-                        .append(";").append(gremio.experiencia).append(";;;")
+                            .append(";").append(gremio.cantidadMiembros).append(";").append(gremio.nivel.toInt())
+                            .append(";").append(gremio.experiencia).append(";;;")
                 }
                 add++
             } catch (ignored: Exception) {
@@ -1370,8 +1365,8 @@ object Mundo {
                 if (AtlantaMain.PARAM_LOTERIA_OGRINAS) {
                     val idCuenta = perso!!.cuentaID
                     SET_OGRINAS_CUENTA(
-                        AtlantaMain.PRECIO_LOTERIA + GET_OGRINAS_CUENTA(idCuenta),
-                        idCuenta
+                            AtlantaMain.PRECIO_LOTERIA + GET_OGRINAS_CUENTA(idCuenta),
+                            idCuenta
                     )
                 } else {
                     perso!!.addKamas(AtlantaMain.PRECIO_LOTERIA.toLong(), false, true)
@@ -1425,9 +1420,9 @@ object Mundo {
             return
         }
         if (MSJ_CUENTA_REGRESIVA.equals(
-                "RESET RATES",
-                ignoreCase = true
-            ) || MSJ_CUENTA_REGRESIVA.equals("LOTERIA", ignoreCase = true)
+                        "RESET RATES",
+                        ignoreCase = true
+                ) || MSJ_CUENTA_REGRESIVA.equals("LOTERIA", ignoreCase = true)
         ) {
             return
         }
@@ -1475,8 +1470,8 @@ object Mundo {
             val perso = getPersonaje(value) ?: continue
             val idCuenta = perso.cuentaID
             ENVIAR_Im_INFORMACION_A_TODOS(
-                "1NUMBER_WIN_LOTERIE;$b~($key) - " + perso
-                    .nombre
+                    "1NUMBER_WIN_LOTERIE;$b~($key) - " + perso
+                            .nombre
             )
             if (AtlantaMain.PARAM_LOTERIA_OGRINAS) {
                 ADD_OGRINAS_CUENTA(AtlantaMain.PREMIO_LOTERIA.toLong(), idCuenta)
@@ -1530,9 +1525,14 @@ object Mundo {
     }
 
     fun checkearObjInteractivos() {
-        for (oi in OBJETOS_INTERACTIVOS) {
-            oi.recargando(false)
-            oi.subirEstrella()
+        try {
+            MAPAS.values.asSequence().forEach { mapa ->
+                mapa?.getOIlist()?.forEach {
+                    it.recargando(false)
+                    it.subirEstrella()
+                }
+            }
+        } catch (e: Exception) {
         }
     }
 
@@ -1558,98 +1558,74 @@ object Mundo {
             return
         }
         CANT_SALVANDO = 0
-        redactarLogServidor("Salvando las estrellas de los mobs: ")
-        //        GestorSQL.VACIAR_MAPAS_ESTRELLAS();
+//        redactarLogServidor("Salvando las estrellas del mapa: ")
         val declaracion =
-            GET_STATEMENT_SQL_DINAMICA("REPLACE INTO `mapas_estrellas` VALUES (?,?);")
-        for (mapa in MAPAS.values) {
-            try {
-                if (mapa!!.grupoMobsTotales!!.isEmpty()) {
-                    continue
-                }
+                GET_STATEMENT_SQL_DINAMICA("REPLACE INTO `mapas_estrellas` VALUES (?,?,?,?,?,?);")
+        MAPAS.values.asSequence().forEach { mapa ->
+            if (mapa != null) {
                 val s = StringBuilder()
-                for (gm in mapa.grupoMobsTotales!!.values) {
-                    if (gm.realBonusEstrellas() <= 0) {
-                        continue
+                var mobstr = ""
+                try {
+                    mapa.grupoMobsTotales?.values?.asSequence()?.forEach { gm ->
+                        if (s.isNotEmpty()) {
+                            s.append(",")
+                        }
+                        s.append(gm.realBonusEstrellas())
+                        for (mob in gm.mobs) {
+                            mobstr += "${mob.idModelo},${mob.nivel},${mob.nivel};"
+                        }
+                        mobstr = mobstr.dropLastWhile { it == ';' }
+                        mobstr += "|"
                     }
-                    if (s.length > 0) {
-                        s.append(",")
-                    }
-                    s.append(gm.realBonusEstrellas())
+                    mobstr = mobstr.dropLastWhile { it == '|' }
+                } catch (e: Exception) {
                 }
-                if (s.length == 0) {
-                    continue
+                val oilist = mapa.getOIlist()
+                var StaroiString = ""
+                var LastTimeoi = ""
+                for (oi in oilist) {
+                    StaroiString += "${oi.bonusEstrellas},"
+                    LastTimeoi += "${oi._tiempoProxSubidaEstrella},"
                 }
+                StaroiString = StaroiString.dropLastWhile { ',' == it }
+                LastTimeoi = LastTimeoi.dropLastWhile { it == ',' }
                 CANT_SALVANDO++
-                REPLACE_MAPAS_ESTRELLAS_BATCH(declaracion!!, mapa.id.toInt(), s.toString())
-            } catch (e: Exception) {
-                redactarLogServidorln(e.toString())
+                REPLACE_MAPAS_ESTRELLAS_BATCH(declaracion!!, mapa.id.toInt(), s.toString(), StaroiString, LastTimeoi, System.currentTimeMillis().toString(), mobstr)
             }
         }
         if (CANT_SALVANDO > 0) {
             ejecutarBatch(Objects.requireNonNull(declaracion)!!)
         }
-        redactarLogServidorln("Finalizo con $CANT_SALVANDO")
+//        redactarLogServidorln("Finalizo con $CANT_SALVANDO")
         TOTAL_SALVADO += CANT_SALVANDO
     }
 
     fun finalizarPeleas() {
-        for (mapa in MAPAS.values) {
-            try {
-                if (mapa == null) {
-                    continue
-                }
-                if (mapa.peleas == null) {
-                    continue
-                }
-                if (mapa.peleas?.isEmpty() != false) {
-                    continue
-                }
-                while (mapa.peleas?.values?.isEmpty() != true) {
-                    try {
-                        for (pelea in mapa.peleas?.values ?: break) {
-                            try {
-                                if (pelea.tipoPelea == Constantes.PELEA_TIPO_PVM.toInt() || pelea.tipoPelea == Constantes.PELEA_TIPO_PVM_NO_ESPADA.toInt()) {
-                                    pelea.acaboPelea(2.toByte())
-                                } else {
-                                    pelea.cancelarPelea()
-                                }
-                            } catch (e: Exception) {
-                            }
+        MAPAS.values.requireNoNulls().filter { it.peleas?.isNotEmpty() == true }.forEach { mapa ->
+            while (mapa.peleas?.values?.isNotEmpty() == true) {
+                try {
+                    mapa.peleas?.values?.requireNoNulls()?.asSequence()?.forEach { pelea ->
+                        if (pelea.tipoPelea == Constantes.PELEA_TIPO_PVM.toInt() || pelea.tipoPelea == Constantes.PELEA_TIPO_PVM_NO_ESPADA.toInt()) {
+                            pelea.acaboPelea(2.toByte())
+                        } else {
+                            pelea.cancelarPelea()
                         }
-                    } catch (e: Exception) {
                     }
+                } catch (e: Exception) {
                 }
-            } catch (e: Exception) {
-                redactarLogServidorln("EXCEPTION finalizarPeleas $e")
-                e.printStackTrace()
             }
         }
     }
 
     fun cancelarPeleas() {
-        for (mapa in MAPAS.values) {
-            try {
-                if (mapa!!.peleas!!.isEmpty()) {
-                    continue
-                }
-                while (!mapa.peleas!!.values.isEmpty()) {
-                    try {
-                        for (pelea in mapa.peleas!!.values) {
-                            try {
-                                pelea.cancelarPelea()
-                            } catch (e: Exception) {
-                                break
-                            }
-                        }
-                    } catch (e: Exception) {
-                        redactarLogServidorln("EXCEPTION finalizarPeleas $e")
-                        e.printStackTrace()
+        MAPAS.values.requireNoNulls().filter { it.peleas?.isNotEmpty() == true }.forEach { mapa ->
+            while (mapa.peleas?.values?.isNotEmpty() == true) {
+                try {
+                    mapa.peleas?.values?.requireNoNulls()?.asSequence()?.forEach { pelea ->
+                        pelea.cancelarPelea()
                     }
+                } catch (e: Exception) {
                 }
-            } catch (e: Exception) {
-                redactarLogServidorln("EXCEPTION finalizarPeleas $e")
-                e.printStackTrace()
             }
         }
     }
@@ -1677,8 +1653,8 @@ object Mundo {
                             }
                             perso.salvar()
                             REPLACE_CUENTA_SERVIDOR(
-                                perso.cuenta,
-                                GET_PRIMERA_VEZ(perso.cuenta.nombre)
+                                    perso.cuenta,
+                                    GET_PRIMERA_VEZ(perso.cuenta.nombre)
                             )
                             redactarLogServidorln(" [ONLINE] " + " 100%")
                             CANT_SALVANDO++
@@ -1984,9 +1960,7 @@ object Mundo {
                     e.printStackTrace()
                 }
             }
-            for (mapa in MAPAS.values) {
-                mapa!!.limpiarobjetostirados()
-            }
+            MAPAS.values.requireNoNulls().asSequence().forEach { it.limpiarobjetostirados() }
             redactarLogServidorln("Finalizó con $CANT_SALVANDO")
             TOTAL_SALVADO += CANT_SALVANDO
             redactarLogServidorln("------------ Se salvó exitosamente el servidor 100% ------------")
@@ -2127,15 +2101,31 @@ object Mundo {
             val array = ArrayList<String>()
             val m = mobs.split(Pattern.quote("|").toRegex()).toTypedArray()
             val o =
-                objetos.split(Pattern.quote("|").toRegex()).toTypedArray()
+                    objetos.split(Pattern.quote("|").toRegex()).toTypedArray()
             val k =
-                kamas.split(Pattern.quote("|").toRegex()).toTypedArray()
+                    kamas.split(Pattern.quote("|").toRegex()).toTypedArray()
             for (i in m.indices) {
                 array.add(m[i] + "|" + o[i] + "|" + k[i])
             }
             MAPAS_HEROICOS[id] = array
         } catch (ignored: Exception) {
         }
+    }
+
+    fun ArrayFalseHeroic(id: Short, mobs: String, objetos: String = "", kamas: String = "0"): ArrayList<String> {
+        val array = ArrayList<String>()
+        try {
+            val m = mobs.split(Pattern.quote("|").toRegex()).toTypedArray()
+            val o =
+                    objetos.split(Pattern.quote("|").toRegex()).toTypedArray()
+            val k =
+                    kamas.split(Pattern.quote("|").toRegex()).toTypedArray()
+            for (i in m.indices) {
+                array.add(m[i] + "|" + "" + "|" + "0")
+            }
+        } catch (ignored: Exception) {
+        }
+        return array
     }
 
     fun getMapaHeroico(id: Short): ArrayList<String>? {
@@ -2215,7 +2205,15 @@ object Mundo {
 
     @JvmStatic
     fun getMapa(id: Short): Mapa? {
+        if (MAPAS[id] == null) {
+            GestorSQL.CARGAR_MAPAS_IDS("$id")
+        }
         return MAPAS[id]
+    }
+
+    fun removeMap() {
+        salvarMapasEstrellas()
+        MAPAS = MAPAS.filter { it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.npCs?.isNotEmpty() == true || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
     }
 
     fun addMapa(mapa: Mapa) {
@@ -2258,22 +2256,14 @@ object Mundo {
     }
 
     fun subirEstrellasMobs(cant: Int) {
-        for (mapa in MAPAS.values) {
-            try {
-                mapa!!.subirEstrellasMobs(cant)
-                //			if (mapa.getArrayPersonajes().size()>0){
-//                mapa.RefrescarGM_Mobs_Enmapa();
-//            }
-            } catch (e: Exception) {
-                redactarLogServidorln(e.toString())
-            }
+        try {
+            MAPAS.values.forEach { it?.subirEstrellasMobs(cant) }
+        } catch (e: Exception) {
         }
     }
 
     fun subirEstrellasOI(cant: Int) {
-        for (mapa in MAPAS.values) {
-            mapa!!.subirEstrellasOI(cant)
-        }
+        MAPAS.values.forEach { it?.subirEstrellasOI(cant) }
     }
 
     fun getCuentaPorApodo(apodo: String): Cuenta? {
@@ -2592,9 +2582,9 @@ object Mundo {
         return null
     }
 
-    fun addObjInteractivo(oi: ObjetoInteractivo) {
-        OBJETOS_INTERACTIVOS.add(oi)
-    }
+//    fun addObjInteractivo(oi: ObjetoInteractivo) {
+//        OBJETOS_INTERACTIVOS.add(oi)
+//    }
 
     fun addObjInteractivoModelo(OIM: ObjetoInteractivoModelo) {
         objInteractivos.add(OIM)
@@ -2627,8 +2617,8 @@ object Mundo {
     }
 
     fun getIDRecetaPorIngredientes(
-        listaIDRecetas: ArrayList<Int>?,
-        ingredientes: MutableMap<Int, Int?>
+            listaIDRecetas: ArrayList<Int>?,
+            ingredientes: MutableMap<Int, Int?>
     ): Int {
         if (listaIDRecetas == null) {
             return -1
@@ -2804,7 +2794,7 @@ object Mundo {
             for (cercado in CERCADOS.values) {
                 if (cercado.dueñoID == perso.Id) {
                     val criando =
-                        cercado.strPavosCriando().split(";".toRegex()).toTypedArray()
+                            cercado.strPavosCriando().split(";".toRegex()).toTypedArray()
                     for (pavo in criando) {
                         try {
                             eliminarMontura(getMontura(pavo.toInt()))
@@ -2841,8 +2831,8 @@ object Mundo {
             _PERSONAJES.remove(perso.Id)
         }
         redactarLogServidorln(
-            "SE ELIMINO EL PERSONAJE " + perso.nombre + " (" + perso.Id
-                    + ") PERTENICIENTE A LA CUENTA " + perso.cuentaID
+                "SE ELIMINO EL PERSONAJE " + perso.nombre + " (" + perso.Id
+                        + ") PERTENICIENTE A LA CUENTA " + perso.cuentaID
         )
     }
 
@@ -2920,11 +2910,11 @@ object Mundo {
                     if (AtlantaMain.PARAM_SISTEMA_ITEMS_EXO_PA_PM) {
                         if (!AtlantaMain.SISTEMA_ITEMS_EXO_TIPOS_NO_PERMITIDOS.contains(objMod.tipo)) {
                             add.append(";").append(if (objMod.tieneStatInicial(Constantes.STAT_MAS_PA)) "0" else "1")
-                                .append(";").append(
-                                    if (objMod
-                                            .tieneStatInicial(Constantes.STAT_MAS_PM)
-                                    ) "0" else "1"
-                                )
+                                    .append(";").append(
+                                            if (objMod
+                                                            .tieneStatInicial(Constantes.STAT_MAS_PM)
+                                            ) "0" else "1"
+                                    )
                         }
                     }
                 }
@@ -2951,15 +2941,15 @@ object Mundo {
         if (SISTEMA_ITEMS[tipo] == null) {
             for (s in SISTEMA_ITEMS.keys) {
                 ENVIAR_bSO_PANEL_ITEMS_OBJETOS_POR_TIPO(
-                    out!!,
-                    s.toString() + "@" + SISTEMA_ITEMS[s]
+                        out!!,
+                        s.toString() + "@" + SISTEMA_ITEMS[s]
                 )
             }
             ENVIAR_bSO_PANEL_ITEMS_OBJETOS_POR_TIPO(out!!, "-1@")
         } else {
             ENVIAR_bSO_PANEL_ITEMS_OBJETOS_POR_TIPO(
-                out!!,
-                tipo.toString() + "@" + SISTEMA_ITEMS[tipo]
+                    out!!,
+                    tipo.toString() + "@" + SISTEMA_ITEMS[tipo]
             )
         }
     }
@@ -2993,13 +2983,13 @@ object Mundo {
     }
 
     fun objetoIniciarServer(
-        id: Int, idObjModelo: Int, cant: Int, pos: Byte,
-        strStats: String?, idObvi: Int, precio: Int
+            id: Int, idObjModelo: Int, cant: Int, pos: Byte,
+            strStats: String?, idObvi: Int, precio: Int
     ) {
         if (getObjetoModelo(idObjModelo) == null) {
             redactarLogServidorln(
-                "La id del objeto " + id + " esta bug porque no tiene objModelo "
-                        + idObjModelo
+                    "La id del objeto " + id + " esta bug porque no tiene objModelo "
+                            + idObjModelo
             )
             if (!AtlantaMain.PARAM_DESHABILITAR_SQL) {
                 DELETE_OBJETO(id)
@@ -3179,7 +3169,7 @@ object Mundo {
     fun borrarOtroInteractivo(gfxID: Int, mapaID: Short, celdaID: Short, accion: Int, conAccion: Boolean) {
         for (oi in OTROS_INTERACTIVOS) {
             if (gfxID == oi.gfxID && mapaID == oi.mapaID && celdaID == oi.celdaID && (!conAccion
-                        || accion == oi.accionID)
+                            || accion == oi.accionID)
             ) {
                 OTROS_INTERACTIVOS.remove(oi)
                 DELETE_OTRO_INTERACTIVO(gfxID, mapaID, celdaID, oi.accionID)
@@ -3394,19 +3384,19 @@ object Mundo {
 
     fun getBonusAlinExp(perso: Personaje): Float {
         val bonus =
-            (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_EXPERIENCIA.toDouble()) * 100) / 100f).toFloat()
+                (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_EXPERIENCIA.toDouble()) * 100) / 100f).toFloat()
         return perso.gradoAlineacion / 2.5f + bonus
     }
 
     fun getBonusAlinRecolecta(perso: Personaje): Float {
         val bonus =
-            (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_RECOLECTA.toDouble()) * 100) / 100f).toFloat()
+                (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_RECOLECTA.toDouble()) * 100) / 100f).toFloat()
         return perso.gradoAlineacion / 2.5f + bonus
     }
 
     fun getBonusAlinDrop(perso: Personaje): Float {
         val bonus =
-            (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_DROP.toDouble()) * 100) / 100f).toFloat()
+                (Math.rint(Math.sqrt(AtlantaMain.RATE_CONQUISTA_DROP.toDouble()) * 100) / 100f).toFloat()
         return perso.gradoAlineacion / 2.5f + bonus
     }
 
@@ -3418,7 +3408,7 @@ object Mundo {
             str.append(SubArea.BRAKMARS)
         }
         str.append("|").append(SUB_AREAS.size).append("|")
-            .append(SUB_AREAS.size - (SubArea.BONTAS + SubArea.BRAKMARS)).append("|")
+                .append(SUB_AREAS.size - (SubArea.BONTAS + SubArea.BRAKMARS)).append("|")
         var primero = false
         for (subArea in SUB_AREAS.values) {
             if (subArea.esConquistable()) {
@@ -3430,7 +3420,7 @@ object Mundo {
             str.append(subArea.id).append(",")
             str.append(subArea.alineacion.toInt()).append(",")
             str.append(if (subArea.prisma == null) 0 else if (subArea.prisma!!.pelea == null) 0 else 1)
-                .append(",") // pelea
+                    .append(",") // pelea
             str.append(if (subArea.prisma == null) 0 else subArea.prisma!!.mapa!!.id.toInt()).append(",")
             str.append("1") // atacable
             primero = true
@@ -3681,9 +3671,9 @@ object Mundo {
                         continue
                     }
                     if (Math.max(promedioA, promedioB) - Math.min(
-                            promedioA,
-                            promedioB
-                        ) > AtlantaMain.RANGO_NIVEL_KOLISEO
+                                    promedioA,
+                                    promedioB
+                            ) > AtlantaMain.RANGO_NIVEL_KOLISEO
                     ) {
                         x -= 1
                         x += 2
@@ -3897,8 +3887,8 @@ object Mundo {
     class Duo<L, R>(var _primero: L, var _segundo: R)
 
     class Experiencia(
-        val _personaje: Long, val _oficio: Int, val _montura: Int, val _gremio: Long, val _alineacion: Int,
-        encarnacion: Int
+            val _personaje: Long, val _oficio: Int, val _montura: Int, val _gremio: Long, val _alineacion: Int,
+            encarnacion: Int
     ) {
         val _encarnacion: Long
 

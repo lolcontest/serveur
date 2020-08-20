@@ -1095,7 +1095,7 @@ object AtlantaMain {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        Runtime.getRuntime().addShutdownHook(Thread(Runnable { cerrarServer() }))
+        Runtime.getRuntime().addShutdownHook(Thread { cerrarServer() })
         println("ATLANTA " + Constantes.VERSION_EMULADOR)
         println("By Oxakromax para OLDFUS")
         // cargando la config
@@ -1149,6 +1149,7 @@ object AtlantaMain {
             try {
                 thread {
                     FuncionesParaThreads.cadaSegundo()
+                    Mundo.removeMap()
                 }
                 try {
                     ServidorServer.borrarCuentasBug(60)

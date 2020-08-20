@@ -394,21 +394,11 @@ object FuncionesParaThreads {
                     thread(true, true, null, null, 5) { LiveAction() }
                 }
             }
-//            if (AtlantaMain.SEGUNDOS_LIMPIAR_MEMORIA > 0) {
-//                if (Formulas.segundosON() % AtlantaMain.SEGUNDOS_LIMPIAR_MEMORIA == 0) {
-//                    thread(true, true, null, null, 5) { GarbageCollector() }
-//                }
-//            }
             if (AtlantaMain.SEGUNDOS_ESTRELLAS_GRUPO_MOBS > 0) {
                 if (Formulas.segundosON() % AtlantaMain.SEGUNDOS_ESTRELLAS_GRUPO_MOBS == 0) {
-                    thread(true, true, null, null, 5) { SubirEstrellas() }
+                    thread(start = true, isDaemon = true, contextClassLoader = null, name = null, priority = 5) { SubirEstrellas() }
                 }
             }
-//            if (AtlantaMain.SEGUNDOS_DETECTAR_DDOS > 0) {
-//                if (Formulas.segundosON() % AtlantaMain.SEGUNDOS_DETECTAR_DDOS == 0) {
-//                    thread(true, true, null, null, 5) { DetectarDDOS() }
-//                }
-//            }
             if (AtlantaMain.SEGUNDOS_MOVER_MONTURAS > 0) {
                 if (Formulas.segundosON() % AtlantaMain.SEGUNDOS_MOVER_MONTURAS == 0) {
                     thread(true, true, null, null, 5) { MoverPavos() }

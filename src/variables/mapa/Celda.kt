@@ -694,7 +694,7 @@ class Celda(
             objetoInteractivo = null
         } else {
             objetoInteractivo = ObjetoInteractivo(mapa, this, objID)
-            Mundo.addObjInteractivo(objetoInteractivo!!)
+//            Mundo.addObjInteractivo(objetoInteractivo!!)
         }
         val tempD = ((coordX + coordY - 1) * 13.5f).toInt()
         val tempL = (this.level - 7) * 20

@@ -17,7 +17,7 @@ class ObjetoInteractivo(private val _mapa: Mapa, private val _celda: Celda, val 
     private var _bonusEstrellas = -1
     private var _milisegundosRecarga = 0
     private var _tiempoProxRecarga: Long = -1
-    private var _tiempoProxSubidaEstrella: Long = -1
+    var _tiempoProxSubidaEstrella: Long = -1
     private var _tiempoFinalizarRecolecta: Long = 0
     fun puedeFinalizarRecolecta(): Boolean {
         val b = System.currentTimeMillis() >= _tiempoFinalizarRecolecta
@@ -79,7 +79,7 @@ class ObjetoInteractivo(private val _mapa: Mapa, private val _celda: Celda, val 
         }
     }
 
-    private fun restartSubirEstrellas() {
+    fun restartSubirEstrellas() {
         if (!AtlantaMain.PARAM_ESTRELLAS_RECURSOS) {
             return
         }

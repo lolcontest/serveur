@@ -42,6 +42,20 @@ object Formulas {
         return false
     }
 
+    fun difSegundosLongType(a: Long, b: Long): Int {
+        return if (min(a, b) == a)
+            ((b - a) / 1000).toInt()
+        else
+            ((a - b) / 1000).toInt()
+    }
+
+    fun difIntegers(a: Int, b: Int): Int {
+        return if (min(a, b) == a)
+            b - a
+        else
+            b - a
+    }
+
     fun segundosON(): Int {
         return ((System.currentTimeMillis() - AtlantaMain.encendido) / 1000).toInt()
     }

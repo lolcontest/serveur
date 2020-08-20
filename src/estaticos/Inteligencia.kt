@@ -31,16 +31,22 @@ class Inteligencia(private val _lanzador: Luchador, private val _pelea: Pelea) :
                 return -1
             }
             try {
-                if (_lanzador.esDoble()) {
-                    return 5
-                } else if (_lanzador.recaudador != null) {
-                    return 21
-                } else if (_lanzador.prisma != null) {
-                    return 20
-                } else if (_lanzador.mob != null) {
-                    return _lanzador.mob!!.mobModelo.tipoIA.toInt()
-                } else if (_lanzador.personaje != null) {
-                    return 1
+                when {
+                    _lanzador.esDoble() -> {
+                        return 5
+                    }
+                    _lanzador.recaudador != null -> {
+                        return 21
+                    }
+                    _lanzador.prisma != null -> {
+                        return 20
+                    }
+                    _lanzador.mob != null -> {
+                        return _lanzador.mob!!.mobModelo.tipoIA.toInt()
+                    }
+                    _lanzador.personaje != null -> {
+                        return 1
+                    }
                 }
             } catch (e: Exception) {
                 redactarLogServidorln("EXCEPTION getTipoIA $e")
