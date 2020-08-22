@@ -2569,14 +2569,14 @@ object Comandos {
                 AtlantaMain.RATE_RANDOM_ITEM_BASE = ratebase.toDouble()
                 Mundo.OBJETOS_SETS.clear()
                 GestorSQL.CARGAR_OBJETOS_SETS()
-                for (a in Mundo._PERSONAJES.values) {
+                for (a in Mundo.PERSONAJES.values) {
                     if (a.enLinea()) {
                         a.enviarBonusSet()
                     }
                 }
                 GestorSalida.ENVIAR_BAT2_CONSOLA(
-                    _perso,
-                    "Se modifico el Rango del rate item de " + AtlantaMain.RATE_RANDOM_ITEM_BASE + " a " + AtlantaMain.RATE_RANDOM_ITEM
+                        _perso,
+                        "Se modifico el Rango del rate item de " + AtlantaMain.RATE_RANDOM_ITEM_BASE + " a " + AtlantaMain.RATE_RANDOM_ITEM
                 )
             } catch (e: Exception) {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Ocurrio una excepcion")

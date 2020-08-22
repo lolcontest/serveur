@@ -132,6 +132,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     public Pelea Pelea, PrePelea;
     public Mapa Mapa;
     public Celda Celda;
+    public int MapidStart, CellidStart;
     public Grupo Grupo;
     public Montura Montura;
     public Personaje Multi, Compañero, InvitandoA, Invitador;
@@ -182,19 +183,21 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         Cuenta = Mundo.getCuenta(cuenta);
         try {
             boolean modificar = false;
-            try {
-                Mapa = Mundo.getMapa(mapa);
-                setCelda(Mapa.getCelda(celda));
-            } catch (Exception e) {
-                Mapa = Mundo.getMapa((short) 7411);
-                setCelda(Mapa.getCelda((short) 311));
-            }
-            if (Mapa == null || Celda == null) {
-                AtlantaMain.redactarLogServidorln("Mapa o celda invalido del personaje " + Nombre
-                        + ", por lo tanto se cierra el server");
-                System.exit(1);
-                return;
-            }
+            MapidStart = mapa;
+            CellidStart = celda;
+//            try {
+//                Mapa = Mundo.getMapa(mapa);
+//                setCelda(Mapa.getCelda(celda));
+//            } catch (Exception e) {
+//                Mapa = Mundo.getMapa((short) 7411);
+//                setCelda(Mapa.getCelda((short) 311));
+//            }
+//            if (Mapa == null || Celda == null) {
+//                AtlantaMain.redactarLogServidorln("Mapa o celda invalido del personaje " + Nombre
+//                        + ", por lo tanto se cierra el server");
+//                System.exit(1);
+//                return;
+//            }
             this.Id = id;
             Nombre = nombre;
             ColorNombre = colorNombre;
@@ -1575,7 +1578,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
             final String[] infos = ptoSalvada.split(",");
             MapaSalvada = Short.parseShort(infos[0]);
             CeldaSalvada = Short.parseShort(infos[1]);
-            Mundo.getMapa(MapaSalvada).getCelda(CeldaSalvada).getId();
+//            Mundo.getMapa(MapaSalvada).getCelda(CeldaSalvada).getId();
         } catch (final Exception e) {
             MapaSalvada = 7411;
             CeldaSalvada = 340;
@@ -1674,7 +1677,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         GestorSalida.INSTANCE.ENVIAR_AR_RESTRICCIONES_PERSONAJE(this);
         crearTimerRegenPDV();
         setDelayTimerRegenPDV(AtlantaMain.MODO_BATTLE_ROYALE ? 0 : 1000);
-        CasaDentro = Mundo.getCasaDentroPorMapa(Mapa.getId());
+        CasaDentro = Mundo.getCasaDentroPorMapa(Mapa != null ? Mapa.getId() : (short) MapidStart);
         if (CasaDentro != null) {
             GestorSalida.INSTANCE.ENVIAR_hL_INFO_CASA(this, CasaDentro.informacionCasa(Id));
         }
@@ -1919,13 +1922,11 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         Mapa mapa = Mapa;
         if (Pelea != null) {
             mapa = Pelea.getMapaReal();
+        } else if (mapa == null) {
+            mapa = Mundo.getMapa((short) MapidStart);
         }
-        // setCargandoMapa(true, null);
         GestorSalida.INSTANCE.ENVIAR_GCK_CREAR_PANTALLA_PJ(this);
         GestorSalida.INSTANCE.ENVIAR_As_STATS_DEL_PJ(this);
-        // try {
-        // Thread.sleep(500);
-        // } catch (Exception e) {}
         GestorSalida.INSTANCE.ENVIAR_GDM_CAMBIO_DE_MAPA(this, mapa);
         if (Pelea != null) {
             if (Pelea.getFase() != Constantes.PELEA_FASE_FINALIZADO) {
@@ -1935,6 +1936,10 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
             }
         }
         // solo se agrega si la pelea es null o se sale de la pelea por eso es _mapa
+        if (Mapa == null || Celda == null) {
+            Mapa = Mundo.getMapa((short) MapidStart);
+            Celda = Mapa.getCelda((short) CellidStart);
+        }
         GestorSalida.INSTANCE.ENVIAR_GM_PJ_A_MAPA(Mapa, this);
         Celda.addPersonaje(this, true);
     }
@@ -2643,6 +2648,13 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public Celda getCelda() {
+        if (Celda == null) {
+            return Mundo.getMapa((short) MapidStart).getCelda((short) CellidStart);
+        }
+        return Celda;
+    }
+
+    public Celda getCell2() {
         return Celda;
     }
 
@@ -2741,6 +2753,13 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public Mapa getMapa() {
+        if (Mapa == null) {
+            Mapa = Mundo.getMapa((short) MapidStart);
+        }
+        return Mapa;
+    }
+
+    public Mapa getmap2() {
         return Mapa;
     }
 
@@ -3335,7 +3354,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         str.append(getStringAccesorios()).append(";");
         str.append(EsMercante ? 1 : 0).append(";");
         str.append(AtlantaMain.SERVIDOR_ID).append(";");
-        if (AtlantaMain.MODO_HEROICO || AtlantaMain.MAPAS_MODO_HEROICO.contains(Mapa.getId())) {
+        if (AtlantaMain.MODO_HEROICO || AtlantaMain.MAPAS_MODO_HEROICO.contains(Mapa != null ? Mapa.getId() : (short) MapidStart)) {
             str.append(esFantasma() ? 1 : 0).append(";");
         } else {
             str.append("0;");
@@ -3898,7 +3917,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
             }
         }
         setSentado(false);
-        // GestorSalida.ENVIAR_GV_RESETEAR_PANTALLA_JUEGO(this);
+//         GestorSalida.ENVIAR_GV_RESETEAR_PANTALLA_JUEGO(this);
     }
 
     public void teleportPtoSalvada() {
@@ -6481,7 +6500,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public String stringUbicEsposo() {
-        return Mapa.getId() + "|" + Nivel + "|" + (Pelea != null ? 1 : 0);
+        return (Mapa != null ? Mapa.getId() : MapidStart) + "|" + Nivel + "|" + (Pelea != null ? 1 : 0);
     }
 
     public void seguirEsposo(Personaje esposo, String packet) {

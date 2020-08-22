@@ -23,7 +23,7 @@ object Economia {
         val limit = 50
         var c = 1
         var kktop = 0L
-        for (personaje in Mundo._PERSONAJES.values.sortedWith(compareByDescending { it.kamas })) {
+        for (personaje in Mundo.PERSONAJES.values.sortedWith(compareByDescending { it.kamas })) {
             if (personaje.cuenta.admin > 0) continue
             if (c <= limit) {
                 kktop += personaje.kamas
@@ -32,21 +32,27 @@ object Economia {
         }
         kktop /= limit
         GestorSalida.ENVIAR_M145_MENSAJE_PANEL_INFORMACION(
-            perso,
-            "En la Economia actual del servidor existe lo siguiente:\n\n" +
-                    "Kamas totales: ${formatNumber(kamas)}\n" +
-                    "Kamas Promedio TOP 50 : ${formatNumber(kktop)}\n" +
-                    "Kamas Promedio Players: ${formatNumber(
-                        kamas / Mundo._PERSONAJES.values.size
-                    )}\n" +
-                    "\n==============\n\n" +
-                    "Ogrinas totales: ${formatNumber(ogrinas)}\n" +
-                    "Precio Compra ogrina (unidad): ${formatNumber(
-                        precioCompra()
-                    )} Kamas\n" +
-                    "Precio Venta ogrina (unidad): ${formatNumber(
-                        precioVenta()
-                    )} Kamas"
+                perso,
+                "En la Economia actual del servidor existe lo siguiente:\n\n" +
+                        "Kamas totales: ${formatNumber(kamas)}\n" +
+                        "Kamas Promedio TOP 50 : ${formatNumber(kktop)}\n" +
+                        "Kamas Promedio Players: ${
+                            formatNumber(
+                                    kamas / Mundo.PERSONAJES.values.size
+                            )
+                        }\n" +
+                        "\n==============\n\n" +
+                        "Ogrinas totales: ${formatNumber(ogrinas)}\n" +
+                        "Precio Compra ogrina (unidad): ${
+                            formatNumber(
+                                    precioCompra()
+                            )
+                        } Kamas\n" +
+                        "Precio Venta ogrina (unidad): ${
+                            formatNumber(
+                                    precioVenta()
+                            )
+                        } Kamas"
         )
     }
 
@@ -93,7 +99,7 @@ object Economia {
         enproceso = true
         reiniciarContador()
         Mundo._OBJETOS.filter { (_, v) -> v.objModelo?.id == 12010 }.forEach { (_, u) -> ogrinas += u.cantidad * 50 }
-        for (personaje in Mundo._PERSONAJES.values) {
+        for (personaje in Mundo.PERSONAJES.values) {
             if (personaje.cuenta.admin > 0) continue
             kamas += personaje.kamas.toInt()
             for (objeto in personaje.objetosTodos) {

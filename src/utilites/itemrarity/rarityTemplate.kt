@@ -59,26 +59,32 @@ class rarityTemplate(val id: Int, val name: String, val color: Int, val dropProb
         val slot2S = getstatsSlot2(level).split(",")
         var c = 0
         val statsalready = emptyArray<Int>().toMutableList()
-        while (c < cant1S) {
-            val stat = slot1S.random()
-            val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
-            if (statsalready.contains(statid)) continue
-            if (Math.random() <= rarityProb.getstatprob(statid)) {
-                statsalready.add(statid)
-                stats += "$stat,"
-                c += 1
+        try {
+            while (c < cant1S) {
+                val stat = slot1S.random()
+                val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
+                if (statsalready.contains(statid)) continue
+                if (Math.random() <= rarityProb.getstatprob(statid)) {
+                    statsalready.add(statid)
+                    stats += "$stat,"
+                    c += 1
+                }
             }
+        } catch (e: Exception) {
         }
         c = 0
-        while (c < cant2S) {
-            val stat = slot2S.random()
-            val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
-            if (statsalready.contains(statid)) continue
-            if (Math.random() <= rarityProb.getstatprob(statid)) {
-                statsalready.add(statid)
-                stats += "$stat,"
-                c += 1
+        try {
+            while (c < cant2S) {
+                val stat = slot2S.random()
+                val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
+                if (statsalready.contains(statid)) continue
+                if (Math.random() <= rarityProb.getstatprob(statid)) {
+                    statsalready.add(statid)
+                    stats += "$stat,"
+                    c += 1
+                }
             }
+        } catch (e: Exception) {
         }
         stats.dropLastWhile { it == ',' }
         return stats

@@ -256,6 +256,13 @@ class GrupoMob {
         _orientacion = (getRandomInt(0, 3) * 2 + 1).toByte()
     }
 
+    fun MobNormal(): Boolean {
+        return when (tipo) {
+            TipoGrupo.FIJO, TipoGrupo.HASTA_QUE_MUERA, TipoGrupo.SOLO_UNA_PELEA -> false
+            else -> true
+        }
+    }
+
     fun moverGrupoMob(mapa: Mapa) {
         if (_pelea != null) {
             return
@@ -265,8 +272,8 @@ class GrupoMob {
             return
         }
         val pathCeldas = Camino.getPathPelea(
-            mapa, celdaID, celdaDestino, -1, null,
-            false
+                mapa, celdaID, celdaDestino, -1, null,
+                false
         ) ?: return
         val celdas = pathCeldas._segundo
         val pathStr = Camino.getPathComoString2(mapa, celdas, celdaID, false)

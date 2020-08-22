@@ -1132,7 +1132,9 @@ object AtlantaMain {
             return
         }
         println("Creando el Servidor ...")
+        val xxx = System.currentTimeMillis()
         Mundo.crearServidor()
+        println("Charged in ${System.currentTimeMillis() - xxx}ms")
         ExchangeClient.INSTANCE?.start()
 //        IniciarSincronizacion()
         if (!ServidorServer.INSTANCE.start()) {

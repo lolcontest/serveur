@@ -28,9 +28,6 @@ class AparecerMobs(private val _mapa: Mapa, private val _grupoMob: GrupoMob, pri
     }
 
     init {
-        thread(true, true, null, null, 6, { run() })
-//        isDaemon = true
-//        priority = 6
-//        start()
+        thread(true, true, null, null, 6) { run() }
     }
 }

@@ -1521,6 +1521,39 @@ object GestorSQL {
 
     }
 
+    fun CARGAR_DROPS_BY_MOB(idMob: Int): Int {
+        var numero = 0
+        try {
+            if (!AtlantaMain.PARAM_SISTEMA_ORBES) {
+                val resultado = consultaSQL(
+                        "SELECT * FROM drops where mob = $idMob;",
+                        _bdEstatica!!
+                )
+                while (resultado.next()) {
+                    if (Mundo.getObjetoModelo(resultado.getInt("objeto")) == null) {
+                        continue
+                    }
+                    val drop = DropMob(
+                            resultado.getInt("objeto"),
+                            resultado.getInt("prospeccion"),
+                            resultado.getFloat(
+                                    "porcentaje"
+                            ),
+                            resultado.getInt("max"),
+                            resultado.getString("condicion")
+                    )
+                    Mundo.getMobModelo(resultado.getInt("mob"))?.addDrop(drop)
+                    numero++
+                }
+                cerrarResultado(resultado)
+            }
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+        return numero
+    }
+
     fun CARGAR_DROPS(): Int {
         var numero = 0
         try {
@@ -1655,10 +1688,10 @@ object GestorSQL {
 
     }
 
-    fun CARGAR_CERCADOS() {
+    fun CARGAR_CERCADOS_BY_MAP(mapid: Int) {
         try {
             val resultado = consultaSQL(
-                    "SELECT * FROM cercados_modelo;",
+                    "select * from cercados_modelo where mapa = $mapid;",
                     _bdEstatica!!
             )
             while (resultado.next()) {
@@ -1674,12 +1707,69 @@ object GestorSQL {
                         resultado.getInt("precioOriginal")
                 )
                 Mundo.addCercado(cercado)
+                RECARGAR_CERCADOS_BY_MAP(resultado.getShort("mapa").toInt())
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {
             exceptionExit(e)
         }
+    }
 
+    fun ids_to_load_CERCADOS(): String {
+        var r = ""
+        try {
+            val resultado = consultaSQL("select mapa from cercados where (propietario = -1 or propietario > 0) and criando != '';", _bdDinamica!!)
+            while (resultado.next()) {
+                r += "${resultado.getString("mapa")},"
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+        }
+        r = r.dropLastWhile { it == ',' }
+        return r
+
+    }
+
+    fun LOAD_MAP_BY_CORDS(x: Int, y: Int): Mapa? {
+        var id = -1
+        try {
+            val resultado = consultaSQL("select id from mapas where X=$x and Y=$y order by rand() limit 1;", _bdEstatica!!)
+            while (resultado.next()) {
+                id = resultado.getInt("id")
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+        }
+        return CARGAR_MAPAS_IDS("$id")
+    }
+
+    fun CARGAR_CERCADOS() {
+        try {
+            val cercados = ids_to_load_CERCADOS()
+            if (cercados.isBlank()) return
+            val resultado = consultaSQL(
+                    "select * from cercados_modelo where mapa in (${cercados});",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val cercado = Cercado(
+                        mapa,
+                        resultado.getInt("capacidad"),
+                        resultado.getByte("objetos"),
+                        resultado.getShort("celdaPJ"),
+                        resultado.getShort("celdaPuerta"),
+                        resultado.getShort("celdaMontura"),
+                        resultado.getString("celdasObjetos"),
+                        resultado.getInt("precioOriginal")
+                )
+                Mundo.addCercado(cercado)
+                RECARGAR_CERCADOS_BY_MAP(resultado.getShort("mapa").toInt())
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
     }
 
     fun CARGAR_OFICIOS() {
@@ -1877,15 +1967,45 @@ object GestorSQL {
                         resultado.getString("cementerio")
                 )
                 Mundo.addSubArea(subarea)
-                if (subarea.area != null) {
-                    subarea.area.addSubArea(subarea)
-                }
+                subarea.area.addSubArea(subarea)
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {
             exceptionExit(e)
         }
 
+    }
+
+    fun CARGAR_NPCS_BY_MAP(mapID: Int): Int {
+        var numero = 0
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM npcs_ubicacion where mapa = $mapID;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                try {
+                    val npcModelo = Mundo.getNPCModelo(resultado.getInt("npc"))
+                    if (npcModelo == null) {
+                        DELETE_NPC_UBICACION(resultado.getInt("npc"))
+                        continue
+                    }
+                    Mundo.getMapa(resultado.getShort("mapa"))?.addNPC(
+                            npcModelo, resultado.getShort("celda"), resultado.getByte(
+                            "orientacion"
+                    )
+                    )
+                    numero++
+                } catch (ignored: Exception) {
+                }
+
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+        return numero
     }
 
     fun CARGAR_NPCS(): Int {
@@ -1927,9 +2047,6 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                if (Mundo.getMapa(resultado.getShort("mapaFuera")) == null) {
-                    continue
-                }
                 Mundo.addCasa(
                         Casa(
                                 resultado.getInt("id"),
@@ -2101,6 +2218,26 @@ object GestorSQL {
         try {
             val resultado = consultaSQL(
                     "SELECT * FROM mobs_evento;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                Mundo.addMobEvento(
+                        resultado.getByte("evento"),
+                        resultado.getInt("mobOriginal"),
+                        resultado.getInt("mobEvento")
+                )
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun CARGAR_MOBS_EVENTO_BY_ID(id: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM mobs_evento where mobOriginal = $id;",
                     _bdEstatica!!
             )
             while (resultado.next()) {
@@ -2525,16 +2662,16 @@ object GestorSQL {
         return r
     }
 
-    fun CARGAR_MAPAS_IDS(ids: String) {
+    fun CARGAR_MAPAS_IDS(ids: String): Mapa? {
         if (ids.isEmpty()) {
-            return
+            return null
         }
         try {
             val resultado = consultaSQL(
                     "SELECT * FROM mapas WHERE id IN ($ids) ;",
                     _bdEstatica!!
             )
-            var mapa: Mapa
+            var mapa: Mapa? = null
             while (resultado.next()) {
                 if (Mundo.mapaExiste(resultado.getShort("id"))) {
                     continue
@@ -2546,12 +2683,15 @@ object GestorSQL {
                 CARGAR_ACCION_FINAL_DE_PELEA_POR_MAPA(mapa.id.toInt())
                 CARGAR_MOBS_FIJOS_POR_MAPA(mapa.id.toInt())
                 CARGAR_ESTRELLAS_POR_MAPA(mapa.id.toInt())
+                CARGAR_NPCS_BY_MAP(mapa.id.toInt())
+                CARGAR_CERCADOS_BY_MAP(mapa.id.toInt())
             }
             cerrarResultado(resultado)
+            return mapa
         } catch (e: Exception) {
             exceptionExit(e)
         }
-
+        return null
     }
 
     fun CARGAR_MAPAS_SUBAREAS(subAreas: String) {
@@ -2653,10 +2793,6 @@ object GestorSQL {
                     continue
                 }
                 val mapa = mapas[0]
-                if (mapa == null) {
-                    AtlantaMain.redactarLogServidorln("EL MAPA " + resultado.getShort("mapa") + " NO EXISTE")
-                    continue
-                }
                 if (mapa.getCelda(resultado.getShort("celda")) == null) {
                     AtlantaMain.redactarLogServidorln(
                             "LA CELDA " + resultado.getShort("celda") + " DEL MAPA " + resultado.getShort(
@@ -2691,6 +2827,9 @@ object GestorSQL {
                         s2.removeAt(0)
                     }
                     grupoMob.segundosRespawn = resultado.getInt("segundosRespawn")
+                    if (grupoMob.segundosRespawn > 0) {
+                        mapa.containsmobfixwithtime = true
+                    }
                     numero++
                 } else {
                     AtlantaMain.redactarLogServidorln(
@@ -2888,6 +3027,48 @@ object GestorSQL {
         }
 
         return numero
+    }
+
+    fun CARGAR_HECHIZOS_BY_ID(id: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM hechizos where id = $id;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                val id = resultado.getInt("id")
+                val hechizo = Hechizo(
+                        id,
+                        resultado.getString("nombre"),
+                        resultado.getInt("sprite"),
+                        resultado.getString("spriteInfos"),
+                        resultado.getInt("valorIA")
+                )
+                Mundo.addHechizo(hechizo)
+                for (i in 1..6) {
+                    var sh: StatHechizo? = null
+                    val txt = resultado.getString("nivel$i")
+                    if (txt.isNotEmpty()) {
+                        try {
+                            sh = Hechizo.analizarHechizoStats(id, i, txt)
+                        } catch (e: Exception) {
+                            AtlantaMain.redactarLogServidorln("BUG HECHIZO: $id NIVEL $i")
+                            exceptionExit(e)
+                        }
+
+                    }
+                    if (sh != null) {
+                        hechizo.addStatsHechizos(i, sh)
+                    }
+                }
+                hechizo.setAfectados(resultado.getString("afectados"))
+                hechizo.setCondiciones(resultado.getString("condiciones"))
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
     }
 
     fun CARGAR_HECHIZOS() {
@@ -3129,6 +3310,79 @@ object GestorSQL {
                                 iniciativa, mK, MK, xp, tipoIA, capturable, talla, distAgresion, tipo, esKickeable
                         )
                 )
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun CARGAR_MOBS_MODELOS_BY_ID(id: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM mobs_modelo where id = $id;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                //				final boolean capturable = resultado.getInt("capturable") == 1;
+                val capturable = true
+                val esKickeable = resultado.getString("kickeable") == "true"
+                val alineacion = resultado.getByte("alineacion")
+                val tipoIA = resultado.getByte("tipoIA")
+                val tipo = resultado.getByte("tipo")
+                val talla = resultado.getShort("talla")
+                val distAgresion = resultado.getByte("agresion")
+                val id = resultado.getInt("id")
+                val gfxID = resultado.getShort("gfxID")
+                val mK = resultado.getString("minKamas")
+                val MK = resultado.getString("maxKamas")
+                val nombre = resultado.getString("nombre")
+                val colores = resultado.getString("colores")
+                val grados =
+                        resultado.getString("grados").replace(" ".toRegex(), "").replace(",g".toRegex(), "g")
+                                .replace(":\\{l:".toRegex(), "@").replace(",r:\\[".toRegex(), ",").replace("]".toRegex(), "|")
+                                .replace("]}".toRegex(), "|")
+                // g1: {l: 1, r: [25, 0, -12, 6, -50, 15, 15], lp: 30, ap: 5, mp: 2}, g2: {l: 2
+                val hechizos = resultado.getString("hechizos")
+                val stats = resultado.getString("stats")
+                val pdvs = resultado.getString("pdvs")
+                val puntos = resultado.getString("puntos")
+                val iniciativa = resultado.getString("iniciativa")
+                val xp = resultado.getString("exps")
+                Mundo.addMobModelo(
+                        MobModelo(
+                                id, nombre, gfxID, alineacion, colores, grados, hechizos, stats, pdvs, puntos,
+                                iniciativa, mK, MK, xp, tipoIA, capturable, talla, distAgresion, tipo, esKickeable
+                        )
+                )
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+        CARGAR_MOBS_RAROS_BY_ID(id)
+        CARGAR_MOBS_EVENTO_BY_ID(id)
+        CARGAR_DROPS_BY_MOB(id)
+    }
+
+    fun CARGAR_MOBS_RAROS_BY_ID(id: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM mobs_raros where idMobNormal = $id;",
+                    _bdEstatica!!
+            )
+            while (resultado.next()) {
+                val idMobRaro = resultado.getInt("idMobRaro")
+                val idMobNormal = resultado.getInt("idMobNormal")
+                val subAreas = resultado.getString("subAreas")
+                val probabilidad = resultado.getInt("probabilidad")
+                val mobM = Mundo.getMobModelo(idMobRaro) ?: continue
+                val mobN = Mundo.getMobModelo(idMobNormal)
+                if (mobN != null) {
+                    mobN.archiMob = mobM
+                }
+                mobM.setDataExtra(probabilidad, subAreas)
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {
@@ -3548,6 +3802,32 @@ object GestorSQL {
                                 resultado.getString("skill")
                         )
                 )
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun RECARGAR_CERCADOS_BY_MAP(mapid: Int) {
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM cercados where mapa = $mapid;",
+                    _bdDinamica!!
+            )
+            while (resultado.next()) {
+                try {
+                    Mundo.getCercadoPorMapa(resultado.getShort("mapa"))?.actualizarCercado(
+                            resultado.getInt("propietario"),
+                            resultado.getInt("gremio"),
+                            resultado.getInt("precio"),
+                            resultado.getString("objetosColocados"),
+                            resultado.getString("criando")
+                    )
+                } catch (ignored: Exception) {
+                }
+
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {

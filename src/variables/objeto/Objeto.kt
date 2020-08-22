@@ -108,17 +108,19 @@ class Objeto {
             }
         }
         if (AtlantaMain.RARITY_SYSTEM) {
-            var s = convertirStatsAString(false)
-            val rarity: rarityTemplate
-            while (true) {
-                val random = Mundo.RARITYTEMPLATES.values.random()
-                if (Math.random() <= random.getdropProb()) {
-                    rarity = random
-                    break
+            if (AtlantaMain.RARITY_TYPES.contains(objModelo?.tipo?.toInt() ?: -1)) {
+                var s = convertirStatsAString(false)
+                val rarity: rarityTemplate
+                while (true) {
+                    val random = Mundo.RARITYTEMPLATES.values.random()
+                    if (Math.random() <= random.getdropProb()) {
+                        rarity = random
+                        break
+                    }
                 }
+                s += "," + generateStats(rarity.getstats(objModelo?.nivel?.toInt() ?: 1), CAPACIDAD_STATS.RANDOM)
+                convertirStringAStats_Base(s)
             }
-            s += "," + generateStats(rarity.getstats(objModelo?.nivel?.toInt() ?: 1), CAPACIDAD_STATS.RANDOM)
-            convertirStringAStats_Base(s)
         }
         crearEncarnacion()
     }

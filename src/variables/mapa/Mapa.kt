@@ -91,6 +91,7 @@ class Mapa {
         private set
     var maxNivelGrupoMob = 0
         private set
+    var containsmobfixwithtime = false
 
     constructor(
         id: Short, fecha: String, ancho: Byte, alto: Byte, posDePelea: String,
@@ -1326,6 +1327,7 @@ class Mapa {
         }
         return false
     }
+
 
     // public synchronized void addSigGrupoMobRespawn(GrupoMob grupoMob) {
 // GrupoMob gm = null;

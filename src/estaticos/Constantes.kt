@@ -2308,8 +2308,8 @@ object Constantes {
             76 -> return "Monstruos del Arca de Otomai"
             77 -> return "Monstruos de la Canopea de las Nieblas"
             78 -> return "Los Archi-monstruos"
+            else -> return ""
         }
-        return ""
     }
 
     @JvmStatic

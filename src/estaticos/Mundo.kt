@@ -37,25 +37,19 @@ import estaticos.database.GestorSQL.CARGAR_CREA_OBJETOS_PRECIOS
 import estaticos.database.GestorSQL.CARGAR_CUENTAS_SERVER_PERSONAJE
 import estaticos.database.GestorSQL.CARGAR_DB_CUENTAS
 import estaticos.database.GestorSQL.CARGAR_DONES_MODELOS
-import estaticos.database.GestorSQL.CARGAR_DROPS
 import estaticos.database.GestorSQL.CARGAR_DROPS_FIJOS
 import estaticos.database.GestorSQL.CARGAR_ENCARNACIONES_MODELOS
 import estaticos.database.GestorSQL.CARGAR_ESPECIALIDADES
 import estaticos.database.GestorSQL.CARGAR_ETAPAS
 import estaticos.database.GestorSQL.CARGAR_EXPERIENCIA
 import estaticos.database.GestorSQL.CARGAR_GREMIOS
-import estaticos.database.GestorSQL.CARGAR_HECHIZOS
 import estaticos.database.GestorSQL.CARGAR_INTERACTIVOS
 import estaticos.database.GestorSQL.CARGAR_MAPAS_HEROICO
 import estaticos.database.GestorSQL.CARGAR_MIEMBROS_GREMIO
 import estaticos.database.GestorSQL.CARGAR_MISIONES
 import estaticos.database.GestorSQL.CARGAR_MISION_OBJETIVOS
-import estaticos.database.GestorSQL.CARGAR_MOBS_EVENTO
-import estaticos.database.GestorSQL.CARGAR_MOBS_MODELOS
-import estaticos.database.GestorSQL.CARGAR_MOBS_RAROS
 import estaticos.database.GestorSQL.CARGAR_MONTURAS
 import estaticos.database.GestorSQL.CARGAR_MONTURAS_MODELOS
-import estaticos.database.GestorSQL.CARGAR_NPCS
 import estaticos.database.GestorSQL.CARGAR_NPC_MODELOS
 import estaticos.database.GestorSQL.CARGAR_OBJETOS
 import estaticos.database.GestorSQL.CARGAR_OBJETOS_MODELOS
@@ -91,7 +85,6 @@ import estaticos.database.GestorSQL.GET_PRIMERA_VEZ
 import estaticos.database.GestorSQL.GET_SIG_ID_OBJETO
 import estaticos.database.GestorSQL.GET_STATEMENT_SQL_DINAMICA
 import estaticos.database.GestorSQL.RECARGAR_CASAS
-import estaticos.database.GestorSQL.RECARGAR_CERCADOS
 import estaticos.database.GestorSQL.RECARGAR_COFRES
 import estaticos.database.GestorSQL.REPLACE_CASA
 import estaticos.database.GestorSQL.REPLACE_CERCADO
@@ -231,7 +224,7 @@ object Mundo {
 // concurrentes
 //
     val cuentas = ConcurrentHashMap<Int, Cuenta>()
-    val _PERSONAJES = ConcurrentHashMap<Int, Personaje>()
+    val PERSONAJES = ConcurrentHashMap<Int, Personaje>()
     val _MONTURAS = ConcurrentHashMap<Int, Montura>()
 
     //
@@ -375,17 +368,14 @@ object Mundo {
         CARGAR_EXPERIENCIA()
         EXPERIENCIA[AtlantaMain.NIVEL_MAX_PERSONAJE + 1] = Experiencia(8223372036854775808L, -1, -1, -1, -1, -1)
         println(EXPERIENCIA.size.toString() + " niveles cargados")
-        print("Cargando los hechizos: ")
-        CARGAR_HECHIZOS()
-        println(HECHIZOS.size.toString() + " hechizos cargados")
         print("Cargando las encarnaciones modelos: ")
         CARGAR_ENCARNACIONES_MODELOS()
         println(ENCARNACIONES_MODELOS.size.toString() + " encarnaciones modelo cargados")
-        print("Cargando los mounstros: ")
-        CARGAR_MOBS_MODELOS()
-        CARGAR_MOBS_RAROS()
-        CARGAR_MOBS_EVENTO()
-        println(MOBS_MODELOS.size.toString() + " mounstros cargados")
+//        print("Cargando los mounstros: ")
+//        CARGAR_MOBS_MODELOS()
+//        CARGAR_MOBS_RAROS()
+//        CARGAR_MOBS_EVENTO()
+//        println(MOBS_MODELOS.size.toString() + " mounstros cargados")
         print("Cargando los objetos modelos: ")
         CARGAR_OBJETOS_MODELOS()
         println(OBJETOS_MODELOS.size.toString() + " objetos modelos cargados")
@@ -398,8 +388,8 @@ object Mundo {
         print("Cargando los objetos trueque: ")
         CARGAR_OBJETOS_TRUEQUE()
         println(OBJETOS_TRUEQUE.size.toString() + " objetos trueque cargados")
-        print("Cargando los drops: ")
-        println(CARGAR_DROPS().toString() + " drops cargados")
+//        print("Cargando los drops: ")
+//        println(CARGAR_DROPS().toString() + " drops cargados")
         print("Cargando los drops fijos: ")
         println(CARGAR_DROPS_FIJOS().toString() + " drops fijos cargados")
         print("Cargando los NPC: ")
@@ -441,24 +431,8 @@ object Mundo {
             CARGAR_MAPAS_HEROICO()
             println(MAPAS_HEROICOS.size.toString() + " mapas heroicos cargados")
         }
-        print("Cargando los mapas: ")
-//        val xxxx = System.currentTimeMillis()
-////        CARGAR_MAPAS()
-//        println(
-//                MAPAS.size.toString() + " mapas cargados ----> (en " + (System.currentTimeMillis() - xxxx)
-//                        + ") milisegundos"
-//        )
-//        print("Cargando los grupo mobs fijos: ")
-//        println(CARGAR_MOBS_FIJOS().toString() + " grupo mobs fijos cargados")
-        print("Cargando los zaaps: ")
         CARGAR_ZAAPS()
         println(ZAAPS.size.toString() + " zaaps cargados")
-//        print("Cargando los triggers: ")
-//        println(CARGAR_TRIGGERS().toString() + " trigger cargados")
-//        print("Cargando las acciones de pelea: ")
-//        println(CARGAR_ACCION_FINAL_DE_PELEA().toString() + " acciones de pelea cargadas")
-        print("Cargando los NPCs: ")
-        println(CARGAR_NPCS().toString() + " NPCs cargados")
         print("Cargando las acciones de objetos: ")
         println(CARGAR_ACCIONES_USO_OBJETOS().toString() + " acciones de objetos cargados")
         print("Cargando las animaciones: ")
@@ -491,7 +465,7 @@ object Mundo {
         println(cuentas.size.toString() + " cuentas cargadas")
         print("Cargando los personajes: ")
         CARGAR_PERSONAJES()
-        println(_PERSONAJES.size.toString() + " personajes cargados")
+        println(PERSONAJES.size.toString() + " personajes cargados")
         print("Cargando los objetos mercadillos: ")
         println(SELECT_OBJETOS_MERCADILLO().toString() + " objetos mercadillos cargados")
         print("Cargando los rankings PVP: ")
@@ -513,7 +487,7 @@ object Mundo {
         println(_RECAUDADORES.size.toString() + " recaudadores cargados")
         print("Cargando los cercados: ")
         CARGAR_CERCADOS()
-        RECARGAR_CERCADOS()
+//        RECARGAR_CERCADOS()
         println(CERCADOS.size.toString() + " cercados cargados")
         print("Cargando las casas: ")
         CARGAR_CASAS()
@@ -793,13 +767,6 @@ object Mundo {
     val mobsEventoDelDia: ArrayList<Duo<Int, Int>>?
         get() = MOBS_EVENTOS[MOB_EVENTO]
 
-    //	public static void refrescarTodosMobs_con_estrellas(int estrellas) {
-//		for (final Mapa mapa : MAPAS.values()) {
-//			if (mapa.getGrupoMobsTotales().size()>0 && mapa.getArrayPersonajes().size()>0){
-//				mapa.refrescarGrupoMobs_con_estrellas(estrellas);
-//			}
-//		}
-//	}
     fun refrescarTodosMobs() {
         try {
             MAPAS.values.asSequence().forEach { mapa ->
@@ -832,19 +799,19 @@ object Mundo {
         }
     }
 
-    fun AleatorizarMobs() {
-        if (AtlantaMain.RATE_RANDOM_MOB != 1.0) {
-            for (mob in MOBS_MODELOS.values) {
-                if (!mob.listaNiveles().equals("1, 2, 3, 4, 5, 6", ignoreCase = true)) {
-                    mob.Aleatorizarstats()
-                }
-            }
-        } else {
-            for (mob in MOBS_MODELOS.values) {
-                mob.NormalizarStats()
-            }
-        }
-    }
+//    fun AleatorizarMobs() {
+//        if (AtlantaMain.RATE_RANDOM_MOB != 1.0) {
+//            for (mob in MOBS_MODELOS.values) {
+//                if (!mob.listaNiveles().equals("1, 2, 3, 4, 5, 6", ignoreCase = true)) {
+//                    mob.Aleatorizarstats()
+//                }
+//            }
+//        } else {
+//            for (mob in MOBS_MODELOS.values) {
+//                mob.NormalizarStats()
+//            }
+//        }
+//    }
 
     fun NormalizarMobs() {
         if (AtlantaMain.RATE_RANDOM_MOB == 1.0) {
@@ -862,7 +829,7 @@ object Mundo {
 //				persos.add(a);
 //			}
 //		}
-        val persos = ArrayList(_PERSONAJES.values)
+        val persos = ArrayList(PERSONAJES.values)
         persos.sortWith(CompNivelMasMenos())
         _LADDER_NIVEL.clear()
         _LADDER_NIVEL.addAll(persos)
@@ -870,7 +837,7 @@ object Mundo {
 
     private fun rankingDia() {
         if (!AtlantaMain.PARAM_LADDER_EXP_DIA) return
-        val persos = ArrayList(_PERSONAJES.values)
+        val persos = ArrayList(PERSONAJES.values)
         persos.sortWith(CompDiaMasMenos())
         _LADDER_EXP_DIA.clear()
         _LADDER_EXP_DIA.addAll(persos)
@@ -1489,7 +1456,7 @@ object Mundo {
     }
 
     fun resetExpDia() {
-        for (perso in _PERSONAJES.values) {
+        for (perso in PERSONAJES.values) {
             perso.resetExpDia()
         }
     }
@@ -1566,7 +1533,7 @@ object Mundo {
                 val s = StringBuilder()
                 var mobstr = ""
                 try {
-                    mapa.grupoMobsTotales?.values?.asSequence()?.forEach { gm ->
+                    mapa.grupoMobsTotales?.values?.filter { it.MobNormal() }?.asSequence()?.forEach { gm ->
                         if (s.isNotEmpty()) {
                             s.append(",")
                         }
@@ -1642,7 +1609,7 @@ object Mundo {
             try {
                 var CANT_SALVANDO = 0
                 redactarLogServidorln("Salvando los personajes y sus cuentas: ")
-                for (perso in _PERSONAJES.values) {
+                for (perso in PERSONAJES.values) {
                     try {
                         if (perso == null || perso.cuenta == null) {
                             continue
@@ -1791,7 +1758,7 @@ object Mundo {
             // PERSONAJES
             var CANT_SALVANDO = 0
             redactarLogServidorln("Salvando los personajes: ")
-            for (perso in _PERSONAJES.values) {
+            for (perso in PERSONAJES.values) {
                 try {
                     if (perso == null || perso.cuenta == null) {
                         continue
@@ -1813,7 +1780,7 @@ object Mundo {
             TOTAL_SALVADO += CANT_SALVANDO
             CANT_SALVANDO = 0
             redactarLogServidorln("Salvando los mercantes: ")
-            for (perso in _PERSONAJES.values) {
+            for (perso in PERSONAJES.values) {
                 try {
                     if (perso == null || perso.cuenta == null || inclusoOffline) {
                         continue
@@ -2205,6 +2172,7 @@ object Mundo {
 
     @JvmStatic
     fun getMapa(id: Short): Mapa? {
+        if (id <= 0) return null
         if (MAPAS[id] == null) {
             GestorSQL.CARGAR_MAPAS_IDS("$id")
         }
@@ -2213,7 +2181,16 @@ object Mundo {
 
     fun removeMap() {
         salvarMapasEstrellas()
-        MAPAS = MAPAS.filter { it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.npCs?.isNotEmpty() == true || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
+        MAPAS = MAPAS.filter { it.value?.containsmobfixwithtime == true || it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.recaudador != null || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
+        PERSONAJES.values.asSequence().filter { !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) }.forEach {
+            it.MapidStart = it.mapa.id.toInt()
+            it.CellidStart = it.celda.id.toInt()
+            it.mapa = null
+            it.celda = null
+        }
+        MOBS_MODELOS.clear()
+        HECHIZOS.clear()
+        println(MAPAS.size)
     }
 
     fun addMapa(mapa: Mapa) {
@@ -2227,17 +2204,7 @@ object Mundo {
     }
 
     fun mapaPorCoordXYContinente(mapaX: Int, mapaY: Int, idContinente: Int): Mapa? {
-        try {
-            for (mapa in MAPAS.values) {
-                if (mapa!!.x.toInt() == mapaX && mapa.y.toInt() == mapaY && mapa.subArea!!.area.superArea!!.id == idContinente
-                ) {
-                    return mapa
-                }
-            }
-        } catch (e: Exception) {
-            redactarLogServidorln(e.toString())
-        }
-        return null
+        return GestorSQL.LOAD_MAP_BY_CORDS(mapaX, mapaY)
     }
 
     fun mapaPorCoordenadas(mapaX: Int, mapaY: Int, idContinente: Int): String {
@@ -2278,7 +2245,7 @@ object Mundo {
     fun strCuentasOnline(): String {
         val str = StringBuilder()
         for (perso in PERSONAJESONLINE) {
-            if (str.length > 0) {
+            if (str.isNotEmpty()) {
                 str.append(",")
             }
             str.append(perso.cuentaID)
@@ -2300,20 +2267,20 @@ object Mundo {
         if (perso.Id > SIG_ID_PERSONAJE) {
             SIG_ID_PERSONAJE = perso.Id
         }
-        _PERSONAJES[perso.Id] = perso
+        PERSONAJES[perso.Id] = perso
     }
 
     @JvmStatic
     fun getPersonaje(id: Int): Personaje? {
-        return _PERSONAJES[id]
+        return PERSONAJES[id]
     }
 
     val cantidadPersonajes: Int
-        get() = _PERSONAJES.size
+        get() = PERSONAJES.size
 
     @JvmStatic
     fun getPersonajePorNombre(nombre: String?): Personaje? {
-        val Ps = ArrayList(_PERSONAJES.values)
+        val Ps = ArrayList(PERSONAJES.values)
         for (perso in Ps) {
             if (perso.nombre.equals(nombre, ignoreCase = true)) {
                 return perso
@@ -2828,7 +2795,7 @@ object Mundo {
             objetos.addAll(perso.objetosTienda)
             eliminarObjetosPorArray(objetos)
             DELETE_PERSONAJE(perso)
-            _PERSONAJES.remove(perso.Id)
+            PERSONAJES.remove(perso.Id)
         }
         redactarLogServidorln(
                 "SE ELIMINO EL PERSONAJE " + perso.nombre + " (" + perso.Id
@@ -2956,6 +2923,9 @@ object Mundo {
 
     @JvmStatic
     fun getHechizo(id: Int): Hechizo? {
+        if (HECHIZOS[id] == null) {
+            GestorSQL.CARGAR_HECHIZOS_BY_ID(id)
+        }
         return HECHIZOS[id]
     }
 
@@ -2970,6 +2940,9 @@ object Mundo {
 
     @JvmStatic
     fun getMobModelo(id: Int): MobModelo? {
+        if (MOBS_MODELOS[id] == null) {
+            GestorSQL.CARGAR_MOBS_MODELOS_BY_ID(id)
+        }
         return MOBS_MODELOS[id]
     }
 
