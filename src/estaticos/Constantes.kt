@@ -25,7 +25,7 @@ import java.util.*
 import java.util.regex.Pattern
 
 object Constantes {
-    const val VERSION_EMULADOR = "1.0 Kotlin Version"
+    const val VERSION_EMULADOR = "1.1 Kotlin Version"
 
     // public static final String SUBVERSION_EMULADOR = ".2";
     const val CREADOR = "SLIMES"

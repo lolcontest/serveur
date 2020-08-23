@@ -75,11 +75,11 @@ class Consola : Thread() {
                         println("100%")
                     }
                     "MEMORY", "MEMORY_USE", "MEMORIA", "MEMORIA_USADA", "ESTADO_JVM" -> println(
-                        "----- ESTADO JVM -----\nFreeMemory: " + Runtime.getRuntime().freeMemory() / 1048576f
-                                + " MB\nTotalMemory: " + Runtime.getRuntime()
-                            .totalMemory() / 1048576f + " MB\nMaxMemory: "
-                                + Runtime.getRuntime().maxMemory() / 1048576f + " MB\nProcesos: "
-                                + Runtime.getRuntime().availableProcessors()
+                            "----- ESTADO JVM -----\nFreeMemory: " + Runtime.getRuntime()
+                                    .freeMemory() / 1048576f + " MB\nTotalMemory: " + Runtime.getRuntime().totalMemory() / 1048576f
+                                    + " MB\nMaxMemory: " + Runtime.getRuntime()
+                                    .maxMemory() / 1048576f + " MB\nCpu Cores: " + Runtime.getRuntime()
+                                    .availableProcessors() + "\nUsed Cpu (percentage): ${Mundo.getProcessCpuLoad()}\nMaps Charged:${Mundo.MAPAS.size}"
                     )
                     "DESACTIVAR", "DESACTIVE", "DESACTIVER" -> {
                         CONSOLA_ACTIVADA = false
@@ -95,10 +95,10 @@ class Consola : Thread() {
                         enLinea %= 60000L
                         val segundo = (enLinea / 1000L).toInt()
                         println(
-                            "===========\n" + AtlantaMain.NOMBRE_SERVER + " (ELBUSTEMU "
-                                    + Constantes.VERSION_EMULADOR + ")\n\nEnLínea: " + dia + "d " + hora + "h " + minuto + "m " + segundo + "s\n"
-                                    + "Jugadores en línea: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de conexión: "
-                                    + ServidorServer.recordJugadores + "\n" + "==========="
+                                "===========\n" + AtlantaMain.NOMBRE_SERVER + " (Atlanta Emu "
+                                        + Constantes.VERSION_EMULADOR + ")\n\nEnLínea: " + dia + "d " + hora + "h " + minuto + "m " + segundo + "s\n"
+                                        + "Jugadores en línea: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de conexión: "
+                                        + ServidorServer.recordJugadores + "\n" + "==========="
                         )
                     }
                     "SAVE", "GUARDAR", "GUARDA", "SALVAR" -> {

@@ -1608,6 +1608,10 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public void conectarse() {
+        if (Mapa == null || Celda == null) {
+            Mapa = Mundo.getMapa((short) MapidStart);
+            Celda = Mapa.getCelda((short) CellidStart);
+        }
         ServidorServer.Companion.actualizarMaxJugadoresEnLinea();
         if (LiderIP != null) {
             if (LiderIP.Multi == this) {

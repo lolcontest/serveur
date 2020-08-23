@@ -1092,6 +1092,7 @@ object AtlantaMain {
     var RARITY_SYSTEM = true
     var NO_RARITY_TEMPLATES = emptyList<Int>().toMutableList()
     var RARITY_TYPES = Constantes.TIPOS_EQUIPABLES
+    var RANDOMIZE_PORT = false
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -1122,6 +1123,9 @@ object AtlantaMain {
                 e.printStackTrace()
                 break
             }
+        }
+        if (RANDOMIZE_PORT) {
+            PUERTO_SERVIDOR = (PUERTO_SERVIDOR..65535).random()
         }
         print("Conexión a la base de datos:  ")
         if (iniciarConexion()) {
@@ -1191,25 +1195,6 @@ object AtlantaMain {
         }
     }
 
-    //	private static void leyendoIpsPermitidas() {
-//		final String url = "http://Atlanta-fenix.com/clientes/ips.txt";
-//		URL obj;
-//		try {
-//			obj = new URL(url);
-//			final URLConnection con = obj.openConnection();
-//			con.setRequestProperty("Content-type", "charset=Unicode");
-//			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//			String inputLine;
-//			Charset utf8charset = Charset.forName("UTF-8");
-//			while ((inputLine = in.readLine()) != null) {
-//				String linea = new String(inputLine.getBytes(), utf8charset);
-//				IP_PERMTIDAS.add(linea);
-//			}
-//			in.close();
-//		} catch (Exception e) {
-//			// e.printStackTrace();
-//		}
-//	}
     @JvmStatic
     fun modificarParam(p: String?, v: String?) {
         try {
@@ -1304,6 +1289,10 @@ object AtlantaMain {
                         "MODO_DEBUG" -> {
                             MODO_DEBUG = valor.equals("true", ignoreCase = true)
                             variable = "MODO_DEBUG"
+                        }
+                        "RANDOMIZE_PORT" -> {
+                            RANDOMIZE_PORT = valor.equals("true", ignoreCase = true)
+                            variable = "RANDOMIZE_PORT"
                         }
                         "RARITY_SYSTEM" -> {
                             RARITY_SYSTEM = valor.equals("true", ignoreCase = true)

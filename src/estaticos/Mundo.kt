@@ -51,7 +51,6 @@ import estaticos.database.GestorSQL.CARGAR_MISION_OBJETIVOS
 import estaticos.database.GestorSQL.CARGAR_MONTURAS
 import estaticos.database.GestorSQL.CARGAR_MONTURAS_MODELOS
 import estaticos.database.GestorSQL.CARGAR_NPC_MODELOS
-import estaticos.database.GestorSQL.CARGAR_OBJETOS
 import estaticos.database.GestorSQL.CARGAR_OBJETOS_MODELOS
 import estaticos.database.GestorSQL.CARGAR_OBJETOS_SETS
 import estaticos.database.GestorSQL.CARGAR_OBJETOS_TRUEQUE
@@ -113,6 +112,7 @@ import estaticos.database.GestorSQL.iniciarCommit
 import estaticos.database.GestorSQL.timerCommit
 import servidor.ServidorServer.Companion.clientes
 import sincronizador.ExchangeClient
+import utilites.PerformanceMonitor
 import utilites.comandosAccion
 import utilites.itemrarity.rarityTemplate
 import variables.casa.Casa
@@ -152,6 +152,7 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.regex.Pattern
 import kotlin.collections.HashMap
+
 
 //import com.mysql.jdbc.PreparedStatement;
 //import variables.mob.GrupoMob;
@@ -450,8 +451,8 @@ object Mundo {
         SELECT_ZONAS()
         println(ZONAS.size.toString() + " zonas cargados")
         println("===========> Database Dynamic <===========")
-        print("Cargando los objetos: ")
-        CARGAR_OBJETOS()
+//        print("Cargando los objetos: ")
+//        CARGAR_OBJETOS()
         println(_OBJETOS.size.toString() + " objetos cargados")
         print("Cargando los dragopavos: ")
         CARGAR_MONTURAS()
@@ -2003,6 +2004,12 @@ object Mundo {
         println("======== FreeMemory: " + Runtime.getRuntime().freeMemory() / 1048576f + " MB ========")
     }
 
+    @Throws(java.lang.Exception::class)
+    fun getProcessCpuLoad(): Double {
+        return PerformanceMonitor().cpuUsage
+        // returns a percentage value with 1 decimal point precision
+    }
+
     fun getCantCercadosGremio(id: Int): Byte {
         var i: Byte = 0
         for (cercado in CERCADOS.values) {
@@ -2181,16 +2188,13 @@ object Mundo {
 
     fun removeMap() {
         salvarMapasEstrellas()
-        MAPAS = MAPAS.filter { it.value?.containsmobfixwithtime == true || it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.recaudador != null || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
-        PERSONAJES.values.asSequence().filter { !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) }.forEach {
+        MAPAS = MAPAS.filter { it.value?.contieneMobPiedra() == true || it.value?.containsmobfixwithtime == true || it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.recaudador != null || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
+        PERSONAJES.values.asSequence().filter { !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) && !MAPAS.contains(it.mapa.id) }.forEach {
             it.MapidStart = it.mapa.id.toInt()
             it.CellidStart = it.celda.id.toInt()
             it.mapa = null
             it.celda = null
         }
-        MOBS_MODELOS.clear()
-        HECHIZOS.clear()
-        println(MAPAS.size)
     }
 
     fun addMapa(mapa: Mapa) {
@@ -2204,7 +2208,19 @@ object Mundo {
     }
 
     fun mapaPorCoordXYContinente(mapaX: Int, mapaY: Int, idContinente: Int): Mapa? {
-        return GestorSQL.LOAD_MAP_BY_CORDS(mapaX, mapaY)
+        val maps = mutableListOf<Mapa?>()
+        try {
+            for (mapa in MAPAS.values) {
+                if (mapa!!.x.toInt() == mapaX && mapa.y.toInt() == mapaY && mapa.subArea!!.area.superArea!!.id == idContinente
+                ) {
+                    maps.add(mapa)
+                    break
+                }
+            }
+        } catch (e: Exception) {
+            redactarLogServidorln(e.toString())
+        }
+        return GestorSQL.LOAD_MAP_BY_CORDS(mapaX, mapaY) ?: maps.random()
     }
 
     fun mapaPorCoordenadas(mapaX: Int, mapaY: Int, idContinente: Int): String {
@@ -3005,6 +3021,10 @@ object Mundo {
 
     @JvmStatic
     fun getObjeto(id: Int): Objeto? {
+        if (_OBJETOS[id] == null) {
+            GestorSQL.CARGAR_OBJETOS_BY_ID(id)
+            /* Try to charge the specific item */
+        }
         return _OBJETOS[id]
     }
 

@@ -385,6 +385,11 @@ class Mapa {
         return aptoParaPelea(cant1, cant2) != 0
     }
 
+    fun contieneMobPiedra(): Boolean {
+        return grupoMobsTotales?.any { it.value.tipo == TipoGrupo.SOLO_UNA_PELEA }
+                ?: _grupoMobsEnCola?.any { it.tipo == TipoGrupo.SOLO_UNA_PELEA } ?: false
+    }
+
     private fun aptoParaPelea(cant1: Int, cant2: Int): Int {
         when (colorCeldasAtacante) {
             "red" -> {

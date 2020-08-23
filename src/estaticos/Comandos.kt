@@ -8050,14 +8050,14 @@ object Comandos {
 
             "MEMORY", "MEMORY_USE", "MEMORIA", "MEMORIA_USADA", "ESTADO_JVM" -> try {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(
-                    _perso, "----- ESTADO JVM -----\nFreeMemory: " + Runtime.getRuntime()
+                        _perso, "----- ESTADO JVM -----\nFreeMemory: " + Runtime.getRuntime()
                         .freeMemory() / 1048576f + " MB\nTotalMemory: " + Runtime.getRuntime().totalMemory() / 1048576f
-                            + " MB\nMaxMemory: " + Runtime.getRuntime()
-                        .maxMemory() / 1048576f + " MB\nProcesos: " + Runtime.getRuntime()
-                        .availableProcessors()
+                        + " MB\nMaxMemory: " + Runtime.getRuntime()
+                        .maxMemory() / 1048576f + " MB\nCpu Cores: " + Runtime.getRuntime()
+                        .availableProcessors() + "\nUsed Cpu (percentage): ${Mundo.getProcessCpuLoad()}\nMaps Charged:${Mundo.MAPAS.size}"
                 )
             } catch (e: Exception) {
-                GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Ocurrio una exception")
+                GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Exception was occurred")
             }
 
             "SABIDURIA_PARA_REENVIO" -> {

@@ -1233,6 +1233,7 @@ object GestorSQL {
             )
             while (resultado.next()) {
                 try {
+                    CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos").replace('|', ','))
                     Mundo.getCuenta(resultado.getInt("id"))
                             ?.cargarInfoServerPersonaje(
                                     resultado.getString("objetos"),
@@ -2306,6 +2307,10 @@ object GestorSQL {
                     _bdDinamica!!
             )
             while (resultado.next()) {
+                try {
+                    CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos").replace('|', ','))
+                } catch (e: Exception) {
+                }
                 val statsBase = TreeMap<Int, Int>()
                 statsBase[Constantes.STAT_MAS_VITALIDAD] = resultado.getInt("vitalidad")
                 statsBase[Constantes.STAT_MAS_FUERZA] = resultado.getInt("fuerza")
@@ -2473,6 +2478,10 @@ object GestorSQL {
             )
             while (resultado.next()) {
                 val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                try {
+                    CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos").replace('|', ','))
+                } catch (e: Exception) {
+                }
                 val recaudador = Recaudador(
                         resultado.getInt("id"),
                         resultado.getShort("mapa"),
@@ -3453,6 +3462,10 @@ object GestorSQL {
                     _bdDinamica!!
             )
             while (resultado.next()) {
+                try {
+                    CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos"))
+                } catch (e: Exception) {
+                }
                 Mundo.addMontura(
                         Montura(
                                 resultado.getInt("id"),
@@ -3870,6 +3883,10 @@ object GestorSQL {
             )
             while (resultado.next()) {
                 try {
+                    try {
+                        CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos").replace('|', ','))
+                    } catch (e: Exception) {
+                    }
                     Mundo.getCofre(resultado.getInt("id"))?.actualizarCofre(
                             resultado.getString("objetos"), resultado.getLong(
                             "kamas"
@@ -4089,6 +4106,63 @@ object GestorSQL {
             }
             cerrarResultado(resultado)
             return
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun CARGAR_OBJETOS_MANY_BY_ID(id: String) {
+        /* it's only charge items that are needed by the server
+        btw in a big server, haves a lot of items without owners. */
+        try {
+            if (id.isBlank()) return
+            val resultado = consultaSQL(
+                    "SELECT * FROM objetos where id in (${id.dropLastWhile { !it.isDigit() }});",
+                    _bdDinamica!!
+            )
+            while (resultado.next()) {
+                Mundo.objetoIniciarServer(
+                        resultado.getInt("id"),
+                        resultado.getInt("modelo"),
+                        resultado.getInt("cantidad"),
+                        resultado.getByte("posicion"),
+                        resultado.getString("stats"),
+                        resultado.getInt("objevivo"),
+                        resultado.getInt(
+                                "precio"
+                        )
+                )
+            }
+            cerrarResultado(resultado)
+        } catch (e: Exception) {
+            exceptionExit(e)
+        }
+
+    }
+
+    fun CARGAR_OBJETOS_BY_ID(id: Int) {
+        /* it's only charge items that are needed by the server
+        btw in a big server, haves a lot of items without owners. */
+        try {
+            val resultado = consultaSQL(
+                    "SELECT * FROM objetos where id = $id;",
+                    _bdDinamica!!
+            )
+            while (resultado.next()) {
+                Mundo.objetoIniciarServer(
+                        resultado.getInt("id"),
+                        resultado.getInt("modelo"),
+                        resultado.getInt("cantidad"),
+                        resultado.getByte("posicion"),
+                        resultado.getString("stats"),
+                        resultado.getInt("objevivo"),
+                        resultado.getInt(
+                                "precio"
+                        )
+                )
+            }
+            cerrarResultado(resultado)
         } catch (e: Exception) {
             exceptionExit(e)
         }

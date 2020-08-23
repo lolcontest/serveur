@@ -10,19 +10,17 @@ import org.apache.mina.filter.FilterEvent
 import org.apache.mina.filter.codec.RecoverableProtocolDecoderException
 import servidor.filter.PacketFilter
 import variables.personaje.Personaje
-import kotlin.concurrent.thread
 
 @Slf4j
 class ServidorHandler : IoHandler {
     @Throws(Exception::class)
     override fun sessionCreated(arg0: IoSession) {
         if (!filter.authorizes(
-                arg0.remoteAddress.toString().substring(1).split(":".toRegex()).toTypedArray()[0]
-            )
+                        arg0.remoteAddress.toString().substring(1).split(":".toRegex()).toTypedArray()[0]
+                )
         ) {
             arg0.closeNow()
         } else {
-//            log.info("Session " + arg0.getId() + " created");
             arg0.attachment = ServidorSocket(arg0)
         }
     }
@@ -42,11 +40,8 @@ class ServidorHandler : IoHandler {
             }
         }
         try {
-            thread(name = client.logger.name, isDaemon = true) {
-                for (str in s) {
-                    if (str.isEmpty()) {
-                        continue
-                    }
+            s.forEach { str ->
+                if (str.isNotBlank()) {
                     if (AtlantaMain.MOSTRAR_RECIBIDOS) {
                         println("<<RECIBIR PERSONAJE ${client.personaje?.nombre}:  $str")
                     }
@@ -70,21 +65,8 @@ class ServidorHandler : IoHandler {
                     } else {
                         client.analizar_Packets(str)
                     }
-                    try {
-                        Thread.sleep(250)
-                    } catch (e: Exception) {
-                    }
                     ENVIAR_BN_NADA(personaje)
                     client.logger.trace(" <-- $str")
-                }
-            }.setUncaughtExceptionHandler { t, e ->
-                run {
-                    AtlantaMain.redactarLogServidorln("Error Thread de Analizar Packets ${client.personaje?.nombre}\n" + e.toString())
-                    try {
-                        exceptionCaught(arg0, e)
-                    } catch (e: Exception) {
-                    }
-                    t.interrupt()
                 }
             }
         } catch (e: Exception) {
@@ -97,13 +79,12 @@ class ServidorHandler : IoHandler {
         client?.disconnect()
         arg0.attachment = null
         arg0.closeNow()
-        //        World.world.logger.info("Session " + arg0.getId() + " closed");
     }
 
     @Throws(Exception::class)
     override fun exceptionCaught(arg0: IoSession, arg1: Throwable) {
         if (arg1.message != null && (arg1 is RecoverableProtocolDecoderException || arg1.message!!.startsWith("Une connexion ") ||
-                    arg1.message!!.startsWith("Connection reset by peer") || arg1.message!!.startsWith("Connection timed out"))
+                        arg1.message!!.startsWith("Connection reset by peer") || arg1.message!!.startsWith("Connection timed out"))
         ) return
         arg1.printStackTrace()
         val client = arg0.attachment as ServidorSocket?

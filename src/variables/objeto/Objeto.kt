@@ -108,7 +108,8 @@ class Objeto {
             }
         }
         if (AtlantaMain.RARITY_SYSTEM) {
-            if (AtlantaMain.RARITY_TYPES.contains(objModelo?.tipo?.toInt() ?: -1)) {
+            if (AtlantaMain.RARITY_TYPES.contains(objModelo?.tipo?.toInt()
+                            ?: -1) && !AtlantaMain.NO_RARITY_TEMPLATES.contains(objModelo?.id ?: -1)) {
                 var s = convertirStatsAString(false)
                 val rarity: rarityTemplate
                 while (true) {
