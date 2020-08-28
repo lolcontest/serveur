@@ -354,7 +354,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                     if (idObjeto.isEmpty()) {
                         continue;
                     }
-                    Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto));
+                    Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto), false);
                     if (obj.getDueñoTemp() == 0) {
                         obj.setDueñoTemp(this.Id);
                         // se agrega el objeto al array _objPos
@@ -375,7 +375,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                     if (idObjeto.isEmpty()) {
                         continue;
                     }
-                    Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto));
+                    Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto), false);
                     if (obj.getDueñoTemp() == 0) {
                         obj.setDueñoTemp(this.Id);
                         if (obj.getPrecio() <= 0) {
@@ -538,7 +538,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 if (idObjeto.isEmpty()) {
                     continue;
                 }
-                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto));
+                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto), false);
                 assert obj != null;
                 if (obj.getDueñoTemp() == 0) {
                     obj.setDueñoTemp(this.Id);
@@ -562,7 +562,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         }
         fijarHechizosInicio();
         RecienCreado = true;
-        Mapa = Mundo.getMapa(mapa);
+        Mapa = Mundo.getMap(mapa);
         setCelda(Mapa.getCelda(celda));
     }
 
@@ -727,7 +727,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
             }
             short mapaID = clase.getMapaInicio();
             short celdaID = clase.getCeldaInicio();
-            Mapa mapa = Mundo.getMapa(mapaID);
+            Mapa mapa = Mundo.getMap(mapaID);
             if (mapa == null) {
                 mapaID = 7411;
                 celdaID = 311;
@@ -1609,7 +1609,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
 
     public void conectarse() {
         if (Mapa == null || Celda == null) {
-            Mapa = Mundo.getMapa((short) MapidStart);
+            Mapa = Mundo.getMap((short) MapidStart);
             Celda = Mapa.getCelda((short) CellidStart);
         }
         ServidorServer.Companion.actualizarMaxJugadoresEnLinea();
@@ -1927,7 +1927,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         if (Pelea != null) {
             mapa = Pelea.getMapaReal();
         } else if (mapa == null) {
-            mapa = Mundo.getMapa((short) MapidStart);
+            mapa = Mundo.getMap((short) MapidStart);
         }
         GestorSalida.INSTANCE.ENVIAR_GCK_CREAR_PANTALLA_PJ(this);
         GestorSalida.INSTANCE.ENVIAR_As_STATS_DEL_PJ(this);
@@ -1941,7 +1941,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         }
         // solo se agrega si la pelea es null o se sale de la pelea por eso es _mapa
         if (Mapa == null || Celda == null) {
-            Mapa = Mundo.getMapa((short) MapidStart);
+            Mapa = Mundo.getMap((short) MapidStart);
             Celda = Mapa.getCelda((short) CellidStart);
         }
         GestorSalida.INSTANCE.ENVIAR_GM_PJ_A_MAPA(Mapa, this);
@@ -2095,7 +2095,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 if (idObjeto.isEmpty()) {
                     continue;
                 }
-                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto));
+                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto), false);
                 if (obj.getDueñoTemp() == Id) {
                     GestorSalida.INSTANCE.ENVIAR_BAT2_CONSOLA(perso, "El item: " + obj.getId() + " El cual es el modelo: " + obj.getObjModeloID() + " De nombre: " + obj.getObjModelo().getNombre() + " Ya lo tenia");
                     break;
@@ -2127,7 +2127,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 if (idObjeto.isEmpty()) {
                     continue;
                 }
-                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto));
+                Objeto obj = Mundo.getObjeto(Integer.parseInt(idObjeto), false);
                 if (obj.getDueñoTemp() == Id) {
                     GestorSalida.INSTANCE.ENVIAR_BAT2_CONSOLA(perso, "El item: " + obj.getId() + " El cual es el modelo: " + obj.getObjModeloID() + " De nombre: " + obj.getObjModelo().getNombre() + " Ya lo tenia");
                     break;
@@ -2653,7 +2653,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
 
     public Celda getCelda() {
         if (Celda == null) {
-            return Mundo.getMapa((short) MapidStart).getCelda((short) CellidStart);
+            return Mundo.getMap((short) MapidStart).getCelda((short) CellidStart);
         }
         return Celda;
     }
@@ -2758,7 +2758,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
 
     public Mapa getMapa() {
         if (Mapa == null) {
-            Mapa = Mundo.getMapa((short) MapidStart);
+            Mapa = Mundo.getMap((short) MapidStart);
         }
         return Mapa;
     }
@@ -2980,10 +2980,10 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         GfxID = Clase.getGfxs(Sexo);
         final short mapaID = Clase.getMapaInicio();
         final short celdaID = Clase.getCeldaInicio();
-        Mapa = Mundo.getMapa(mapaID);
+        Mapa = Mundo.getMap(mapaID);
         Misiones.clear();
         if (Mapa == null) {
-            Mapa = Mundo.getMapa((short) 7411);
+            Mapa = Mundo.getMap((short) 7411);
         }
         setCelda(Mapa.getCelda(celdaID));
         setPuntoSalvada(mapaID + "," + celdaID);
@@ -3910,9 +3910,9 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 if (borrarMapa) {
                     GestorSalida.INSTANCE.ENVIAR_GM_BORRAR_GM_A_MAPA(Mapa, Id);
                 }
-                Mapa = Mundo.getMapa(MapaSalvada);
+                Mapa = Mundo.getMap(MapaSalvada);
                 if (Nivel > 15 && Mapa.getSubArea().getArea().getSuperArea().getId() == 3) {
-                    Mapa = Mundo.getMapa((short) 7411);
+                    Mapa = Mundo.getMap((short) 7411);
                     setCelda(Mapa.getCelda((short) 340));
                 } else {
                     setCelda(Mapa.getCelda(CeldaSalvada));
@@ -5337,9 +5337,9 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                     return;
                 }
             }
-            Mapa nuevoMapa = Mundo.getMapa(nuevoMapaID);
+            Mapa nuevoMapa = Mundo.getMap(nuevoMapaID);
             if (nuevoMapa == null) {
-                nuevoMapa = Mundo.getMapa((short) 7411);
+                nuevoMapa = Mundo.getMap((short) 7411);
             }
             if (nuevoMapa.getCelda(nuevaCeldaID) == null) {
                 return;
@@ -5383,7 +5383,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public void teleportSinTodos(final short nuevoMapaID, final short nuevaCeldaID) {
-        Mapa nuevoMapa = Mundo.getMapa(nuevoMapaID);
+        Mapa nuevoMapa = Mundo.getMap(nuevoMapaID);
         if (nuevoMapa == null || esMultiman()) {
             return;
         }
@@ -6082,10 +6082,10 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         final int superAreaID = Mapa.getSubArea().getArea().getSuperArea().getId();
         for (final short i : Zaaps) {
             try {
-                if (Mundo.getMapa(i).getSubArea().getArea().getSuperArea().getId() != superAreaID) {
+                if (Mundo.getMap(i).getSubArea().getArea().getSuperArea().getId() != superAreaID) {
                     continue;
                 }
-                int costo = Formulas.INSTANCE.calcularCosteZaap(Mapa, Mundo.getMapa(i));
+                int costo = Formulas.INSTANCE.calcularCosteZaap(Mapa, Mundo.getMap(i));
                 str.append("|").append(i).append(";").append(costo);
             } catch (final Exception ignored) {
             }
@@ -6166,6 +6166,26 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         }
     }
 
+    public void sendMessage(String es, String fr, Integer color) {
+        if (getCuenta().getIdioma().equalsIgnoreCase("es")) {
+            if (color == 1) {
+                enviarmensajeNegro(es);
+            } else if (color == 2) {
+                enviarmensajeVerde(es);
+            } else {
+                enviarmensajeRojo(es);
+            }
+        } else {
+            if (color == 1) {
+                enviarmensajeNegro(fr);
+            } else if (color == 2) {
+                enviarmensajeVerde(fr);
+            } else {
+                enviarmensajeRojo(fr);
+            }
+        }
+    }
+
     public void abrirMenuPrisma() {
         if (Deshonor >= 3) {
             GestorSalida.INSTANCE.ENVIAR_Im_INFORMACION(this, "183");
@@ -6187,7 +6207,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
 
     public void usarZaap(final short mapaID) {
         try {
-            final Mapa mapa = Mundo.getMapa(mapaID);
+            final Mapa mapa = Mundo.getMap(mapaID);
             if (mapa == null || mapaID == Mapa.getId() || tieneZaap(Mapa.getId()) || tieneZaap(mapaID)) {
                 GestorSalida.INSTANCE.ENVIAR_BN_NADA(this);
                 return;
@@ -6230,7 +6250,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 GestorSalida.INSTANCE.ENVIAR_Im_INFORMACION(this, "183");
                 return;
             }
-            final Mapa mapa = Mundo.getMapa(mapaID);
+            final Mapa mapa = Mundo.getMap(mapaID);
             short celdaID = 0;
             if (mapa == null || mapaID == Mapa.getId() || Mundo.esZaapi(Mapa.getId(), Alineacion) || Mundo.esZaapi(
                     mapaID, Alineacion)) {
@@ -6274,7 +6294,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 GestorSalida.INSTANCE.ENVIAR_Im_INFORMACION(this, "183");
                 return;
             }
-            final Mapa mapa = Mundo.getMapa(mapaID);
+            final Mapa mapa = Mundo.getMap(mapaID);
             if (mapa == null || mapaID == Mapa.getId() || Mapa.getPrisma() == null || mapa.getPrisma() == null || Mapa
                     .getPrisma().getAlineacion() != Alineacion || mapa.getPrisma().getAlineacion() != Alineacion) {
                 GestorSalida.INSTANCE.ENVIAR_BN_NADA(this);
@@ -6285,7 +6305,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 return;
             }
             short celdaID = mapa.getPrisma().getCelda().getId();
-            int costo = Formulas.INSTANCE.calcularCosteZaap(Mapa, Mundo.getMapa(mapaID));
+            int costo = Formulas.INSTANCE.calcularCosteZaap(Mapa, Mundo.getMap(mapaID));
             if (Kamas < costo) {
                 GestorSalida.INSTANCE.ENVIAR_Im_INFORMACION(this, "182");
                 return;
@@ -6299,7 +6319,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
 
     public void usarZonas(final short mapaID) {
         try {
-            if (Mundo.getMapa(mapaID) == null || Mundo.ZONAS.get(mapaID) == null) {
+            if (Mundo.getMap(mapaID) == null || Mundo.ZONAS.get(mapaID) == null) {
                 return;
             }
             teleport(mapaID, Mundo.ZONAS.get(mapaID));
@@ -6622,7 +6642,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
                 return obj.getParamStatTexto(Constantes.STAT_APARIENCIA_OBJETO, 3);
             }
             if (obj.getObjevivoID() > 0) {
-                final Objeto objVivo = Mundo.getObjeto(obj.getObjevivoID());
+                final Objeto objVivo = Mundo.getObjeto(obj.getObjevivoID(), true);
                 if (objVivo != null) {
                     return Integer.toHexString(objVivo.getObjModeloID()) + "~" + obj.getObjModelo().getTipo() + "~" + Byte
                             .parseByte(objVivo.getParamStatTexto(Constantes.STAT_SKIN_OBJEVIVO, 3), 16);

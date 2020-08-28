@@ -241,7 +241,7 @@ class Accion(val id: Int, val args: String, condicion: String) {
                     }
                     ACCION_TELEPORT_MAPA -> try {
                         val args = _args.split(",".toRegex()).toTypedArray()
-                        val nuevoMapa = Mundo.getMapa(args[0].toShort())
+                        val nuevoMapa = Mundo.getMap(args[0].toShort())
                         if (nuevoMapa == null) {
                             ENVIAR_BN_NADA(objetivo)
                             return false
@@ -270,7 +270,7 @@ class Accion(val id: Int, val args: String, condicion: String) {
                     }
                     ACCION_GUARDAR_POS -> try {
                         val args = _args.split(",".toRegex()).toTypedArray()
-                        val nuevoMapa = Mundo.getMapa(args[0].toShort())
+                        val nuevoMapa = Mundo.getMap(args[0].toShort())
                         if (nuevoMapa == null) {
                             ENVIAR_BN_NADA(objetivo)
                             return false
@@ -1836,7 +1836,7 @@ class Accion(val id: Int, val args: String, condicion: String) {
                         val c: Constantes? = null
                         val coord = Constantes.getMapaInicioAstrub(perso.getClaseID(true).toInt())
                         val argumentos = coord.split(",".toRegex()).toTypedArray()
-                        val nuevoMapa = Mundo.getMapa(argumentos[0].toShort())
+                        val nuevoMapa = Mundo.getMap(argumentos[0].toShort())
                         val nuevaCelda = nuevoMapa?.getCelda(argumentos[1].toShort())
                         perso.mapa = nuevoMapa
                         perso.celda = nuevaCelda
@@ -2093,15 +2093,15 @@ class Accion(val id: Int, val args: String, condicion: String) {
                             if (System.currentTimeMillis() - mision.tiempoInicio < AtlantaMain.MINUTOS_MISION_PVP * 60 * 1000) {
                                 if (perso.cuenta.idioma.equals("fr", ignoreCase = true)) {
                                     ENVIAR_cs_CHAT_MENSAJE(
-                                        perso,
-                                        "<b>[Thomas Sacre]</b> Tu viens de terminer un contrat, tu dois attendre 10 minutes avant de te relancer dans ta quête de meurtre.",
-                                        "000000"
+                                            perso,
+                                            "<b>[Thomas Sacre]</b> Tu viens de terminer un contrat, tu dois attendre 10 minutes avant de te relancer dans ta quête de meurtre.",
+                                            "000000"
                                     )
                                 } else {
                                     ENVIAR_cs_CHAT_MENSAJE(
-                                        perso,
-                                        "<b>Cacería:</b><br>Usted recibió un objetivo hace poco, por ahora debes descansar.",
-                                        "e78800"
+                                            perso,
+                                            "<b>Cacería:</b><br>Usted recibió un objetivo hace poco, por ahora debes descansar.",
+                                            "e78800"
                                     )
                                 }
                                 return false
@@ -2117,15 +2117,15 @@ class Accion(val id: Int, val args: String, condicion: String) {
                                 continue
                             }
                             if (temp === perso || temp.alineacion == perso.alineacion || temp
-                                    .alineacion == Constantes.ALINEACION_NEUTRAL || !temp.alasActivadas()
+                                            .alineacion == Constantes.ALINEACION_NEUTRAL || !temp.alasActivadas()
                             ) {
                                 continue
                             }
                             if (!AtlantaMain.ES_LOCALHOST) {
                                 if (temp.nombre.equals(
-                                        perso.ultMisionPVP,
-                                        ignoreCase = true
-                                    ) || temp.cuenta.admin > 0
+                                                perso.ultMisionPVP,
+                                                ignoreCase = true
+                                        ) || temp.cuenta.admin > 0
                                 ) {
                                     continue
                                 }
@@ -2136,7 +2136,7 @@ class Accion(val id: Int, val args: String, condicion: String) {
                                 }
                             }
                             if (perso.nivel + AtlantaMain.RANGO_NIVEL_PVP >= temp.nivel && perso.nivel
-                                - AtlantaMain.RANGO_NIVEL_PVP <= temp.nivel
+                                    - AtlantaMain.RANGO_NIVEL_PVP <= temp.nivel
                             ) {
                                 victimas.add(temp)
                             }
@@ -2144,15 +2144,15 @@ class Accion(val id: Int, val args: String, condicion: String) {
                         if (victimas.isEmpty()) {
                             if (perso.cuenta.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_cs_CHAT_MENSAJE(
-                                    perso,
-                                    "<b>Cacería</b> Je ne trouve pas de victime à ta hauteur, reviens plus tard.",
-                                    "da6c00"
+                                        perso,
+                                        "<b>Cacería</b> Je ne trouve pas de victime à ta hauteur, reviens plus tard.",
+                                        "da6c00"
                                 )
                             } else {
                                 ENVIAR_cs_CHAT_MENSAJE(
-                                    perso,
-                                    "<b>Cacería:</b><br>No has tenido suerte, regresa más tarde.",
-                                    "da6c00"
+                                        perso,
+                                        "<b>Cacería:</b><br>No has tenido suerte, regresa más tarde.",
+                                        "da6c00"
                                 )
                             }
                             return false
@@ -2161,78 +2161,78 @@ class Accion(val id: Int, val args: String, condicion: String) {
                         val nombreVict = victima.nombre
                         if (perso.cuenta.idioma.equals("fr", ignoreCase = true)) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                perso, "<b>NUeva Cacería</b> Ta victime est : $nombreVict.",
-                                "da6c00"
+                                    perso, "<b>NUeva Cacería</b> Ta victime est : $nombreVict.",
+                                    "da6c00"
                             )
                         } else {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                perso,
-                                "<b>Nueva Cacería</b><br><b>Nombre:</b> " + nombreVict + "<br><b>Nivel:</b> " + victima.getNivel() + "<br><b>Grado:</b> " + victima.gradoAlineacion + "<br><b>Buena Suerte</b>.",
-                                "da6c00"
+                                    perso,
+                                    "<b>Nueva Cacería</b><br><b>Nombre:</b> " + nombreVict + "<br><b>Nivel:</b> " + victima.nivel + "<br><b>Grado:</b> " + victima.gradoAlineacion + "<br><b>Buena Suerte</b>.",
+                                    "da6c00"
                             )
                         }
                         val recompensaExp = getXPMision(victima.nivel)
                         val pergRec = 9920
                         val misionPVP = MisionPVP(
-                            System.currentTimeMillis(), nombreVict, AtlantaMain.MISION_PVP_KAMAS.toLong(),
-                            recompensaExp, Constantes.getCraneoPorClase(victima.getClaseID(true).toInt()), pergRec
+                                System.currentTimeMillis(), nombreVict, AtlantaMain.MISION_PVP_KAMAS.toLong(),
+                                recompensaExp, Constantes.getCraneoPorClase(victima.getClaseID(true).toInt()), pergRec
                         )
                         val pergamino = Mundo.getObjetoModelo(10085)?.crearObjeto(
-                            25, Constantes.OBJETO_POS_NO_EQUIPADO,
-                            CAPACIDAD_STATS.RANDOM
+                                25, Constantes.OBJETO_POS_NO_EQUIPADO,
+                                CAPACIDAD_STATS.RANDOM
                         )
                         val pergRecc = Mundo.getObjetoModelo(9917)?.crearObjeto(
-                            1, Constantes.OBJETO_POS_NO_EQUIPADO,
-                            CAPACIDAD_STATS.RANDOM
+                                1, Constantes.OBJETO_POS_NO_EQUIPADO,
+                                CAPACIDAD_STATS.RANDOM
                         )
                         val ordenSacre = Mundo.getObjetoModelo(10621)?.crearObjeto(
-                            1, Constantes.OBJETO_POS_NO_EQUIPADO,
-                            CAPACIDAD_STATS.RANDOM
+                                1, Constantes.OBJETO_POS_NO_EQUIPADO,
+                                CAPACIDAD_STATS.RANDOM
                         )
                         val mission = "449"
                         val misionMod = Mundo.getMision(mission.toShort().toInt())
                         perso.addNuevaMision(misionMod)
                         ENVIAR_Im_INFORMACION(perso, "054;$mission")
                         ENVIAR_IC_PERSONAJE_BANDERA_COMPAS(
-                            perso, victima.mapa.x.toString() + "|" + victima.mapa
+                                perso, victima.mapa.x.toString() + "|" + victima.mapa
                                 .y
                         )
                         if (pergamino != null) {
                             pergamino.addStatTexto(Constantes.STAT_INTERCAMBIABLE_DESDE, stringFechaIntercambiable(365))
                             pergamino.addStatTexto(Constantes.STAT_MISION, "0#0#0#$nombreVict")
                             pergamino.addStatTexto(
-                                Constantes.STAT_RANGO,
-                                "0#0#" + Integer.toHexString(victima.gradoAlineacion)
+                                    Constantes.STAT_RANGO,
+                                    "0#0#" + Integer.toHexString(victima.gradoAlineacion)
                             )
                             pergamino.addStatTexto(
-                                Constantes.STAT_NIVEL,
-                                "0#0#" + Integer.toHexString(victima.nivel)
+                                    Constantes.STAT_NIVEL,
+                                    "0#0#" + Integer.toHexString(victima.nivel)
                             )
                             pergamino.addStatTexto(
-                                Constantes.STAT_ALINEACION,
-                                "0#0#" + Integer.toHexString(victima.alineacion.toInt())
+                                    Constantes.STAT_ALINEACION,
+                                    "0#0#" + Integer.toHexString(victima.alineacion.toInt())
                             )
                         }
                         perso.addObjetoConOAKO(pergamino, true)
                         if (ordenSacre != null) {
                             ordenSacre.addStatTexto(
-                                Constantes.STAT_INTERCAMBIABLE_DESDE,
-                                stringFechaIntercambiable(365)
+                                    Constantes.STAT_INTERCAMBIABLE_DESDE,
+                                    stringFechaIntercambiable(365)
                             )
                         }
                         if (pergRecc != null) {
                             pergRecc.addStatTexto(Constantes.STAT_MISION, "0#0#0#$nombreVict")
                             pergRecc.addStatTexto(
-                                Constantes.STAT_RANGO,
-                                "0#0#" + Integer.toHexString(victima.gradoAlineacion)
+                                    Constantes.STAT_RANGO,
+                                    "0#0#" + Integer.toHexString(victima.gradoAlineacion)
                             )
                             pergRecc.addStatTexto(
-                                Constantes.STAT_NIVEL,
-                                "0#0#" + Integer.toHexString(victima.nivel)
+                                    Constantes.STAT_NIVEL,
+                                    "0#0#" + Integer.toHexString(victima.nivel)
                             )
                             pergRecc.addStatTexto(
-                                Constantes.STAT_ALINEACION,
-                                "0#0#" + Integer.toHexString(victima.alineacion.toInt())
+                                    Constantes.STAT_ALINEACION,
+                                    "0#0#" + Integer.toHexString(victima.alineacion.toInt())
                             )
                         }
                         perso.addObjetoConOAKO(pergRecc, true)
@@ -2577,7 +2577,7 @@ class Accion(val id: Int, val args: String, condicion: String) {
                                 milisegundos = split[2].toLong()
                             } catch (ignored: Exception) {
                             }
-                            val mapa = Mundo.getMapa(m)
+                            val mapa = Mundo.getMap(m)
                             if (mapa == null) {
                                 ENVIAR_BN_NADA(objetivo, "EXCEPTION ACCION $_id MAPA $m ES NULO")
                                 return false
@@ -2585,8 +2585,8 @@ class Accion(val id: Int, val args: String, condicion: String) {
                             val celda = mapa.getCelda(c)
                             if (celda == null) {
                                 ENVIAR_BN_NADA(
-                                    objetivo, "EXCEPTION ACCION " + _id + " MAPA " + m + " CELDA " + c
-                                            + " ES NULO"
+                                        objetivo, "EXCEPTION ACCION " + _id + " MAPA " + m + " CELDA " + c
+                                        + " ES NULO"
                                 )
                                 return false
                             }

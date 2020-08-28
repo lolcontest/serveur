@@ -20,7 +20,7 @@ import estaticos.Mundo.addObjeto
 import estaticos.Mundo.eliminarObjeto
 import estaticos.Mundo.eliminarRecaudador
 import estaticos.Mundo.getGremio
-import estaticos.Mundo.getMapa
+import estaticos.Mundo.getMap
 import estaticos.Mundo.getObjeto
 import estaticos.Mundo.getPersonaje
 import estaticos.database.GestorSQL.DELETE_RECAUDADOR
@@ -538,7 +538,7 @@ class Recaudador(
         }
 
     init {
-        this.mapa = getMapa(mapa2)
+        this.mapa = getMap(mapa2)
         if (mapa != null) {
             celda = mapa.getCelda(celdaID)
         }

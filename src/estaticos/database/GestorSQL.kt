@@ -8,6 +8,7 @@ import servidor.ServidorServer
 import utilites.comandosAccion
 import utilites.economia.Economia
 import utilites.itemrarity.rarityProb
+import utilites.itemrarity.rarityReroll
 import utilites.itemrarity.rarityTemplate
 import variables.casa.Casa
 import variables.casa.Cofre
@@ -1696,7 +1697,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val mapa = Mundo.getMap(resultado.getShort("mapa")) ?: continue
                 val cercado = Cercado(
                         mapa,
                         resultado.getInt("capacidad"),
@@ -1753,7 +1754,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val mapa = Mundo.getMap(resultado.getShort("mapa")) ?: continue
                 val cercado = Cercado(
                         mapa,
                         resultado.getInt("capacidad"),
@@ -1991,7 +1992,7 @@ object GestorSQL {
                         DELETE_NPC_UBICACION(resultado.getInt("npc"))
                         continue
                     }
-                    Mundo.getMapa(resultado.getShort("mapa"))?.addNPC(
+                    Mundo.getMap(resultado.getShort("mapa"))?.addNPC(
                             npcModelo, resultado.getShort("celda"), resultado.getByte(
                             "orientacion"
                     )
@@ -2023,7 +2024,7 @@ object GestorSQL {
                         DELETE_NPC_UBICACION(resultado.getInt("npc"))
                         continue
                     }
-                    Mundo.getMapa(resultado.getShort("mapa"))?.addNPC(
+                    Mundo.getMap(resultado.getShort("mapa"))?.addNPC(
                             npcModelo, resultado.getShort("celda"), resultado.getByte(
                             "orientacion"
                     )
@@ -2196,7 +2197,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa"))
+                val mapa = Mundo.getMap(resultado.getShort("mapa"))
                 if (mapa?.getCelda(resultado.getShort("celda")) == null) {
                     continue
                 }
@@ -2412,7 +2413,7 @@ object GestorSQL {
                     _bdDinamica!!
             )
             while (resultado.next()) {
-                if (Mundo.getMapa(resultado.getShort("mapa")) == null) {
+                if (Mundo.getMap(resultado.getShort("mapa")) == null) {
                     continue
                 }
                 val prisma = Prisma(
@@ -2477,7 +2478,7 @@ object GestorSQL {
                     _bdDinamica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val mapa = Mundo.getMap(resultado.getShort("mapa")) ?: continue
                 try {
                     CARGAR_OBJETOS_MANY_BY_ID(resultado.getString("objetos").replace('|', ','))
                 } catch (e: Exception) {
@@ -2622,7 +2623,7 @@ object GestorSQL {
                     continue
                 }
                 val mapa = RESULSET_MAP(resultado)
-                Mundo.addMapa(mapa)
+                Mundo.addMap(mapa)
                 return true
             }
         } catch (e: Exception) {
@@ -2652,7 +2653,7 @@ object GestorSQL {
                     continue
                 }
                 mapa = RESULSET_MAP(resultado)
-                Mundo.addMapa(mapa)
+                Mundo.addMap(mapa)
             }
             cerrarResultado(resultado)
         } catch (e: Exception) {
@@ -2687,7 +2688,7 @@ object GestorSQL {
                 }
                 CARGAR_MAPAS_ESTRELLAS_BY_ID(resultado.getShort("id").toInt())
                 mapa = RESULSET_MAP(resultado)
-                Mundo.addMapa(mapa)
+                Mundo.addMap(mapa)
                 CARGAR_TRIGGERS_POR_MAPA(mapa.id)
                 CARGAR_ACCION_FINAL_DE_PELEA_POR_MAPA(mapa.id.toInt())
                 CARGAR_MOBS_FIJOS_POR_MAPA(mapa.id.toInt())
@@ -2718,7 +2719,7 @@ object GestorSQL {
                     continue
                 }
                 mapa = RESULSET_MAP(resultado)
-                Mundo.addMapa(mapa)
+                Mundo.addMap(mapa)
                 CARGAR_TRIGGERS_POR_MAPA(mapa.id)
             }
             cerrarResultado(resultado)
@@ -2736,7 +2737,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa"))
+                val mapa = Mundo.getMap(resultado.getShort("mapa"))
                 if (mapa?.getCelda(resultado.getShort("celda")) == null) {
                     continue
                 }
@@ -2756,7 +2757,7 @@ object GestorSQL {
         try {
             val resultado = consultaSQL("select * from mapas_estrellas where mapa = $id;", _bdDinamica!!)
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(id.toShort()) ?: continue
+                val mapa = Mundo.getMap(id.toShort()) ?: continue
                 val oilist = mapa.getOIlist()
                 val starslist = resultado.getString("estrellasoi").split(",")
                 val lastcharge = resultado.getString("nextchargeoi").split(",")
@@ -2790,7 +2791,7 @@ object GestorSQL {
                         continue
                     }
                     try {
-                        val mapa = Mundo.getMapa(m.toShort())
+                        val mapa = Mundo.getMap(m.toShort())
                         if (mapa != null) {
                             mapas.add(mapa)
                         }
@@ -2872,7 +2873,7 @@ object GestorSQL {
                         continue
                     }
                     try {
-                        val mapa = Mundo.getMapa(m.toShort())
+                        val mapa = Mundo.getMap(m.toShort())
                         if (mapa != null) {
                             mapas.add(mapa)
                         }
@@ -3696,7 +3697,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val mapa = Mundo.getMap(resultado.getShort("mapa")) ?: continue
                 val accion = Accion(
                         resultado.getInt("accion"),
                         resultado.getString("args"),
@@ -3724,7 +3725,7 @@ object GestorSQL {
                     _bdEstatica!!
             )
             while (resultado.next()) {
-                val mapa = Mundo.getMapa(resultado.getShort("mapa")) ?: continue
+                val mapa = Mundo.getMap(resultado.getShort("mapa")) ?: continue
                 val accion = Accion(
                         resultado.getInt("accion"),
                         resultado.getString("args"),
@@ -4085,6 +4086,21 @@ object GestorSQL {
         } catch (e: Exception) {
             exceptionExit(e)
         }
+
+    }
+
+    fun GET_REROLL_REQUIRED_OBJ_ID(objeto: Objeto): Int {
+        var r = -1
+        try {
+            val resultado = consultaSQL("select IdItem from rarityrerollitems where lvlmax>=${objeto.objModelo?.nivel} and lvlmin <= ${objeto.objModelo?.nivel} and rarityid = ${rarityReroll.getRarity(objeto)?.id};", _bdEstatica!!)
+            while (resultado.next()) {
+                r = resultado.getInt("IdItem")
+            }
+            cerrarResultado(resultado)
+            return r
+        } catch (e: Exception) {
+        }
+        return r
 
     }
 

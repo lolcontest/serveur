@@ -25,7 +25,7 @@ import estaticos.Mundo.addMontura
 import estaticos.Mundo.addObjeto
 import estaticos.Mundo.eliminarMontura
 import estaticos.Mundo.getExpMontura
-import estaticos.Mundo.getMapa
+import estaticos.Mundo.getMap
 import estaticos.Mundo.getMonturaModelo
 import estaticos.Mundo.getObjeto
 import estaticos.Mundo.getObjetoModelo
@@ -167,7 +167,7 @@ class Montura : Exchanger {
         this.serenidad = serenidad
         ancestros = anc
         _talla = talla
-        this.mapa = getMapa(mapa1)
+        this.mapa = getMap(mapa1)
         if (this.mapa != null) {
             this.celda = mapa!!.getCelda(celda)
             if (this.celda != null) {

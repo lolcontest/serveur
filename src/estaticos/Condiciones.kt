@@ -331,7 +331,7 @@ object Condiciones {
                     continue
                 }
                 try {
-                    val mapa = Mundo.getMapa(java.lang.Short.parseShort(m)) ?: continue
+                    val mapa = Mundo.getMap(java.lang.Short.parseShort(m)) ?: continue
                     for (gm in mapa.grupoMobsTotales!!.values) {
                         if (gm.tieneMobModeloID(mobID, lvlMin, lvlMax)) {
                             b = true
@@ -429,7 +429,7 @@ object Condiciones {
             if (args.size > 2) {
                 sexo = java.lang.Byte.parseByte(args[3])
             }
-            val p = Mundo.getMapa(mapaID.toShort())?.getCelda(celdaID.toShort())!!.primerPersonaje
+            val p = Mundo.getMap(mapaID.toShort())?.getCelda(celdaID.toShort())!!.primerPersonaje
             b = p != null
             if (b && sexo.toInt() != -1) {
                 b = p!!.sexo == sexo

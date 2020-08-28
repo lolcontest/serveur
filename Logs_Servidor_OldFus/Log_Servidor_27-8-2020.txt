@@ -1,0 +1,46 @@
+---------- INICIO DEL SERVER ----------
+[Thu Aug 27 23:29:53 CLT 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Thu Aug 27 23:29:53 CLT 2020]  ---------------- INICIO SALVADO ----------------
+[Thu Aug 27 23:29:53 CLT 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Thu Aug 27 23:29:53 CLT 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Thu Aug 27 23:29:53 CLT 2020]  100%
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando Kamas de la Ruleta de Jalato[Thu Aug 27 23:29:53 CLT 2020]  Salvando los personajes: 
+[Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los mercantes: 
+[Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los prismas: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los gremios: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 1
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los recaudadores: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los cercados: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando las monturas: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando las casas: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 1053
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los cofres: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los rankings PVP: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 3
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando los rankings Koliseo: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  Salvando las cuentas: [Thu Aug 27 23:29:53 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:29:53 CLT 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Thu Aug 27 23:29:53 CLT 2020]   ########  CERRANDO SERVERSOCKET...  [Thu Aug 27 23:29:53 CLT 2020]  ... IS OK  ########
+[Thu Aug 27 23:29:54 CLT 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Thu Aug 27 23:29:54 CLT 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Thu Aug 27 23:31:21 CLT 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Thu Aug 27 23:31:21 CLT 2020]  ---------------- INICIO SALVADO ----------------
+[Thu Aug 27 23:31:21 CLT 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Thu Aug 27 23:31:21 CLT 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Thu Aug 27 23:31:21 CLT 2020]  100%
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando Kamas de la Ruleta de Jalato[Thu Aug 27 23:31:21 CLT 2020]  Salvando los personajes: 
+[Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los mercantes: 
+[Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los prismas: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los gremios: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 1
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los recaudadores: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los cercados: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando las monturas: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando las casas: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 1053
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los cofres: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los rankings PVP: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 3
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando los rankings Koliseo: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  Salvando las cuentas: [Thu Aug 27 23:31:21 CLT 2020]  Finalizó con 0
+[Thu Aug 27 23:31:21 CLT 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Thu Aug 27 23:31:21 CLT 2020]   ########  CERRANDO SERVERSOCKET...  [Thu Aug 27 23:31:21 CLT 2020]  ... IS OK  ########
+[Thu Aug 27 23:31:22 CLT 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Thu Aug 27 23:31:22 CLT 2020]   ########  SERVIDOR CERRO CON EXITO  ########

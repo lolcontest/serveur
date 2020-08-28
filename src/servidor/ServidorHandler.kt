@@ -54,16 +54,16 @@ class ServidorHandler : IoHandler {
                         val socketm: ServidorSocket? = multi?.cuenta?.socket
                         if (socketm != null) {
                             if (multi != personaje) {
-                                multi.cuenta.socket?.analizar_Packets(str)
+                                multi.cuenta.socket?.threadPackets(str)
                             } else {
-                                client.analizar_Packets(str)
+                                client.threadPackets(str)
                             }
                         } else {
                             if (multi != null && personaje.pelea != null) client.personaje = multi
-                            client.analizar_Packets(str)
+                            client.threadPackets(str)
                         }
                     } else {
-                        client.analizar_Packets(str)
+                        client.threadPackets(str)
                     }
                     ENVIAR_BN_NADA(personaje)
                     client.logger.trace(" <-- $str")

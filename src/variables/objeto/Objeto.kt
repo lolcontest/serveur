@@ -664,7 +664,7 @@ class Objeto {
                 }
             }
             if (durabilidadMax > 0 && durabilidad > 0) {
-                if (stats2.length > 0) {
+                if (stats2.isNotEmpty()) {
                     stats2.append(",")
                 }
                 stats2.append(Integer.toHexString(Constantes.STAT_RESISTENCIA)).append("#0#")
@@ -673,14 +673,14 @@ class Objeto {
             }
             val oStats: String = stats.getStringStats(this)
             if (!oStats.isEmpty()) {
-                if (stats2.length > 0) {
+                if (stats2.isNotEmpty()) {
                     stats2.append(",")
                 }
                 stats2.append(oStats)
             }
             if (!sinAdicionales) {
                 if (objevivoID > 0 && objevivoID != id) {
-                    val objevivo = getObjeto(objevivoID)
+                    val objevivo = getObjeto(objevivoID, true)
                     if (objevivo != null) {
                         if (stats2.isNotEmpty()) {
                             stats2.append(",")

@@ -18,7 +18,7 @@ import estaticos.Mundo.cantCasasGremio
 import estaticos.Mundo.casas
 import estaticos.Mundo.getCasaDePj
 import estaticos.Mundo.getCofresPorCasa
-import estaticos.Mundo.getMapa
+import estaticos.Mundo.getMap
 import estaticos.Mundo.getPersonaje
 import estaticos.database.GestorSQL.REPLACE_COFRE
 import variables.gremio.Gremio
@@ -231,7 +231,7 @@ class Casa(
         actualizarDerechos(0)
         cerrarVentanaCompra(perso)
         ENVIAR_hL_INFO_CASA(perso, informacionCasa(perso.Id))
-        for (p in getMapa(mapaIDFuera)!!.arrayPersonajes!!) {
+        for (p in getMap(mapaIDFuera)!!.arrayPersonajes!!) {
             ENVIAR_hP_PROPIEDADES_CASA(p, propiedadesPuertaCasa(p))
         }
     }
@@ -246,7 +246,7 @@ class Casa(
             kamasVenta = precio.toLong()
             ENVIAR_hV_CERRAR_VENTANA_COMPRA_CASA(perso)
             ENVIAR_hSK_FIJAR_PRECIO_CASA(perso, id.toString() + "|" + kamasVenta)
-            for (p in getMapa(mapaIDFuera)!!.arrayPersonajes!!) {
+            for (p in getMap(mapaIDFuera)!!.arrayPersonajes!!) {
                 ENVIAR_hP_PROPIEDADES_CASA(p, propiedadesPuertaCasa(p))
             }
             ENVIAR_hL_INFO_CASA(perso, informacionCasa(perso.Id))
@@ -272,7 +272,7 @@ class Casa(
             when (packet) {
                 "+" -> {
                     val gremio = dueño!!.gremio ?: return
-                    if (cantCasasGremio(gremio.id) >= Math.ceil(gremio.nivel / 10f.toDouble()).toByte()) {
+                    if (cantCasasGremio(gremio.id) >= Math.ceil(gremio.nivel / 10f.toDouble()).toInt().toByte()) {
                         ENVIAR_Im_INFORMACION(perso, "1151")
                         return
                     } else if (gremio.cantidadMiembros < 10) {
@@ -353,7 +353,7 @@ class Casa(
                     } catch (e: Exception) {
                         packet.append("?;")
                     }
-                    val mapa = getMapa(casa.mapaIDDentro)
+                    val mapa = getMap(casa.mapaIDDentro)
                     packet.append(mapa!!.x.toInt()).append(",").append(mapa.y.toInt()).append(";")
                     packet.append("0;")
                     packet.append(casa.derechosGremio)

@@ -14,7 +14,7 @@ import estaticos.Mundo
 import estaticos.Mundo.eliminarPrisma
 import estaticos.Mundo.getArea
 import estaticos.Mundo.getExpAlineacion
-import estaticos.Mundo.getMapa
+import estaticos.Mundo.getMap
 import estaticos.Mundo.getMobModelo
 import estaticos.Mundo.getSubArea
 import sprites.PreLuchador
@@ -301,7 +301,7 @@ class Prisma(
 //
     init {
         _nivel = nivel.toInt()
-        mapa = getMapa(mapaID)
+        mapa = getMap(mapaID)
         celda = mapa!!.getCelda(celdaID)
         _dir = 1
         _idMob = if (_alineacion == Constantes.ALINEACION_BONTARIANO) {

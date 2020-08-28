@@ -453,7 +453,7 @@ object Mundo {
         println("===========> Database Dynamic <===========")
 //        print("Cargando los objetos: ")
 //        CARGAR_OBJETOS()
-        println(_OBJETOS.size.toString() + " objetos cargados")
+//        println(_OBJETOS.size.toString() + " objetos cargados")
         print("Cargando los dragopavos: ")
         CARGAR_MONTURAS()
         println(_MONTURAS.size.toString() + " dragopavos cargados")
@@ -2006,7 +2006,7 @@ object Mundo {
 
     @Throws(java.lang.Exception::class)
     fun getProcessCpuLoad(): Double {
-        return PerformanceMonitor().cpuUsage
+        return PerformanceMonitor.cpuUsage
         // returns a percentage value with 1 decimal point precision
     }
 
@@ -2178,7 +2178,7 @@ object Mundo {
     }
 
     @JvmStatic
-    fun getMapa(id: Short): Mapa? {
+    fun getMap(id: Short): Mapa? {
         if (id <= 0) return null
         if (MAPAS[id] == null) {
             GestorSQL.CARGAR_MAPAS_IDS("$id")
@@ -2186,7 +2186,7 @@ object Mundo {
         return MAPAS[id]
     }
 
-    fun removeMap() {
+    fun releaseMemory() {
         salvarMapasEstrellas()
         MAPAS = MAPAS.filter { it.value?.contieneMobPiedra() == true || it.value?.containsmobfixwithtime == true || it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.recaudador != null || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
         PERSONAJES.values.asSequence().filter { !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) && !MAPAS.contains(it.mapa.id) }.forEach {
@@ -2197,7 +2197,7 @@ object Mundo {
         }
     }
 
-    fun addMapa(mapa: Mapa) {
+    fun addMap(mapa: Mapa) {
         if (!MAPAS.containsKey(mapa.id)) {
             MAPAS[mapa.id] = mapa
         }
@@ -2746,7 +2746,7 @@ object Mundo {
     }
 
     fun getCeldaCercadoPorMapaID(mapaID: Short): Short {
-        val cercado = getMapa(mapaID)!!.cercado
+        val cercado = getMap(mapaID)!!.cercado
         return if (cercado != null && cercado.celdaID > 0) {
             cercado.celdaID
         } else -1
@@ -3020,10 +3020,11 @@ object Mundo {
     }
 
     @JvmStatic
-    fun getObjeto(id: Int): Objeto? {
+    fun getObjeto(id: Int, Objevivo: Boolean = false): Objeto? {
         if (_OBJETOS[id] == null) {
             GestorSQL.CARGAR_OBJETOS_BY_ID(id)
-            /* Try to charge the specific item */
+            /* Try to charge the specific item when not are loaded at all the server
+            * this modification is because when u have a large server, mariadb server collapses */
         }
         return _OBJETOS[id]
     }
@@ -3516,7 +3517,7 @@ object Mundo {
             val mapas = ArrayList<Mapa?>()
             for (s in AtlantaMain.MAPAS_KOLISEO.split(",".toRegex()).toTypedArray()) {
                 try {
-                    mapas.add(getMapa(s.toShort()))
+                    mapas.add(getMap(s.toShort()))
                 } catch (ignored: Exception) {
                 }
             }

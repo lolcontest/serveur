@@ -178,7 +178,7 @@ object Comandos {
             }
             "CONGELAR_MAPA", "FREEZE_MAP" -> {
                 if (infos.size > 1) {
-                    mapa = Mundo.getMapa(java.lang.Short.parseShort(infos[1]))
+                    mapa = Mundo.getMap(java.lang.Short.parseShort(infos[1]))
                 }
                 for (objetivos in mapa!!.arrayPersonajes!!) {
                     if (objetivos.cuenta.admin > 0) {
@@ -188,19 +188,19 @@ object Comandos {
                 }
                 if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "Tous les joueurs presents sur la MAP " + mapa.id
-                                + " ont ete freeze."
+                            _perso, "Tous les joueurs presents sur la MAP " + mapa.id
+                            + " ont ete freeze."
                     )
                 } else {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "Han sido inmovilizados todos los personajes del mapa " + mapa
+                            _perso, "Han sido inmovilizados todos los personajes del mapa " + mapa
                             .id
                     )
                 }
             }
             "DESCONGELAR_MAPA", "UN_FREEZE_MAP", "UNFREEZE_MAP" -> {
                 if (infos.size > 1)
-                    mapa = Mundo.getMapa(java.lang.Short.parseShort(infos[1]))
+                    mapa = Mundo.getMap(java.lang.Short.parseShort(infos[1]))
                 for (objetivos in mapa!!.arrayPersonajes!!) {
                     objetivos.setInmovil(false)
                 }
@@ -208,14 +208,14 @@ object Comandos {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Les joueurs de cette map ont ete defreeze.")
                 } else {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "Han sido movilizados todos los personajes del mapa " + mapa
+                            _perso, "Han sido movilizados todos los personajes del mapa " + mapa
                             .id
                     )
                 }
             }
             "MUTEAR_MAPA", "MUTE_MAPA", "MUTE_MAP" -> {
                 if (infos.size > 1)
-                    mapa = Mundo.getMapa(java.lang.Short.parseShort(infos[1]))
+                    mapa = Mundo.getMap(java.lang.Short.parseShort(infos[1]))
                 mapa!!.muteado = true
                 if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Map mutee.")
@@ -225,7 +225,7 @@ object Comandos {
             }
             "DES_MUTEAR_MAPA", "DESMUTEAR_MAPA", "DES_MUTE_MAP", "UN_MUTE_MAP", "DESMUTE_MAP" -> {
                 try {
-                    mapa = Mundo.getMapa(java.lang.Short.parseShort(infos[1]))
+                    mapa = Mundo.getMap(java.lang.Short.parseShort(infos[1]))
                 } catch (ignored: Exception) {
                 }
 
@@ -936,7 +936,7 @@ object Comandos {
                 } catch (ignored: Exception) {
                 }
 
-                mapa = Mundo.getMapa(mapaID)
+                mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "MAPID INVALIDE!")
@@ -1004,8 +1004,8 @@ object Comandos {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Le joueur à teleporter ne peut fuir d'un combat PVP")
                     } else {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(
-                            _perso,
-                            "El personaje a teleportar no puede huir de una pelea PVP"
+                                _perso,
+                                "El personaje a teleportar no puede huir de una pelea PVP"
                         )
                     }
                     return
@@ -1013,13 +1013,13 @@ object Comandos {
                 objetivo.teleport(mapaID, celdaID)
                 if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "Le joueur " + objetivo.nombre
-                                + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
+                            _perso, "Le joueur " + objetivo.nombre
+                            + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
                     )
                 } else {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "El jugador " + objetivo.nombre
-                                + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
+                            _perso, "El jugador " + objetivo.nombre
+                            + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
                     )
                 }
             }
@@ -1034,7 +1034,7 @@ object Comandos {
                 } catch (ignored: Exception) {
                 }
 
-                mapa = Mundo.getMapa(mapaID)
+                mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "MAPID INVALIDE!")
@@ -1076,13 +1076,13 @@ object Comandos {
                 objetivo.teleportSinTodos(mapaID, celdaID)
                 if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "Le joueur " + objetivo.nombre
-                                + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
+                            _perso, "Le joueur " + objetivo.nombre
+                            + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
                     )
                 } else {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "El jugador " + objetivo.nombre
-                                + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
+                            _perso, "El jugador " + objetivo.nombre
+                            + " ha sido teletransportado a mapaID: " + mapaID + ", celdaID: " + celdaID
                     )
                 }
             }
@@ -2153,8 +2153,8 @@ object Comandos {
 
                 try {
                     mapaID = java.lang.Short.parseShort(infos[2])
-                    if (Mundo.getMapa(mapaID) != null) {
-                        mapa = Mundo.getMapa(mapaID)
+                    if (Mundo.getMap(mapaID) != null) {
+                        mapa = Mundo.getMap(mapaID)
                     }
                 } catch (ignored: Exception) {
                 }
@@ -2162,8 +2162,8 @@ object Comandos {
                 mapa!!.setMaxPeleas(maxPeleas)
                 GestorSQL.UPDATE_MAPA_MAX_PELEAS(mapa.id, maxPeleas)
                 GestorSalida.ENVIAR_BAT2_CONSOLA(
-                    _perso, "El mapa " + mapa.id + " cambio el valor de maximo de pleas a "
-                            + maxPeleas
+                        _perso, "El mapa " + mapa.id + " cambio el valor de maximo de pleas a "
+                        + maxPeleas
                 )
             } catch (e: Exception) {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Ocurrio una excepcion")
@@ -3310,7 +3310,7 @@ object Comandos {
                     return
                 }
 
-                mapa = Mundo.getMapa(mapaID)
+                mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Mapa no existe")
                     return
@@ -3330,12 +3330,12 @@ object Comandos {
                 }
 
                 val key = GestorSQL.GET_NUEVA_FECHA_KEY(mapaID).split(Pattern.quote("|").toRegex())
-                    .dropLastWhile { it.isEmpty() }
-                    .toTypedArray()
+                        .dropLastWhile { it.isEmpty() }
+                        .toTypedArray()
                 // if (key.length < 20) {
                 // GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "tiene una key muy corta");
                 // }
-                mapa = Mundo.getMapa(mapaID)
+                mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Mapa no existe")
                     return
@@ -4345,15 +4345,15 @@ object Comandos {
 
                 try {
                     if (infos.size > 6) {
-                        mapa = Mundo.getMapa(java.lang.Short.parseShort(infos[6]))
+                        mapa = Mundo.getMap(java.lang.Short.parseShort(infos[6]))
                     }
                 } catch (ignored: Exception) {
                 }
 
                 mapa!!.addAccionFinPelea(tipo, Accion(accionID, args, ""))
                 strB.append("Se agrego la accion fin pelea, mapaID: ").append(mapa.id.toInt()).append(", tipoPelea: ")
-                    .append(tipo).append(", accionID: ").append(accionID).append(", args: ").append(args)
-                    .append(" condicion: ").append(condicion)
+                        .append(tipo).append(", accionID: ").append(accionID).append(", args: ").append(args)
+                        .append(" condicion: ").append(condicion)
                 if (GestorSQL.INSERT_ACCION_FIN_PELEA(mapa.id.toInt(), tipo, accionID, args, condicion, descripcion)) {
                     strB.append(" a la BDD")
                 }
@@ -4703,17 +4703,17 @@ object Comandos {
                 try {
                     if (infos.size > 3) {
                         mapa =
-                            Mundo.getMapa(
-                                java.lang.Short.parseShort(
-                                    infos[3].split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
+                                Mundo.getMap(
+                                        java.lang.Short.parseShort(
+                                                infos[3].split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
+                                        )
                                 )
-                            )
                         celda =
-                            mapa!!.getCelda(
-                                java.lang.Short.parseShort(
-                                    infos[3].split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
+                                mapa!!.getCelda(
+                                        java.lang.Short.parseShort(
+                                                infos[3].split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
+                                        )
                                 )
-                            )
                     }
                 } catch (e: Exception) {
                     mapa = _perso.mapa
@@ -4734,9 +4734,9 @@ object Comandos {
                     }
                     celda.addAccion(accionID, args, condicion)
                     GestorSalida.ENVIAR_BAT2_CONSOLA(
-                        _perso, "El mapa: " + mapa.id + ", celda: " + celda.id
-                                + ", le ha sido agregado la accion: " + accionID + ", args: " + args + ", y condicion (4to arg): "
-                                + condicion
+                            _perso, "El mapa: " + mapa.id + ", celda: " + celda.id
+                            + ", le ha sido agregado la accion: " + accionID + ", args: " + args + ", y condicion (4to arg): "
+                            + condicion
                     )
                 } else {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "El trigger no se puede agregar")
@@ -7099,12 +7099,12 @@ object Comandos {
                 val x = Integer.parseInt(infos[4])
                 val y = Integer.parseInt(infos[5])
                 val subArea = Integer.parseInt(infos[6])
-                val mapa = Mundo.getMapa(idClonar.toShort())
+                val mapa = Mundo.getMap(idClonar.toShort())
                 if (mapa == null) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Mapa a clonar no existe")
                     return
                 }
-                if (Mundo.getMapa(nuevaID.toShort()) != null) {
+                if (Mundo.getMap(nuevaID.toShort()) != null) {
                     GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Mapa a crear ya existe")
                     return
                 }
@@ -7162,7 +7162,7 @@ object Comandos {
                 } catch (ignored: Exception) {
                 }
 
-                val mapa = Mundo.getMapa(mapaID)
+                val mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "MAPID INVALIDE!")
@@ -9078,7 +9078,7 @@ object Comandos {
                 } catch (ignored: Exception) {
                 }
 
-                val mapa = Mundo.getMapa(mapaID)
+                val mapa = Mundo.getMap(mapaID)
                 if (mapa == null) {
                     if (_cuenta.idioma.equals("fr", ignoreCase = true)) {
                         GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "MAPID INVALIDE!")

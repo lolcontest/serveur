@@ -118,16 +118,19 @@ class Consola : Thread() {
                         println("Anuncio para todos los jugadores: $valor")
                     }
                     "SALIR", "EXIT", "RESET" -> {
-                        Mundo.finalizarPeleas()
+                        try {
+                            Mundo.finalizarPeleas()
+                        } catch (e: Exception) {
+                        }
                         try {
                             GestorSalida.ENVIAR_cs_CHAT_MENSAJE_A_TODOS(
-                                "SE HAN GANADO TODAS LAS PELEAS PVM. EL SERVER SE REINICIARÁ EN 5 SEGUNDOS",
-                                Constantes.COLOR_ROJO
+                                    "SE HAN GANADO TODAS LAS PELEAS PVM. EL SERVER SE REINICIARÁ EN 5 SEGUNDOS",
+                                    Constantes.COLOR_ROJO
                             )
                             for (i in 5 downTo 1) {
                                 GestorSalida.ENVIAR_cs_CHAT_MENSAJE_A_TODOS(
-                                    "EL SERVER SE REINICIARA EN $i",
-                                    Constantes.COLOR_ROJO
+                                        "EL SERVER SE REINICIARA EN $i",
+                                        Constantes.COLOR_ROJO
                                 )
                                 try {
                                     sleep(1000)

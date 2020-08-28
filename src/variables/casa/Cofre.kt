@@ -19,7 +19,7 @@ import estaticos.Mundo.eliminarObjeto
 import estaticos.Mundo.getCasa
 import estaticos.Mundo.getCasaDentroPorMapa
 import estaticos.Mundo.getCofrePorUbicacion
-import estaticos.Mundo.getMapa
+import estaticos.Mundo.getMap
 import estaticos.Mundo.getObjeto
 import estaticos.database.GestorSQL.GET_COFRE_POR_MAPA_CELDA
 import estaticos.database.GestorSQL.INSERT_COFRE_MODELO
@@ -327,7 +327,7 @@ class Cofre(val iD: Int, val casaID: Int, val mapaID: Short, val celdaID: Short,
                 if (c != null) {
                     return null
                 }
-                if (getMapa(mapaID)!!.getCelda(celdaID)!!.objetoInteractivo == null) {
+                if (getMap(mapaID)!!.getCelda(celdaID)!!.objetoInteractivo == null) {
                     return null
                 }
                 var id = GET_COFRE_POR_MAPA_CELDA(mapaID, celdaID)

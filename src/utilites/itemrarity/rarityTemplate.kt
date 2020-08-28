@@ -32,7 +32,7 @@ class rarityTemplate(val id: Int, val name: String, val color: Int, val dropProb
 
     private fun getcolorstat(): String {
         return if (color != -1) {
-            Integer.toHexString(Constantes.STAT_COLOR_NOMBRE_OBJETO) + "#$color#0#0"
+            Integer.toHexString(Constantes.STAT_COLOR_NOMBRE_OBJETO) + "#$color"
         } else ""
     }
 

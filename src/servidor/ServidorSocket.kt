@@ -183,6 +183,7 @@ import estaticos.GestorSalida.ENVIAR_Ñu_URL_LINK_VOTO
 import estaticos.GestorSalida.ENVIAR_Ñx_URL_LINK_BUG
 import estaticos.GestorSalida.ENVIAR_Ñz_URL_LINK_COMPRA
 import estaticos.GestorSalida.enviar
+import estaticos.database.GestorSQL
 import estaticos.database.GestorSQL.DELETE_REPORTE
 import estaticos.database.GestorSQL.ES_IP_BANEADA
 import estaticos.database.GestorSQL.GET_BANEADO
@@ -217,6 +218,7 @@ import org.slf4j.LoggerFactory
 import sprites.Preguntador
 import utilites.buscadores.Comparador
 import utilites.economia.Economia
+import utilites.itemrarity.rarityReroll
 import utilites.seguridad.IpsVerificator
 import utilites.seguridad.tokenGenerator
 import variables.casa.Casa
@@ -426,10 +428,10 @@ class ServidorSocket(val session: IoSession) {
                     REGISTROS[cuenta!!.nombre] = StringBuilder()
                 }
                 REGISTROS[cuenta!!.nombre]!!.append(System.currentTimeMillis()).append(" - ").append(
-                    Date(
-                        System
-                            .currentTimeMillis()
-                    )
+                        Date(
+                                System
+                                        .currentTimeMillis()
+                        )
                 ).append(" : \t").append(packet).append("\n")
             }
         } catch (ignored: Exception) {
@@ -440,6 +442,14 @@ class ServidorSocket(val session: IoSession) {
         _ultMillis++
         enviarPW("rpong$_ultMillis")
         _lastMillis = System.currentTimeMillis()
+    }
+
+    fun threadPackets(packet: String) {
+        if (packet[0] == 'A') {
+            analizar_Packets(packet)
+        } else {
+            thread(name = logger.name) { analizar_Packets(packet) }
+        }
     }
 
     fun analizar_Packets(packet: String) {
@@ -577,10 +587,10 @@ class ServidorSocket(val session: IoSession) {
             }
             'Ñ' -> try {
                 ENVIAR_ÑV_VOTO_RPG(
-                    this, Mundo.CAPTCHAS[getRandomInt(
+                        this, Mundo.CAPTCHAS[getRandomInt(
                         0, Mundo.CAPTCHAS.size
-                                - 1
-                    )]
+                        - 1
+                )]
                 )
             } catch (ignored: Exception) {
             }
@@ -697,16 +707,16 @@ class ServidorSocket(val session: IoSession) {
                 return false
             }
             if (packet.equals(
-                    "GT",
-                    ignoreCase = true
-                ) || packet == "BD" || packet == "qping" || packet == "ping" || packet == "EMR1"
+                            "GT",
+                            ignoreCase = true
+                    ) || packet == "BD" || packet == "qping" || packet == "ping" || packet == "EMR1"
             ) {
                 return false
             } else if (packet.length >= 2 && (packet.substring(0, 2).equals(
-                    "OU",
-                    ignoreCase = true
-                ) || (packet.substring(0, 2)
-                        == "EB") || packet.substring(0, 2) == "BA" || packet.substring(0, 2) == "GP")
+                            "OU",
+                            ignoreCase = true
+                    ) || (packet.substring(0, 2)
+                            == "EB") || packet.substring(0, 2) == "BA" || packet.substring(0, 2) == "GP")
             ) {
                 return false
             } else if (packet.length >= 3 && packet.substring(0, 3).equals("EMO", ignoreCase = true)) {
@@ -721,7 +731,7 @@ class ServidorSocket(val session: IoSession) {
                     _sigPacket = 0
                 }
                 if (_ultPackets[0] == _ultPackets[1] && System.currentTimeMillis()
-                    - _timePackets[_sigPacket.toInt()] < AtlantaMain.MILISEGUNDOS_ANTI_FLOOD
+                        - _timePackets[_sigPacket.toInt()] < AtlantaMain.MILISEGUNDOS_ANTI_FLOOD
                 ) {
                     if (_ultPackets[1] == _ultPackets[2]) {
                         if (_ultPackets[2] == _ultPackets[3]) {
@@ -731,8 +741,8 @@ class ServidorSocket(val session: IoSession) {
                                         if (_ultPackets[6] == _ultPackets[0]) {
                                             registrar("<===> EXPULSADOR POR ANTI-FLOOD PACKET $packet")
                                             ENVIAR_M0_MENSAJE_BASICOS_SVR_MUESTRA_DISCONNECT(
-                                                this, "45", "DISCONNECT FOR FLOOD",
-                                                ""
+                                                    this, "45", "DISCONNECT FOR FLOOD",
+                                                    ""
                                             )
                                             cerrarSocket(true, "antiFlood")
                                             return true
@@ -889,8 +899,8 @@ class ServidorSocket(val session: IoSession) {
             }
         } catch (e: Exception) {
             redactarLogServidorln(
-                "EXCEPTION Packet " + packet + ", analizar cuenta " + e.toString()
-                        + ", packet " + packet
+                    "EXCEPTION Packet " + packet + ", analizar cuenta " + e.toString()
+                            + ", packet " + packet
             )
             e.printStackTrace()
         }
@@ -916,8 +926,8 @@ class ServidorSocket(val session: IoSession) {
         try {
             for (i in 0..12) {
                 cuenta = ServidorServer.getEsperandoCuenta(packet.substring(2).toInt()) ?: if (Mundo.getCuenta(
-                        packet.substring(2).toInt()
-                    )?.ultimaIP == actualIP
+                                packet.substring(2).toInt()
+                        )?.ultimaIP == actualIP
                 ) Mundo.getCuenta(packet.substring(2).toInt()) else null ?: continue
                 try {
                     if (cuenta != null && cuenta?.socket != null && cuenta?.socket != this) {
@@ -939,8 +949,8 @@ class ServidorSocket(val session: IoSession) {
                         val cuentasPorIP = ServidorServer.getIPsClientes(actualIP)
                         if (cuenta!!.admin <= 0 && cuentasPorIP >= AtlantaMain.MAX_CUENTAS_POR_IP) {
                             ENVIAR_M0_MENSAJE_BASICOS_SVR_MUESTRA_DISCONNECT(
-                                this, "34", cuentasPorIP.toString() + ";"
-                                        + AtlantaMain.MAX_CUENTAS_POR_IP, ""
+                                    this, "34", cuentasPorIP.toString() + ";"
+                                    + AtlantaMain.MAX_CUENTAS_POR_IP, ""
                             )
                             cerrarSocket(false, "cuenta_Acceder_Server(0)")
                             return
@@ -1084,10 +1094,10 @@ class ServidorSocket(val session: IoSession) {
             cuenta!!.regalo = nuevo.toString()
             if (listo) {
                 Mundo.getPersonaje(idPerso)?.addObjIdentAInventario(
-                    Mundo.getObjetoModelo(idObjMod)?.crearObjeto(
-                        1,
-                        Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.MAXIMO
-                    )!!, false
+                        Mundo.getObjetoModelo(idObjMod)?.crearObjeto(
+                                1,
+                                Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.MAXIMO
+                        )!!, false
                 )
                 cuenta_Regalo()
                 ENVIAR_AG_SIGUIENTE_REGALO(this)
@@ -1138,8 +1148,8 @@ class ServidorSocket(val session: IoSession) {
             }
         } else {
             redactarLogServidorln(
-                "El personaje de ID $persoID es nulo, para la cuenta " + cuenta!!
-                    .id
+                    "El personaje de ID $persoID es nulo, para la cuenta " + cuenta!!
+                            .id
             )
             ENVIAR_ASE_SELECCION_PERSONAJE_FALLIDA(this)
         }
@@ -1156,9 +1166,9 @@ class ServidorSocket(val session: IoSession) {
             }
             if (perso != null) {
                 if (perso.nivel < 25 || perso.nivel >= 25 && respuesta.equals(
-                        cuenta!!.respuesta,
-                        ignoreCase = true
-                    )
+                                cuenta!!.respuesta,
+                                ignoreCase = true
+                        )
                 ) {
                     cuenta!!.eliminarPersonaje(perso.Id)
                     ENVIAR_ALK_LISTA_DE_PERSONAJES(this, cuenta)
@@ -1207,8 +1217,8 @@ class ServidorSocket(val session: IoSession) {
                 if (!RESTAR_OGRINAS(cuenta!!, ogrinas.toLong(), null)) {
                     ENVIAR_AAE_ERROR_CREAR_PJ(this, "Z")
                     ENVIAR_M145_MENSAJE_PANEL_INFORMACION(
-                        this, AtlantaMain.MENSAJE_ERROR_OGRINAS_CREAR_CLASE + " "
-                                + ogrinas
+                            this, AtlantaMain.MENSAJE_ERROR_OGRINAS_CREAR_CLASE + " "
+                            + ogrinas
                     )
                     return
                 }
@@ -1217,8 +1227,8 @@ class ServidorSocket(val session: IoSession) {
             if (perso != null) { // cambia la alineacion aletario
                 if (AtlantaMain.PARAM_DAR_ALINEACION_AUTOMATICA) {
                     perso.cambiarAlineacion(
-                        if (Random().nextBoolean()) Constantes.ALINEACION_BONTARIANO else Constantes.ALINEACION_BRAKMARIANO,
-                        true
+                            if (Random().nextBoolean()) Constantes.ALINEACION_BONTARIANO else Constantes.ALINEACION_BRAKMARIANO,
+                            true
                     )
                 }
                 ENVIAR_AAK_CREACION_PJ_OK(this)
@@ -1530,10 +1540,10 @@ class ServidorSocket(val session: IoSession) {
                     ENVIAR_brG_RULETA_GANADOR(this, index)
                     Thread.sleep(3000)
                     personaje!!.addObjIdentAInventario(
-                        objMod.crearObjeto(
-                            1, Constantes.OBJETO_POS_NO_EQUIPADO,
-                            CAPACIDAD_STATS.RANDOM
-                        ), false
+                            objMod.crearObjeto(
+                                    1, Constantes.OBJETO_POS_NO_EQUIPADO,
+                                    CAPACIDAD_STATS.RANDOM
+                            ), false
                     )
                     ENVIAR_Im_INFORMACION(personaje!!, "021;1~$premio")
                 }
@@ -1666,10 +1676,10 @@ class ServidorSocket(val session: IoSession) {
         try {
             val cal = Calendar.getInstance()
             ENVIAR_ÑX_PANEL_ALMANAX(
-                this,
-                cal[Calendar.YEAR].toString() + "|" + cal[Calendar.MONTH] + "|" + cal[Calendar.DAY_OF_MONTH] + "|" + almanax.ofrenda._primero + "," + almanax.ofrenda._segundo + "|" + almanax
-                    .tipo + "," + almanax.bonus + "|" + personaje!!.cantMisionseAlmanax() + ","
-                        + AtlantaMain.MAX_MISIONES_ALMANAX + "|" + if (personaje!!.realizoMisionDelDia()) 1 else 0
+                    this,
+                    cal[Calendar.YEAR].toString() + "|" + cal[Calendar.MONTH] + "|" + cal[Calendar.DAY_OF_MONTH] + "|" + almanax.ofrenda._primero + "," + almanax.ofrenda._segundo + "|" + almanax
+                            .tipo + "," + almanax.bonus + "|" + personaje!!.cantMisionseAlmanax() + ","
+                            + AtlantaMain.MAX_MISIONES_ALMANAX + "|" + if (personaje!!.realizoMisionDelDia()) 1 else 0
             )
         } catch (ignored: Exception) {
         }
@@ -1736,13 +1746,13 @@ class ServidorSocket(val session: IoSession) {
                 millonesPremio = false
             }
             ENVIAR_bT_PANEL_LOTERIA(
-                personaje!!,
-                ((if (precioL % 1F > 0F) precioL else precioL).toString() + "") + (if (millonesPrecio) "M" else "K") + ";" + ((if (premioL % 1 > 0) premioL else premioL).toString() + "") + if (millonesPremio) "M" else "K"
+                    personaje!!,
+                    ((if (precioL % 1F > 0F) precioL else precioL).toString() + "") + (if (millonesPrecio) "M" else "K") + ";" + ((if (premioL % 1 > 0) premioL else premioL).toString() + "") + if (millonesPremio) "M" else "K"
             )
         } else {
             ENVIAR_bT_PANEL_LOTERIA(
-                personaje!!,
-                AtlantaMain.PRECIO_LOTERIA.toString() + ";" + AtlantaMain.PREMIO_LOTERIA.toString()
+                    personaje!!,
+                    AtlantaMain.PRECIO_LOTERIA.toString() + ";" + AtlantaMain.PREMIO_LOTERIA.toString()
             )
         }
     }
@@ -1853,7 +1863,7 @@ class ServidorSocket(val session: IoSession) {
             cantidad = 1
         }
         var precio =
-            if (AtlantaMain.SISTEMA_ITEMS_TIPO_DE_PAGO == "KAMAS") objMod.precioPanelKamas else objMod.precioPanelOgrinas
+                if (AtlantaMain.SISTEMA_ITEMS_TIPO_DE_PAGO == "KAMAS") objMod.precioPanelKamas else objMod.precioPanelOgrinas
         if (valorValido(cantidad, precio)) {
             ENVIAR_BN_NADA(personaje, "INTENTO BUG MULTIPLICADOR")
             return
@@ -1903,9 +1913,9 @@ class ServidorSocket(val session: IoSession) {
         }
         if (AtlantaMain.DIAS_INTERCAMBIO_COMPRAR_SISTEMA_ITEMS > 0) {
             nuevo.addStatTexto(
-                Constantes.STAT_INTERCAMBIABLE_DESDE, stringFechaIntercambiable(
+                    Constantes.STAT_INTERCAMBIABLE_DESDE, stringFechaIntercambiable(
                     AtlantaMain.DIAS_INTERCAMBIO_COMPRAR_SISTEMA_ITEMS
-                )
+            )
             )
         }
         if (AtlantaMain.PARAM_OBJETOS_OGRINAS_LIGADO) {
@@ -1936,8 +1946,8 @@ class ServidorSocket(val session: IoSession) {
             str2.append(objNo)
         }
         ENVIAR_bI_SISTEMA_RECURSO(
-            personaje!!, AtlantaMain.PRECIO_SISTEMA_RECURSO.toString() + "|" + str.toString() + "|"
-                    + str2.toString() + "|" + if (AtlantaMain.PARAM_PRECIO_RECURSOS_EN_OGRINAS) 1 else 0
+                personaje!!, AtlantaMain.PRECIO_SISTEMA_RECURSO.toString() + "|" + str.toString() + "|"
+                + str2.toString() + "|" + if (AtlantaMain.PARAM_PRECIO_RECURSOS_EN_OGRINAS) 1 else 0
         )
     }
 
@@ -1962,7 +1972,7 @@ class ServidorSocket(val session: IoSession) {
             return
         }
         if (!AtlantaMain.TIPO_RECURSOS.contains(objMod.tipo) || AtlantaMain.OBJ_NO_PERMITIDOS.contains(idObjMod)
-            || objMod.ogrinas > 0
+                || objMod.ogrinas > 0
         ) {
             ENVIAR_Im_INFORMACION(personaje!!, "1ERROR_BUY_RECURSE")
             return
@@ -2002,10 +2012,10 @@ class ServidorSocket(val session: IoSession) {
             }
         }
         personaje!!.addObjIdentAInventario(
-            objMod.crearObjeto(
-                cantidad, Constantes.OBJETO_POS_NO_EQUIPADO,
-                CAPACIDAD_STATS.RANDOM
-            ), false
+                objMod.crearObjeto(
+                        cantidad, Constantes.OBJETO_POS_NO_EQUIPADO,
+                        CAPACIDAD_STATS.RANDOM
+                ), false
         )
         ENVIAR_Ow_PODS_DEL_PJ(personaje!!)
         ENVIAR_Im_INFORMACION(personaje!!, "021;$cantidad~$idObjMod")
@@ -2072,11 +2082,11 @@ class ServidorSocket(val session: IoSession) {
             }
             error = 9
             val stats = StringBuilder(
-                Integer.toHexString(Constantes.STAT_COLOR_NOMBRE_OBJETO) + "#3#0#0"
-                        + "," + Integer.toHexString(Constantes.STAT_CAMBIAR_GFX_OBJETO) + "#0#0#" + Integer.toHexString(
-                    gfx
-                ) + ","
-                        + Integer.toHexString(Constantes.STAT_CAMBIAR_NOMBRE_OBJETO) + "#0#0#0#" + nombre
+                    Integer.toHexString(Constantes.STAT_COLOR_NOMBRE_OBJETO) + "#3#0#0"
+                            + "," + Integer.toHexString(Constantes.STAT_CAMBIAR_GFX_OBJETO) + "#0#0#" + Integer.toHexString(
+                            gfx
+                    ) + ","
+                            + Integer.toHexString(Constantes.STAT_CAMBIAR_NOMBRE_OBJETO) + "#0#0#0#" + nombre
             )
             val ids = ArrayList<Int>()
             for (e in aStats) {
@@ -2086,7 +2096,7 @@ class ServidorSocket(val session: IoSession) {
                         continue
                     }
                     val cantidad =
-                        max(1, min(e.split(",".toRegex()).toTypedArray()[1].toInt(), crea.getMaximoStat(statID)))
+                            max(1, min(e.split(",".toRegex()).toTypedArray()[1].toInt(), crea.getMaximoStat(statID)))
                     if (CreaTuItem.PRECIOS[statID] == null) {
                         continue
                     }
@@ -2095,7 +2105,7 @@ class ServidorSocket(val session: IoSession) {
                         stats.append(",")
                     }
                     stats.append(Integer.toHexString(statID)).append("#").append(Integer.toHexString(cantidad))
-                        .append("#0#0#0d0+").append(cantidad)
+                            .append("#0#0#0d0+").append(cantidad)
                     ids.add(statID)
                     if (ids.size >= 9) {
                         break
@@ -2115,14 +2125,14 @@ class ServidorSocket(val session: IoSession) {
                     stats.append(",")
                 }
                 stats.append(Integer.toHexString(Constantes.STAT_FACBRICADO_POR)).append("#0#0#0#")
-                    .append(personaje!!.nombre)
+                        .append(personaje!!.nombre)
             }
             error = 12
             if (RESTAR_OGRINAS(cuenta!!, ogrinas.toLong(), personaje)) {
                 error = 13
                 val nuevo = Mundo.getObjetoModelo(idModelo)?.crearObjeto(
-                    1, Constantes.OBJETO_POS_NO_EQUIPADO,
-                    CAPACIDAD_STATS.MAXIMO
+                        1, Constantes.OBJETO_POS_NO_EQUIPADO,
+                        CAPACIDAD_STATS.MAXIMO
                 )
                 error = 14
                 if (AtlantaMain.PARAM_OBJETOS_OGRINAS_LIGADO) {
@@ -2146,9 +2156,9 @@ class ServidorSocket(val session: IoSession) {
         try {
             personaje!!.setMedioPagoServicio(0.toByte())
             ENVIAR_bOC_ABRIR_PANEL_SERVICIOS(
-                personaje!!,
-                GET_CREDITOS_CUENTA(cuenta!!.id),
-                GET_OGRINAS_CUENTA(cuenta!!.id)
+                    personaje!!,
+                    GET_CREDITOS_CUENTA(cuenta!!.id),
+                    GET_OGRINAS_CUENTA(cuenta!!.id)
             )
         } catch (ignored: Exception) {
         }
@@ -2291,15 +2301,15 @@ class ServidorSocket(val session: IoSession) {
         val bonusRecolecta = personaje?.let { Mundo.getBonusAlinRecolecta(it) }
         val bonusDrop = personaje?.let { Mundo.getBonusAlinDrop(it) }
         ENVIAR_CB_BONUS_CONQUISTA(
-            personaje!!, balanceMundo.toString() + "," + balanceMundo + "," + balanceMundo + ";"
-                    + bonusExp + "," + bonusRecolecta + "," + bonusDrop
+                personaje!!, balanceMundo.toString() + "," + balanceMundo + "," + balanceMundo + ";"
+                + bonusExp + "," + bonusRecolecta + "," + bonusDrop
         )
     }
 
     private fun conquista_Defensa(packet: String) {
         try {
             if (personaje!!.alineacion != Constantes.ALINEACION_BONTARIANO && personaje!!
-                    .alineacion != Constantes.ALINEACION_BRAKMARIANO
+                            .alineacion != Constantes.ALINEACION_BRAKMARIANO
             ) {
                 ENVIAR_BN_NADA(personaje)
                 return
@@ -2311,8 +2321,8 @@ class ServidorSocket(val session: IoSession) {
                         prisma.actualizarAtacantesDefensores()
                     }
                     ENVIAR_CIJ_INFO_UNIRSE_PRISMA(
-                        personaje!!,
-                        if (prisma == null) "-3" else prisma.analizarPrismas(personaje!!.alineacion)
+                            personaje!!,
+                            if (prisma == null) "-3" else prisma.analizarPrismas(personaje!!.alineacion)
                     )
                 }
                 'V' -> ENVIAR_CIV_CERRAR_INFO_CONQUISTA(personaje!!)
@@ -2327,8 +2337,8 @@ class ServidorSocket(val session: IoSession) {
     private fun conquista_Geoposicion(packet: String) {
         when (packet[2]) {
             'J' -> ENVIAR_CW_INFO_MUNDO_CONQUISTA(
-                personaje!!,
-                Mundo.prismasGeoposicion(personaje!!.alineacion.toInt())
+                    personaje!!,
+                    Mundo.prismasGeoposicion(personaje!!.alineacion.toInt())
             )
             'V' -> ENVIAR_CIV_CERRAR_INFO_CONQUISTA(personaje!!)
             else -> {
@@ -2345,7 +2355,7 @@ class ServidorSocket(val session: IoSession) {
         if (packet[2] == 'J') {
             val prisma = personaje!!.mapa.subArea!!.prisma
             if (prisma == null || prisma.pelea == null || personaje!!.pelea != null || prisma.Alineacion != personaje!!
-                    .alineacion
+                            .alineacion
             ) {
                 return
             }
@@ -2443,8 +2453,8 @@ class ServidorSocket(val session: IoSession) {
         }
         if (personaje!!.tiempoPenalizacionKoliseo > System.currentTimeMillis()) {
             ENVIAR_Im_INFORMACION(
-                personaje!!, "1PENALIZACION_KOLISEO;" + (personaje!!.tiempoPenalizacionKoliseo
-                        - System.currentTimeMillis()) / 60000
+                    personaje!!, "1PENALIZACION_KOLISEO;" + (personaje!!.tiempoPenalizacionKoliseo
+                    - System.currentTimeMillis()) / 60000
             )
             return
         }
@@ -2508,14 +2518,14 @@ class ServidorSocket(val session: IoSession) {
             return
         }
         if (personaje!!.grupoKoliseo != null && personaje!!.grupoKoliseo
-                .cantPjs >= AtlantaMain.CANTIDAD_MIEMBROS_EQUIPO_KOLISEO
+                        .cantPjs >= AtlantaMain.CANTIDAD_MIEMBROS_EQUIPO_KOLISEO
         ) {
             ENVIAR_kIE_ERROR_INVITACION_KOLISEO(personaje!!, "f")
             return
         }
         if (!AtlantaMain.PARAM_PERMITIR_MISMAS_CLASES_EN_KOLISEO && invitandoA.getClaseID(false) == personaje!!.getClaseID(
-                false
-            )
+                        false
+                )
         ) {
             ENVIAR_Im_INFORMACION(personaje!!, "1KOLISEO_MISMAS_CLASES")
             return
@@ -3039,9 +3049,9 @@ class ServidorSocket(val session: IoSession) {
         }
         val mapa = personaje!!.mapa
         if (mapa.mapaNoRecaudador() || mapa.esArena() || mapa.trabajos!!.isNotEmpty() || Mundo.getCasaDentroPorMapa(
-                mapa
-                    .id
-            ) != null || mapa.subArea!!.area.superArea!!.id == 3
+                        mapa
+                                .id
+                ) != null || mapa.subArea!!.area.superArea!!.id == 3
         ) {
             ENVIAR_Im_INFORMACION(personaje!!, "113")
             return
@@ -3059,9 +3069,9 @@ class ServidorSocket(val session: IoSession) {
             return
         }
         if (AtlantaMain.PARAM_LIMITAR_RECAUDADOR_GREMIO_POR_ZONA && !Mundo.puedePonerRecauEnZona(
-                mapa.subArea!!.id,
-                gremio.id
-            )
+                        mapa.subArea!!.id,
+                        gremio.id
+                )
         ) {
             ENVIAR_Im_INFORMACION(personaje!!, "1168;" + AtlantaMain.MAX_RECAUDADORES_POR_ZONA)
             return
@@ -3075,8 +3085,8 @@ class ServidorSocket(val session: IoSession) {
         val random1 = getRandomInt(1, 129).toString(36)
         val random2 = getRandomInt(1, 227).toString(36)
         val recau = Recaudador(
-            Mundo.sigIDRecaudador(), mapa.id, personaje!!.celda.id, 3.toByte(),
-            gremio.id, random1, random2, "", 0, 0, 0, System.currentTimeMillis(), personaje!!.Id
+                Mundo.sigIDRecaudador(), mapa.id, personaje!!.celda.id, 3.toByte(),
+                gremio.id, random1, random2, "", 0, 0, 0, System.currentTimeMillis(), personaje!!.Id
         )
         Mundo.addRecaudador(recau)
         gremio.addUltRecolectaMapa(mapa.id)
@@ -3098,7 +3108,7 @@ class ServidorSocket(val session: IoSession) {
             return
         }
         val mapaID = packet.toShort()
-        val cercado = Mundo.getMapa(mapaID)?.cercado
+        val cercado = Mundo.getMap(mapaID)?.cercado
         if (cercado!!.gremio!!.id != personaje!!.gremio.id) {
             ENVIAR_Im_INFORMACION(personaje!!, "1135")
             return
@@ -3305,7 +3315,7 @@ class ServidorSocket(val session: IoSession) {
         invitandoA.setInvitador(personaje, "gremio")
         ENVIAR_gJ_GREMIO_UNIR(personaje!!, "R" + invitandoA.nombre)
         ENVIAR_gJ_GREMIO_UNIR(
-            invitandoA, "r" + personaje!!.Id + "|" + personaje!!.nombre + "|" + personaje!!
+                invitandoA, "r" + personaje!!.Id + "|" + personaje!!.nombre + "|" + personaje!!
                 .gremio.nombre
         )
     }
@@ -3601,9 +3611,9 @@ class ServidorSocket(val session: IoSession) {
 // return;
 // }
         if (Mundo.getCantCercadosGremio(personaje!!.gremio.id) >= ceil(
-                (personaje!!.gremio.nivel
-                        / 10f).toDouble()
-            ).toInt().toByte()
+                        (personaje!!.gremio.nivel
+                                / 10f).toDouble()
+                ).toInt().toByte()
         ) {
             ENVIAR_Im_INFORMACION(personaje!!, "1103")
             return
@@ -3614,13 +3624,13 @@ class ServidorSocket(val session: IoSession) {
             val tempPerso = vendedor.cuenta.tempPersonaje
             if (tempPerso != null) {
                 ENVIAR_M1_MENSAJE_SERVER_SVR_MUESTRA_INSTANTANEO(
-                    tempPerso, 17, cercado.precio.toString() + ";" + personaje!!
+                        tempPerso, 17, cercado.precio.toString() + ";" + personaje!!
                         .gremio.nombre, ""
                 )
             } else {
                 vendedor.cuenta.addMensaje(
-                    "M117|" + cercado.precio + ";" + personaje!!.gremio.nombre + "|",
-                    true
+                        "M117|" + cercado.precio + ";" + personaje!!.gremio.nombre + "|",
+                        true
                 )
             }
         }
@@ -3916,7 +3926,7 @@ class ServidorSocket(val session: IoSession) {
                 personaje!!.grupoParty.rastrear = persoSeguir
                 for (integrante in personaje!!.grupoParty.miembros) {
                     ENVIAR_IC_PERSONAJE_BANDERA_COMPAS(
-                        integrante, persoSeguir.mapa.x.toString() + "|" + persoSeguir
+                            integrante, persoSeguir.mapa.x.toString() + "|" + persoSeguir
                             .mapa.y
                     )
                     ENVIAR_PF_SEGUIR_PERSONAJE(integrante, "+" + persoSeguir.Id)
@@ -3950,7 +3960,7 @@ class ServidorSocket(val session: IoSession) {
         when (packet[2]) {
             '+' -> {
                 ENVIAR_IC_PERSONAJE_BANDERA_COMPAS(
-                    personaje!!, persoSeguir.mapa.x.toString() + "|" + persoSeguir
+                        personaje!!, persoSeguir.mapa.x.toString() + "|" + persoSeguir
                         .mapa.y
                 )
                 ENVIAR_PF_SEGUIR_PERSONAJE(personaje!!, "+" + persoSeguir.Id)
@@ -3972,7 +3982,7 @@ class ServidorSocket(val session: IoSession) {
                 str.append("|")
             }
             str.append(miembro.mapa.x.toInt()).append(";").append(miembro.mapa.y.toInt()).append(";")
-                .append(miembro.mapa.id.toInt()).append(";2;").append(miembro.Id).append(";").append(miembro.nombre)
+                    .append(miembro.mapa.id.toInt()).append(";2;").append(miembro.Id).append(";").append(miembro.nombre)
         }
         ENVIAR_IH_COORDENADAS_UBICACION(personaje!!, str.toString())
     }
@@ -3984,7 +3994,7 @@ class ServidorSocket(val session: IoSession) {
                 str.append("|")
             }
             str.append(miembro.mapa.x.toInt()).append(";").append(miembro.mapa.y.toInt()).append(";")
-                .append(miembro.mapa.id.toInt()).append(";2;").append(miembro.Id).append(";").append(miembro.nombre)
+                    .append(miembro.mapa.id.toInt()).append(";2;").append(miembro.Id).append(";").append(miembro.nombre)
         }
         ENVIAR_IH_COORDENADAS_UBICACION(personaje!!, str.toString())
     }
@@ -4176,12 +4186,12 @@ class ServidorSocket(val session: IoSession) {
                     }
                     val porcentajeDevolucion = (AtlantaMain.PORCENTAJE_DEVOLVER_ITEMS / 100.0)
                     val listaObjetosDevueltosTotales =
-                        ArrayList<Mundo.Duo<Int, Int>>()
+                            ArrayList<Mundo.Duo<Int, Int>>()
                     for (i in 1..cant) {
                         var cantIngredientes = 0.0
                         var devuelto = 0
                         val listaObjetosDevueltos =
-                            ArrayList<Mundo.Duo<Int, Int>>() // para comparar con los ingredientes
+                                ArrayList<Mundo.Duo<Int, Int>>() // para comparar con los ingredientes
                         for (obj in receta) { // Primera vuelta para contar el total de ingredientes
                             cantIngredientes += obj._segundo // cuenta
                             val obj2: Mundo.Duo<Int, Int> = Mundo.Duo(-1, 0)
@@ -4196,7 +4206,7 @@ class ServidorSocket(val session: IoSession) {
                             val pos = getRandomInt(0, receta.size - 1)
                             val objseleccionado = receta[pos] // Seleccionado
                             val objdevuelto =
-                                listaObjetosDevueltos[pos] // El mismo Pero para recuento de cuanto se ha devuelto
+                                    listaObjetosDevueltos[pos] // El mismo Pero para recuento de cuanto se ha devuelto
                             if (objdevuelto._segundo >= objseleccionado._segundo) continue // Si supero el limite de devolucion busca otro item
                             Mundo.getObjetoModelo(objseleccionado._primero) ?: continue // No existe, se prueba otro
                             val cantInt = getRandomInt(0, objseleccionado._segundo - objdevuelto._segundo)
@@ -4221,13 +4231,13 @@ class ServidorSocket(val session: IoSession) {
                     var i = 0
                     for (obj in listaObjetosDevueltosTotales) {
                         personaje?.enviarmensajeNegro(
-                            "Faltan: ${listaObjetosDevueltosTotales.size - i++} segundos " +
-                                    "para terminar"
+                                "Faltan: ${listaObjetosDevueltosTotales.size - i++} segundos " +
+                                        "para terminar"
                         )
                         val OM =
-                            Mundo.getObjetoModelo(obj._primero) ?: continue // No existe, se prueba otro
+                                Mundo.getObjetoModelo(obj._primero) ?: continue // No existe, se prueba otro
                         val obj =
-                            OM.crearObjeto(obj._segundo, Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM)
+                                OM.crearObjeto(obj._segundo, Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM)
                         perso.addObjIdentAInventario(obj, false)
                         ENVIAR_Ow_PODS_DEL_PJ(perso)
                         try {
@@ -4298,8 +4308,8 @@ class ServidorSocket(val session: IoSession) {
         celdaTirar!!.objetoTirado = objeto
         ENVIAR_Ow_PODS_DEL_PJ(personaje!!)
         ENVIAR_GDO_OBJETO_TIRAR_SUELO(
-            personaje!!.mapa, '+', celdaTirar.id, objeto.objModeloID,
-            false, ""
+                personaje!!.mapa, '+', celdaTirar.id, objeto.objModeloID,
+                false, ""
         )
         // GestorSalida.ENVIAR_As_STATS_DEL_PJ(_perso);
     }
@@ -4350,17 +4360,17 @@ class ServidorSocket(val session: IoSession) {
                 return
             }
             val comestible = objModelo.tipo.toInt() == Constantes.OBJETO_TIPO_BEBIDA || objModelo
-                .tipo.toInt() == Constantes.OBJETO_TIPO_POCION || objModelo.tipo.toInt() == Constantes.OBJETO_TIPO_PAN || objModelo
-                .tipo.toInt() == Constantes.OBJETO_TIPO_CARNE_COMESTIBLE || objModelo
-                .tipo.toInt() == Constantes.OBJETO_TIPO_PESCADO_COMESTIBLE
+                    .tipo.toInt() == Constantes.OBJETO_TIPO_POCION || objModelo.tipo.toInt() == Constantes.OBJETO_TIPO_PAN || objModelo
+                    .tipo.toInt() == Constantes.OBJETO_TIPO_CARNE_COMESTIBLE || objModelo
+                    .tipo.toInt() == Constantes.OBJETO_TIPO_PESCADO_COMESTIBLE
             if (!comestible && objModelo.nivel > personaje!!.nivel) {
                 ENVIAR_Im_INFORMACION(personaje!!, "13")
                 return
             }
             if (!(objModelo.id in 678..680) && !validaCondiciones(
-                    personaje, objModelo
-                        .condiciones
-                )
+                            personaje, objModelo
+                            .condiciones
+                    )
             ) {
                 ENVIAR_Im_INFORMACION(personaje!!, "119|43")
                 return
@@ -4394,7 +4404,7 @@ class ServidorSocket(val session: IoSession) {
         }
         val objMoverMod = objMover.objModelo ?: return r
         if (posAMover != Constantes.OBJETO_POS_NO_EQUIPADO && objMoverMod
-                .tipo.toInt() == Constantes.OBJETO_TIPO_OBJETO_DE_BUSQUEDA
+                        .tipo.toInt() == Constantes.OBJETO_TIPO_OBJETO_DE_BUSQUEDA
         ) {
             ENVIAR_BN_NADA(personaje, "OM4")
             return r
@@ -4449,7 +4459,7 @@ class ServidorSocket(val session: IoSession) {
             personaje!!.actualizarSetsRapidos(objMover.id, nuevoObj.id, objMover.posicion, posAMover)
         }
         if (objMoverMod.tipo.toInt() != Constantes.OBJETO_TIPO_ESPECIALES && objMoverMod
-                .tipo.toInt() != Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
+                        .tipo.toInt() != Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
         ) {
             if (posAMover == Constantes.OBJETO_POS_ESCUDO) { // pos a mover es escudo
                 objeto_Quitar_Arma_Dos_Manos(objMover)
@@ -4462,7 +4472,7 @@ class ServidorSocket(val session: IoSession) {
         val exObj = personaje!!.getObjPosicion(posAMover)
         if (exObj != null) { // el objeto q habia en la posicion a mover
             if (objMoverMod.tipo.toInt() == Constantes.OBJETO_TIPO_ESPECIALES || objMoverMod
-                    .tipo.toInt() == Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
+                            .tipo.toInt() == Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
             ) { // convertir perfecto, si es lupa o pocima de FM
                 objeto_Maguear_O_Lupear(exObj, posAMover, objMover)
                 return r
@@ -4473,7 +4483,7 @@ class ServidorSocket(val session: IoSession) {
                     ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO(personaje!!, identInvExObj)
                     personaje!!.borrarOEliminarConOR(exObj.id, true)
                     personaje!!.actualizarSetsRapidos(
-                        exObj.id, identInvExObj.id, exObj.posicion, identInvExObj
+                            exObj.id, identInvExObj.id, exObj.posicion, identInvExObj
                             .posicion
                     )
                 } else { // mueve el exobjeto al inventario
@@ -4496,7 +4506,7 @@ class ServidorSocket(val session: IoSession) {
             }
         } else { // si no habia un objeto donde queremos mover
             if (objMoverMod.tipo.toInt() == Constantes.OBJETO_TIPO_ESPECIALES || objMoverMod
-                    .tipo.toInt() == Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
+                            .tipo.toInt() == Constantes.OBJETO_TIPO_POCION_FORJAMAGIA
             ) { // no equipables
                 ENVIAR_BN_NADA(personaje, "OM8")
                 return r
@@ -4507,7 +4517,7 @@ class ServidorSocket(val session: IoSession) {
                 identicoInv.cantidad = identicoInv.cantidad + cantObjMover
                 ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO(personaje!!, identicoInv)
                 personaje!!.actualizarSetsRapidos(
-                    objMover.id, identicoInv.id, objMover.posicion, identicoInv
+                        objMover.id, identicoInv.id, objMover.posicion, identicoInv
                         .posicion
                 )
             } else {
@@ -4525,23 +4535,23 @@ class ServidorSocket(val session: IoSession) {
             ENVIAR_OS_BONUS_SET(personaje!!, objMoverMod.setID, -1)
         }
         if (objMover.stats.tieneStatTexto(Constantes.STAT_TITULO)
-            || objMover.stats.tieneStatID(Constantes.STAT_CAMBIA_APARIENCIA_2)
-            || objMover.stats.tieneStatID(Constantes.STAT_CAMBIA_APARIENCIA)
-            || objMover.stats.tieneStatID(Constantes.STAT_MAS_VELOCIDAD)
-            || objMover.stats.tieneStatID(Constantes.STAT_AURA)
-            || objMover.stats.tieneStatID(Constantes.STAT_PERSONAJE_SEGUIDOR)
-            || objMover.stats.tieneStatID(Constantes.STAT_MAS_PORC_PP)
+                || objMover.stats.tieneStatID(Constantes.STAT_CAMBIA_APARIENCIA_2)
+                || objMover.stats.tieneStatID(Constantes.STAT_CAMBIA_APARIENCIA)
+                || objMover.stats.tieneStatID(Constantes.STAT_MAS_VELOCIDAD)
+                || objMover.stats.tieneStatID(Constantes.STAT_AURA)
+                || objMover.stats.tieneStatID(Constantes.STAT_PERSONAJE_SEGUIDOR)
+                || objMover.stats.tieneStatID(Constantes.STAT_MAS_PORC_PP)
         ) {
             personaje!!.refrescarEnMapa()
         }
         if (Constantes.esPosicionEquipamiento(posAMover) || posAMover == Constantes.OBJETO_POS_NO_EQUIPADO && Constantes
-                .esPosicionEquipamiento(posAnt)
+                        .esPosicionEquipamiento(posAnt)
         ) {
             r = 1
         }
         // solo cambios visuales
         if (Constantes.esPosicionVisual(posAMover) || posAMover == Constantes.OBJETO_POS_NO_EQUIPADO && Constantes
-                .esPosicionVisual(posAnt)
+                        .esPosicionVisual(posAnt)
         ) {
             r = 2
         }
@@ -4553,7 +4563,7 @@ class ServidorSocket(val session: IoSession) {
         try {
             if (personaje!!.pelea != null) {
                 if (personaje!!.pelea.fase != Constantes.PELEA_FASE_POSICION || personaje!!.pelea
-                        .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
+                                .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
                 ) {
                     ENVIAR_BN_NADA(personaje, "OM1")
                     return
@@ -4590,19 +4600,19 @@ class ServidorSocket(val session: IoSession) {
         try {
             if (personaje!!.pelea != null) {
                 if (personaje!!.pelea.fase != Constantes.PELEA_FASE_POSICION || personaje!!.pelea
-                        .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
+                                .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
                 ) {
                     ENVIAR_BN_NADA(personaje, "EQUIPAR TODO EN PELEA")
                     return r
                 }
             }
             val orden = byteArrayOf(
-                Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
-                Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
-                Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
-                Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
-                Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
-                Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
+                    Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
+                    Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
+                    Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
+                    Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
+                    Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
+                    Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
             )
             for (i in orden) {
                 val idObjeto = set.objetos[i.toInt()]
@@ -4624,19 +4634,19 @@ class ServidorSocket(val session: IoSession) {
         try {
             if (personaje!!.pelea != null) {
                 if (personaje!!.pelea.fase != Constantes.PELEA_FASE_POSICION || personaje!!.pelea
-                        .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
+                                .tipoPelea == Constantes.PELEA_TIPO_KOLISEO.toInt()
                 ) {
                     ENVIAR_BN_NADA(personaje, "DESEQUIPAR TODO EN PELEA")
                     return r
                 }
             }
             val orden = byteArrayOf(
-                Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
-                Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
-                Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
-                Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
-                Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
-                Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
+                    Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
+                    Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
+                    Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
+                    Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
+                    Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
+                    Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
             )
             for (i in orden) {
                 val objeto = personaje!!.getObjPosicion(i) ?: continue
@@ -4654,12 +4664,12 @@ class ServidorSocket(val session: IoSession) {
         val str = StringBuilder()
         val cond = StringBuilder()
         val orden = byteArrayOf(
-            Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
-            Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
-            Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
-            Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
-            Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
-            Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
+                Constantes.OBJETO_POS_DOFUS1, Constantes.OBJETO_POS_DOFUS2, Constantes.OBJETO_POS_DOFUS3,
+                Constantes.OBJETO_POS_DOFUS4, Constantes.OBJETO_POS_DOFUS5, Constantes.OBJETO_POS_DOFUS6,
+                Constantes.OBJETO_POS_COMPAÑERO, Constantes.OBJETO_POS_MASCOTA, Constantes.OBJETO_POS_ANILLO1,
+                Constantes.OBJETO_POS_ANILLO_DERECHO, Constantes.OBJETO_POS_BOTAS, Constantes.OBJETO_POS_CINTURON,
+                Constantes.OBJETO_POS_AMULETO, Constantes.OBJETO_POS_SOMBRERO, Constantes.OBJETO_POS_CAPA,
+                Constantes.OBJETO_POS_ESCUDO, Constantes.OBJETO_POS_ARMA
         )
         for (i in orden) {
             val obj = personaje!!.getObjPosicion(i) ?: continue
@@ -4697,7 +4707,7 @@ class ServidorSocket(val session: IoSession) {
                 ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO(personaje!!, identInvExObj)
                 personaje!!.borrarOEliminarConOR(escudo.id, true)
                 personaje!!.actualizarSetsRapidos(
-                    escudo.id, identInvExObj.id, escudo.posicion, identInvExObj
+                        escudo.id, identInvExObj.id, escudo.posicion, identInvExObj
                         .posicion
                 )
             } else {
@@ -4719,7 +4729,7 @@ class ServidorSocket(val session: IoSession) {
                 ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO(personaje!!, identicoArma)
                 personaje!!.borrarOEliminarConOR(arma.id, true)
                 personaje!!.actualizarSetsRapidos(
-                    arma.id, identicoArma.id, arma.posicion, identicoArma
+                        arma.id, identicoArma.id, arma.posicion, identicoArma
                         .posicion
                 )
             } else {
@@ -4763,7 +4773,7 @@ class ServidorSocket(val session: IoSession) {
             when (tipoVivo) {
                 Constantes.OBJETO_TIPO_CAPA -> paso = tipoObj == tipoVivo || tipoObj == Constantes.OBJETO_TIPO_MOCHILA
                 Constantes.OBJETO_TIPO_SOMBRERO, Constantes.OBJETO_TIPO_AMULETO, Constantes.OBJETO_TIPO_BOTAS, Constantes.OBJETO_TIPO_CINTURON, Constantes.OBJETO_TIPO_ANILLO -> paso =
-                    tipoObj == tipoVivo
+                        tipoObj == tipoVivo
             }
             if (!paso) {
                 return r
@@ -4866,7 +4876,7 @@ class ServidorSocket(val session: IoSession) {
                 return
             }
             val objetoObj =
-                personaje!!.getObjeto(packet.substring(2).split(Pattern.quote("|").toRegex()).toTypedArray()[0].toInt())
+                    personaje!!.getObjeto(packet.substring(2).split(Pattern.quote("|").toRegex()).toTypedArray()[0].toInt())
             val idObjAlimento = packet.split(Pattern.quote("|").toRegex()).toTypedArray()[2].toInt()
             if (objetoObj.posicion == Constantes.OBJETO_POS_NO_EQUIPADO || !personaje!!.tieneObjetoID(idObjAlimento)) {
                 ENVIAR_BN_NADA(personaje)
@@ -4878,12 +4888,13 @@ class ServidorSocket(val session: IoSession) {
             } // comida
             val expActual = objevivo?.getParamStatTexto(Constantes.STAT_EXP_OBJEVIVO, 3)?.toInt(16)
             val expAdicional =
-                personaje!!.getObjeto(idObjAlimento).objModelo?.nivel?.div(5.toDouble())?.let { ceil(it).toInt() } ?: 0
+                    personaje!!.getObjeto(idObjAlimento).objModelo?.nivel?.div(5.toDouble())?.let { ceil(it).toInt() }
+                            ?: 0
             if (objevivo != null) {
                 if (expActual != null) {
                     objevivo.addStatTexto(
-                        Constantes.STAT_EXP_OBJEVIVO,
-                        "0#0#" + Integer.toHexString(expActual + expAdicional)
+                            Constantes.STAT_EXP_OBJEVIVO,
+                            "0#0#" + Integer.toHexString(expActual + expAdicional)
                     )
                 }
             }
@@ -4905,7 +4916,7 @@ class ServidorSocket(val session: IoSession) {
                 return
             }
             val objeto =
-                personaje!!.getObjeto(packet.substring(2).split(Pattern.quote("|").toRegex()).toTypedArray()[0].toInt())
+                    personaje!!.getObjeto(packet.substring(2).split(Pattern.quote("|").toRegex()).toTypedArray()[0].toInt())
             val objevivo = Mundo.getObjeto(objeto.objevivoID)
             if (objevivo != null) {
                 objevivo.addStatTexto(Constantes.STAT_REAL_GFX, "0#0#0")
@@ -4955,9 +4966,9 @@ class ServidorSocket(val session: IoSession) {
                 mascObj.addStatTexto(Constantes.STAT_PUNTOS_VIDA, "0#0#" + Integer.toHexString(pdv + 1))
             } else if (mascota != null) {
                 if (AtlantaMain.PARAM_ALIMENTAR_MASCOTAS && !mascota.esDevoradorAlmas() && mascota.getComida(
-                        comida
-                            .objModeloID
-                    ) != null
+                                comida
+                                        .objModeloID
+                        ) != null
                 ) {
                     if (mascObj.horaComer(false, Constantes.CORPULENCIA_NORMAL.toInt())) {
                         mascObj.comerComida(comida.objModeloID)
@@ -5017,8 +5028,8 @@ class ServidorSocket(val session: IoSession) {
             personaje!!.conversandoCon = id
             if (id > -100) {
                 val tt = intArrayOf(
-                    MisionObjetivoModelo.HABLAR_CON_NPC.toInt(), MisionObjetivoModelo.VOLVER_VER_NPC.toInt(),
-                    MisionObjetivoModelo.ENSEÑAR_OBJETO_NPC.toInt(), MisionObjetivoModelo.ENTREGAR_OBJETO_NPC.toInt()
+                        MisionObjetivoModelo.HABLAR_CON_NPC.toInt(), MisionObjetivoModelo.VOLVER_VER_NPC.toInt(),
+                        MisionObjetivoModelo.ENSEÑAR_OBJETO_NPC.toInt(), MisionObjetivoModelo.ENTREGAR_OBJETO_NPC.toInt()
                 )
                 personaje!!.verificarMisionesTipo(tt, null, false, 0)
             }
@@ -5138,9 +5149,9 @@ class ServidorSocket(val session: IoSession) {
             } catch (ignored: Exception) {
             }
             if ((personaje!!.tipoExchange == Constantes.INTERCAMBIO_TIPO_MERCADILLO_COMPRAR
-                        && tipo == Constantes.INTERCAMBIO_TIPO_MERCADILLO_VENDER) || (personaje!!
-                    .tipoExchange == Constantes.INTERCAMBIO_TIPO_MERCADILLO_VENDER
-                        && tipo == Constantes.INTERCAMBIO_TIPO_MERCADILLO_COMPRAR)
+                            && tipo == Constantes.INTERCAMBIO_TIPO_MERCADILLO_VENDER) || (personaje!!
+                            .tipoExchange == Constantes.INTERCAMBIO_TIPO_MERCADILLO_VENDER
+                            && tipo == Constantes.INTERCAMBIO_TIPO_MERCADILLO_COMPRAR)
             ) { // nada
             } else if (personaje!!.estaDisponible(true, true)) {
                 ENVIAR_BN_NADA(personaje, "INTERCAMBIO NO ESTA DISPONIBLE")
@@ -5197,8 +5208,8 @@ class ServidorSocket(val session: IoSession) {
                     personaje!!.exchanger = mercadillo
                     if (mercadillo != null) {
                         ENVIAR_ECK_PANEL_DE_INTERCAMBIOS(
-                            personaje!!, tipo.toInt(), "1,10,100;" + tipoobj
-                                    + ";" + mercadillo.porcentajeImpuesto + ";" + mercadillo.nivelMax + ";" + mercadillo
+                                personaje!!, tipo.toInt(), "1,10,100;" + tipoobj
+                                + ";" + mercadillo.porcentajeImpuesto + ";" + mercadillo.nivelMax + ";" + mercadillo
                                 .maxObjCuenta + ";-1;" + mercadillo.tiempoVenta
                         )
                     }
@@ -5246,12 +5257,12 @@ class ServidorSocket(val session: IoSession) {
                     invitandoA.setInvitador(personaje, "taller")
                     personaje!!.exchanger = trabajo
                     ENVIAR_ERK_CONSULTA_INTERCAMBIO(
-                        personaje!!, personaje!!.Id, invitandoA.Id,
-                        Constantes.INTERCAMBIO_TIPO_TALLER_ARTESANO.toInt()
+                            personaje!!, personaje!!.Id, invitandoA.Id,
+                            Constantes.INTERCAMBIO_TIPO_TALLER_ARTESANO.toInt()
                     )
                     ENVIAR_ERK_CONSULTA_INTERCAMBIO(
-                        invitandoA, personaje!!.Id, invitandoA.Id,
-                        Constantes.INTERCAMBIO_TIPO_TALLER_CLIENTE.toInt()
+                            invitandoA, personaje!!.Id, invitandoA.Id,
+                            Constantes.INTERCAMBIO_TIPO_TALLER_CLIENTE.toInt()
                     )
                 }
                 Constantes.INTERCAMBIO_TIPO_MONTURA -> {
@@ -5279,7 +5290,7 @@ class ServidorSocket(val session: IoSession) {
                     val objetidoID = split[1].toInt()
                     val invitandoA2 = Mundo.getPersonaje(objetidoID)
                     if (invitandoA2 == null || invitandoA2 === personaje || invitandoA2.mapa != personaje!!.mapa || !invitandoA2
-                            .enLinea()
+                                    .enLinea()
                     ) {
                         ENVIAR_ERE_ERROR_CONSULTA(personaje!!, 'E')
                         return
@@ -5295,12 +5306,12 @@ class ServidorSocket(val session: IoSession) {
                     personaje!!.setInvitandoA(invitandoA2, "intercambio")
                     invitandoA2.setInvitador(personaje, "intercambio")
                     ENVIAR_ERK_CONSULTA_INTERCAMBIO(
-                        personaje!!, personaje!!.Id, invitandoA2.Id,
-                        Constantes.INTERCAMBIO_TIPO_PERSONAJE.toInt()
+                            personaje!!, personaje!!.Id, invitandoA2.Id,
+                            Constantes.INTERCAMBIO_TIPO_PERSONAJE.toInt()
                     )
                     ENVIAR_ERK_CONSULTA_INTERCAMBIO(
-                        invitandoA2, personaje!!.Id, invitandoA2.Id,
-                        Constantes.INTERCAMBIO_TIPO_PERSONAJE.toInt()
+                            invitandoA2, personaje!!.Id, invitandoA2.Id,
+                            Constantes.INTERCAMBIO_TIPO_PERSONAJE.toInt()
                     )
                     if (personaje!!.cuenta.actualIP == invitandoA2.cuenta.actualIP) {
                         val invitador = personaje!!
@@ -5325,7 +5336,7 @@ class ServidorSocket(val session: IoSession) {
                         return
                     }
                     val trueque = Trueque(
-                        personaje!!, tipo == Constantes.INTERCAMBIO_TIPO_RESUCITAR_MASCOTA, npc2
+                            personaje!!, tipo == Constantes.INTERCAMBIO_TIPO_RESUCITAR_MASCOTA, npc2
                             .modeloID
                     )
                     personaje!!.exchanger = trueque
@@ -5351,7 +5362,7 @@ class ServidorSocket(val session: IoSession) {
                     val recaudaID = split[1].toInt()
                     val recaudador = Mundo.getRecaudador(recaudaID)
                     if (recaudador == null || recaudador.pelea != null || recaudador.enRecolecta || personaje!!
-                            .gremio == null
+                                    .gremio == null
                     ) {
                         ENVIAR_BN_NADA(personaje)
                         return
@@ -5400,11 +5411,11 @@ class ServidorSocket(val session: IoSession) {
                 personaje!!.tipoExchange = Constantes.INTERCAMBIO_TIPO_TALLER_CLIENTE
                 personaje!!.exchanger = trabajo
                 ENVIAR_ECK_PANEL_DE_INTERCAMBIOS(
-                    artesano, Constantes.INTERCAMBIO_TIPO_TALLER_ARTESANO.toInt(), trabajo
+                        artesano, Constantes.INTERCAMBIO_TIPO_TALLER_ARTESANO.toInt(), trabajo
                         .casillasMax.toString() + ";" + trabajo.trabajoID
                 )
                 ENVIAR_ECK_PANEL_DE_INTERCAMBIOS(
-                    personaje!!, Constantes.INTERCAMBIO_TIPO_TALLER_CLIENTE.toInt(), trabajo
+                        personaje!!, Constantes.INTERCAMBIO_TIPO_TALLER_CLIENTE.toInt(), trabajo
                         .casillasMax.toString() + ";" + trabajo.trabajoID
                 )
                 personaje!!.setInvitador(null, "")
@@ -5460,10 +5471,10 @@ class ServidorSocket(val session: IoSession) {
                 for (oficio in artesano.statsOficios.values) {
                     if (oficio.libroArtesano && oficio.oficio.id == idOficio) {
                         ENVIAR_EJ_DESCRIPCION_LIBRO_ARTESANO(
-                            personaje!!, "+" + oficio.oficio.id + ";"
-                                    + artesano.Id + ";" + artesano.nombre + ";" + oficio.nivel + ";" + mapa.id + ";"
-                                    + (if (mapa.trabajos!!.isEmpty()) 0 else 1) + ";" + artesano.getClaseID(true) + ";" + artesano.sexo
-                                    + ";" + artesano.color1 + "," + artesano.color2 + "," + artesano.color3 + ";" + artesano
+                                personaje!!, "+" + oficio.oficio.id + ";"
+                                + artesano.Id + ";" + artesano.nombre + ";" + oficio.nivel + ";" + mapa.id + ";"
+                                + (if (mapa.trabajos!!.isEmpty()) 0 else 1) + ";" + artesano.getClaseID(true) + ";" + artesano.sexo
+                                + ";" + artesano.color1 + "," + artesano.color2 + "," + artesano.color3 + ";" + artesano
                                 .stringAccesorios + ";" + oficio.opcionBin + "," + oficio.slotsPublico
                         )
                     }
@@ -5553,8 +5564,8 @@ class ServidorSocket(val session: IoSession) {
                 } catch (e: Exception) {
                     ENVIAR_BN_NADA(personaje, "INTERCAMBIO MOVER OBJETO KAMAS")
                     redactarLogServidorln(
-                        "EXCEPTION Packet $packet, intercambio_Mover_Objeto(kamas) " + e
-                            .toString()
+                            "EXCEPTION Packet $packet, intercambio_Mover_Objeto(kamas) " + e
+                                    .toString()
                     )
                     e.printStackTrace()
                 }
@@ -5644,10 +5655,10 @@ class ServidorSocket(val session: IoSession) {
                                                 continue@loop
                                             }
                                             personaje!!.exchanger.addObjetoExchanger(
-                                                objeto,
-                                                cantidad,
-                                                personaje!!,
-                                                precio
+                                                    objeto,
+                                                    cantidad,
+                                                    personaje!!,
+                                                    precio
                                             )
                                         }
                                     }
@@ -5702,8 +5713,8 @@ class ServidorSocket(val session: IoSession) {
                     } catch (e: Exception) {
                         ENVIAR_BN_NADA(personaje, "INTERCAMBIO MOVER OBJETO")
                         redactarLogServidorln(
-                            "EXCEPTION Packet $packet, intercambio_Mover_Objeto " + e
-                                .toString()
+                                "EXCEPTION Packet $packet, intercambio_Mover_Objeto " + e
+                                        .toString()
                         )
                         e.printStackTrace()
                     }
@@ -5736,8 +5747,8 @@ class ServidorSocket(val session: IoSession) {
         } catch (e: Exception) {
             ENVIAR_BN_NADA(personaje, "INTERCAMBIO MOVER OBJETO FINAL")
             redactarLogServidorln(
-                "EXCEPTION Packet $packet, intercambio_Mover_Objeto(final) " + e
-                    .toString()
+                    "EXCEPTION Packet $packet, intercambio_Mover_Objeto(final) " + e
+                            .toString()
             )
             e.printStackTrace()
         }
@@ -5906,9 +5917,9 @@ class ServidorSocket(val session: IoSession) {
                 'B' -> {
                     val info = packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
                     if (mercadillo.comprarObjeto(
-                            info[0].toInt(), info[1].toInt(), info[2].toLong(),
-                            personaje!!
-                        )
+                                    info[0].toInt(), info[1].toInt(), info[2].toLong(),
+                                    personaje!!
+                            )
                     ) {
                         ENVIAR_Ow_PODS_DEL_PJ(personaje!!)
                         ENVIAR_Im_INFORMACION(personaje!!, "068")
@@ -5920,28 +5931,28 @@ class ServidorSocket(val session: IoSession) {
                     val str = mercadillo.strListaLineasPorModelo(packet.substring(3).toInt())
                     if (str.isEmpty()) {
                         ENVIAR_EHM_MOVER_OBJMERCA_POR_MODELO(
-                            personaje!!,
-                            "-",
-                            packet.substring(3).toInt().toString() + ""
+                                personaje!!,
+                                "-",
+                                packet.substring(3).toInt().toString() + ""
                         )
                     } else {
                         ENVIAR_EHl_LISTA_LINEAS_OBJMERCA_POR_MODELO(personaje!!, str)
                     }
                 }
                 'P' -> Mundo
-                    .getObjetoModelo(packet.substring(3).toInt())?.precioPromedio?.let {
-                    ENVIAR_EHP_PRECIO_PROMEDIO_OBJ(
-                        personaje!!, packet.substring(3).toInt(), it
-                    )
-                }
+                        .getObjetoModelo(packet.substring(3).toInt())?.precioPromedio?.let {
+                            ENVIAR_EHP_PRECIO_PROMEDIO_OBJ(
+                                    personaje!!, packet.substring(3).toInt(), it
+                            )
+                        }
                 'S' -> {
                     val splt = packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
                     if (mercadillo.esTipoDeEsteMercadillo(splt[0].toInt())) {
                         if (mercadillo.hayModeloEnEsteMercadillo(splt[0].toInt(), splt[1].toInt())) {
                             ENVIAR_EHS_BUSCAR_OBJETO_MERCADILLO(personaje!!, "K")
                             ENVIAR_EHl_LISTA_LINEAS_OBJMERCA_POR_MODELO(
-                                personaje!!,
-                                mercadillo.strListaLineasPorModelo(splt[1].toInt())
+                                    personaje!!,
+                                    mercadillo.strListaLineasPorModelo(splt[1].toInt())
                             )
                         } else {
                             ENVIAR_EHS_BUSCAR_OBJETO_MERCADILLO(personaje!!, "E")
@@ -5951,7 +5962,7 @@ class ServidorSocket(val session: IoSession) {
                     }
                 }
                 'T' -> ENVIAR_EHL_LISTA_OBJMERCA_POR_TIPO(
-                    personaje!!, packet.substring(3).toInt(), mercadillo
+                        personaje!!, packet.substring(3).toInt(), mercadillo
                         .stringModelo(packet.substring(3).toInt())
                 )
                 else -> {
@@ -6114,8 +6125,8 @@ class ServidorSocket(val session: IoSession) {
                         return
                     }
                     val obj1 = Objects.requireNonNull(montura.objModCertificado)!!.crearObjeto(
-                        1, Constantes.OBJETO_POS_NO_EQUIPADO,
-                        CAPACIDAD_STATS.RANDOM
+                            1, Constantes.OBJETO_POS_NO_EQUIPADO,
+                            CAPACIDAD_STATS.RANDOM
                     )
                     obj1.fijarStatValor(Constantes.STAT_CONSULTAR_MONTURA, abs(montura.id))
                     obj1.addStatTexto(Constantes.STAT_PERTENECE_A, "0#0#0#" + personaje!!.nombre)
@@ -6459,7 +6470,7 @@ class ServidorSocket(val session: IoSession) {
                             Constantes.EMOTE_MOSTRAR_ARMA, Constantes.EMOTE_BESO -> casillas = getRandomInt(4, 7)
                         }
                         val alejar: Boolean =
-                            emote != Constantes.EMOTE_SEÑAL_CON_MANO && emote != Constantes.EMOTE_APLAUDIR && emote != Constantes.EMOTE_BESO
+                                emote != Constantes.EMOTE_SEÑAL_CON_MANO && emote != Constantes.EMOTE_APLAUDIR && emote != Constantes.EMOTE_BESO
                         monturas[getRandomInt(0, monturas.size - 1)].moverMontura(personaje, -1, casillas, alejar)
                     }
                     monturas = null
@@ -6713,7 +6724,7 @@ class ServidorSocket(val session: IoSession) {
                     val coordY = infos[1].toInt()
                     if (cuenta!!.admin > 1) {
                         val mapa = Mundo.mapaPorCoordXYContinente(
-                            coordX, coordY, personaje!!.mapa.subArea!!.area
+                                coordX, coordY, personaje!!.mapa.subArea!!.area
                                 .superArea!!.id
                         )
                         if (mapa != null) {
@@ -6798,8 +6809,8 @@ class ServidorSocket(val session: IoSession) {
                 return
             }
             ENVIAR_BWK_QUIEN_ES(
-                personaje!!, perso.cuenta.apodo + "|" + (if (perso.pelea != null) 2 else 1)
-                        + "|" + perso.nombre + "|" + perso.mapa.id
+                    personaje!!, perso.cuenta.apodo + "|" + (if (perso.pelea != null) 2 else 1)
+                    + "|" + perso.nombre + "|" + perso.mapa.id
             )
         } catch (ignored: Exception) {
         }
@@ -6814,8 +6825,8 @@ class ServidorSocket(val session: IoSession) {
                     cuenta!!.mutear(false, 0)
                 } else {
                     GestorSalida.ENVIAR_Im_INFORMACION(
-                        personaje!!,
-                        "1124;" + (cuenta!!.tiempoMuteado - tiempoTrans) / 1000
+                            personaje!!,
+                            "1124;" + (cuenta!!.tiempoMuteado - tiempoTrans) / 1000
                     )
                     return
                 }
@@ -6894,12 +6905,12 @@ class ServidorSocket(val session: IoSession) {
                     val equipo = personaje!!.pelea.getParamMiEquipo(personaje!!.Id).toInt()
                     if (equipo == 4) {
                         GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PELEA(
-                            personaje!!.pelea, 4, sufijo, personaje!!.Id, personaje!!.nombre,
-                            msjChat
+                                personaje!!.pelea, 4, sufijo, personaje!!.Id, personaje!!.nombre,
+                                msjChat
                         )
                     } else {
                         GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PELEA(
-                            personaje!!.pelea, equipo, sufijo, personaje!!.Id, personaje!!
+                                personaje!!.pelea, equipo, sufijo, personaje!!.Id, personaje!!
                                 .nombre, msjChat
                         )
                     }
@@ -6923,13 +6934,13 @@ class ServidorSocket(val session: IoSession) {
                         val equipo2 = personaje!!.pelea.getParamMiEquipo(personaje!!.Id).toInt()
                         if (equipo2 == 1 || equipo2 == 2) {
                             GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PELEA(
-                                personaje!!.pelea, 7, "", personaje!!.Id, personaje!!.nombre,
-                                msjChat
+                                    personaje!!.pelea, 7, "", personaje!!.Id, personaje!!.nombre,
+                                    msjChat
                             )
                         } else {
                             GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PELEA(
-                                personaje!!.pelea, 7, "p", personaje!!.Id, personaje!!.nombre,
-                                msjChat
+                                    personaje!!.pelea, 7, "p", personaje!!.Id, personaje!!.nombre,
+                                    msjChat
                             )
                         }
                     }
@@ -6941,8 +6952,8 @@ class ServidorSocket(val session: IoSession) {
                     }
                     var h: Long
                     if (((System.currentTimeMillis() - _tiempoUltVIP) / 1000).also {
-                            h = it
-                        } < AtlantaMain.SEGUNDOS_CANAL_VIP) {
+                                h = it
+                            } < AtlantaMain.SEGUNDOS_CANAL_VIP) {
                         h = AtlantaMain.SEGUNDOS_CANAL_VIP - h
                         GestorSalida.ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(h.toDouble()).toInt() + 1))
                         return
@@ -6969,7 +6980,7 @@ class ServidorSocket(val session: IoSession) {
                     }
                     var k: Long
                     if (((System.currentTimeMillis() - _tiempoUltAlineacion)
-                                / 1000).also { k = it } < AtlantaMain.SEGUNDOS_CANAL_ALINEACION
+                                    / 1000).also { k = it } < AtlantaMain.SEGUNDOS_CANAL_ALINEACION
                     ) {
                         k = AtlantaMain.SEGUNDOS_CANAL_ALINEACION - k
                         GestorSalida.ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(k.toDouble()).toInt() + 1))
@@ -6989,8 +7000,8 @@ class ServidorSocket(val session: IoSession) {
                     }
                     var i: Long
                     if (((System.currentTimeMillis() - _tiempoUltIncarnam) / 1000).also {
-                            i = it
-                        } < AtlantaMain.SEGUNDOS_CANAL_INCARNAM) {
+                                i = it
+                            } < AtlantaMain.SEGUNDOS_CANAL_INCARNAM) {
                         i = AtlantaMain.SEGUNDOS_CANAL_INCARNAM - i
                         GestorSalida.ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(i.toDouble()).toInt() + 1))
                         return
@@ -7009,8 +7020,8 @@ class ServidorSocket(val session: IoSession) {
                     }
                     var l: Long
                     if (((System.currentTimeMillis() - _tiempoUltComercio) / 1000).also {
-                            l = it
-                        } < AtlantaMain.SEGUNDOS_CANAL_COMERCIO) {
+                                l = it
+                            } < AtlantaMain.SEGUNDOS_CANAL_COMERCIO) {
                         l = AtlantaMain.SEGUNDOS_CANAL_COMERCIO - l
                         GestorSalida.ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(l.toDouble()).toInt() + 1))
                         return
@@ -7029,7 +7040,7 @@ class ServidorSocket(val session: IoSession) {
                     }
                     var j: Long
                     if (((System.currentTimeMillis() - _tiempoUltReclutamiento)
-                                / 1000).also { j = it } < AtlantaMain.SEGUNDOS_CANAL_RECLUTAMIENTO
+                                    / 1000).also { j = it } < AtlantaMain.SEGUNDOS_CANAL_RECLUTAMIENTO
                     ) {
                         j = AtlantaMain.SEGUNDOS_CANAL_RECLUTAMIENTO - j
                         GestorSalida.ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(j.toDouble()).toInt() + 1))
@@ -7060,11 +7071,11 @@ class ServidorSocket(val session: IoSession) {
                         return
                     }
                     GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                        perso,
-                        "F",
-                        personaje!!.Id,
-                        personaje!!.nombre,
-                        msjChat
+                            perso,
+                            "F",
+                            personaje!!.Id,
+                            personaje!!.nombre,
+                            msjChat
                     )
                     GestorSalida.ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(personaje!!, "T", perso.Id, perso.nombre, msjChat)
                     if (personaje!!.estaAusente()) {
@@ -7085,7 +7096,7 @@ class ServidorSocket(val session: IoSession) {
         if (msjChat[0] == '.') {
             var split = msjChat.split(" ".toRegex()).toTypedArray()
             val cmd = split[0]
-            var args : Array<String> = if (split.size > 2) split.copyOfRange(1,split.lastIndex) else emptyArray()
+            var args: Array<String> = if (split.size >= 2) split.copyOfRange(1, split.lastIndex + 1) else emptyArray()
             val comando = cmd.substring(1).toLowerCase()
             for (cmda in Mundo.COMANDOSACCION.values) { // Se busca si la wea de comando esta dentro de los comandos personalizados primero
                 if (cmda.comando.equals(
@@ -7224,12 +7235,12 @@ class ServidorSocket(val session: IoSession) {
                                         }
                                         if (puede_Usar_Servicio(servicio)) {
                                             Accion.realizar_Accion_Estatico(
-                                                -2,
-                                                "",
-                                                personaje!!,
-                                                null,
-                                                -1,
-                                                (-1).toShort()
+                                                    -2,
+                                                    "",
+                                                    personaje!!,
+                                                    null,
+                                                    -1,
+                                                    (-1).toShort()
                                             )
                                         }
                                     }
@@ -7242,20 +7253,20 @@ class ServidorSocket(val session: IoSession) {
                                             for (s in stats) {
                                                 if (personaje!!.getStatScroll(s) > 0) {
                                                     ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                                        personaje!!,
-                                                        "Veuillez remettre à zero vos caracteristiques via la Fee Risette avant de vous parchotter."
+                                                            personaje!!,
+                                                            "Veuillez remettre à zero vos caracteristiques via la Fee Risette avant de vous parchotter."
                                                     )
                                                     return false
                                                 }
                                             }
                                             for (s in stats) {
                                                 Accion.realizar_Accion_Estatico(
-                                                    8,
-                                                    "$s,101",
-                                                    personaje!!,
-                                                    null,
-                                                    -1,
-                                                    (-1).toShort()
+                                                        8,
+                                                        "$s,101",
+                                                        personaje!!,
+                                                        null,
+                                                        -1,
+                                                        (-1).toShort()
                                                 )
                                             }
                                         }
@@ -7274,64 +7285,64 @@ class ServidorSocket(val session: IoSession) {
                                     "sortclasse" -> if (puede_Usar_Servicio(servicio)) {
                                         when (personaje!!.getClaseID(true)) {
                                             Constantes.CLASE_FECA -> personaje!!.fijarNivelHechizoOAprender(
-                                                422,
-                                                1,
-                                                false
+                                                    422,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_OSAMODAS -> personaje!!.fijarNivelHechizoOAprender(
-                                                420,
-                                                1,
-                                                false
+                                                    420,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_ANUTROF -> personaje!!.fijarNivelHechizoOAprender(
-                                                425,
-                                                1,
-                                                false
+                                                    425,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_SRAM -> personaje!!.fijarNivelHechizoOAprender(
-                                                416,
-                                                1,
-                                                false
+                                                    416,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_XELOR -> personaje!!.fijarNivelHechizoOAprender(
-                                                424,
-                                                1,
-                                                false
+                                                    424,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_ZURCARAK -> personaje!!.fijarNivelHechizoOAprender(
-                                                412,
-                                                1,
-                                                false
+                                                    412,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_ANIRIPSA -> personaje!!.fijarNivelHechizoOAprender(
-                                                427,
-                                                1,
-                                                false
+                                                    427,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_YOPUKA -> personaje!!.fijarNivelHechizoOAprender(
-                                                410,
-                                                1,
-                                                false
+                                                    410,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_OCRA -> personaje!!.fijarNivelHechizoOAprender(
-                                                418,
-                                                1,
-                                                false
+                                                    418,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_SADIDA -> personaje!!.fijarNivelHechizoOAprender(
-                                                426,
-                                                1,
-                                                false
+                                                    426,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_SACROGITO -> personaje!!.fijarNivelHechizoOAprender(
-                                                421,
-                                                1,
-                                                false
+                                                    421,
+                                                    1,
+                                                    false
                                             )
                                             Constantes.CLASE_PANDAWA -> personaje!!.fijarNivelHechizoOAprender(
-                                                423,
-                                                1,
-                                                false
+                                                    423,
+                                                    1,
+                                                    false
                                             )
                                         }
                                     }
@@ -7348,21 +7359,21 @@ class ServidorSocket(val session: IoSession) {
                             ENVIAR_Im1223_MENSAJE_IMBORRABLE(personaje!!, AtlantaMain.MENSAJE_COMANDOS)
                         } else {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "Les commandes disponnible sont :\n<b>.infos</b> - Permet d'obtenir des informations sur le serveur."
-                                        + "\n<b>.start</b> - Permet de se teleporter au zaap d'Astrub."
-                                        + "\n<b>.staff</b> - Permet de voir les membres du staff connect\u00e9s."
-                                        + "\n<b>.boutique</b> - Permet de se teleporter à la map Boutique."
-                                        + "\n<b>.points</b> - Savoir ses points boutique."
-                                        + "\n<b>.all</b> - Permet d'envoyer un message \u00e0 tous les joueurs."
-                                        + "\n<b>.celldeblo</b> - Vous tp a une cellule Libre si vous êtes bloque."
-                                        + "\n<b>.banque</b> - Ouvrir la banque nimporte où."
-                                        + "\n<b>.maitre</b> -permet cree l'escouade , inviter tout tes mules dans ton groupes et rediriger tout les Messages prives de tes mûles vers le Maître."
-                                        + "\n<b>.pass</b> -  permet au joueurs de passer automatiquement ses tours."
-                                        + "\n<b>.transfert</b> -  transfert rapide en banque ( Items , Divers et ressources)."
-                                        + "\n<b>.tp</b> - Permet de TP tes Personajes sur ta map actuel ( hors Donjon)."
-                                        + "\n<b>.join</b> - permet que les Personajes sautotp et rejoignent automatiquement quand un combat et lancer.",
-                                "B9121B"
+                                    personaje!!,
+                                    "Les commandes disponnible sont :\n<b>.infos</b> - Permet d'obtenir des informations sur le serveur."
+                                            + "\n<b>.start</b> - Permet de se teleporter au zaap d'Astrub."
+                                            + "\n<b>.staff</b> - Permet de voir les membres du staff connect\u00e9s."
+                                            + "\n<b>.boutique</b> - Permet de se teleporter à la map Boutique."
+                                            + "\n<b>.points</b> - Savoir ses points boutique."
+                                            + "\n<b>.all</b> - Permet d'envoyer un message \u00e0 tous les joueurs."
+                                            + "\n<b>.celldeblo</b> - Vous tp a une cellule Libre si vous êtes bloque."
+                                            + "\n<b>.banque</b> - Ouvrir la banque nimporte où."
+                                            + "\n<b>.maitre</b> -permet cree l'escouade , inviter tout tes mules dans ton groupes et rediriger tout les Messages prives de tes mûles vers le Maître."
+                                            + "\n<b>.pass</b> -  permet au joueurs de passer automatiquement ses tours."
+                                            + "\n<b>.transfert</b> -  transfert rapide en banque ( Items , Divers et ressources)."
+                                            + "\n<b>.tp</b> - Permet de TP tes Personajes sur ta map actuel ( hors Donjon)."
+                                            + "\n<b>.join</b> - permet que les Personajes sautotp et rejoignent automatiquement quand un combat et lancer.",
+                                    "B9121B"
                             )
                         }
                         return true
@@ -7448,8 +7459,8 @@ class ServidorSocket(val session: IoSession) {
                                     }
                                     personaje!!.exchanger = mercadillo
                                     ENVIAR_ECK_PANEL_DE_INTERCAMBIOS(
-                                        personaje!!, tipo, "1,10,100;" + tipoobj
-                                                + ";" + mercadillo.porcentajeImpuesto + ";" + mercadillo.nivelMax + ";" + mercadillo
+                                            personaje!!, tipo, "1,10,100;" + tipoobj
+                                            + ";" + mercadillo.porcentajeImpuesto + ";" + mercadillo.nivelMax + ";" + mercadillo
                                             .maxObjCuenta + ";-1;" + mercadillo.tiempoVenta
                                     )
                                     if (tipo.toByte() == Constantes.INTERCAMBIO_TIPO_MERCADILLO_VENDER) { // mercadillo vender
@@ -7490,8 +7501,8 @@ class ServidorSocket(val session: IoSession) {
                         if (split.size < 2) {
                             if (!tokenGenerator.asignarToken(cuenta)) {
                                 personaje?.enviarmensajeNegro(
-                                    "Esta en una ip No autorizada. " +
-                                            "Por favor use su IP original"
+                                        "Esta en una ip No autorizada. " +
+                                                "Por favor use su IP original"
                                 )
                             }
                         } else {
@@ -7515,11 +7526,11 @@ class ServidorSocket(val session: IoSession) {
                         when {
                             split.size < 2 -> {
                                 personaje?.enviarmensajeNegro(
-                                    "Para usar este comando debera usar .cog o .comprar_og\n" +
-                                            "en consecuencia debera decirle al comando cuantas ogrinas desea comprar\n" +
-                                            "ej: .cog 300\n" +
-                                            "Este le mostrará el costo, si desea confirmar deberá utilizar\n" +
-                                            "ej: .cog 300 -y"
+                                        "Para usar este comando debera usar .cog o .comprar_og\n" +
+                                                "en consecuencia debera decirle al comando cuantas ogrinas desea comprar\n" +
+                                                "ej: .cog 300\n" +
+                                                "Este le mostrará el costo, si desea confirmar deberá utilizar\n" +
+                                                "ej: .cog 300 -y"
                                 )
                                 return true
                             }
@@ -7563,11 +7574,11 @@ class ServidorSocket(val session: IoSession) {
                         when {
                             split.size < 2 -> {
                                 personaje?.enviarmensajeNegro(
-                                    "Para usar este comando debera usar .vog o .vender_og\n" +
-                                            "en consecuencia debera decirle al comando cuantas ogrinas desea vender\n" +
-                                            "ej: .vog 300\n" +
-                                            "Este le mostrará la cantidad de Kamas ganadas, si desea confirmar deberá utilizar\n" +
-                                            "ej: .vog 300 -y"
+                                        "Para usar este comando debera usar .vog o .vender_og\n" +
+                                                "en consecuencia debera decirle al comando cuantas ogrinas desea vender\n" +
+                                                "ej: .vog 300\n" +
+                                                "Este le mostrará la cantidad de Kamas ganadas, si desea confirmar deberá utilizar\n" +
+                                                "ej: .vog 300 -y"
                                 )
                                 return true
                             }
@@ -7617,6 +7628,93 @@ class ServidorSocket(val session: IoSession) {
                         personaje?.conectarse()
                         return true
                     }
+                    "reroll" -> {
+                        if (!AtlantaMain.RARITY_SYSTEM) {
+                            personaje?.sendMessage("Sistema no disponible, bloqueado por el creador", "Système non disponible, verrouillé par le créateur", 3)
+                            return true
+                        } else {
+                            if (args.isEmpty()) {
+                                personaje?.sendMessage("Para usar este comando, debe utilizar la siguiente estructura\n" +
+                                        ".reroll [pos] [-y/-n]\n" +
+                                        "lista de posiciones:\n" +
+                                        "Amuleto = 0\n" +
+                                        "Arma = 1\n" +
+                                        "Anillo Izquierdo = 2\n" +
+                                        "Cinturon = 3\n" +
+                                        "Anillo Derecho = 4\n" +
+                                        "Botas = 5\n" +
+                                        "Sombrero = 6\n" +
+                                        "Capa = 7\n" +
+                                        "Mascota = 8\n" +
+                                        "Dofus 1 = 9\n" +
+                                        "Dofus 2 = 10\n" +
+                                        "Dofus 3 = 11\n" +
+                                        "Dofus 4 = 12\n" +
+                                        "Dofus 5 = 13\n" +
+                                        "Dofus 6 = 14\n" +
+                                        "Escudo = 15", "Pour utiliser cette commande, vous devez utiliser la structure suivante\n" +
+                                        ".reroll [pos] [-y/-n]\n" +
+                                        "liste des postes :\n" +
+                                        "Amulette = 0\n" +
+                                        "Arme = 1\n" +
+                                        "Anneau gauche = 2\n" +
+                                        "Ceinture = 3\n" +
+                                        "Anneau droit = 4\n" +
+                                        "Bottes = 5\n" +
+                                        "Chapeau = 6\n" +
+                                        "Couche = 7\n" +
+                                        "Animal de compagnie = 8\n" +
+                                        "Dofus 1 = 9\n" +
+                                        "Dofus 2 = 10\n" +
+                                        "Dofus 3 = 11\n" +
+                                        "Dofus 4 = 12\n" +
+                                        "Dofus 5 = 13\n" +
+                                        "Dofus 6 = 14\n" +
+                                        "Bouclier = 15", 2)
+                                return true
+                            } else {
+                                try {
+                                    val pos = args[0].toByte()
+                                    if (!Constantes.REROLLALLOWPOS.contains(pos)) {
+                                        personaje?.sendMessage("Por favor, utiliza el comando con posiciones en la lista, como por ejemplo\n" +
+                                                ".reroll 4", "Veuillez utiliser la commande avec des positions dans la liste, telles que\n" +
+                                                ".reroll 4", 3)
+                                        return true
+                                    }
+                                    val obj = personaje?.getObjPosicion(pos)
+                                    if (obj == null) {
+                                        personaje?.sendMessage("No tiene ningun objeto equipado en la posicion seleccionada", "Vous n'avez pas d'objet équipé dans la position choisie", 3)
+                                        return true
+                                    }
+                                    val runeName = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))?.nombre
+                                            ?: "null"
+                                    return when {
+                                        args.size < 2 -> {
+                                            personaje?.sendMessage("El item elegido es: ${obj.objModelo?.nombre} y Necesitará $runeName para realizar la accion. Para confirmar utilice:\n.reroll $pos -y", "L'élément choisi est : ${obj.objModelo?.nombre} et vous devrez $runeName pour réaliser l'action. Pour confirmer l'utilisation :\n" +
+                                                    ".reroll $pos -y", 2)
+                                            true
+                                        }
+                                        args[1].equals("-y", true) -> {
+                                            if (rarityReroll.Reroll(obj, personaje)) {
+                                                personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
+                                            } else {
+                                                personaje?.sendMessage("Usted no tenia el objeto requerido para esta accion, el cual es: $runeName", "Vous n'aviez pas l'objet requis pour cette action, qui est : $runeName", 3)
+                                            }
+
+                                            true
+                                        }
+                                        else -> {
+                                            personaje?.sendMessage("Recuerde confirmar", "N'oubliez pas de confirmer", 1)
+                                            true
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    personaje?.enviarmensajeRojo("Error")
+                                    return true
+                                }
+                            }
+                        }
+                    }
                     "tp" -> {
                         if (personaje!!.estaDisponible(false, false)) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
@@ -7629,13 +7727,13 @@ class ServidorSocket(val session: IoSession) {
                                 if (personaje!!.mapa.esMazmorra()) {
                                     if (idioma.equals("pt", ignoreCase = true)) {
                                         ENVIAR_cs_CHAT_MENSAJE(
-                                            personaje!!,
-                                            "Não pode usar este comando em um Calabouço", "B9121B"
+                                                personaje!!,
+                                                "Não pode usar este comando em um Calabouço", "B9121B"
                                         )
                                     } else {
                                         ENVIAR_cs_CHAT_MENSAJE(
-                                            personaje!!,
-                                            "No puedes usar este comando en una mazmorra", "B9121B"
+                                                personaje!!,
+                                                "No puedes usar este comando en una mazmorra", "B9121B"
                                         )
                                     }
                                     return true
@@ -7645,15 +7743,15 @@ class ServidorSocket(val session: IoSession) {
                             } else {
                                 if (idioma.equals("pt", ignoreCase = true)) {
                                     ENVIAR_cs_CHAT_MENSAJE(
-                                        personaje!!,
-                                        "Você deve ter seguidores para esta ação",
-                                        "B9121B"
+                                            personaje!!,
+                                            "Você deve ter seguidores para esta ação",
+                                            "B9121B"
                                     )
                                 } else {
                                     ENVIAR_cs_CHAT_MENSAJE(
-                                        personaje!!,
-                                        "Debes tener seguidores para esta accion",
-                                        "B9121B"
+                                            personaje!!,
+                                            "Debes tener seguidores para esta accion",
+                                            "B9121B"
                                     )
                                 }
                                 return true
@@ -7663,22 +7761,22 @@ class ServidorSocket(val session: IoSession) {
                             "-h", "-help", "/h", "--help", "--h", "-ayuda" -> {
                                 if (idioma.equals("pt", ignoreCase = true)) {
                                     personaje?.enviarmensajeNegro(
-                                        ".tp  | Teleporta todos os membros do Grupo a sua posição (Ser Líder) \n" +
-                                                ".tp (Nome)  | Para ir a um personagem específico (Não precisa estar em grupo) \n" +
-                                                ".tp (Nome) all  | Teleporta você e todos os membros do grupo a um personagem específico \n" +
-                                                "Cuidado ao teleportar os companheiros do grupo com o último comando. \n" +
-                                                "Não se pode teletransportar para personagens que estejam em calabouços."
+                                            ".tp  | Teleporta todos os membros do Grupo a sua posição (Ser Líder) \n" +
+                                                    ".tp (Nome)  | Para ir a um personagem específico (Não precisa estar em grupo) \n" +
+                                                    ".tp (Nome) all  | Teleporta você e todos os membros do grupo a um personagem específico \n" +
+                                                    "Cuidado ao teleportar os companheiros do grupo com o último comando. \n" +
+                                                    "Não se pode teletransportar para personagens que estejam em calabouços."
                                     )
                                 }
                                 personaje!!.enviarmensajeNegro(
-                                    ".tp | para traer a todos tus seguidores a tu posicion " +
-                                            "(siendo lider)\n" +
-                                            ".tp [nombrePj] | para ir donde un pj en especifico (No necesitan estar en grupo), Ejemplo: " +
-                                            "\".tp pedrito\" e iras donde pedrito\n" +
-                                            ".tp [nombrePj] all | te lleva a ti y a todo tu grupo a la ubicacion de " +
-                                            "un pj en especifico\n" +
-                                            "Cuidado con trolear a tus compañeros de grupo con el ultimo comando\n" +
-                                            "No se puede hacer tps a dungs tampoco"
+                                        ".tp | para traer a todos tus seguidores a tu posicion " +
+                                                "(siendo lider)\n" +
+                                                ".tp [nombrePj] | para ir donde un pj en especifico (No necesitan estar en grupo), Ejemplo: " +
+                                                "\".tp pedrito\" e iras donde pedrito\n" +
+                                                ".tp [nombrePj] all | te lleva a ti y a todo tu grupo a la ubicacion de " +
+                                                "un pj en especifico\n" +
+                                                "Cuidado con trolear a tus compañeros de grupo con el ultimo comando\n" +
+                                                "No se puede hacer tps a dungs tampoco"
                                 )
                                 return true
                             }
@@ -7692,15 +7790,15 @@ class ServidorSocket(val session: IoSession) {
                                         continue
                                     } else {
                                         msj.append(a.nombre).append(" En el mapa: [").append(a.mapa.x.toInt())
-                                            .append(",").append(a.mapa.y.toInt()).append("]\n")
+                                                .append(",").append(a.mapa.y.toInt()).append("]\n")
                                     }
                                 }
                                 ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                                    personaje!!,
-                                    "T",
-                                    personaje!!.Id,
-                                    personaje!!.nombre,
-                                    msj.toString()
+                                        personaje!!,
+                                        "T",
+                                        personaje!!.Id,
+                                        personaje!!.nombre,
+                                        msj.toString()
                                 )
                                 return true
                             }
@@ -7711,8 +7809,8 @@ class ServidorSocket(val session: IoSession) {
                                 if (Comparador.equalsignore(idioma, "pt")) {
                                     personaje?.enviarmensajeNegro("Este personagem é um Administrador, Lamentavelmente não podemos levá-lo a ele por termos de privacidade")
                                 } else personaje!!.enviarmensajeNegro(
-                                    "Este personaje es un Administrador, Lamentablemente no podemos llevarte a el " +
-                                            "por temas de privacidad"
+                                        "Este personaje es un Administrador, Lamentablemente no podemos llevarte a el " +
+                                                "por temas de privacidad"
                                 )
                                 return true
                             }
@@ -7767,10 +7865,10 @@ class ServidorSocket(val session: IoSession) {
                             if (personaje!!.kamas - costo < 0) {
                                 ENVIAR_Im_INFORMACION(personaje!!, "1128;$costo")
                                 ENVIAR_M1_MENSAJE_SERVER_SVR_MUESTRA_INSTANTANEO(
-                                    personaje!!,
-                                    10,
-                                    costo.toString() + "",
-                                    ""
+                                        personaje!!,
+                                        10,
+                                        costo.toString() + "",
+                                        ""
                                 )
                             } else {
                                 personaje!!.addKamas(-costo.toLong(), false, true)
@@ -7794,12 +7892,12 @@ class ServidorSocket(val session: IoSession) {
                         var autorised = true
                         when (personaje!!.mapa.id.toInt()) {
                             10700, 8905, 8911, 8916, 8917, 11095, 9827, 8930, 8932, 8933, 8934, 8935, 8936, 8938, 8939, 9230 -> autorised =
-                                false
+                                    false
                         }
                         if (!autorised) return true
                         if (Mundo.getCasaDentroPorMapa(personaje!!.mapa.id) != null) {
                             val mapaN =
-                                Mundo.getCasaDentroPorMapa(personaje!!.mapa.id)!!.mapaIDFuera
+                                    Mundo.getCasaDentroPorMapa(personaje!!.mapa.id)!!.mapaIDFuera
                             personaje!!.teleport(mapaN, personaje!!.mapa.randomCeldaIDLibre)
                         } else {
                             personaje!!.teleport(personaje!!.mapa.id, personaje!!.mapa.randomCeldaIDLibre)
@@ -7831,8 +7929,8 @@ class ServidorSocket(val session: IoSession) {
 // }
                         var h: Long
                         if (((System.currentTimeMillis() - _tiempoUltAll) / 1000).also {
-                                h = it
-                            } < AtlantaMain.SEGUNDOS_CANAL_ALL) {
+                                    h = it
+                                } < AtlantaMain.SEGUNDOS_CANAL_ALL) {
                             h = AtlantaMain.SEGUNDOS_CANAL_ALL - h
                             ENVIAR_Im_INFORMACION(personaje!!, "0115;" + (ceil(h.toDouble()).toInt() + 1))
                             return true
@@ -7865,8 +7963,8 @@ class ServidorSocket(val session: IoSession) {
                             }
                         }
                         ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                            personaje!!, "<b>" + staffO + " online: " + staff.toString()
-                                    + "</b>"
+                                personaje!!, "<b>" + staffO + " online: " + staff.toString()
+                                + "</b>"
                         )
                         return true
                     }
@@ -7883,28 +7981,28 @@ class ServidorSocket(val session: IoSession) {
                             when {
                                 idioma.equals("fr", ignoreCase = true) -> {
                                     ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                        personaje!!, "====================\n<b>"
-                                                + AtlantaMain.NOMBRE_SERVER + "</b>\nUptime: " + dia + "j " + hora + "h " + minuto + "m " + segundo
-                                                + "s\n" + "Joueurs en ligne: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de connexions: "
-                                                + ServidorServer.recordJugadores + "\n" + "====================\nTimeZone of the Server\n" + ServidorServer.fechaConHora + "\n===================="
+                                            personaje!!, "====================\n<b>"
+                                            + AtlantaMain.NOMBRE_SERVER + "</b>\nUptime: " + dia + "j " + hora + "h " + minuto + "m " + segundo
+                                            + "s\n" + "Joueurs en ligne: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de connexions: "
+                                            + ServidorServer.recordJugadores + "\n" + "====================\nTimeZone of the Server\n" + ServidorServer.fechaConHora + "\n===================="
                                     )
                                 }
                                 idioma.equals("pt", ignoreCase = true) -> {
                                     ENVIAR_M145_MENSAJE_PANEL_INFORMACION(
-                                        personaje!!, "====================\n<b>"
-                                                + AtlantaMain.NOMBRE_SERVER + "</b>\nOnline: " + dia + "d " + hora + "h " + minuto + "m " + segundo
-                                                + "s\n" + "Jogadores Online: " + ServidorServer.nroJugadoresLinea() + "\n" + "Recorde de conexão: "
-                                                + ServidorServer.recordJugadores + "\n" + "====================\nHórario do servidor\n"
-                                                + ServidorServer.fechaConHora + "\n===================="
+                                            personaje!!, "====================\n<b>"
+                                            + AtlantaMain.NOMBRE_SERVER + "</b>\nOnline: " + dia + "d " + hora + "h " + minuto + "m " + segundo
+                                            + "s\n" + "Jogadores Online: " + ServidorServer.nroJugadoresLinea() + "\n" + "Recorde de conexão: "
+                                            + ServidorServer.recordJugadores + "\n" + "====================\nHórario do servidor\n"
+                                            + ServidorServer.fechaConHora + "\n===================="
                                     )
                                 }
                                 else -> {
                                     ENVIAR_M145_MENSAJE_PANEL_INFORMACION(
-                                        personaje!!, "====================\n<b>"
-                                                + AtlantaMain.NOMBRE_SERVER + "</b>\nEn Linea: " + dia + "d " + hora + "h " + minuto + "m " + segundo
-                                                + "s\n" + "Jugadores en linea: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de conexion: "
-                                                + ServidorServer.recordJugadores + "\n" + "====================\nHorario del servidor\n"
-                                                + ServidorServer.fechaConHora + "\n===================="
+                                            personaje!!, "====================\n<b>"
+                                            + AtlantaMain.NOMBRE_SERVER + "</b>\nEn Linea: " + dia + "d " + hora + "h " + minuto + "m " + segundo
+                                            + "s\n" + "Jugadores en linea: " + ServidorServer.nroJugadoresLinea() + "\n" + "Record de conexion: "
+                                            + ServidorServer.recordJugadores + "\n" + "====================\nHorario del servidor\n"
+                                            + ServidorServer.fechaConHora + "\n===================="
                                     )
                                 }
                             }
@@ -7925,8 +8023,8 @@ class ServidorSocket(val session: IoSession) {
                         objetivo.deformar()
                         objetivo.refrescarEnMapa()
                         objetivo.modificarA(
-                            Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES,
-                            Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES xor 0
+                                Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES,
+                                Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES xor 0
                         )
                         ENVIAR_AR_RESTRICCIONES_PERSONAJE(objetivo)
                         return true
@@ -7948,8 +8046,8 @@ class ServidorSocket(val session: IoSession) {
                         objetivo!!.setGfxID(numShort)
                         objetivo.refrescarEnMapa()
                         objetivo.modificarA(
-                            Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES,
-                            Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES xor Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES
+                                Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES,
+                                Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES xor Personaje.RA_NO_PUEDE_MOVER_TODAS_DIRECCIONES
                         )
                         ENVIAR_AR_RESTRICCIONES_PERSONAJE(objetivo)
                         return true
@@ -7967,13 +8065,13 @@ class ServidorSocket(val session: IoSession) {
                         if (split.size < 2) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (air - terre - eau - feu)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (air - terre - eau - feu)."
                                 )
                             } else {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Debes especificar un elemento (aire - tierra - agua - fuego)."
+                                        personaje!!,
+                                        "Debes especificar un elemento (aire - tierra - agua - fuego)."
                                 )
                             }
                             return false
@@ -7988,13 +8086,13 @@ class ServidorSocket(val session: IoSession) {
                         if (statFM == 0) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (air - terre - eau - feu)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (air - terre - eau - feu)."
                                 )
                             } else {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Debes especificar un elemento (aire - tierra - agua - fuego)."
+                                        personaje!!,
+                                        "Debes especificar un elemento (aire - tierra - agua - fuego)."
                                 )
                             }
                             return false
@@ -8011,13 +8109,13 @@ class ServidorSocket(val session: IoSession) {
                         if (split.size < 2) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (pa/po/pm/invo) space (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (pa/po/pm/invo) space (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
                                 )
                             } else {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (pa/po/pm/invo) space (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (pa/po/pm/invo) space (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
                                 )
                             }
                             return false
@@ -8032,13 +8130,13 @@ class ServidorSocket(val session: IoSession) {
                         if (statID == 0) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (pa/po/pm/invo)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (pa/po/pm/invo)."
                                 )
                             } else {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (pa/po/pm/invo)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (pa/po/pm/invo)."
                                 )
                             }
                             return false
@@ -8056,13 +8154,13 @@ class ServidorSocket(val session: IoSession) {
                         if (pos.toInt() == -1) {
                             if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
                                 )
                             } else {
                                 ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                    personaje!!,
-                                    "Vous devez specifier un argument (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
+                                        personaje!!,
+                                        "Vous devez specifier un argument (coiffe/cape/bottes/anndroite/anngauche/ceinture/amulette)."
                                 )
                             }
                             return false
@@ -8086,15 +8184,15 @@ class ServidorSocket(val session: IoSession) {
                             return false
                         }
                         val statsExo = intArrayOf(
-                            Constantes.STAT_MAS_PA, Constantes.STAT_MAS_PM, Constantes.STAT_MAS_ALCANCE,
-                            Constantes.STAT_MAS_CRIATURAS_INVO
+                                Constantes.STAT_MAS_PA, Constantes.STAT_MAS_PM, Constantes.STAT_MAS_ALCANCE,
+                                Constantes.STAT_MAS_CRIATURAS_INVO
                         )
                         for (s in statsExo) {
                             if (objeto.tieneStatExo(s)) {
                                 if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                                     ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                        personaje!!,
-                                        "Vous ne pouvez pas depasser un exo par item."
+                                            personaje!!,
+                                            "Vous ne pouvez pas depasser un exo par item."
                                     )
                                 } else {
                                     ENVIAR_Im1223_MENSAJE_IMBORRABLE(personaje!!, "YA ESTA CON EXOMAGIA")
@@ -8298,17 +8396,17 @@ class ServidorSocket(val session: IoSession) {
                                     personaje!!.enviarmensajeNegro("No debes pertenecer a ningun grupo, o ser el lider de grupo para continuar")
                                     return true
                                 } else if (personaje!!.grupoParty != null && personaje!!.grupoParty.esLiderGrupo(
-                                        personaje!!
-                                    ) && personaje!!.grupoParty.miembros.size < 8
+                                                personaje!!
+                                        ) && personaje!!.grupoParty.miembros.size < 8
                                 ) {
                                     for (a in Mundo.PERSONAJESONLINE) {
                                         if (a.Busquedagrupo.equals("0", ignoreCase = true)) {
                                             continue
                                         }
                                         if (a.Busquedagrupo.equals(
-                                                onOff,
-                                                ignoreCase = true
-                                            ) && a.grupoParty.miembros.size < 8
+                                                        onOff,
+                                                        ignoreCase = true
+                                                ) && a.grupoParty.miembros.size < 8
                                         ) {
                                             if (!a.estaVisiblePara(personaje)) {
                                                 personaje!!.enviarmensajeRojo("Lo sentimos, no puedes unirte a este grupo. Por favor busca otro grupo")
@@ -8322,8 +8420,8 @@ class ServidorSocket(val session: IoSession) {
                                                     }
                                                     a.grupoParty.addIntegrante(pj)
                                                     ENVIAR_PM_AGREGAR_PJ_GRUPO_A_GRUPO(
-                                                        a.grupoParty,
-                                                        pj.stringInfoGrupo()
+                                                            a.grupoParty,
+                                                            pj.stringInfoGrupo()
                                                     )
                                                     pj.mostrarGrupo()
                                                     pj.enviarmensajeNegro("Tu grupo se ha fusionado con el tag: $onOff")
@@ -8353,9 +8451,9 @@ class ServidorSocket(val session: IoSession) {
                                     continue
                                 }
                                 if (a.Busquedagrupo.equals(
-                                        onOff,
-                                        ignoreCase = true
-                                    ) && a.grupoParty.miembros.size < 8
+                                                onOff,
+                                                ignoreCase = true
+                                        ) && a.grupoParty.miembros.size < 8
                                 ) {
                                     if (split.size > 2 && split[2].equals("info", ignoreCase = true)) {
                                         personaje!!.enviarmensajeRojo("Informacion especifica del grupo: $onOff")
@@ -8363,15 +8461,15 @@ class ServidorSocket(val session: IoSession) {
                                         for (pj in a.grupoParty.miembros) {
                                             if (pj.grupoParty.liderGrupo === pj) {
                                                 personaje!!.enviarmensajeRojo(
-                                                    "Lider: " + pj.nombre + " Nivel: " + pj.nivel + " Clase: " + Constantes.getNombreClase(
-                                                        pj.getClaseID(true).toInt()
-                                                    )
+                                                        "Lider: " + pj.nombre + " Nivel: " + pj.nivel + " Clase: " + Constantes.getNombreClase(
+                                                                pj.getClaseID(true).toInt()
+                                                        )
                                                 )
                                             } else {
                                                 msg.append("Integrante: ").append(pj.nombre).append(" Nivel: ")
-                                                    .append(pj.nivel).append(" Clase: ")
-                                                    .append(Constantes.getNombreClase(pj.getClaseID(true).toInt()))
-                                                    .append("\n")
+                                                        .append(pj.nivel).append(" Clase: ")
+                                                        .append(Constantes.getNombreClase(pj.getClaseID(true).toInt()))
+                                                        .append("\n")
                                             }
                                             if (pj.grupoParty.miembros[pj.grupoParty.miembros.size - 1] === pj) {
                                                 grupo_Localizar_especifico(pj.grupoParty)
@@ -8393,11 +8491,11 @@ class ServidorSocket(val session: IoSession) {
                                             return true
                                         }
                                         ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                                            a,
-                                            "F",
-                                            personaje!!.Id,
-                                            personaje!!.nombre,
-                                            split[3]
+                                                a,
+                                                "F",
+                                                personaje!!.Id,
+                                                personaje!!.nombre,
+                                                split[3]
                                         )
                                         ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(personaje!!, "T", a.Id, a.nombre, split[3])
                                         if (personaje!!.estaAusente()) {
@@ -8435,25 +8533,25 @@ class ServidorSocket(val session: IoSession) {
                             val msg = StringBuilder()
                             for (a in Mundo.PERSONAJESONLINE) {
                                 if (a.grupoParty != null && !a.Busquedagrupo.equals(
-                                        "0",
-                                        ignoreCase = true
-                                    ) && a.grupoParty.miembros.size < 8
+                                                "0",
+                                                ignoreCase = true
+                                        ) && a.grupoParty.miembros.size < 8
                                 ) {
                                     if (a.estaVisiblePara(personaje)) {
                                         msg.append("-Grupo: \"").append(a.Busquedagrupo).append("\" Integrantes: ")
-                                            .append(a.grupoParty.miembros.size).append("/8 Nivel promedio: ")
-                                            .append(a.grupoParty.nivelGrupo / a.grupoParty.miembros.size)
-                                            .append(" Lider: ").append(a.nombre).append("\n")
+                                                .append(a.grupoParty.miembros.size).append("/8 Nivel promedio: ")
+                                                .append(a.grupoParty.nivelGrupo / a.grupoParty.miembros.size)
+                                                .append(" Lider: ").append(a.nombre).append("\n")
                                     } else {
                                         msg.append("-Grupo: \"").append(a.Busquedagrupo).append("\" Integrantes: ")
-                                            .append(a.grupoParty.miembros.size).append("/8 Nivel promedio: ")
-                                            .append(a.grupoParty.nivelGrupo / a.grupoParty.miembros.size)
-                                            .append(" Lider: ").append(a.nombre).append(" GRUPO NO DISPONIBLE \n")
+                                                .append(a.grupoParty.miembros.size).append("/8 Nivel promedio: ")
+                                                .append(a.grupoParty.nivelGrupo / a.grupoParty.miembros.size)
+                                                .append(" Lider: ").append(a.nombre).append(" GRUPO NO DISPONIBLE \n")
                                     }
                                 } else if (a.grupoParty != null && a.grupoParty.miembros.size == 8 && !a.Busquedagrupo.equals(
-                                        "0",
-                                        ignoreCase = true
-                                    )
+                                                "0",
+                                                ignoreCase = true
+                                        )
                                 ) {
                                     a.Busquedagrupo = "0"
                                 } else if (a.grupoParty != null) {
@@ -8537,17 +8635,17 @@ class ServidorSocket(val session: IoSession) {
                         }
                         if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                             ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                                personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "RECOMPENSE CHASSE - "
-                                        + Mundo.mensajeCaceria()
+                                    personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "RECOMPENSE CHASSE - "
+                                    + Mundo.mensajeCaceria()
                             )
                         } else {
                             ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                                personaje!!, "", 0, Mundo.NOMBRE_CACERIA,
-                                "RECOMPENSA CACERIA - " + Mundo.mensajeCaceria()
+                                    personaje!!, "", 0, Mundo.NOMBRE_CACERIA,
+                                    "RECOMPENSA CACERIA - " + Mundo.mensajeCaceria()
                             )
                         }
                         ENVIAR_IC_PERSONAJE_BANDERA_COMPAS(
-                            personaje!!, victima.mapa.x.toString() + "|" + victima.mapa
+                                personaje!!, victima.mapa.x.toString() + "|" + victima.mapa
                                 .y
                         )
                         return true
@@ -8673,7 +8771,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         split = mapa_celda.split(";".toRegex()).toTypedArray()
                         mapa_celda = split[getRandomInt(0, split.size - 1)]
-                        mapa = Mundo.getMapa(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
+                        mapa = Mundo.getMap(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
                         if (mapa != null) {
                             celdaID = if (mapa_celda.split(",".toRegex()).toTypedArray().size == 1) {
                                 mapa.randomCeldaIDLibre
@@ -8694,7 +8792,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         split = mapa_celda.split(";".toRegex()).toTypedArray()
                         mapa_celda = split[getRandomInt(0, split.size - 1)]
-                        mapa = Mundo.getMapa(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
+                        mapa = Mundo.getMap(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
                         if (mapa != null) {
                             celdaID = if (mapa_celda.split(",".toRegex()).toTypedArray().size == 1) {
                                 mapa.randomCeldaIDLibre
@@ -8716,7 +8814,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         if (Mundo.getCasaDentroPorMapa(personaje!!.mapa.id) != null) {
                             val mapaN =
-                                Mundo.getCasaDentroPorMapa(personaje!!.mapa.id)!!.mapaIDFuera
+                                    Mundo.getCasaDentroPorMapa(personaje!!.mapa.id)!!.mapaIDFuera
                             personaje!!.teleport(mapaN, personaje!!.mapa.randomCeldaIDLibre)
                         } else {
                             personaje!!.teleport(personaje!!.mapa.id, personaje!!.mapa.randomCeldaIDLibre)
@@ -8746,7 +8844,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         split = mapa_celda.split(";".toRegex()).toTypedArray()
                         mapa_celda = split[getRandomInt(0, split.size - 1)]
-                        mapa = Mundo.getMapa(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
+                        mapa = Mundo.getMap(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
                         if (mapa != null) {
                             celdaID = if (mapa_celda.split(",".toRegex()).toTypedArray().size == 1) {
                                 mapa.randomCeldaIDLibre
@@ -8770,7 +8868,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         split = mapa_celda.split(";".toRegex()).toTypedArray()
                         mapa_celda = split[getRandomInt(0, split.size - 1)]
-                        mapa = Mundo.getMapa(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
+                        mapa = Mundo.getMap(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
                         if (mapa != null) {
                             celdaID = if (mapa_celda.split(",".toRegex()).toTypedArray().size == 1) {
                                 mapa.randomCeldaIDLibre
@@ -8794,7 +8892,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         split = mapa_celda.split(";".toRegex()).toTypedArray()
                         mapa_celda = split[getRandomInt(0, split.size - 1)]
-                        mapa = Mundo.getMapa(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
+                        mapa = Mundo.getMap(mapa_celda.split(",".toRegex()).toTypedArray()[0].toShort())
                         if (mapa != null) {
                             celdaID = if (mapa_celda.split(",".toRegex()).toTypedArray().size == 1) {
                                 mapa.randomCeldaIDLibre
@@ -8816,14 +8914,14 @@ class ServidorSocket(val session: IoSession) {
                         var precioO = split[1].toInt()
                         if (precioO <= AtlantaMain.IMPUESTO_BOLSA_OGRINAS || precioO > 100000) {
                             ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                personaje!!, "Ingresa un valor entre "
-                                        + AtlantaMain.IMPUESTO_BOLSA_OGRINAS + " a 100000"
+                                    personaje!!, "Ingresa un valor entre "
+                                    + AtlantaMain.IMPUESTO_BOLSA_OGRINAS + " a 100000"
                             )
                             return false
                         }
                         val bolsaO = Mundo.getObjetoModelo(AtlantaMain.ID_BOLSA_OGRINAS)?.crearObjeto(
-                            1,
-                            Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
+                                1,
+                                Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
                         )
                         if (!RESTAR_OGRINAS(cuenta!!, precioO.toLong(), personaje)) {
                             return false
@@ -8842,14 +8940,14 @@ class ServidorSocket(val session: IoSession) {
                         var precioC = split[1].toInt()
                         if (precioC <= AtlantaMain.IMPUESTO_BOLSA_CREDITOS || precioC > 100000) {
                             ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                personaje!!, "Ingresa un valor entre "
-                                        + AtlantaMain.IMPUESTO_BOLSA_CREDITOS + " a 100000"
+                                    personaje!!, "Ingresa un valor entre "
+                                    + AtlantaMain.IMPUESTO_BOLSA_CREDITOS + " a 100000"
                             )
                             return false
                         }
                         val bolsaC = Mundo.getObjetoModelo(AtlantaMain.ID_BOLSA_CREDITOS)?.crearObjeto(
-                            1,
-                            Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
+                                1,
+                                Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
                         )
                         if (RESTAR_CREDITOS(cuenta!!, precioC.toLong(), personaje!!)) {
                             return false
@@ -8876,10 +8974,10 @@ class ServidorSocket(val session: IoSession) {
                     "agredir" -> {
                         if (split.size < 2) {
                             personaje!!.enviarmensajeNegro(
-                                ".agredir [objetivo]\nFunciona como remplazo" +
-                                        " de la agresion normal\n" +
-                                        "Ejemplo:\n" +
-                                        ".agredir JuanitoPerez"
+                                    ".agredir [objetivo]\nFunciona como remplazo" +
+                                            " de la agresion normal\n" +
+                                            "Ejemplo:\n" +
+                                            ".agredir JuanitoPerez"
                             )
                             return true
                         }
@@ -8937,17 +9035,17 @@ class ServidorSocket(val session: IoSession) {
                     "puntos", "points", "ogrinas" -> {
                         if (cuenta!!.idioma.equals("fr", ignoreCase = true)) {
                             ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                personaje!!, "Tu avez " + GET_OGRINAS_CUENTA(
+                                    personaje!!, "Tu avez " + GET_OGRINAS_CUENTA(
                                     cuenta!!
-                                        .id
-                                ) + " " + comando + "."
+                                            .id
+                            ) + " " + comando + "."
                             )
                         } else {
                             ENVIAR_Im1223_MENSAJE_IMBORRABLE(
-                                personaje!!, "Tienes " + GET_OGRINAS_CUENTA(
+                                    personaje!!, "Tienes " + GET_OGRINAS_CUENTA(
                                     cuenta!!
-                                        .id
-                                ) + " " + comando + "."
+                                            .id
+                            ) + " " + comando + "."
                             )
                         }
                         return true
@@ -8963,9 +9061,9 @@ class ServidorSocket(val session: IoSession) {
                         personaje!!.tipoExchange = Constantes.INTERCAMBIO_TIPO_BOUTIQUE
                         personaje!!.exchanger = AtlantaMain.NPC_BOUTIQUE
                         ENVIAR_ECK_PANEL_DE_INTERCAMBIOS(
-                            personaje!!,
-                            Constantes.INTERCAMBIO_TIPO_BOUTIQUE.toInt(),
-                            AtlantaMain.NPC_BOUTIQUE!!.modelo!!.GfxID.toString() + ""
+                                personaje!!,
+                                Constantes.INTERCAMBIO_TIPO_BOUTIQUE.toInt(),
+                                AtlantaMain.NPC_BOUTIQUE!!.modelo!!.GfxID.toString() + ""
                         )
                         ENVIAR_EL_LISTA_EXCHANGER(personaje!!, AtlantaMain.NPC_BOUTIQUE!!)
                         return true
@@ -8977,9 +9075,9 @@ class ServidorSocket(val session: IoSession) {
                         try {
                             personaje!!.setMedioPagoServicio(0.toByte())
                             ENVIAR_bOC_ABRIR_PANEL_SERVICIOS(
-                                personaje!!,
-                                GET_CREDITOS_CUENTA(cuenta!!.id),
-                                GET_OGRINAS_CUENTA(cuenta!!.id)
+                                    personaje!!,
+                                    GET_CREDITOS_CUENTA(cuenta!!.id),
+                                    GET_OGRINAS_CUENTA(cuenta!!.id)
                             )
                             return true
                         } catch (ignored: Exception) {
@@ -8994,16 +9092,16 @@ class ServidorSocket(val session: IoSession) {
                             if (personaje!!.getEstadoMision(470) == 1) {
                                 personaje!!.borrarMision(470)
                                 ENVIAR_cs_CHAT_MENSAJE(
-                                    personaje!!,
-                                    "Ahora puede repetir la mision de los Dopeul",
-                                    "B9121B"
+                                        personaje!!,
+                                        "Ahora puede repetir la mision de los Dopeul",
+                                        "B9121B"
                                 )
                                 return true
                             }
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "Usted aun no completa la mision o no la posee, intente despues de completarla",
-                                "B9121B"
+                                    personaje!!,
+                                    "Usted aun no completa la mision o no la posee, intente despues de completarla",
+                                    "B9121B"
                             )
                             return true
                         } catch (ignored: Exception) {
@@ -9018,32 +9116,32 @@ class ServidorSocket(val session: IoSession) {
                         var refinvitado = 0
                         if (split.size < 2) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "Instrucciones: debes otorgar tu numero a quienes invites\n" +
-                                        "Para utilizar el comando debes hacerlo con la siguiente estructura" +
-                                        " .referido [codigo]\n", Constantes.COLOR_NEGRO
+                                    personaje!!,
+                                    "Instrucciones: debes otorgar tu numero a quienes invites\n" +
+                                            "Para utilizar el comando debes hacerlo con la siguiente estructura" +
+                                            " .referido [codigo]\n", Constantes.COLOR_NEGRO
                             )
                             personaje!!.enviarmensajeRojo(
-                                "Por ejemplo: \n.referido 1234567\n"
+                                    "Por ejemplo: \n.referido 1234567\n"
                             )
                             personaje!!.enviarmensajeNegro(
-                                "Y es asi de simple :D.\nLos referidos son por persona y no por cuenta\n" +
-                                        "Cada una de tus cuentas tendra un codigo especifico, elige donde quieres que lleguen " +
-                                        "tus ogrinas"
+                                    "Y es asi de simple :D.\nLos referidos son por persona y no por cuenta\n" +
+                                            "Cada una de tus cuentas tendra un codigo especifico, elige donde quieres que lleguen " +
+                                            "tus ogrinas"
                             )
                             personaje!!.enviarmensajeRojo("Tu numero de referido es: $refpropio\n")
                             personaje!!.enviarmensajeNegro(
-                                "Premios:\n" +
-                                        "Por invitar $OGRINAS_INVITADOR\n" +
-                                        "Por ser invitado $OGRINAS_INVITADO\n" +
-                                        "Ambos Ganan :D"
+                                    "Premios:\n" +
+                                            "Por invitar $OGRINAS_INVITADOR\n" +
+                                            "Por ser invitado $OGRINAS_INVITADO\n" +
+                                            "Ambos Ganan :D"
                             )
                             return true
                         } else if (personaje!!.nivel < 40) {
                             personaje!!.enviarmensajeNegro(
-                                "Te pedimos disculpas pero para usar los beneficios de referencia" +
-                                        " tienes que ser a lo menos " +
-                                        "nivel 40"
+                                    "Te pedimos disculpas pero para usar los beneficios de referencia" +
+                                            " tienes que ser a lo menos " +
+                                            "nivel 40"
                             )
                             return true
                         }
@@ -9054,30 +9152,30 @@ class ServidorSocket(val session: IoSession) {
                                 if (refinvitado == refsolicitado && c.ultimaIP != personaje!!.cuenta.ultimaIP && c.actualIP != personaje!!.cuenta.actualIP) {
                                     if (c.ultimaIP.length < 2) {
                                         ENVIAR_cs_CHAT_MENSAJE(
-                                            personaje!!,
-                                            "Se encontro el codigo, pero esta ip jamas se ha conectado al juego.",
-                                            Constantes.COLOR_ROJO
+                                                personaje!!,
+                                                "Se encontro el codigo, pero esta ip jamas se ha conectado al juego.",
+                                                Constantes.COLOR_ROJO
                                         )
                                         return true
                                     }
                                     if (personaje!!.cuenta.verificadorReferido == 1) {
                                         ENVIAR_cs_CHAT_MENSAJE(
-                                            personaje!!,
-                                            "Lo sentimos, tu ya te has referido a alguien, comparte tu codigo para que se refieran a ti",
-                                            Constantes.COLOR_ROJO
+                                                personaje!!,
+                                                "Lo sentimos, tu ya te has referido a alguien, comparte tu codigo para que se refieran a ti",
+                                                Constantes.COLOR_ROJO
                                         )
                                         return true
                                     }
                                     SET_OGRINAS_CUENTA(GET_OGRINAS_CUENTA(c.id) + OGRINAS_INVITADOR, c.id)
                                     SET_OGRINAS_CUENTA(
-                                        GET_OGRINAS_CUENTA(personaje!!.cuenta.id) + OGRINAS_INVITADO,
-                                        personaje!!.cuenta.id
+                                            GET_OGRINAS_CUENTA(personaje!!.cuenta.id) + OGRINAS_INVITADO,
+                                            personaje!!.cuenta.id
                                     )
                                     personaje!!.cuenta.verificadorReferido = 1
                                     ENVIAR_cs_CHAT_MENSAJE(
-                                        personaje!!,
-                                        "Has ganado: " + OGRINAS_INVITADO + " Ogrinas",
-                                        Constantes.COLOR_ROJO
+                                            personaje!!,
+                                            "Has ganado: " + OGRINAS_INVITADO + " Ogrinas",
+                                            Constantes.COLOR_ROJO
                                     )
                                     for (verificada in Mundo.cuentas.values) {
                                         if (personaje!!.cuenta.actualIP == verificada.actualIP || personaje!!.cuenta.ultimaIP == verificada.ultimaIP) {
@@ -9098,9 +9196,9 @@ class ServidorSocket(val session: IoSession) {
                                 }
                             }
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "No se ha encontrado el numero referido que has puesto, o bien, tienen la misma ip",
-                                Constantes.COLOR_ROJO
+                                    personaje!!,
+                                    "No se ha encontrado el numero referido que has puesto, o bien, tienen la misma ip",
+                                    Constantes.COLOR_ROJO
                             )
                             return true
                         } catch (ignored: Exception) {
@@ -9131,25 +9229,25 @@ class ServidorSocket(val session: IoSession) {
                         }
                         if (Objects.requireNonNull(personaje!!.montura.objModCertificado)!!.id == 9582) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "Los pavos con armadura NO pueden ser camaleon",
-                                Constantes.COLOR_ROJO
+                                    personaje!!,
+                                    "Los pavos con armadura NO pueden ser camaleon",
+                                    Constantes.COLOR_ROJO
                             )
                             return true
                         }
                         if (personaje!!.montura.getHabilidad(Constantes.HABILIDAD_CAMALEON)) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "Esta montura ya tiene la habilidad camaleon.",
-                                Constantes.COLOR_ROJO
+                                    personaje!!,
+                                    "Esta montura ya tiene la habilidad camaleon.",
+                                    Constantes.COLOR_ROJO
                             )
                             return true
                         }
                         if (GET_OGRINAS_CUENTA(personaje!!.cuentaID) < AtlantaMain.PRECIO_CAMALEON) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "No tienes suficientes ogrinas para hacer esta accion\n El convertir tu pavo a camaleon cuesta: " + AtlantaMain.PRECIO_CAMALEON,
-                                Constantes.COLOR_ROJO
+                                    personaje!!,
+                                    "No tienes suficientes ogrinas para hacer esta accion\n El convertir tu pavo a camaleon cuesta: " + AtlantaMain.PRECIO_CAMALEON,
+                                    Constantes.COLOR_ROJO
                             )
                             return true
                         }
@@ -9158,9 +9256,9 @@ class ServidorSocket(val session: IoSession) {
 //						}
                         if (split.size < 2) {
                             ENVIAR_cs_CHAT_MENSAJE(
-                                personaje!!,
-                                "El volver a tu montura camaleon la castrara, TEN CUIDADO, si aun quieres proceder, escribe .camaleon s",
-                                Constantes.COLOR_ROJO
+                                    personaje!!,
+                                    "El volver a tu montura camaleon la castrara, TEN CUIDADO, si aun quieres proceder, escribe .camaleon s",
+                                    Constantes.COLOR_ROJO
                             )
                             return true
                         }
@@ -9171,18 +9269,18 @@ class ServidorSocket(val session: IoSession) {
                                 ENVIAR_Re_DETALLES_MONTURA(personaje!!, "+", personaje!!.montura)
                                 REPLACE_MONTURA(personaje!!.montura, false)
                                 ENVIAR_cs_CHAT_MENSAJE(
-                                    personaje!!,
-                                    "Ahora tu montura es camaleon",
-                                    Constantes.COLOR_ROJO
+                                        personaje!!,
+                                        "Ahora tu montura es camaleon",
+                                        Constantes.COLOR_ROJO
                                 )
                                 SET_OGRINAS_CUENTA(
-                                    GET_OGRINAS_CUENTA(personaje!!.cuentaID) - AtlantaMain.PRECIO_CAMALEON,
-                                    personaje!!.cuentaID
+                                        GET_OGRINAS_CUENTA(personaje!!.cuentaID) - AtlantaMain.PRECIO_CAMALEON,
+                                        personaje!!.cuentaID
                                 )
                                 ENVIAR_cs_CHAT_MENSAJE(
-                                    personaje!!,
-                                    "Te quedan: " + GET_OGRINAS_CUENTA(personaje!!.cuentaID) + " Ogrinas",
-                                    Constantes.COLOR_ROJO
+                                        personaje!!,
+                                        "Te quedan: " + GET_OGRINAS_CUENTA(personaje!!.cuentaID) + " Ogrinas",
+                                        Constantes.COLOR_ROJO
                                 )
                                 return true
                             } catch (ignored: Exception) {
@@ -9265,7 +9363,7 @@ class ServidorSocket(val session: IoSession) {
                     }
                     "zxcv" -> {
                         val msj1 =
-                            "<b>" + personaje!!.nombre + "</b> : " + msjChat.split(" ".toRegex(), 2).toTypedArray()[1]
+                                "<b>" + personaje!!.nombre + "</b> : " + msjChat.split(" ".toRegex(), 2).toTypedArray()[1]
                         ENVIAR_Im1223_MENSAJE_IMBORRABLE_TODOS(msj1)
                         return true
                     }
@@ -9439,7 +9537,7 @@ class ServidorSocket(val session: IoSession) {
     private fun juego_Mostrar_Celda(packet: String) {
         try {
             ENVIAR_Gf_MOSTRAR_CELDA_EN_PELEA(
-                personaje!!.pelea, 7, personaje!!.Id, packet
+                    personaje!!.pelea, 7, personaje!!.Id, packet
                     .substring(2).toShort()
             )
         } catch (ignored: Exception) {
@@ -9645,7 +9743,7 @@ class ServidorSocket(val session: IoSession) {
         if (Mundo.SEG_CUENTA_REGRESIVA > 5 && Mundo.MSJ_CUENTA_REGRESIVA.isNotEmpty()) {
             if (Mundo.MSJ_CUENTA_REGRESIVA.equals("CACERIA", ignoreCase = true)) {
                 ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-                    personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "BUSCA Y CAZA!! - " + Mundo
+                        personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "BUSCA Y CAZA!! - " + Mundo
                         .mensajeCaceria() + ", usa comando .caceria para rastrear al super-mob"
                 )
             }
@@ -9769,7 +9867,7 @@ class ServidorSocket(val session: IoSession) {
             return
         }
         ENVIAR_cMK_CHAT_MENSAJE_PERSONAJE(
-            personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "RECOMPENSA CACERIA - " + Mundo
+                personaje!!, "", 0, Mundo.NOMBRE_CACERIA, "RECOMPENSA CACERIA - " + Mundo
                 .mensajeCaceria()
         )
         ENVIAR_IC_PERSONAJE_BANDERA_COMPAS(personaje!!, victima.mapa.x.toString() + "|" + victima.mapa.y)
@@ -9815,23 +9913,23 @@ class ServidorSocket(val session: IoSession) {
                 if (t > 0) {
                     val f = formatoTiempo(t)
                     ENVIAR_Im_INFORMACION(
-                        personaje!!, "1TIENE_PROTECCION;" + f[4] + "~" + f[3] + "~" + f[2] + "~"
-                                + f[1]
+                            personaje!!, "1TIENE_PROTECCION;" + f[4] + "~" + f[3] + "~" + f[2] + "~"
+                            + f[1]
                     )
                     return
                 }
                 recaudador.setEnRecolecta(false, personaje)
                 ENVIAR_GA_ACCION_JUEGO_AL_MAPA(
-                    personaje!!.mapa,
-                    -1,
-                    909,
-                    personaje!!.Id.toString() + "",
-                    id.toString() + ""
+                        personaje!!.mapa,
+                        -1,
+                        909,
+                        personaje!!.Id.toString() + "",
+                        id.toString() + ""
                 )
                 recaudador.celda?.id?.let {
                     personaje!!.mapa.iniciarPelea(
-                        personaje, recaudador, personaje!!.celda.id, it,
-                        Constantes.PELEA_TIPO_RECAUDADOR, null
+                            personaje, recaudador, personaje!!.celda.id, it,
+                            Constantes.PELEA_TIPO_RECAUDADOR, null
                     )
                 }
             }
@@ -9848,10 +9946,10 @@ class ServidorSocket(val session: IoSession) {
             'E' -> QUERY_ESTATICA(i[1])
         }
         redactarLogServidorln(
-            "El personaje ${personaje?.nombre} Ha usado el packet $packet\n" +
-                    "Ip responsable: $actualIP\n" +
-                    "Cuenta: $cuenta\n" +
-                    "Packets delicados con entrada a la base de datos"
+                "El personaje ${personaje?.nombre} Ha usado el packet $packet\n" +
+                        "Ip responsable: $actualIP\n" +
+                        "Cuenta: $cuenta\n" +
+                        "Packets delicados con entrada a la base de datos"
         )
     }
 
@@ -9867,7 +9965,7 @@ class ServidorSocket(val session: IoSession) {
                     return
                 }
                 if (personaje!!.alineacion == Constantes.ALINEACION_NEUTRAL || personaje!!
-                        .alineacion == Constantes.ALINEACION_MERCENARIO
+                                .alineacion == Constantes.ALINEACION_MERCENARIO
                 ) {
                     ENVIAR_GA903_ERROR_PELEA(personaje, 'a')
                     return
@@ -9884,22 +9982,22 @@ class ServidorSocket(val session: IoSession) {
                     if (t > 0) {
                         val f = formatoTiempo(t)
                         ENVIAR_Im_INFORMACION(
-                            personaje!!, "1TIENE_PROTECCION;" + f[4] + "~" + f[3] + "~" + f[2] + "~"
-                                    + f[1]
+                                personaje!!, "1TIENE_PROTECCION;" + f[4] + "~" + f[3] + "~" + f[2] + "~"
+                                + f[1]
                         )
                         return
                     }
                 }
                 ENVIAR_GA_ACCION_JUEGO_AL_MAPA(
-                    personaje!!.mapa,
-                    -1,
-                    909,
-                    personaje!!.Id.toString() + "",
-                    id.toString() + ""
+                        personaje!!.mapa,
+                        -1,
+                        909,
+                        personaje!!.Id.toString() + "",
+                        id.toString() + ""
                 )
                 personaje!!.mapa.iniciarPelea(
-                    personaje, prisma, personaje!!.celda.id, prisma!!.celda!!.id,
-                    Constantes.PELEA_TIPO_PRISMA, null
+                        personaje, prisma, personaje!!.celda.id, prisma!!.celda!!.id,
+                        Constantes.PELEA_TIPO_PRISMA, null
                 )
             }
         } catch (ignored: Exception) {
@@ -9927,12 +10025,12 @@ class ServidorSocket(val session: IoSession) {
                     return
                 }
                 if (System.currentTimeMillis() - _tiempoLLegoMapa < AtlantaMain.SEGUNDOS_AGREDIR_RECIEN_LLEGADO_MAPA * 1000
-                    || System.currentTimeMillis() - agredido.cuenta
-                        .socket!!._tiempoLLegoMapa < AtlantaMain.SEGUNDOS_AGREDIR_RECIEN_LLEGADO_MAPA * 1000
+                        || System.currentTimeMillis() - agredido.cuenta
+                                .socket!!._tiempoLLegoMapa < AtlantaMain.SEGUNDOS_AGREDIR_RECIEN_LLEGADO_MAPA * 1000
                 ) {
                     ENVIAR_BN_NADA(
-                        personaje!!, "NO PUEDES AGREDIR POR "
-                                + AtlantaMain.SEGUNDOS_AGREDIR_RECIEN_LLEGADO_MAPA
+                            personaje!!, "NO PUEDES AGREDIR POR "
+                            + AtlantaMain.SEGUNDOS_AGREDIR_RECIEN_LLEGADO_MAPA
                     )
                     return
                 }
@@ -9945,17 +10043,17 @@ class ServidorSocket(val session: IoSession) {
                     return
                 }
                 if (personaje!!.cuenta.actualIP != "127.0.0.1" && personaje!!.cuenta.actualIP == agredido
-                        .cuenta.actualIP
+                                .cuenta.actualIP
                 ) {
                     ENVIAR_Im_INFORMACION(personaje!!, "1DONT_ATTACK_PLAYER_SAME_IP")
                     return
                 }
                 var deshonor = false
                 if (AtlantaMain.PARAM_AGREDIR_JUGADORES_ASESINOS && agredido.deshonor > 0 && agredido
-                        .alineacion != personaje!!.alineacion
+                                .alineacion != personaje!!.alineacion
                 ) { // salta para irse a atacar
                 } else if (personaje!!.mapa.mapaNoAgresion() || personaje!!.mapa.subArea!!.area.superArea
-                    !!.id == 3 || AtlantaMain.SUBAREAS_NO_PVP.contains(personaje!!.mapa.subArea!!.id)
+                        !!.id == 3 || AtlantaMain.SUBAREAS_NO_PVP.contains(personaje!!.mapa.subArea!!.id)
                 ) {
                     ENVIAR_Im_INFORMACION(personaje!!, "113")
                     return
@@ -9998,22 +10096,22 @@ class ServidorSocket(val session: IoSession) {
                 }
                 if (agredido != null) {
                     if (!agredido.enLinea() || agredido.estaDisponible(true, true) || agredido
-                            .mapa != personaje!!.mapa
+                                    .mapa != personaje!!.mapa
                     ) {
                         ENVIAR_Im_INFORMACION(personaje!!, "1DONT_ATTACK_PLAYER")
                         return
                     }
                 }
                 ENVIAR_GA_ACCION_JUEGO_AL_MAPA(
-                    personaje!!.mapa,
-                    -1,
-                    906,
-                    personaje!!.Id.toString() + "",
-                    id.toString() + ""
+                        personaje!!.mapa,
+                        -1,
+                        906,
+                        personaje!!.Id.toString() + "",
+                        id.toString() + ""
                 )
                 personaje!!.mapa.iniciarPelea(
-                    personaje, agredido, personaje!!.celda.id, agredido!!.celda.id,
-                    Constantes.PELEA_TIPO_CACERIA, null
+                        personaje, agredido, personaje!!.celda.id, agredido!!.celda.id,
+                        Constantes.PELEA_TIPO_CACERIA, null
                 )
             }
             // _perso.getPelea().cargarMultiman(_perso);
@@ -10040,7 +10138,7 @@ class ServidorSocket(val session: IoSession) {
                 return
             }
             if (System.currentTimeMillis() - personaje!!.tiempoUltDesafio <= (AtlantaMain.SEGUNDOS_ENTRE_DESAFIOS_PJ
-                        * 1000)
+                            * 1000)
             ) {
                 ENVIAR_GA903_ERROR_PELEA(personaje, 'o')
                 return
@@ -10048,10 +10146,10 @@ class ServidorSocket(val session: IoSession) {
             val desafiadoID = packet.substring(5).toInt()
             val invitandoA = Mundo.getPersonaje(desafiadoID)
             if (invitandoA == null || invitandoA === personaje || !invitandoA.enLinea() || invitandoA.estaDisponible(
-                    true,
-                    true
-                )
-                || invitandoA.mapa != personaje!!.mapa
+                            true,
+                            true
+                    )
+                    || invitandoA.mapa != personaje!!.mapa
             ) {
                 ENVIAR_GA903_ERROR_PELEA(personaje, 'z')
                 return
@@ -10100,8 +10198,8 @@ class ServidorSocket(val session: IoSession) {
             retador.setInvitador(null, "")
             personaje!!.setInvitandoA(null, "")
             personaje!!.mapa.iniciarPelea(
-                retador, personaje, retador.celda.id, personaje!!.celda.id,
-                Constantes.PELEA_TIPO_DESAFIO, null
+                    retador, personaje, retador.celda.id, personaje!!.celda.id,
+                    Constantes.PELEA_TIPO_DESAFIO, null
             )
         }
         return true
@@ -10300,7 +10398,7 @@ class ServidorSocket(val session: IoSession) {
     init {
         session.write("HG")
         val IP =
-            (session.remoteAddress as InetSocketAddress).address.hostAddress
+                (session.remoteAddress as InetSocketAddress).address.hostAddress
         logger = LoggerFactory.getLogger(IP)
         try {
             actualIP = IP
