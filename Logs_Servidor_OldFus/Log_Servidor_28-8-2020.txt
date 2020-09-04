@@ -662,3 +662,41 @@
 [Fri Aug 28 11:26:19 CLT 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
 [Fri Aug 28 11:26:19 CLT 2020]   ########  SERVIDOR CERRO CON EXITO  ########
 ---------- INICIO DEL SERVER ----------
+[Fri Aug 28 12:13:09 CLT 2020]  ---------------- INICIO PEQUEÑO SALVADO ----------------
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando los personajes y sus cuentas: 
+[Fri Aug 28 12:13:09 CLT 2020]   -> Salvando a Utaba ... [Fri Aug 28 12:13:09 CLT 2020]   [ONLINE]  100%
+[Fri Aug 28 12:13:09 CLT 2020]   -> Salvando a Rizac ... [Fri Aug 28 12:13:09 CLT 2020]   [ONLINE]  100%
+[Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 2
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando los gremios: [Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 1
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando los cercados: [Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando las monturas: [Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando las casas: [Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:13:09 CLT 2020]  Salvando los cofres: [Fri Aug 28 12:13:09 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:13:09 CLT 2020]  ------------ Pequeño salvado ejecutado por completo 100% ------------
+[Fri Aug 28 12:27:28 CLT 2020]  Bug al verificar si se puede realizar el skill ID = 168
+[Fri Aug 28 12:29:47 CLT 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Fri Aug 28 12:29:47 CLT 2020]  ---------------- INICIO SALVADO ----------------
+[Fri Aug 28 12:29:47 CLT 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Fri Aug 28 12:29:47 CLT 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Fri Aug 28 12:29:47 CLT 2020]  100%
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando Kamas de la Ruleta de Jalato[Fri Aug 28 12:29:47 CLT 2020]  Salvando los personajes: 
+[Fri Aug 28 12:29:47 CLT 2020]   -> Salvando a Utaba ... [Fri Aug 28 12:29:47 CLT 2020]  SAVE SQL [Utaba] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [2,'Utaba',1,2,4957631,4958143,-1,4910,68,340,10000,69,21055000,100,21,0,0,0,1,2,0,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',8731,326,100,'34,1,b;21,1,c;23,1,d;26,1,e;22,1,f;35,1,g;28,1,h;37,1,i;30,1,j;27,1,k;24,1,l;33,1,m;25,1,n;38,1,o;36,1,z;32,1,A','96|97|98|99|100|101|102|103|104|106|107|108|86|87|88|89|90|91|92|93|94|95','10284,386','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','64,0',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','','','ALL',0,'',0,'',-1,'0,0']
+[Fri Aug 28 12:29:47 CLT 2020]   [ONLINE]  100%
+[Fri Aug 28 12:29:47 CLT 2020]   -> Salvando a Rizac ... [Fri Aug 28 12:29:47 CLT 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,47057,199,0,10000,200,7443860974,100,41,0,0,0,1,13353,745,175,0,0,0,0,1,0,'*#%!pi$:?^¡@~',8731,337,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,6,A;70,6,B;75,6,C;76,6,D;80,6,E;1904,6,F;369,1,G','7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|58|59|60|61|62|63|64|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'',-1,'0,0']
+[Fri Aug 28 12:29:47 CLT 2020]   [ONLINE]  100%
+[Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 2
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los mercantes: 
+[Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los prismas: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los gremios: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 1
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los recaudadores: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los cercados: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 1
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando las monturas: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando las casas: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 1053
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los cofres: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los rankings PVP: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 3
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando los rankings Koliseo: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 0
+[Fri Aug 28 12:29:47 CLT 2020]  Salvando las cuentas: [Fri Aug 28 12:29:47 CLT 2020]  Finalizó con 2
+[Fri Aug 28 12:29:47 CLT 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Fri Aug 28 12:29:47 CLT 2020]   ########  CERRANDO SERVERSOCKET...  [Fri Aug 28 12:29:47 CLT 2020]  ... IS OK  ########
+[Fri Aug 28 12:29:48 CLT 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Fri Aug 28 12:29:48 CLT 2020]   ########  SERVIDOR CERRO CON EXITO  ########

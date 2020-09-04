@@ -7,5 +7,17 @@
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@66.70.190.219" uuid="5b3fc09b-a913-4f92-b8e0-7106c8ef5975">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://66.70.190.219:3306</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="French" uuid="20368060-fc26-493f-be6f-8f9854ce35e4">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://91.236.254.86:3306</jdbc-url>
+    </data-source>
   </component>
 </project>
