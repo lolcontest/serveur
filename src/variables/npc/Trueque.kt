@@ -1,5 +1,6 @@
 package variables.npc
 
+import estaticos.AtlantaMain
 import estaticos.Constantes
 import estaticos.GestorSalida.ENVIAR_EK_CHECK_OK_INTERCAMBIO
 import estaticos.GestorSalida.ENVIAR_EMK_MOVER_OBJETO_LOCAL
@@ -9,7 +10,9 @@ import estaticos.GestorSalida.ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO
 import estaticos.GestorSalida.ENVIAR_OR_ELIMINAR_OBJETO
 import estaticos.Mundo
 import estaticos.Mundo.Duo
+import estaticos.database.GestorSQL
 import sprites.Exchanger
+import utilites.itemrarity.rarityTrade
 import variables.objeto.Objeto
 import variables.objeto.ObjetoModelo.CAPACIDAD_STATS
 import variables.personaje.Personaje
@@ -18,11 +21,13 @@ import java.util.*
 class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, npcID: Int) : Exchanger {
     private val _entregar = ArrayList<Duo<Int, Int>>()
     private val _objetosModelo: MutableMap<Int, Int> = HashMap()
-    private var _dar: Map<Int, Int> = HashMap()
+    private var _dar: MutableMap<Int, Int> = HashMap()
     private var _ok = false
     private var _polvo = false
     private var _idMascota = 0
     private var _npcID = 0
+    private var _devolver = mutableMapOf<Int, Int>()
+
     @Synchronized
     override fun botonOK(perso: Personaje) {
         _ok = !_ok
@@ -47,11 +52,14 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
             }
             val obj = _perso.getObjeto(duo._primero)
             if (obj != null) {
-                val nuevaCant = obj.cantidad - cant
+                var nuevaCant = obj.cantidad - cant
                 if (_resucitar && _polvo && obj.objModelo?.tipo?.toInt() == Constantes.OBJETO_TIPO_FANTASMA_MASCOTA) {
                     ENVIAR_OR_ELIMINAR_OBJETO(_perso, duo._primero)
                     mascota = obj
                 } else {
+                    if (_devolver.keys.contains(duo._primero)) {
+                        nuevaCant += _devolver[duo._primero] ?: 0
+                    }
                     if (nuevaCant <= 0) {
                         _perso.borrarOEliminarConOR(duo._primero, true)
                     } else {
@@ -66,14 +74,15 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
             mascota.cantidad = 1
             mascota.setIDOjbModelo(Mundo.getMascotaPorFantasma(mascota.objModeloID))
             _perso.addObjetoConOAKO(mascota, true)
-        } else if (!_dar.isEmpty()) {
+        } else if (_dar.isNotEmpty()) {
             for ((idObjModelo, cantidad) in _dar) {
+                if (cantidad == 0) continue
                 try {
                     _perso.addObjIdentAInventario(
-                        Mundo.getObjetoModelo(idObjModelo)?.crearObjeto(
-                            cantidad,
-                            Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
-                        ), false
+                            Mundo.getObjetoModelo(idObjModelo)?.crearObjeto(
+                                    cantidad,
+                                    Constantes.OBJETO_POS_NO_EQUIPADO, CAPACIDAD_STATS.RANDOM
+                            ), false
                     )
                 } catch (ignored: Exception) {
                 }
@@ -173,22 +182,81 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
         if (_resucitar) {
             if (mascota != null && _polvo) {
                 ENVIAR_EmK_MOVER_OBJETO_DISTANTE(
-                    _perso, 'O', "+", mascota.id.toString() + "|1|" + Mundo
+                        _perso, 'O', "+", mascota.id.toString() + "|1|" + Mundo
                         .getMascotaPorFantasma(mascota.objModeloID) + "|" + mascota.convertirStatsAString(false)
                 )
             }
         } else {
             var i = 1000000
-            _dar = Mundo.listaObjetosTruequePor(_objetosModelo, _npcID)
+            if (_npcID == 3000 && AtlantaMain.RARITY_SYSTEM) {
+                val runes = mutableMapOf<Int, Int>()
+                val objtouse = mutableListOf<rarityTrade>()
+                _entregar.forEach {
+                    val objid = it._primero
+                    val cantidad = it._segundo
+                    val obj = Mundo.getObjeto(objid)
+                    val modelo = obj?.objModelo
+                    val runa = obj?.let { it1 -> GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(it1) } ?: 0
+                    if (modelo != null && runa != 0) {
+                        if (Constantes.TIPOS_EQUIPABLES.contains(modelo.tipo.toInt())) {
+                            runes[runa] = (runes[runa] ?: 0) + cantidad
+                            var finded = false
+                            for (trade in objtouse) {
+                                if (trade.rune == runa) {
+                                    finded = true
+                                    trade.objects[objid] = (trade.objects[objid] ?: 0) + cantidad
+                                }
+                            }
+                            if (!finded) {
+                                val trade = rarityTrade(runa)
+                                trade.objects[objid] = (trade.objects[objid] ?: 0) + cantidad
+                                objtouse.add(trade)
+                            }
+                        } else {
+                            _devolver[objid] = cantidad
+                        }
+                    }
+                }
+                runes.forEach { (runa, cant) ->
+                    val model = Mundo.getObjetoModelo(runa)
+                    println("Runa ${model?.nombre}: $cant")
+                    val cantofrune = cant / 10
+                    _dar[runa] = cantofrune
+                    var c = 0
+                    objtouse.forEach {
+                        if (it.rune == runa) {
+                            it.objects.forEach { (objid, cantObj) ->
+                                if (c / 10 != cantofrune) {
+                                    _devolver[objid] = 0
+                                    c += cantObj
+                                    if (c / 10 == cantofrune) {
+                                        _devolver[objid] = c - (cantofrune * 10) // if it pass by 1 or 2, something like that, to be precise
+                                    }
+                                } else {
+                                    _devolver[objid] = cantObj
+                                }
+                            }
+                        }
+                    }
+                }
+                filterDar()
+            } else {
+                _dar = Mundo.listaObjetosTruequePor(_objetosModelo, _npcID).toMutableMap()
+            }
             for ((key, value) in _dar) {
                 ENVIAR_EmK_MOVER_OBJETO_DISTANTE(
-                    _perso,
-                    'O',
-                    "+",
-                    i++.toString() + "|" + value + "|" + key + "|" + Mundo.getObjetoModelo(key)!!.stringStatsModelo()
+                        _perso,
+                        'O',
+                        "+",
+                        i++.toString() + "|" + value + "|" + key + "|" + Mundo.getObjetoModelo(key)!!.stringStatsModelo()
                 )
             }
+
         }
+    }
+
+    fun filterDar() {
+        _dar = _dar.filter { it.value != 0 }.toMutableMap()
     }
 
     @Synchronized

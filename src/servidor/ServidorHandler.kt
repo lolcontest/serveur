@@ -1,7 +1,6 @@
 package servidor
 
 import estaticos.AtlantaMain
-import estaticos.GestorSalida.ENVIAR_BN_NADA
 import lombok.extern.slf4j.Slf4j
 import org.apache.mina.core.service.IoHandler
 import org.apache.mina.core.session.IdleStatus
@@ -65,7 +64,7 @@ class ServidorHandler : IoHandler {
                     } else {
                         client.threadPackets(str)
                     }
-                    ENVIAR_BN_NADA(personaje)
+//                    ENVIAR_BN_NADA(personaje)
                     client.logger.trace(" <-- $str")
                 }
             }

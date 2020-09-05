@@ -19,12 +19,12 @@ import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.stream.Collectors
+import kotlin.streams.toList
 
 class ServidorServer private constructor() {
     companion object {
         private val waitingClients = ArrayList<Cuenta>()
         private val log = LoggerFactory.getLogger(ServidorServer::class.java)
-        var MAX_PLAYERS: Short = 700
         var INSTANCE = ServidorServer()
         val _conexiones = IntArray(5)
         private val _IpsClientes: MutableMap<String?, ArrayList<ServidorSocket>> = ConcurrentHashMap()
@@ -35,15 +35,22 @@ class ServidorServer private constructor() {
         var segundosON = 0
         val clientes: List<ServidorSocket>
             get() = INSTANCE.acceptor.managedSessions.values.stream()
-                .filter { session: IoSession -> session.attachment != null }
-                .map { session: IoSession -> session.attachment as ServidorSocket }
-                .collect(Collectors.toList())
+                    .filter { session: IoSession -> session.attachment != null }
+                    .map { session: IoSession -> session.attachment as ServidorSocket }
+                    .collect(Collectors.toList())
 
         val playersNumberByIp: Int
             get() = clientes.stream()
-                .filter { client: ServidorSocket? -> client?.cuenta != null }
-                .map { client: ServidorSocket -> client.cuenta?.actualIP }
-                .distinct().count().toInt()
+                    .filter { client: ServidorSocket? -> client?.cuenta != null }
+                    .map { client: ServidorSocket -> client.cuenta?.actualIP }
+                    .distinct().count().toInt()
+        val sessions: List<IoSession>
+            get() = INSTANCE.acceptor.managedSessions.values.stream().toList()
+
+        fun cleanAFKS() {
+            sessions.asSequence().filter { it.attachment == null }.forEach { it.closeNow() }
+            sessions.asSequence().filter { !it.isConnected }.forEach { it.closeNow() }
+        }
 
         @JvmStatic
         fun getAndDeleteWaitingAccount(id: Int): Cuenta? {
@@ -89,13 +96,11 @@ class ServidorServer private constructor() {
         }
 
         fun getIPsClientes(ip: String?): Int {
-            return if (_IpsClientes[ip] == null) {
-                0
-            } else _IpsClientes[ip]!!.size
+            return clientes.filter { it.actualIP == ip }.size
         }
 
         fun nroJugadoresLinea(): Int {
-            return clientes.size
+            return clientes.filter { it.personaje != null }.size
         }
 
         fun actualizarMaxJugadoresEnLinea() {
@@ -171,8 +176,8 @@ class ServidorServer private constructor() {
 
         fun borrarCuentasBug(segundos: Int): Int {
             val sesionesSinAttach = INSTANCE.acceptor.managedSessions.values.stream()
-                .filter { session: IoSession -> session.attachment == null }
-                .collect(Collectors.toList())
+                    .filter { session: IoSession -> session.attachment == null }
+                    .collect(Collectors.toList())
             var i = 0
             for (ep in clientes) {
                 try {
@@ -277,9 +282,9 @@ class ServidorServer private constructor() {
         return try {
             acceptor.bind(InetSocketAddress(AtlantaMain.PUERTO_SERVIDOR))
             log.info(
-                "Game server started on address : {}:{}",
-                AtlantaMain.IP_PUBLICA_SERVIDOR,
-                AtlantaMain.PUERTO_SERVIDOR
+                    "Game server started on address : {}:{}",
+                    AtlantaMain.IP_PUBLICA_SERVIDOR,
+                    AtlantaMain.PUERTO_SERVIDOR
             )
             true
         } catch (e: IOException) {
@@ -291,8 +296,8 @@ class ServidorServer private constructor() {
     fun stop() {
         if (!acceptor.isActive) {
             acceptor.managedSessions.values.stream()
-                .filter { session: IoSession -> session.isConnected || !session.isClosing }
-                .forEach { session: IoSession -> session.closeNow() }
+                    .filter { session: IoSession -> session.isConnected || !session.isClosing }
+                    .forEach { session: IoSession -> session.closeNow() }
             acceptor.dispose()
             acceptor.unbind()
         }
@@ -307,14 +312,14 @@ class ServidorServer private constructor() {
     init {
         acceptor = NioSocketAcceptor()
         acceptor.filterChain.addLast(
-            "codec",
-            ProtocolCodecFilter(
-                TextLineCodecFactory(
-                    StandardCharsets.UTF_8,
-                    LineDelimiter.NUL,
-                    LineDelimiter("\n\u0000")
+                "codec",
+                ProtocolCodecFilter(
+                        TextLineCodecFactory(
+                                StandardCharsets.UTF_8,
+                                LineDelimiter.NUL,
+                                LineDelimiter("\n\u0000")
+                        )
                 )
-            )
         )
         acceptor.sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, 60 * 10 /*10 Minutes*/)
         acceptor.handler = ServidorHandler()

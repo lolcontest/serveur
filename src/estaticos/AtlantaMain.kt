@@ -1150,7 +1150,7 @@ object AtlantaMain {
             Consola()
         }
         encendido = System.currentTimeMillis()
-        val fixedRateTimer = fixedRateTimer(
+        fixedRateTimer(
                 name = "segunderoServer",
                 initialDelay = 1000, period = 1000
         ) {
@@ -1160,6 +1160,7 @@ object AtlantaMain {
                 }
                 try {
                     ServidorServer.borrarCuentasBug(60)
+                    ServidorServer.cleanAFKS()
                 } catch (e: Exception) {
                 }
             } catch (e: Exception) {

@@ -30,11 +30,11 @@ object Constantes {
     // public static final String SUBVERSION_EMULADOR = ".2";
     const val CREADOR = "SLIMES"
     const val ZAAPI_BONTA =
-        "6159,4174,8758,4299,4180,8759,4183,2221,4217,4098,8757,4223,8760,2214,4179,4229,4232,8478,4238,4263,4216,4172,4247,4272,4271,4250,4178,4106,4181,4259,4090,4262,4287,4300,4240,4218,4074,4308"
+            "6159,4174,8758,4299,4180,8759,4183,2221,4217,4098,8757,4223,8760,2214,4179,4229,4232,8478,4238,4263,4216,4172,4247,4272,4271,4250,4178,4106,4181,4259,4090,4262,4287,4300,4240,4218,4074,4308"
     const val ZAAPI_BRAKMAR =
-        "8756,8755,8493,5304,5311,5277,5317,4612,4618,5112,4639,4637,5116,5332,4579,4588,4549,4562,5334,5295,4646,4629,4601,4551,4607,4930,4622,4620,4615,4595,4627,4623,4604,8754,8753,4630,6167"
+            "8756,8755,8493,5304,5311,5277,5317,4612,4618,5112,4639,4637,5116,5332,4579,4588,4549,4562,5334,5295,4646,4629,4601,4551,4607,4930,4622,4620,4615,4595,4627,4623,4604,8754,8753,4630,6167"
     const val ESTATUAS_FENIX =
-        "12;12;270|-1;33;1399|10;19;268|5;-9;7796|2;-12;8534|-30;-54;4285|-26;35;4551|-23;38;12169|-11;-54;3360|-43;0;10430|-10;13;9227|-41;-17;9539|36;5;1118|24;-43;7910|27;-33;8054|-60;-3;10672|-58;18;10590|-14;31;5717|25;-4;844|"
+            "12;12;270|-1;33;1399|10;19;268|5;-9;7796|2;-12;8534|-30;-54;4285|-26;35;4551|-23;38;12169|-11;-54;3360|-43;0;10430|-10;13;9227|-41;-17;9539|36;5;1118|24;-43;7910|27;-33;8054|-60;-3;10672|-58;18;10590|-14;31;5717|25;-4;844|"
     const val x0char = (0x00.toChar()).toString()
 
     // CREA TU ITEM
@@ -48,7 +48,7 @@ object Constantes {
     val GFX_CREA_TU_ITEM_ESCUDOS = ArrayList<Int>()
     val GFX_CREA_TU_ITEM_DOFUS = ArrayList<Int>()
     val GFXS_CREA_TU_ITEM: MutableMap<Int, ArrayList<Int>> =
-        TreeMap()
+            TreeMap()
 
     // CORPULENCIA
     const val CORPULENCIA_NORMAL: Byte = 0
@@ -471,18 +471,18 @@ object Constantes {
     const val OBJETO_POS_PJ_SEGUIDOR: Byte = 25
 
     val POSICIONES_TODOS = byteArrayOf(
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 20, 21, 22,
-        23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 20, 21, 22,
+            23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48
     )
 
     @JvmField
     val POSICIONES_EQUIPAMIENTO = byteArrayOf(
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 20,
-        21, 22, 23, 24, 25, 26, 27
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 20,
+            21, 22, 23, 24, 25, 26, 27
     )
     val POSICIONES_EQUIPAMIENTO_VISUAL = byteArrayOf(
-        OBJETO_POS_SOMBRERO, OBJETO_POS_CAPA, OBJETO_POS_MASCOTA,
-        OBJETO_POS_ESCUDO, OBJETO_POS_ARMA
+            OBJETO_POS_SOMBRERO, OBJETO_POS_CAPA, OBJETO_POS_MASCOTA,
+            OBJETO_POS_ESCUDO, OBJETO_POS_ARMA
     )
     val POSICIONES_BOOST = byteArrayOf(20, 21, 22, 23, 24, 25, 26, 27)
 
@@ -691,8 +691,8 @@ object Constantes {
 // ID EFECTO MAXIMO
     const val BUFF_MAXIMO = 1500
     val BUFF_ARMAS = intArrayOf(
-        81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
-        101, 108
+            81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+            101, 108
     )
     val NO_BOOST_CC_IDS = intArrayOf(101)
     val BUFF_ACCION_RESPUESTA = intArrayOf(9, 79, 788, 776)
@@ -803,70 +803,71 @@ object Constantes {
 
     @JvmField
     val FUN_STATS_RESTRINGIDAS = intArrayOf(
-        115,
-        240,
-        241,
-        242,
-        243,
-        244,
-        245,
-        246,
-        247,
-        248,
-        249,
-        250,
-        251,
-        252,
-        253,
-        254,
-        255,
-        256,
-        257,
-        258,
-        259,
-        260,
-        261,
-        262,
-        263,
-        264,
-        210,
-        211,
-        212,
-        213,
-        214,
-        215,
-        216,
-        217,
-        218,
-        219,
-        STAT_MENOS_PA,
-        STAT_MENOS_PA_FIJO,
-        STAT_MENOS_PM,
-        STAT_MENOS_PM_FIJO,
-        STAT_MAS_SABIDURIA,
-        STAT_MAS_PROSPECCION
+            115,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            STAT_MENOS_PA,
+            STAT_MENOS_PA_FIJO,
+            STAT_MENOS_PM,
+            STAT_MENOS_PM_FIJO,
+            STAT_MAS_SABIDURIA,
+            STAT_MAS_PROSPECCION
     )
 
     @JvmField
     val FUN_STATS_RESTRINGIDAS_SOLO_OBJ =
-        intArrayOf(STAT_MAS_PA, STAT_MAS_PA_2, STAT_MAS_PM, STAT_MAS_PM_2)
+            intArrayOf(STAT_MAS_PA, STAT_MAS_PA_2, STAT_MAS_PM, STAT_MAS_PM_2)
     val TIPOS_EQUIPABLES = intArrayOf(
-        OBJETO_TIPO_ANILLO,
-        OBJETO_TIPO_AMULETO,
-        OBJETO_TIPO_CAPA,
-        OBJETO_TIPO_MOCHILA,
-        OBJETO_TIPO_CINTURON,
-        OBJETO_TIPO_BOTAS,
-        OBJETO_TIPO_SOMBRERO,
-        OBJETO_TIPO_DAGAS,
-        OBJETO_TIPO_MARTILLO,
-        OBJETO_TIPO_VARITA,
-        OBJETO_TIPO_BASTON,
-        OBJETO_TIPO_HACHA,
-        OBJETO_TIPO_ESPADA,
-        OBJETO_TIPO_ARCO,
-        OBJETO_TIPO_PALA,
-        OBJETO_TIPO_ESCUDO
+            OBJETO_TIPO_ANILLO,
+            OBJETO_TIPO_AMULETO,
+            OBJETO_TIPO_CAPA,
+            OBJETO_TIPO_MOCHILA,
+            OBJETO_TIPO_CINTURON,
+            OBJETO_TIPO_BOTAS,
+            OBJETO_TIPO_SOMBRERO,
+            OBJETO_TIPO_DAGAS,
+            OBJETO_TIPO_MARTILLO,
+            OBJETO_TIPO_VARITA,
+            OBJETO_TIPO_BASTON,
+            OBJETO_TIPO_HACHA,
+            OBJETO_TIPO_ESPADA,
+            OBJETO_TIPO_ARCO,
+            OBJETO_TIPO_PALA,
+            OBJETO_TIPO_ESCUDO,
+            OBJETO_TIPO_MASCOTA
     )
     const val STAT_MAS_RES_FIJA_TIERRA = 240
     const val STAT_MAS_RES_FIJA_AGUA = 241
@@ -1023,116 +1024,116 @@ object Constantes {
     const val STAT_VALIDEZ = 998
     const val STAT_PERSONAJE_SEGUIDOR = 999
     val STAT_REPETIBLE = intArrayOf(
-        STAT_INVOCA_MOB,
-        STAT_INVOCA_MOB_2,
-        STAT_NOMBRE_MOB,
-        STAT_DAR_OBJETO,
-        STAT_LLAVE_MAZMORRA
+            STAT_INVOCA_MOB,
+            STAT_INVOCA_MOB_2,
+            STAT_NOMBRE_MOB,
+            STAT_DAR_OBJETO,
+            STAT_LLAVE_MAZMORRA
     )
     val STAT_TEXTO = intArrayOf(
-        7,
-        10,
-        146,
-        148,
-        188,
-        197,
-        201,
-        221,
-        222,
-        229,
-        230,
-        333,
-        501,
-        513,
-        600,
-        602,
-        603,
-        604,
-        614,
-        615,
-        616,
-        620,
-        622,
-        624,
-        627,
-        640,
-        641,
-        642,
-        643,
-        645,
-        647,
-        648,
-        649,
-        669,
-        699,
-        700,
-        701,
-        705,
-        710,
-        715,
-        716,
-        717,
-        720,
-        724,
-        725,
-        730,
-        751,
-        760,
-        765,
-        791,
-        795,
-        800,
-        805,
-        806,
-        807,
-        808,
-        810,
-        811,
-        813,
-        825,
-        900,
-        901,
-        902,
-        905,
-        915,
-        930,
-        931,
-        932,
-        933,
-        934,
-        935,
-        936,
-        937,
-        939,
-        940,
-        946,
-        947,
-        948,
-        949,
-        950,
-        960,
-        961,
-        962,
-        963,
-        964,
-        970,
-        971,
-        972,
-        973,
-        974,
-        983,
-        985,
-        986,
-        987,
-        988,
-        989,
-        990,
-        992,
-        994,
-        996,
-        997,
-        998,
-        999
+            7,
+            10,
+            146,
+            148,
+            188,
+            197,
+            201,
+            221,
+            222,
+            229,
+            230,
+            333,
+            501,
+            513,
+            600,
+            602,
+            603,
+            604,
+            614,
+            615,
+            616,
+            620,
+            622,
+            624,
+            627,
+            640,
+            641,
+            642,
+            643,
+            645,
+            647,
+            648,
+            649,
+            669,
+            699,
+            700,
+            701,
+            705,
+            710,
+            715,
+            716,
+            717,
+            720,
+            724,
+            725,
+            730,
+            751,
+            760,
+            765,
+            791,
+            795,
+            800,
+            805,
+            806,
+            807,
+            808,
+            810,
+            811,
+            813,
+            825,
+            900,
+            901,
+            902,
+            905,
+            915,
+            930,
+            931,
+            932,
+            933,
+            934,
+            935,
+            936,
+            937,
+            939,
+            940,
+            946,
+            947,
+            948,
+            949,
+            950,
+            960,
+            961,
+            962,
+            963,
+            964,
+            970,
+            971,
+            972,
+            973,
+            974,
+            983,
+            985,
+            986,
+            987,
+            988,
+            989,
+            990,
+            992,
+            994,
+            996,
+            997,
+            998,
+            999
     )
 
     // tipo de quests
@@ -1153,8 +1154,8 @@ object Constantes {
 // otros efectos
 // OBJEVIVOS
     val NIVELES_OBJEVIVOS = intArrayOf(
-        0, 10, 21, 33, 46, 60, 75, 91, 108, 126, 145, 165, 186, 208, 231, 255,
-        280, 306, 333, 361
+            0, 10, 21, 33, 46, 60, 75, 91, 108, 126, 145, 165, 186, 208, 231, 255,
+            280, 306, 333, 361
     )
 
     // EXP OFICIO
@@ -1342,15 +1343,15 @@ object Constantes {
     const val SKILL_ROMPER_OBJETO = 181
     const val SKILL_CREAR_LLAVE = 182
     const val SKILLS_LIBRO_ARTESANOS =
-        (OFICIO_LEÑADOR.toString() + ";" + OFICIO_CAMPESINO + ";" + OFICIO_ALQUIMISTA
-                + ";" + OFICIO_MINERO + ";" + OFICIO_PESCADOR + ";" + OFICIO_CAZADOR + ";" + OFICIO_PANADERO + ";" + OFICIO_CARNICERO
-                + ";" + OFICIO_PESCADERO + ";" + OFICIO_ZAPATERO + ";" + OFICIO_JOYERO + ";" + OFICIO_SASTRE + ";"
-                + OFICIO_ESCULTOR_BASTONES + ";" + OFICIO_ESCULTOR_VARITAS + ";" + OFICIO_ESCULTOR_ARCOS + ";" + OFICIO_FORJADOR_DAGAS
-                + ";" + OFICIO_FORJADOR_ESPADAS + ";" + OFICIO_FORJADOR_MARTILLOS + ";" + OFICIO_FORJADOR_PALAS + ";"
-                + OFICIO_FORJADOR_HACHAS + ";" + OFICIO_FORJADOR_ESCUDOS + ";" + OFICIO_ZAPATEROMAGO + ";" + OFICIO_JOYEROMAGO + ";"
-                + OFICIO_SASTREMAGO + ";" + OFICIO_ESCULTORMAGO_BASTONES + ";" + OFICIO_ESCULTORMAGO_VARITAS + ";"
-                + OFICIO_ESCULTORMAGO_ARCOS + ";" + OFICIO_FORJAMAGO_DAGAS + ";" + OFICIO_FORJAMAGO_ESPADAS + ";"
-                + OFICIO_FORJAMAGO_MARTILLOS + ";" + OFICIO_FORJAMAGO_PALAS + ";" + OFICIO_FORJAMAGO_HACHAS + ";" + OFICIO_MANITAS)
+            (OFICIO_LEÑADOR.toString() + ";" + OFICIO_CAMPESINO + ";" + OFICIO_ALQUIMISTA
+                    + ";" + OFICIO_MINERO + ";" + OFICIO_PESCADOR + ";" + OFICIO_CAZADOR + ";" + OFICIO_PANADERO + ";" + OFICIO_CARNICERO
+                    + ";" + OFICIO_PESCADERO + ";" + OFICIO_ZAPATERO + ";" + OFICIO_JOYERO + ";" + OFICIO_SASTRE + ";"
+                    + OFICIO_ESCULTOR_BASTONES + ";" + OFICIO_ESCULTOR_VARITAS + ";" + OFICIO_ESCULTOR_ARCOS + ";" + OFICIO_FORJADOR_DAGAS
+                    + ";" + OFICIO_FORJADOR_ESPADAS + ";" + OFICIO_FORJADOR_MARTILLOS + ";" + OFICIO_FORJADOR_PALAS + ";"
+                    + OFICIO_FORJADOR_HACHAS + ";" + OFICIO_FORJADOR_ESCUDOS + ";" + OFICIO_ZAPATEROMAGO + ";" + OFICIO_JOYEROMAGO + ";"
+                    + OFICIO_SASTREMAGO + ";" + OFICIO_ESCULTORMAGO_BASTONES + ";" + OFICIO_ESCULTORMAGO_VARITAS + ";"
+                    + OFICIO_ESCULTORMAGO_ARCOS + ";" + OFICIO_FORJAMAGO_DAGAS + ";" + OFICIO_FORJAMAGO_ESPADAS + ";"
+                    + OFICIO_FORJAMAGO_MARTILLOS + ";" + OFICIO_FORJAMAGO_PALAS + ";" + OFICIO_FORJAMAGO_HACHAS + ";" + OFICIO_MANITAS)
 
     // REPORTES
     const val REPORTE_BUGS: Byte = 0
@@ -2087,7 +2088,7 @@ object Constantes {
     fun getTiempoDeUnStat(stat: String, escala: Int): Long {
         return try {
             val str =
-                stat.split(Pattern.quote("#").toRegex()).toTypedArray()
+                    stat.split(Pattern.quote("#").toRegex()).toTypedArray()
             val año = str[0].toInt(16)
             val mes = str[1].toInt(16) / 100 + 1
             val dia = str[1].toInt(16) % 100
@@ -2101,8 +2102,8 @@ object Constantes {
 
     @JvmStatic
     fun getTiempoFechaX(
-        año: Int, mes: Int, dia: Int, hora: Int,
-        minuto: Int, escala: Int
+            año: Int, mes: Int, dia: Int, hora: Int,
+            minuto: Int, escala: Int
     ): Long {
         return try {
             val calendar = Calendar.getInstance()
@@ -2126,18 +2127,18 @@ object Constantes {
 
     @JvmStatic
     fun puedeAgredir(
-        agresor: Personaje?,
-        agredido: Personaje?
+            agresor: Personaje?,
+            agredido: Personaje?
     ): Boolean { // si el agredido esta ocupado no se le pued agredir
         if (agresor != null) {
             return (agredido == null || !agredido.enLinea() || agredido.estaDisponible(
-                true,
-                true
+                    true,
+                    true
             ) || agredido.estaInmovil()
                     || !agresor.enLinea() || agresor.estaDisponible(true, true) || agresor.estaInmovil() || agredido
-                .mapa != agresor.mapa || agredido.alineacion == agresor.alineacion || agredido.agresion
+                    .mapa != agresor.mapa || agredido.alineacion == agresor.alineacion || agredido.agresion
                     || agresor.agresion || agresor.nivel < AtlantaMain.NIVEL_MINIMO_PARA_PVP || agredido
-                .nivel < AtlantaMain.NIVEL_MINIMO_PARA_PVP)
+                    .nivel < AtlantaMain.NIVEL_MINIMO_PARA_PVP)
         }
         return false
     }
@@ -2148,7 +2149,7 @@ object Constantes {
         }
         when (p.alineacion) {
             ALINEACION_NEUTRAL -> if (perso.alineacion == ALINEACION_NEUTRAL || perso
-                    .alineacion == ALINEACION_MERCENARIO
+                            .alineacion == ALINEACION_MERCENARIO
             ) {
                 return false
             }
@@ -2388,8 +2389,8 @@ object Constantes {
 
     @JvmStatic
     fun getInflDañoPorEfecto(
-        efectoID: Int, lanzador: Luchador, objetivo: Luchador,
-        cantidad: Int, idCeldaLanzamiento: Short, SH: StatHechizo?
+            efectoID: Int, lanzador: Luchador, objetivo: Luchador,
+            cantidad: Int, idCeldaLanzamiento: Short, SH: StatHechizo?
     ): Int {
         return try {
             if (objetivo.estaMuerto() && efectoID != 780) {
@@ -2408,8 +2409,8 @@ object Constantes {
                 5, 6 -> try {
                     val distancia = if (efectoID == 6) -cantidad else cantidad
                     if (distancia == 0 || objetivo.esEstatico() || objetivo.estaMuerto() || objetivo.tieneEstado(
-                            ESTADO_ARRAIGADO.toInt()
-                        )
+                                    ESTADO_ARRAIGADO.toInt()
+                            )
                     ) {
                         return inf
                     }
@@ -2419,7 +2420,7 @@ object Constantes {
                         celdaInicio = lanzador.celdaPelea
                     }
                     val duo = Camino.getCeldaDespuesDeEmpujon(
-                        lanzador.pelea, celdaInicio!!, objetivo
+                            lanzador.pelea, celdaInicio!!, objetivo
                             .celdaPelea!!, distancia
                     )
                     val celdasFaltantes = duo._primero
@@ -2438,9 +2439,9 @@ object Constantes {
                 }
                 8 -> {
                     if (lanzador.tieneEstado(ESTADO_PESADO.toInt()) || lanzador.tieneEstado(ESTADO_ARRAIGADO.toInt())
-                        || lanzador.tieneEstado(ESTADO_TRANSPORTADO.toInt()) || lanzador.tieneEstado(
-                            ESTADO_PORTADOR.toInt()
-                        )
+                            || lanzador.tieneEstado(ESTADO_TRANSPORTADO.toInt()) || lanzador.tieneEstado(
+                                    ESTADO_PORTADOR.toInt()
+                            )
                     ) {
                         return inf
                     }
@@ -2448,10 +2449,10 @@ object Constantes {
                         return inf
                     }
                     if (objetivo.estaMuerto() || objetivo.tieneEstado(ESTADO_PESADO.toInt()) || objetivo.tieneEstado(
-                            ESTADO_ARRAIGADO.toInt()
-                        ) || objetivo.tieneEstado(ESTADO_TRANSPORTADO.toInt()) || objetivo.tieneEstado(
-                            ESTADO_PORTADOR.toInt()
-                        )
+                                    ESTADO_ARRAIGADO.toInt()
+                            ) || objetivo.tieneEstado(ESTADO_TRANSPORTADO.toInt()) || objetivo.tieneEstado(
+                                    ESTADO_PORTADOR.toInt()
+                            )
                     ) {
                         return inf
                     }
@@ -2465,15 +2466,15 @@ object Constantes {
                         return inf
                     }
                     inf =
-                        if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) <= statsObj.getTotalStatConComplemento(
-                                STAT_MAS_ESQUIVA_PERD_PM
-                            )
-                        ) {
-                            400
-                        } else {
-                            400 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) - statsObj
-                                .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM))
-                        }
+                            if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) <= statsObj.getTotalStatConComplemento(
+                                            STAT_MAS_ESQUIVA_PERD_PM
+                                    )
+                            ) {
+                                400
+                            } else {
+                                400 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) - statsObj
+                                        .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM))
+                            }
                 }
                 81, 108 -> {
                     val porc = objetivo.porcPDV.toInt()
@@ -2488,18 +2489,18 @@ object Constantes {
                         return inf
                     }
                     inf =
-                        if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) <= statsObj.getTotalStatConComplemento(
-                                STAT_MAS_ESQUIVA_PERD_PA
-                            )
-                        ) {
-                            800
-                        } else {
-                            800 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) - statsObj
-                                .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA))
-                        }
+                            if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) <= statsObj.getTotalStatConComplemento(
+                                            STAT_MAS_ESQUIVA_PERD_PA
+                                    )
+                            ) {
+                                800
+                            } else {
+                                800 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) - statsObj
+                                        .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA))
+                            }
                 }
                 85, 86, 87, 88, 89, 275, 276, 277, 278, 279 -> inf =
-                    Math.max(1, lanzador.pdvConBuff / 10) + 20
+                        Math.max(1, lanzador.pdvConBuff / 10) + 20
                 91, 92, 93, 94, 95 -> inf = 170
                 96, 97, 98, 99, 100 -> inf = 120
                 101 -> {
@@ -2507,15 +2508,15 @@ object Constantes {
                         return inf
                     }
                     inf =
-                        if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) <= statsObj.getTotalStatConComplemento(
-                                STAT_MAS_ESQUIVA_PERD_PA
-                            )
-                        ) {
-                            600
-                        } else {
-                            600 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) - statsObj
-                                .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA))
-                        }
+                            if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) <= statsObj.getTotalStatConComplemento(
+                                            STAT_MAS_ESQUIVA_PERD_PA
+                                    )
+                            ) {
+                                600
+                            } else {
+                                600 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA) - statsObj
+                                        .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PA))
+                            }
                 }
                 105, 265, 178, 164, 121 -> inf = -250
                 106 -> inf = -10000
@@ -2537,15 +2538,15 @@ object Constantes {
                         return inf
                     }
                     inf =
-                        if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) <= statsObj.getTotalStatConComplemento(
-                                STAT_MAS_ESQUIVA_PERD_PM
-                            )
-                        ) {
-                            300
-                        } else {
-                            300 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) - statsObj
-                                .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM))
-                        }
+                            if (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) <= statsObj.getTotalStatConComplemento(
+                                            STAT_MAS_ESQUIVA_PERD_PM
+                                    )
+                            ) {
+                                300
+                            } else {
+                                300 + (statsLanz.getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM) - statsObj
+                                        .getTotalStatConComplemento(STAT_MAS_ESQUIVA_PERD_PM))
+                            }
                 }
                 131, 215, 216, 217, 218, 219 -> inf = 300
                 132 -> {
@@ -2657,18 +2658,18 @@ object Constantes {
                     val celdaLanzamiento = lanzador.celdaPelea
                     val mapa = lanzador.pelea.mapaCopia
                     val dir = objetivo.celdaPelea
-                        ?.id?.let {
-                        Camino.direccionEntreDosCeldas(
-                            mapa, celdaLanzamiento!!.id, it, true
-                        )
-                    }
+                            ?.id?.let {
+                                Camino.direccionEntreDosCeldas(
+                                        mapa, celdaLanzamiento!!.id, it, true
+                                )
+                            }
                     val sigCeldaID = dir?.let {
                         celdaLanzamiento?.id?.let { it1 ->
                             Camino.getSigIDCeldaMismaDir(
-                                it1,
-                                it,
-                                mapa,
-                                true
+                                    it1,
+                                    it,
+                                    mapa,
+                                    true
                             )
                         }
                     }
@@ -2678,16 +2679,16 @@ object Constantes {
                     }
                     val objetivo2 = sigCelda.primerLuchador
                     if (objetivo2!!.estaMuerto() || objetivo2.esEstatico() || objetivo2.tieneEstado(
-                            ESTADO_ARRAIGADO.toInt()
-                        )
+                                    ESTADO_ARRAIGADO.toInt()
+                            )
                     ) {
                         return inf
                     }
                     val distancia = sigCeldaID.let {
                         celdaLanzamiento?.id?.let { it1 ->
                             Camino.distanciaDosCeldas(
-                                mapa, it,
-                                it1
+                                    mapa, it,
+                                    it1
                             ).toInt()
                         }
                     }
@@ -2697,7 +2698,7 @@ object Constantes {
                     }
                     val duo = distancia?.let {
                         Camino.getCeldaDespuesDeEmpujon(
-                            lanzador.pelea, celdaInicio!!, objetivo2
+                                lanzador.pelea, celdaInicio!!, objetivo2
                                 .celdaPelea!!, it
                         )
                     }
@@ -2740,8 +2741,8 @@ object Constantes {
     }
 
     fun getInflBuffPorEfecto(
-        id: Int, lanzador: Luchador, objetivo: Luchador,
-        cantidad: Int, idCeldaLanzamiento: Short, SH: StatHechizo?
+            id: Int, lanzador: Luchador, objetivo: Luchador,
+            cantidad: Int, idCeldaLanzamiento: Short, SH: StatHechizo?
     ): Int {
         return if (id == 666) { // el q no tiene nada
             0
@@ -3189,8 +3190,8 @@ object Constantes {
     }
 
     fun getTrabajosPorOficios(
-        idOficio: Int, nivel: Int,
-        oficio: StatOficio?
+            idOficio: Int, nivel: Int,
+            oficio: StatOficio?
     ): ArrayList<Trabajo> {
         val skills = ArrayList<Trabajo>()
         val tiempoGanado = Math.min(nivel, 100) * 100
@@ -3203,233 +3204,233 @@ object Constantes {
             }
             OFICIO_JOYERO -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_ANILLO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_ANILLO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_AMULETO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_AMULETO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_SASTRE -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_SOMBRERO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_SOMBRERO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_CAPA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_CAPA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_MOCHILA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_MOCHILA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_ZAPATERO -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_BOTAS,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_BOTAS,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_CINTURON,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_CINTURON,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_MANITAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_CHAPUZA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_CHAPUZA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_LLAVE,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_LLAVE,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_ESCULTOR_ARCOS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_ARCO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_ARCO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_ARCO, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_ESCULTOR_VARITAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_VARITA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_VARITA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_VARITA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_ESCULTOR_BASTONES -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_BASTON,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_BASTON,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_BASTON, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_DAGAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_DAGA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_DAGA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_DAGA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_MARTILLOS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_MARTILLO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_MARTILLO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_MARTILLO, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_ESPADAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_ESPADA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_ESPADA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_ESPADA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_PALAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_PALA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_PALA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_PALA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_HACHAS -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_HACHA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_HACHA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_REPARAR_HACHA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_FORJADOR_ESCUDOS -> skills.add(
-                Trabajo(
-                    SKILL_CREAR_ESCUDO,
-                    2,
-                    getIngMaxPorNivel(nivel).toInt(),
-                    true,
-                    getSuerteMaxPorNivel(nivel),
-                    -1,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_CREAR_ESCUDO,
+                            2,
+                            getIngMaxPorNivel(nivel).toInt(),
+                            true,
+                            getSuerteMaxPorNivel(nivel),
+                            -1,
+                            oficio
+                    )
             )
             OFICIO_ZAPATEROMAGO -> {
                 skills.add(Trabajo(SKILL_MAGUEAR_BOTAS, 3, 3, true, nivel, 0, oficio))
@@ -3445,914 +3446,914 @@ object Constantes {
                 skills.add(Trabajo(SKILL_MAGUEAR_MOCHILA, 3, 3, true, nivel, 0, oficio))
             }
             OFICIO_ESCULTORMAGO_BASTONES -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_BASTON,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_BASTON,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_ESCULTORMAGO_VARITAS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_VARITA,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_VARITA,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_ESCULTORMAGO_ARCOS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_ARCO,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_ARCO,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_FORJAMAGO_HACHAS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_HACHA,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_HACHA,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_FORJAMAGO_DAGAS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_DAGA,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_DAGA,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_FORJAMAGO_ESPADAS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_ESPADA,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_ESPADA,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_FORJAMAGO_MARTILLOS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_MARTILLO,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_MARTILLO,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_FORJAMAGO_PALAS -> skills.add(
-                Trabajo(
-                    SKILL_MAGUEAR_PALA,
-                    3,
-                    3,
-                    true,
-                    nivel,
-                    0,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_MAGUEAR_PALA,
+                            3,
+                            3,
+                            true,
+                            nivel,
+                            0,
+                            oficio
+                    )
             )
             OFICIO_CAZADOR -> skills.add(
-                Trabajo(
-                    SKILL_PREPARAR_ENCIMERA,
-                    2,
-                    getIngMaxPorNivel(nivel).toInt(),
-                    true,
-                    getSuerteMaxPorNivel(nivel),
-                    -1,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_PREPARAR_ENCIMERA,
+                            2,
+                            getIngMaxPorNivel(nivel).toInt(),
+                            true,
+                            getSuerteMaxPorNivel(nivel),
+                            -1,
+                            oficio
+                    )
             )
             OFICIO_CARNICERO -> skills.add(
-                Trabajo(
-                    SKILL_PREPARAR_CARNE,
-                    2,
-                    getIngMaxPorNivel(nivel).toInt(),
-                    true,
-                    getSuerteMaxPorNivel(nivel),
-                    -1,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_PREPARAR_CARNE,
+                            2,
+                            getIngMaxPorNivel(nivel).toInt(),
+                            true,
+                            getSuerteMaxPorNivel(nivel),
+                            -1,
+                            oficio
+                    )
             )
             OFICIO_PESCADOR -> {
                 if (nivel >= 75) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADOS_GIGANTES_MAR,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADOS_GIGANTES_MAR,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 70) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADOS_GIGANTES_RIO,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADOS_GIGANTES_RIO,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 50) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PECES_GORDOS_MAR,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PECES_GORDOS_MAR,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 40) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PECES_GORDOS_RIO,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            25,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PECES_GORDOS_RIO,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    25,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 20) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADOS_MAR,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            20,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADOS_MAR,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    20,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 10) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADOS_RIO,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            15,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADOS_RIO,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    15,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 0) {
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_SOMBRA_EXTRAÑA,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            50,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_SOMBRA_EXTRAÑA,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    50,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADITOS_RIO,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADITOS_RIO,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_PESCAR_PESCADITOS_MAR,
-                            0,
-                            1,
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_PESCAR_PESCADITOS_MAR,
+                                    0,
+                                    1,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                     skills.add(Trabajo(SKILL_PESCAR_PISCHI, 0, 1, false, 12000 - tiempoGanado, 5, oficio))
                 }
                 skills.add(
-                    Trabajo(
-                        SKILL_VACIAR_PESCADO,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_VACIAR_PESCADO,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_PESCADERO -> skills.add(
-                Trabajo(
-                    SKILL_PREPARAR_PESCADO,
-                    2,
-                    getIngMaxPorNivel(nivel).toInt(),
-                    true,
-                    getSuerteMaxPorNivel(nivel),
-                    -1,
-                    oficio
-                )
+                    Trabajo(
+                            SKILL_PREPARAR_PESCADO,
+                            2,
+                            getIngMaxPorNivel(nivel).toInt(),
+                            true,
+                            getSuerteMaxPorNivel(nivel),
+                            -1,
+                            oficio
+                    )
             )
             OFICIO_PANADERO -> {
                 skills.add(
-                    Trabajo(
-                        SKILL_HACER_PAN,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_HACER_PAN,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_HACER_CARAMELOS, 3, 3, true, 100, -1, oficio))
             }
             OFICIO_MINERO -> {
                 if (nivel >= 100) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_DOLOMIA,
-                            5 + 1,
-                            5 + 2 + (nivel - 100) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            60,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_DOLOMIA,
+                                    5 + 1,
+                                    5 + 2 + (nivel - 100) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    60,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 80) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_ORO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 80) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            55,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_ORO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 80) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    55,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 70) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_BAUXITA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 70) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            50,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_BAUXITA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 70) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    50,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 60) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_PLATA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 60) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            40,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_PLATA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 60) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    40,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 50) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_ESTAÑO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_ESTAÑO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_SILICATO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_SILICATO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 40) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_MANGANESO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 40) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_MANGANESO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 40) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 30) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_KOBALTO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 30) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            25,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_KOBALTO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 30) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    25,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 20) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_BRONCE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 20) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            20,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_BRONCE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 20) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    20,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 10) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_COBRE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 10) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            15,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_COBRE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 10) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    15,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 0) {
                     skills.add(
-                        Trabajo(
-                            SKILL_RECOLECTAR_HIERRO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + nivel / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_RECOLECTAR_HIERRO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + nivel / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                 }
                 skills.add(
-                    Trabajo(
-                        SKILL_FUNDIR,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_FUNDIR,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(
-                    Trabajo(
-                        SKILL_PULIR,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_PULIR,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_ALQUIMISTA -> {
                 if (nivel >= 50) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_PANDOJA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_PANDOJA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_EDELWEISS,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_EDELWEISS,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 40) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_ORQUIDEA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 40) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_ORQUIDEA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 40) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 30) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_MENTA_SALVAJE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 30) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            25,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_MENTA_SALVAJE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 30) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    25,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 20) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_TREBOL,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 20) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            20,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_TREBOL,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 20) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    20,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 10) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_CAÑAMO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 10) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            15,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_CAÑAMO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 10) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    15,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 0) {
                     skills.add(
-                        Trabajo(
-                            SKILL_COSECHAR_LINO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    / 5),
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_COSECHAR_LINO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            / 5),
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                 }
                 skills.add(
-                    Trabajo(
-                        SKILL_CREAR_POCIMA,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_CREAR_POCIMA,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_LEÑADOR -> {
                 if (nivel >= 100) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_BAMBU_SAGRADO,
-                            5 + 1,
-                            5 + 2 + (nivel - 100) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            75,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_BAMBU_SAGRADO,
+                                    5 + 1,
+                                    5 + 2 + (nivel - 100) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    75,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 90) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_OLMO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 90) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            70,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_OLMO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 90) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    70,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 80) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_CARPE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 80) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            65,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_CARPE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 80) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    65,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_BAMBU_OSCURO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 80) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            65,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_BAMBU_OSCURO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 80) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    65,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 70) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_KALIPTO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 70) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            55,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_KALIPTO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 70) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    55,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_EBANO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 70) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            50,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_EBANO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 70) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    50,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 60) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_CEREZO_SILVESTRE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 60) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            45,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_CEREZO_SILVESTRE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 60) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    45,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 50) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_TEJO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            40,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_TEJO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    40,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_BAMBU,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            40,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_BAMBU,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    40,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 40) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_ARCE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 40) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_ARCE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 40) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 35) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_BOMBU,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 35) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_BOMBU,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 35) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_OLIVIOLETA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2
-                                    + (nivel - 35) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_OLIVIOLETA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2
+                                            + (nivel - 35) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 30) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_ROBLE,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 30) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            25,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_ROBLE,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 30) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    25,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 20) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_NOGAL,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 20) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            20,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_NOGAL,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 20) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    20,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 10) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_CASTAÑO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 10) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            15,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_CASTAÑO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 10) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    15,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 0) {
                     skills.add(
-                        Trabajo(
-                            SKILL_TALAR_FRESNO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    / 5),
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_TALAR_FRESNO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            / 5),
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                 }
                 skills.add(
-                    Trabajo(
-                        SKILL_SERRAR,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_SERRAR,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
             }
             OFICIO_CAMPESINO -> {
                 if (nivel >= 70) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_CAÑAMO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 70) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            45,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_CAÑAMO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 70) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    45,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 60) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_MALTA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 60) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            40,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_MALTA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 60) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    40,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 50) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_ARROZ,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_ARROZ,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_CENTENO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 50) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            35,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_CENTENO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 50) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    35,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 40) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_LINO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 40) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            30,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_LINO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 40) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    30,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 30) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_LUPULO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 30) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            25,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_LUPULO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 30) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    25,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 20) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_AVENA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 20) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            20,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_AVENA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 20) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    20,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 10) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_CEBADA,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    - 10) / 5,
-                            false,
-                            12000 - tiempoGanado,
-                            15,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_CEBADA,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            - 10) / 5,
+                                    false,
+                                    12000 - tiempoGanado,
+                                    15,
+                                    oficio
+                            )
                     )
                 }
                 if (nivel >= 0) {
                     skills.add(
-                        Trabajo(
-                            SKILL_SEGAR_TRIGO,
-                            (if (nivel >= 100) 5 else 0) + 1,
-                            (if (nivel >= 100) 5 else 0) + 2 + (nivel
-                                    / 5),
-                            false,
-                            12000 - tiempoGanado,
-                            10,
-                            oficio
-                        )
+                            Trabajo(
+                                    SKILL_SEGAR_TRIGO,
+                                    (if (nivel >= 100) 5 else 0) + 1,
+                                    (if (nivel >= 100) 5 else 0) + 2 + (nivel
+                                            / 5),
+                                    false,
+                                    12000 - tiempoGanado,
+                                    10,
+                                    oficio
+                            )
                     )
                 }
                 skills.add(
-                    Trabajo(
-                        SKILL_MOLER,
-                        2,
-                        getIngMaxPorNivel(nivel).toInt(),
-                        true,
-                        getSuerteMaxPorNivel(nivel),
-                        -1,
-                        oficio
-                    )
+                        Trabajo(
+                                SKILL_MOLER,
+                                2,
+                                getIngMaxPorNivel(nivel).toInt(),
+                                true,
+                                getSuerteMaxPorNivel(nivel),
+                                -1,
+                                oficio
+                        )
                 )
                 skills.add(Trabajo(SKILL_DESGRANAR, 1, 1, true, 100, -1, oficio))
             }
@@ -4382,8 +4383,8 @@ object Constantes {
         return if (nivel < 10) {
             50
         } else Math.min(
-            100f,
-            getSuerteMaxPorNivel(nivel) * (getIngMaxPorNivel(nivel) / slots.toFloat())
+                100f,
+                getSuerteMaxPorNivel(nivel) * (getIngMaxPorNivel(nivel) / slots.toFloat())
         ).toInt() // 54 + 45 = 99 *
     }
 
@@ -5207,7 +5208,7 @@ object Constantes {
                     return fem > 0 && masc > 0
                 }
                 RETO_CRUEL, RETO_FOCALIZACION, RETO_ORDENADO, RETO_IMPREVISIBLE, RETO_ASESINO_A_SUELDO, RETO_ELITISTA -> return pelea.cantLuchDeEquipo(
-                    2
+                        2
                 ) >= 2
                 RETO_EL_DOS_POR_UNO ->  // que matar obligatoriamente a un (y sólo
                     return pelea.cantLuchDeEquipo(2) % 2 == 0
@@ -5322,7 +5323,7 @@ object Constantes {
                 Pos = OBJETO_POS_ANILLO_DERECHO
             }
             OBJETO_TIPO_BASTON, OBJETO_TIPO_ARCO, OBJETO_TIPO_ARMA_MAGICA, OBJETO_TIPO_MARTILLO, OBJETO_TIPO_VARITA, OBJETO_TIPO_DAGAS, OBJETO_TIPO_PALA, OBJETO_TIPO_HACHA, OBJETO_TIPO_PICO, OBJETO_TIPO_HERRAMIENTA -> Pos =
-                OBJETO_POS_ARMA
+                    OBJETO_POS_ARMA
             OBJETO_TIPO_CAPA, OBJETO_TIPO_MOCHILA -> Pos = OBJETO_POS_CAPA
             OBJETO_TIPO_CINTURON -> Pos = OBJETO_POS_CINTURON
             OBJETO_TIPO_SOMBRERO -> Pos = OBJETO_POS_SOMBRERO
@@ -6194,7 +6195,7 @@ object Constantes {
                 r[i++] = 100
             }
             STAT_MAS_DAÑOS, STAT_MAS_CURAS, STAT_MAS_GOLPES_CRITICOS, STAT_MAS_CRIATURAS_INVO, STAT_MAS_ALCANCE, STAT_MAS_PA, STAT_MAS_PM, STAT_ARMA_CAZA, STAT_MAS_RES_FIJA_TIERRA, STAT_MAS_RES_FIJA_AGUA, STAT_MAS_RES_FIJA_AIRE, STAT_MAS_RES_FIJA_FUEGO, STAT_MAS_RES_FIJA_NEUTRAL, STAT_REENVIA_DAÑOS, STAT_MAS_RES_PORC_TIERRA, STAT_MAS_RES_PORC_AGUA, STAT_MAS_RES_PORC_AIRE, STAT_MAS_RES_PORC_FUEGO, STAT_MAS_RES_PORC_NEUTRAL -> r[i++] =
-                1
+                    1
             STAT_MAS_DAÑOS_TRAMPA, STAT_MAS_PROSPECCION -> {
                 r[i++] = 1
                 r[i++] = 3
@@ -6258,33 +6259,33 @@ object Constantes {
         var porc = 0f
         when (statID) {
             STAT_MAS_CRIATURAS_INVO -> porc = Math.min(
-                85.0,
-                Math.pow(
-                    nivel.toDouble(),
-                    2.0
-                ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
+                    85.0,
+                    Math.pow(
+                            nivel.toDouble(),
+                            2.0
+                    ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
             ).toFloat()
             STAT_ARMA_CAZA -> porc = Math.min(
-                90.0,
-                Math.pow(
-                    nivel.toDouble(),
-                    2.0
-                ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
+                    90.0,
+                    Math.pow(
+                            nivel.toDouble(),
+                            2.0
+                    ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
             ).toFloat()
             STAT_MAS_ALCANCE -> porc = Math.min(
-                80.0,
-                Math.pow(
-                    nivel.toDouble(),
-                    2.0
-                ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
+                    80.0,
+                    Math.pow(
+                            nivel.toDouble(),
+                            2.0
+                    ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
             ).toFloat()
             STAT_MAS_PM -> {
                 porc = Math.min(
-                    75.0,
-                    Math.pow(
-                        nivel.toDouble(),
-                        2.0
-                    ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
+                        75.0,
+                        Math.pow(
+                                nivel.toDouble(),
+                                2.0
+                        ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
                 ).toFloat()
                 if (porc < 25) {
                     porc = 25f
@@ -6292,11 +6293,11 @@ object Constantes {
             }
             STAT_MAS_PA -> {
                 porc = Math.min(
-                    66.0,
-                    Math.pow(
-                        nivel.toDouble(),
-                        2.0
-                    ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
+                        66.0,
+                        Math.pow(
+                                nivel.toDouble(),
+                                2.0
+                        ) / Math.pow(getPesoStat(statID).toDouble(), (5 / 4f).toDouble())
                 ).toFloat()
                 if (porc < 20) {
                     porc = 20f
@@ -6322,8 +6323,8 @@ object Constantes {
     fun getValorPorRunaPocima(objeto: Objeto): Int {
         when (objeto.objModelo?.tipo?.toInt()) {
             OBJETO_TIPO_POCION_FORJAMAGIA, OBJETO_TIPO_RUNA_FORJAMAGIA -> if (objeto.tieneStatTexto(
-                    STAT_POTENCIA_RUNA
-                )
+                            STAT_POTENCIA_RUNA
+                    )
             ) {
                 try {
                     return objeto.getParamStatTexto(STAT_POTENCIA_RUNA, 1).toInt(16)
@@ -6337,8 +6338,8 @@ object Constantes {
     fun getStatPorRunaPocima(objeto: Objeto): Int {
         when (objeto.objModelo?.tipo?.toInt()) {
             OBJETO_TIPO_POCION_FORJAMAGIA, OBJETO_TIPO_RUNA_FORJAMAGIA -> if (objeto.tieneStatTexto(
-                    STAT_POTENCIA_RUNA
-                )
+                            STAT_POTENCIA_RUNA
+                    )
             ) {
                 try {
                     return objeto.getParamStatTexto(STAT_POTENCIA_RUNA, 2).toInt(16)
@@ -6439,8 +6440,8 @@ object Constantes {
     fun getPotenciaPlusRuna(objeto: Objeto): Int {
         when (objeto.objModelo?.tipo?.toInt()) {
             OBJETO_TIPO_POCION_FORJAMAGIA, OBJETO_TIPO_RUNA_FORJAMAGIA -> if (objeto.tieneStatTexto(
-                    STAT_POTENCIA_RUNA
-                )
+                            STAT_POTENCIA_RUNA
+                    )
             ) {
                 try {
                     return objeto.getParamStatTexto(STAT_POTENCIA_RUNA, 3).toInt(16)
@@ -6464,20 +6465,20 @@ object Constantes {
         var pesoRuna = 0f
         when (statID) {
             STAT_REDUCCION_FISICA, STAT_REDUCCION_MAGICA, STAT_MAS_DAÑOS_EMPUJE, STAT_MAS_REDUCCION_CRITICOS, STAT_MAS_DAÑOS_CRITICOS, STAT_MAS_REDUCCION_EMPUJE, STAT_MAS_DAÑOS_REDUCIDOS_NO_FECA, STAT_MAS_DAÑOS_REDUCIDOS_ARMADURAS_FECA -> pesoRuna =
-                10f
+                    10f
             STAT_MAS_INICIATIVA, STAT_MAS_VELOCIDAD -> pesoRuna = 0.1f
             STAT_MAS_DAÑOS_DE_AGUA, STAT_MAS_DAÑOS_DE_TIERRA, STAT_MAS_DAÑOS_DE_AIRE, STAT_MAS_DAÑOS_DE_FUEGO, STAT_MAS_DAÑOS_DE_NEUTRAL, STAT_MAS_DAÑOS_TRAMPA -> pesoRuna =
-                5f
+                    5f
             STAT_MAS_ESQUIVA_PERD_PA, STAT_MAS_ESQUIVA_PERD_PM, STAT_MAS_PODS -> pesoRuna =
-                0.25f
+                    0.25f
             STAT_MAS_VITALIDAD -> pesoRuna = 0.50f
             STAT_MAS_FUERZA, STAT_MAS_AGILIDAD, STAT_MAS_SUERTE, STAT_MAS_INTELIGENCIA, STAT_MAS_RETIRO_PA, STAT_MAS_RETIRO_PM -> pesoRuna =
-                1f
+                    1f
             STAT_MAS_DAÑO_FISICO, STAT_MAS_PORC_DAÑOS, STAT_MAS_PORC_DAÑOS_TRAMPA, STAT_MAS_RES_FIJA_TIERRA, STAT_MAS_RES_FIJA_AGUA, STAT_MAS_RES_FIJA_AIRE, STAT_MAS_RES_FIJA_FUEGO, STAT_MAS_RES_FIJA_NEUTRAL, STAT_MAS_RES_FIJA_PVP_TIERRA, STAT_MAS_RES_FIJA_PVP_AGUA, STAT_MAS_RES_FIJA_PVP_AIRE, STAT_MAS_RES_FIJA_PVP_FUEGO, STAT_MAS_RES_FIJA_PVP_NEUTRAL, STAT_MAS_HUIDA, STAT_MAS_PLACAJE -> pesoRuna =
-                2f
+                    2f
             STAT_MAS_SABIDURIA, STAT_MAS_PROSPECCION, STAT_ARMA_CAZA -> pesoRuna = 3f
             STAT_MAS_RES_PORC_TIERRA, STAT_MAS_RES_PORC_AGUA, STAT_MAS_RES_PORC_AIRE, STAT_MAS_RES_PORC_FUEGO, STAT_MAS_RES_PORC_NEUTRAL, STAT_MAS_RES_PORC_PVP_TIERRA, STAT_MAS_RES_PORC_PVP_AGUA, STAT_MAS_RES_PORC_PVP_AIRE, STAT_MAS_RES_PORC_PVP_FUEGO, STAT_MAS_RES_PORC_PVP_NEUTRAL -> pesoRuna =
-                6f
+                    6f
             STAT_MAS_DAÑOS, STAT_MAS_CURAS -> pesoRuna = 20f
             STAT_MAS_GOLPES_CRITICOS, STAT_MAS_CRIATURAS_INVO -> pesoRuna = 29f
             STAT_REENVIA_DAÑOS -> pesoRuna = 30f

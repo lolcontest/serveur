@@ -947,7 +947,7 @@ class ServidorSocket(val session: IoSession) {
                         }
                         ServidorServer.delEsperandoCuenta(cuenta)
                         val cuentasPorIP = ServidorServer.getIPsClientes(actualIP)
-                        if (cuenta!!.admin <= 0 && cuentasPorIP >= AtlantaMain.MAX_CUENTAS_POR_IP) {
+                        if (cuenta?.admin ?: 0 <= 0 && cuentasPorIP > AtlantaMain.MAX_CUENTAS_POR_IP) {
                             ENVIAR_M0_MENSAJE_BASICOS_SVR_MUESTRA_DISCONNECT(
                                     this, "34", cuentasPorIP.toString() + ";"
                                     + AtlantaMain.MAX_CUENTAS_POR_IP, ""

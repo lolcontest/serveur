@@ -3664,10 +3664,7 @@ object Mundo {
                         x += 2
                         continue
                     }
-                    if (Math.max(promedioA, promedioB) - Math.min(
-                                    promedioA,
-                                    promedioB
-                            ) > AtlantaMain.RANGO_NIVEL_KOLISEO
+                    if (promedioA.coerceAtLeast(promedioB) - promedioA.coerceAtMost(promedioB) > AtlantaMain.RANGO_NIVEL_KOLISEO
                     ) {
                         x -= 1
                         x += 2
@@ -3706,7 +3703,7 @@ object Mundo {
         val aDar2: MutableMap<Int, Int> = TreeMap(aDar)
         val objetos = ArrayList<ObjetoTrueque>()
         for (objT in OBJETOS_TRUEQUE) {
-            if (objT.permiteNPC(npcID) && !objT.necesita.isEmpty()) {
+            if (objT.permiteNPC(npcID) && objT.necesita.isNotEmpty()) {
                 objetos.add(objT)
             }
         }
