@@ -188,7 +188,7 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
             }
         } else {
             var i = 1000000
-            if (_npcID == 3000 && AtlantaMain.RARITY_SYSTEM) {
+            if (_npcID == AtlantaMain.NPC_RARITY_SYSTEM && AtlantaMain.RARITY_SYSTEM) {
                 val runes = mutableMapOf<Int, Int>()
                 val objtouse = mutableListOf<rarityTrade>()
                 _entregar.forEach {
@@ -220,17 +220,17 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
                 runes.forEach { (runa, cant) ->
                     val model = Mundo.getObjetoModelo(runa)
                     println("Runa ${model?.nombre}: $cant")
-                    val cantofrune = cant / 10
+                    val cantofrune = cant / AtlantaMain.ITEMS_PER_ORB
                     _dar[runa] = cantofrune
                     var c = 0
                     objtouse.forEach {
                         if (it.rune == runa) {
                             it.objects.forEach { (objid, cantObj) ->
-                                if (c / 10 != cantofrune) {
+                                if (c / AtlantaMain.ITEMS_PER_ORB != cantofrune) {
                                     _devolver[objid] = 0
                                     c += cantObj
-                                    if (c / 10 == cantofrune) {
-                                        _devolver[objid] = c - (cantofrune * 10) // if it pass by 1 or 2, something like that, to be precise
+                                    if (c / AtlantaMain.ITEMS_PER_ORB == cantofrune) {
+                                        _devolver[objid] = c - (cantofrune * AtlantaMain.ITEMS_PER_ORB) // if it pass by 1 or 2, something like that, to be precise
                                     }
                                 } else {
                                     _devolver[objid] = cantObj

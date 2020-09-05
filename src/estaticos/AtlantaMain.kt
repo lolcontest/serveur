@@ -1090,6 +1090,8 @@ object AtlantaMain {
     var OBJETOS_PELEA_PRISMA = ""
     var VALOR_RECAUDADOR = 1000
     var RARITY_SYSTEM = true
+    var NPC_RARITY_SYSTEM = 3000
+    var ITEMS_PER_ORB = 10
     var NO_RARITY_TEMPLATES = emptyList<Int>().toMutableList()
     var RARITY_TYPES = Constantes.TIPOS_EQUIPABLES
     var RANDOMIZE_PORT = true
@@ -2103,6 +2105,14 @@ object AtlantaMain {
                         "VALOR_RECAUDADOR" -> {
                             VALOR_RECAUDADOR = valor.toInt()
                             variable = "VALOR_RECAUDADOR"
+                        }
+                        "NPC_RARITY_SYSTEM" -> {
+                            NPC_RARITY_SYSTEM = valor.toInt()
+                            variable = "NPC_RARITY_SYSTEM"
+                        }
+                        "ITEMS_PER_ORB" -> {
+                            ITEMS_PER_ORB = valor.toInt()
+                            variable = "ITEMS_PER_ORB"
                         }
                         "PARAM_CORREGIR_NOMBRE_JUGADOR" -> {
                             PARAM_CORREGIR_NOMBRE_JUGADOR = valor.equals("true", ignoreCase = true)
