@@ -3931,6 +3931,8 @@ object GestorSalida {
         ss ?: return
         val packet = "Zy"
         enviarEnCola(ss, packet, true)
+        ENVIAR_MENSAJE_PANEL_REROLL(ss, "Youre welcome to the Re rolling Panel, You need to put a item and follow the instructions to make a reroll" +
+                " When you reroll a item, that item won the perfect base stats and reroll the rarity-Stats possibilities :)", false)
     }
 
     fun STATS_PANEL_REROLL(ss: Personaje?, obj: Objeto?) {
