@@ -218,8 +218,8 @@ class Trueque(private val _perso: Personaje, private val _resucitar: Boolean, np
                     }
                 }
                 runes.forEach { (runa, cant) ->
-                    val model = Mundo.getObjetoModelo(runa)
-                    println("Runa ${model?.nombre}: $cant")
+//                    val model = Mundo.getObjetoModelo(runa)
+//                    println("Runa ${model?.nombre}: $cant")
                     val cantofrune = cant / AtlantaMain.ITEMS_PER_ORB
                     _dar[runa] = cantofrune
                     var c = 0

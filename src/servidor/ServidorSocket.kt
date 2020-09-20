@@ -1582,12 +1582,13 @@ class ServidorSocket(val session: IoSession) {
                             try {
                                 val objID = packet.substring(3).toInt()
                                 val obj = Mundo.getObjeto(objID)
-                                        ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                        ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
                                 val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
                                 val objmodelo = obj.objModelo
-                                        ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                        ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
                                 if (rarityReroll.canReroll(obj, personaje)) {
                                     GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "Press confirm to proceed", true, objrequerido?.id.toString())
+                                    GestorSalida.STATS_PANEL_REROLL(personaje, obj)
                                 } else {
                                     if (AtlantaMain.RARITY_TYPES.contains(objmodelo.tipo.toInt())) {
                                         GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "You need: ${objrequerido?.nombre} to do this action.", false)
@@ -1601,7 +1602,7 @@ class ServidorSocket(val session: IoSession) {
                         'W' -> {
                             val objID = packet.substring(3).toInt()
                             val obj = Mundo.getObjeto(objID)
-                                    ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                    ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
                             if (rarityReroll.Reroll(obj, personaje)) {
                                 GestorSalida.STATS_PANEL_REROLL(personaje, obj)
                                 val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
@@ -1615,7 +1616,7 @@ class ServidorSocket(val session: IoSession) {
                                 }
                                 personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
                             } else {
-                                GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                GestorSalida.CERRAR_PANEL_REROLL(personaje)
                             }
                         }
                         else -> {
