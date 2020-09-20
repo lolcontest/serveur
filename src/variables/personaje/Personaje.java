@@ -4345,6 +4345,17 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
         return cantidad > 0;
     }
 
+    public int tieneObjetoIDModeloCantidad(final int idModelo) {
+        int cantidad = 0;
+        for (final Objeto obj : Objetos.values()) {
+            if (obj.getObjModeloID() != idModelo) {
+                continue;
+            }
+            cantidad += obj.getCantidad();
+        }
+        return cantidad;
+    }
+
     public boolean tieneObjPorModYCant(final int idModelo, int cantidad) {
         for (final Objeto obj : Objetos.values()) {
             if (obj.getObjModeloID() != idModelo) {

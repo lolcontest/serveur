@@ -365,3 +365,55 @@ java.lang.NumberFormatException: For input string: "w741"
 [Sun Sep 20 02:33:54 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
 ---------- INICIO DEL SERVER ----------
 [Sun Sep 20 02:33:59 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sun Sep 20 02:34:00 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Sun Sep 20 02:53:29 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Sun Sep 20 02:53:29 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sun Sep 20 02:53:29 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sun Sep 20 02:53:29 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sun Sep 20 02:53:29 CLST 2020]  100%
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sun Sep 20 02:53:29 CLST 2020]  Salvando los personajes: 
+[Sun Sep 20 02:53:29 CLST 2020]   -> Salvando a Rizac ... [Sun Sep 20 02:53:29 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,30,10000,155,631993940,100,41,0,0,0,1,13353,745,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7395,222,100,'65,6,b;72,1,c;61,1,d;66,1,e;68,1,f;63,1,g;74,1,h;64,1,i;79,1,j;78,1,k;71,1,l;62,1,m;69,1,n;77,1,o;73,1,z;67,1,A;70,1,B;75,1,C;76,1,D;80,1,E','672|609|674|643|740|613|741|614|617|682|685|622|721|600|601|666|602|634|604|605|606','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'',-1,'0,0']
+[Sun Sep 20 02:53:29 CLST 2020]   [ONLINE]  100%
+[Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los mercantes: 
+[Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los prismas: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los gremios: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los recaudadores: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los cercados: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando las monturas: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando las casas: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 1053
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los cofres: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 14
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los rankings PVP: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 7
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando los rankings Koliseo: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:53:29 CLST 2020]  Salvando las cuentas: [Sun Sep 20 02:53:29 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:53:29 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sun Sep 20 02:53:29 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Sun Sep 20 02:53:29 CLST 2020]  ... IS OK  ########
+[Sun Sep 20 02:53:30 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Sun Sep 20 02:53:30 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Sun Sep 20 02:53:51 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sun Sep 20 02:53:51 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Sun Sep 20 02:58:52 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Sun Sep 20 02:58:52 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sun Sep 20 02:58:52 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sun Sep 20 02:58:52 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sun Sep 20 02:58:52 CLST 2020]  100%
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sun Sep 20 02:58:52 CLST 2020]  Salvando los personajes: 
+[Sun Sep 20 02:58:52 CLST 2020]   -> Salvando a Rizac ... [Sun Sep 20 02:58:52 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,30,10000,155,631993940,100,41,0,0,0,1,13353,745,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7411,373,100,'65,6,b;72,1,c;61,1,d;66,1,e;68,1,f;63,1,g;74,1,h;64,1,i;79,1,j;78,1,k;71,1,l;62,1,m;69,1,n;77,1,o;73,1,z;67,1,A;70,1,B;75,1,C;76,1,D;80,1,E','643|785|786|666|682|685|721|600|601|602|604|605|606|609|740|613|741|614|742|743|744|617|622|751|634','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'',-1,'0,0']
+[Sun Sep 20 02:58:52 CLST 2020]   [ONLINE]  100%
+[Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los mercantes: 
+[Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los prismas: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los gremios: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los recaudadores: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los cercados: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando las monturas: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando las casas: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 1053
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los cofres: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 14
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los rankings PVP: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 7
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando los rankings Koliseo: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 0
+[Sun Sep 20 02:58:52 CLST 2020]  Salvando las cuentas: [Sun Sep 20 02:58:52 CLST 2020]  Finalizó con 1
+[Sun Sep 20 02:58:52 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sun Sep 20 02:58:52 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Sun Sep 20 02:58:52 CLST 2020]  ... IS OK  ########
+[Sun Sep 20 02:58:53 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Sun Sep 20 02:58:53 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Sun Sep 20 02:58:55 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sun Sep 20 02:58:56 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431

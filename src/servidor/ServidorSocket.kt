@@ -1603,8 +1603,16 @@ class ServidorSocket(val session: IoSession) {
                             val obj = Mundo.getObjeto(objID)
                                     ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
                             if (rarityReroll.Reroll(obj, personaje)) {
-//                                GestorSalida.CERRAR_PANEL_REROLL(personaje)
                                 GestorSalida.STATS_PANEL_REROLL(personaje, obj)
+                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
+                                val cantobjrequerido = personaje?.tieneObjetoIDModeloCantidad(objrequerido?.id ?: -1)
+                                if (cantobjrequerido != null) {
+                                    if (cantobjrequerido > 0) {
+                                        GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "You can do it $cantobjrequerido more times", true)
+                                    } else {
+                                        GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "You dont have any ${objrequerido?.nombre} now", false)
+                                    }
+                                }
                                 personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
                             } else {
                                 GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
