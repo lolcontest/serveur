@@ -423,6 +423,7 @@ class ServidorSocket(val session: IoSession) {
 
     fun registrar(packet: String?) {
         try {
+            if (!AtlantaMain.PARAM_REGISTRO_LOGS_JUGADORES) return
             if (cuenta != null && cuenta?.sinco == false) {
                 if (REGISTROS[cuenta!!.nombre] == null) {
                     REGISTROS[cuenta!!.nombre] = StringBuilder()
@@ -1576,15 +1577,51 @@ class ServidorSocket(val session: IoSession) {
                     }
                 }
                 else -> {
-                    val arg = packet.split(";".toRegex()).toTypedArray()
-                    try {
-                        if (arg.size > 1) {
-                            personaje?.setMedioPagoServicio(arg[1].toByte())
+                    when (packet[2]) {
+                        'w' -> {
+                            try {
+                                val objID = packet.substring(3).toInt()
+                                val obj = Mundo.getObjeto(objID)
+                                        ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
+                                val objmodelo = obj.objModelo
+                                        ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                                if (rarityReroll.canReroll(obj, personaje)) {
+                                    GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "Press confirm to proceed", true, objrequerido?.id.toString())
+                                } else {
+                                    if (AtlantaMain.RARITY_TYPES.contains(objmodelo.tipo.toInt())) {
+                                        GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "You need: ${objrequerido?.nombre} to do this action.", false)
+                                    } else {
+                                        GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "This item is not admited by the re rolling system", false)
+                                    }
+                                }
+                            } catch (e: Exception) {
+                            }
                         }
-                    } catch (ignored: Exception) {
+                        'W' -> {
+                            val objID = packet.substring(3).toInt()
+                            val obj = Mundo.getObjeto(objID)
+                                    ?: return GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                            if (rarityReroll.Reroll(obj, personaje)) {
+//                                GestorSalida.CERRAR_PANEL_REROLL(personaje)
+                                GestorSalida.STATS_PANEL_REROLL(personaje, obj)
+                                personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
+                            } else {
+                                GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "ERROR", false)
+                            }
+                        }
+                        else -> {
+                            val arg = packet.split(";".toRegex()).toTypedArray()
+                            try {
+                                if (arg.size > 1) {
+                                    personaje?.setMedioPagoServicio(arg[1].toByte())
+                                }
+                            } catch (ignored: Exception) {
+                            }
+                            servicio = Mundo.getServicio(arg[0].substring(2).toInt())
+                            packet = ""
+                        }
                     }
-                    servicio = Mundo.getServicio(arg[0].substring(2).toInt())
-                    packet = ""
                 }
             }
             servicio?.usarServicio(personaje!!, packet)
@@ -7628,6 +7665,13 @@ class ServidorSocket(val session: IoSession) {
                         personaje?.conectarse()
                         return true
                     }
+                    "rer" -> {
+                        try {
+                            GestorSalida.ABRIR_PANEL_REROLL(personaje)
+                        } catch (e: Exception) {
+                        }
+                        return true
+                    }
                     "reroll" -> {
                         if (!AtlantaMain.RARITY_SYSTEM) {
                             personaje?.sendMessage("Sistema no disponible, bloqueado por el creador", "Système non disponible, verrouillé par le créateur", 3)
@@ -10355,10 +10399,10 @@ class ServidorSocket(val session: IoSession) {
 
     private fun realizarAccion(AJ: AccionDeJuego?) {
         try {
-//            if (AJ == null) {
-//                return
-//            }
-            when (AJ?.AccionID) {
+            if (AJ == null) {
+                return
+            }
+            when (AJ.AccionID) {
                 1 -> if (!personaje!!.inicioAccionMoverse(AJ)) {
                     limpiarAcciones(true)
                 }

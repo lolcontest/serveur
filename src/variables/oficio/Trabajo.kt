@@ -826,11 +826,11 @@ class Trabajo(// private static float TOLERANCIA_NORMAL = 1.0f, TOLERANCIA_VIP =
     }
 
     private fun iniciarCraft(esSpeedCraft: Boolean): Boolean {
-        if (Constantes.esSkillMago(trabajoID)) {
-            return trabajoMaguear(esSpeedCraft)
+        return if (Constantes.esSkillMago(trabajoID)) {
+            trabajoMaguear(esSpeedCraft)
         } else {
             trabajoCraftear(esSpeedCraft)
-            return esSpeedCraft
+            esSpeedCraft
         }
     }
 
@@ -919,13 +919,9 @@ class Trabajo(// private static float TOLERANCIA_NORMAL = 1.0f, TOLERANCIA_VIP =
                                 .append(Integer.toHexString(value))
                         }
                     }
-                    if (objCreado != null) {
-                        objCreado.convertirStringAStats(st.toString())
-                    }
+                    objCreado?.convertirStringAStats(st.toString())
                 } else if (firmado) {
-                    if (objCreado != null) {
-                        objCreado.addStatTexto(Constantes.STAT_FACBRICADO_POR, "0#0#0#" + _artesano!!.nombre)
-                    }
+                    objCreado?.addStatTexto(Constantes.STAT_FACBRICADO_POR, "0#0#0#" + _artesano!!.nombre)
                 }
                 val igual = _artesano!!.getObjIdentInventario(objCreado, null)
                 if (igual == null) {
@@ -989,24 +985,28 @@ class Trabajo(// private static float TOLERANCIA_NORMAL = 1.0f, TOLERANCIA_VIP =
             }
             for (idIngrediente in _ingredientes!!.keys) {
                 val ing = _artesano!!.getObjeto(idIngrediente)
-                    ?: // GestorSalida.ENVIAR_Im_INFORMACION(_artesano, "1OBJECT_DONT_EXIST;" + idIngrediente);
+                        ?: // GestorSalida.ENVIAR_Im_INFORMACION(_artesano, "1OBJECT_DONT_EXIST;" + idIngrediente);
 // _interrumpir = MENSAJE_FALTA_RECURSOS;
 // return null;
-                    continue
+                        continue
                 val statRuna = Constantes.getStatPorRunaPocima(ing)
                 val idModelo = ing.objModeloID
-                if (idModelo == 7508) {
-                    firmado = true
-                    objRunaFirma = ing
-                } else if (statRuna > 0) {
-                    statMagueo = statRuna
-                    valorRuna = Constantes.getValorPorRunaPocima(ing)
-                    pesoPlusRuna = Constantes.getPotenciaPlusRuna(ing)
-                    objRunaOPocima = ing
-                } else {
-                    when (ing.objModelo?.tipo?.toInt()) {
-                        Constantes.OBJETO_TIPO_AMULETO, Constantes.OBJETO_TIPO_ARCO, Constantes.OBJETO_TIPO_VARITA, Constantes.OBJETO_TIPO_BASTON, Constantes.OBJETO_TIPO_DAGAS, Constantes.OBJETO_TIPO_ESPADA, Constantes.OBJETO_TIPO_MARTILLO, Constantes.OBJETO_TIPO_PALA, Constantes.OBJETO_TIPO_ANILLO, Constantes.OBJETO_TIPO_CINTURON, Constantes.OBJETO_TIPO_BOTAS, Constantes.OBJETO_TIPO_SOMBRERO, Constantes.OBJETO_TIPO_CAPA, Constantes.OBJETO_TIPO_HACHA, Constantes.OBJETO_TIPO_HERRAMIENTA, Constantes.OBJETO_TIPO_PICO, Constantes.OBJETO_TIPO_GUADAÑA, Constantes.OBJETO_TIPO_MOCHILA, Constantes.OBJETO_TIPO_BALLESTA, Constantes.OBJETO_TIPO_ARMA_MAGICA -> objAMaguear =
-                            ing
+                when {
+                    idModelo == 7508 -> {
+                        firmado = true
+                        objRunaFirma = ing
+                    }
+                    statRuna > 0 -> {
+                        statMagueo = statRuna
+                        valorRuna = Constantes.getValorPorRunaPocima(ing)
+                        pesoPlusRuna = Constantes.getPotenciaPlusRuna(ing)
+                        objRunaOPocima = ing
+                    }
+                    else -> {
+                        when (ing.objModelo?.tipo?.toInt()) {
+                            Constantes.OBJETO_TIPO_AMULETO, Constantes.OBJETO_TIPO_ARCO, Constantes.OBJETO_TIPO_VARITA, Constantes.OBJETO_TIPO_BASTON, Constantes.OBJETO_TIPO_DAGAS, Constantes.OBJETO_TIPO_ESPADA, Constantes.OBJETO_TIPO_MARTILLO, Constantes.OBJETO_TIPO_PALA, Constantes.OBJETO_TIPO_ANILLO, Constantes.OBJETO_TIPO_CINTURON, Constantes.OBJETO_TIPO_BOTAS, Constantes.OBJETO_TIPO_SOMBRERO, Constantes.OBJETO_TIPO_CAPA, Constantes.OBJETO_TIPO_HACHA, Constantes.OBJETO_TIPO_HERRAMIENTA, Constantes.OBJETO_TIPO_PICO, Constantes.OBJETO_TIPO_GUADAÑA, Constantes.OBJETO_TIPO_MOCHILA, Constantes.OBJETO_TIPO_BALLESTA, Constantes.OBJETO_TIPO_ARMA_MAGICA -> objAMaguear =
+                                    ing
+                        }
                     }
                 }
             }
@@ -1086,48 +1086,6 @@ class Trabajo(// private static float TOLERANCIA_NORMAL = 1.0f, TOLERANCIA_VIP =
             }
             var r = 0
             var t = 0
-//            var temp = 0
-//            val rCondicionado = utilidades.algoritmos.RandomCondicionado
-//            while (r == 0) {
-//                var listaAcertados = arrayListOf<Int>()
-//                temp = 0
-//                for (i in resultados) {
-//                    if (i <= 0) {
-//                        temp++
-//                        continue
-//                    }
-//                    temp++
-//                    val random = rCondicionado.getRandA(4, temp, (i.toFloat() / 100))
-//                    if (AtlantaMain.MODO_DEBUG) {
-//                        println("random: $random\ntemp: $temp\ni: ${(i.toFloat() / 100)}")
-//                    }
-//                    if (random == temp) {
-//                        listaAcertados.add(temp)
-//                    }
-//                }
-//                if (listaAcertados.isEmpty()){
-//                    continue
-//                } else if (listaAcertados.size == 1){
-//                    r=listaAcertados[0]
-//                } else {
-//                    while (listaAcertados.size != 1){
-//                        val listaAcertadosSecundaria = arrayListOf<Int>()
-//                        for (x in listaAcertados){
-//                            val random2 = rCondicionado.getRandA(4, x, (resultados[x-1].toFloat() / 100))
-//                            if (AtlantaMain.MODO_DEBUG) {
-//                                println("Segunda Vuelta\nrandom: $random2\ntemp: $x\ni: ${(resultados[x-1].toFloat() / 100)}")
-//                            }
-//                            if (random2 == x){
-//                                listaAcertadosSecundaria.add(x)
-//                            }
-//                        }
-//                        if (listaAcertadosSecundaria.size >=1) {
-//                            listaAcertados = listaAcertadosSecundaria
-//                        }
-//                    }
-//                    r=listaAcertados[0]
-//                }
-//            }
             for (i in resultados) {
                 r++
                 t += i

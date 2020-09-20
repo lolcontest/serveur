@@ -4,6 +4,7 @@ import estaticos.AtlantaMain
 import estaticos.AtlantaMain.redactarLogServidorln
 import estaticos.Constantes
 import estaticos.Encriptador
+import estaticos.GestorSalida
 import estaticos.GestorSalida.ENVIAR_AAE_ERROR_CREAR_PJ
 import estaticos.GestorSalida.ENVIAR_BN_NADA
 import estaticos.GestorSalida.ENVIAR_Im_INFORMACION
@@ -217,7 +218,7 @@ class Servicio(
                 }
                 Constantes.SERVICIO_MIMOBIONTE -> if (!packet.isEmpty()) {
                     val split =
-                        packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
+                            packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
                     val huesped = _perso.getObjeto(split[0].toInt())
                     val mascara = _perso.getObjeto(split[1].toInt())
                     if (huesped == null || mascara == null) {
@@ -233,13 +234,13 @@ class Servicio(
                         return
                     }
                     val tipos = intArrayOf(
-                        Constantes.OBJETO_TIPO_AMULETO, Constantes.OBJETO_TIPO_ARCO, Constantes.OBJETO_TIPO_VARITA,
-                        Constantes.OBJETO_TIPO_BASTON, Constantes.OBJETO_TIPO_DAGAS, Constantes.OBJETO_TIPO_ESPADA,
-                        Constantes.OBJETO_TIPO_MARTILLO, Constantes.OBJETO_TIPO_PALA, Constantes.OBJETO_TIPO_ANILLO,
-                        Constantes.OBJETO_TIPO_CINTURON, Constantes.OBJETO_TIPO_BOTAS, Constantes.OBJETO_TIPO_SOMBRERO,
-                        Constantes.OBJETO_TIPO_CAPA, Constantes.OBJETO_TIPO_MASCOTA, Constantes.OBJETO_TIPO_HACHA,
-                        Constantes.OBJETO_TIPO_PICO, Constantes.OBJETO_TIPO_GUADAÑA, Constantes.OBJETO_TIPO_MOCHILA,
-                        Constantes.OBJETO_TIPO_ESCUDO
+                            Constantes.OBJETO_TIPO_AMULETO, Constantes.OBJETO_TIPO_ARCO, Constantes.OBJETO_TIPO_VARITA,
+                            Constantes.OBJETO_TIPO_BASTON, Constantes.OBJETO_TIPO_DAGAS, Constantes.OBJETO_TIPO_ESPADA,
+                            Constantes.OBJETO_TIPO_MARTILLO, Constantes.OBJETO_TIPO_PALA, Constantes.OBJETO_TIPO_ANILLO,
+                            Constantes.OBJETO_TIPO_CINTURON, Constantes.OBJETO_TIPO_BOTAS, Constantes.OBJETO_TIPO_SOMBRERO,
+                            Constantes.OBJETO_TIPO_CAPA, Constantes.OBJETO_TIPO_MASCOTA, Constantes.OBJETO_TIPO_HACHA,
+                            Constantes.OBJETO_TIPO_PICO, Constantes.OBJETO_TIPO_GUADAÑA, Constantes.OBJETO_TIPO_MOCHILA,
+                            Constantes.OBJETO_TIPO_ESCUDO
                     )
                     var esTipo = false
                     for (t in tipos) {
@@ -279,15 +280,16 @@ class Servicio(
                         ENVIAR_OQ_CAMBIA_CANTIDAD_DEL_OBJETO(_perso, huesped)
                     }
                     huesped.addStatTexto(
-                        Constantes.STAT_APARIENCIA_OBJETO, "0#0#" + Integer.toHexString(
+                            Constantes.STAT_APARIENCIA_OBJETO, "0#0#" + Integer.toHexString(
                             mascara
-                                .objModeloID
-                        )
+                                    .objModeloID
+                    )
                     )
                     ENVIAR_OCK_ACTUALIZA_OBJETO(_perso, huesped)
                 } else {
                     enviar(_perso, "bM")
                 }
+                Constantes.SERVICIO_PANEL_REROLL -> GestorSalida.ABRIR_PANEL_REROLL(_perso)
                 Constantes.SERVICIO_CREA_TU_ITEM -> ENVIAR_bB_PANEL_CREAR_ITEM(_perso)
                 Constantes.SERVICIO_SISTEMA_ITEMS -> ENVIAR_bSP_PANEL_ITEMS(_perso)
                 Constantes.SERVICIO_CAMBIO_EMBLEMA -> {

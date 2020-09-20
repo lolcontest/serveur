@@ -2241,6 +2241,7 @@ public class Personaje implements PreLuchador, Exchanger, Preguntador {
     }
 
     public void registrar(String packet) {
+        if (!AtlantaMain.PARAM_REGISTRO_LOGS_JUGADORES) return;
         if (Cuenta != null) {
             if (ServidorSocket.REGISTROS.get(Cuenta.getNombre()) == null) {
                 ServidorSocket.REGISTROS.put(Cuenta.getNombre(), new StringBuilder());

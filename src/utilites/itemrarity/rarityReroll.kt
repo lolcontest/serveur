@@ -56,6 +56,17 @@ object rarityReroll {
         return rarity
     }
 
+    fun canReroll(obj: Objeto?, personaje: Personaje?): Boolean {
+        personaje ?: return false
+        obj ?: return false
+        val modelo = obj.objModelo ?: return false
+        val tipo = modelo.tipo
+        if (!AtlantaMain.RARITY_TYPES.contains(tipo.toInt())) return false
+        val runeID = GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj)
+        if (runeID == -1) return false
+        return personaje.tieneObjetoIDModelo(runeID)
+    }
+
     fun Reroll(obj: Objeto?, personaje: Personaje?): Boolean {
         personaje ?: return false
         obj ?: return false

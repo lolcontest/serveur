@@ -1,0 +1,111 @@
+---------- INICIO DEL SERVER ----------
+[Sat Sep 19 18:25:09 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sat Sep 19 18:25:10 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Sat Sep 19 19:11:51 CLST 2020]  ---------------- INICIO PEQUEÑO SALVADO ----------------
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando los personajes y sus cuentas: 
+[Sat Sep 19 19:11:51 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 19:11:51 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando los gremios: [Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando los cercados: [Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando las monturas: [Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando las casas: [Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 4
+[Sat Sep 19 19:11:51 CLST 2020]  Salvando los cofres: [Sat Sep 19 19:11:51 CLST 2020]  Finalizó con 14
+[Sat Sep 19 19:11:51 CLST 2020]  ------------ Pequeño salvado ejecutado por completo 100% ------------
+[Sat Sep 19 19:58:31 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sat Sep 19 19:58:31 CLST 2020]  ---------------- INICIO PEQUEÑO SALVADO ----------------
+[Sat Sep 19 19:58:31 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los personajes y sus cuentas: 
+[Sat Sep 19 19:58:31 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sat Sep 19 19:58:31 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 19:58:31 CLST 2020]  100%
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sat Sep 19 19:58:31 CLST 2020]  Salvando los personajes: 
+[Sat Sep 19 19:58:31 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 19:58:31 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los mercantes: 
+[Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los prismas: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los gremios: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los recaudadores: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los cercados: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando las monturas: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando las casas: [Sat Sep 19 19:58:31 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los gremios: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los cercados: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando las monturas: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando las casas: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 4
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los cofres: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 14
+[Sat Sep 19 19:58:31 CLST 2020]  ------------ Pequeño salvado ejecutado por completo 100% ------------
+[Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1053
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los cofres: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 14
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los rankings PVP: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 7
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando los rankings Koliseo: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 19:58:31 CLST 2020]  Salvando las cuentas: [Sat Sep 19 19:58:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 19:58:31 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sat Sep 19 20:45:11 CLST 2020]  ---------------- INICIO PEQUEÑO SALVADO ----------------
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando los personajes y sus cuentas: 
+[Sat Sep 19 20:45:11 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 20:45:11 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 1
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando los gremios: [Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 1
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando los cercados: [Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 0
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando las monturas: [Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 0
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando las casas: [Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 4
+[Sat Sep 19 20:45:11 CLST 2020]  Salvando los cofres: [Sat Sep 19 20:45:11 CLST 2020]  Finalizó con 14
+[Sat Sep 19 20:45:11 CLST 2020]  ------------ Pequeño salvado ejecutado por completo 100% ------------
+[Sat Sep 19 21:19:31 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Sat Sep 19 21:19:31 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sat Sep 19 21:19:31 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sat Sep 19 21:19:31 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sat Sep 19 21:19:31 CLST 2020]  100%
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sat Sep 19 21:19:31 CLST 2020]  Salvando los personajes: 
+[Sat Sep 19 21:19:31 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 21:19:31 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,30,10000,155,631993940,100,41,0,0,0,1,13353,745,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7395,262,100,'65,6,b;72,1,c;61,1,d;66,1,e;68,1,f;63,1,g;74,1,h;64,1,i;79,1,j;78,1,k;71,1,l;62,1,m;69,1,n;77,1,o;73,1,z;67,1,A;70,1,B;75,1,C;76,1,D;80,1,E','643|656|657|721|658|659|660|724|725|598|599|600|601|666|602|604|605|606|672|609|674|548|740|613|741|614|617|682|685|622|634','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'',-1,'0,0']
+[Sat Sep 19 21:19:31 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los mercantes: 
+[Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los prismas: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los gremios: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los recaudadores: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los cercados: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando las monturas: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando las casas: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 1053
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los cofres: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 14
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los rankings PVP: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 7
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando los rankings Koliseo: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 0
+[Sat Sep 19 21:19:31 CLST 2020]  Salvando las cuentas: [Sat Sep 19 21:19:31 CLST 2020]  Finalizó con 1
+[Sat Sep 19 21:19:31 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sat Sep 19 21:19:31 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Sat Sep 19 21:19:31 CLST 2020]  ... IS OK  ########
+[Sat Sep 19 21:19:32 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Sat Sep 19 21:19:32 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Sat Sep 19 23:10:40 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sat Sep 19 23:10:40 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Sat Sep 19 23:57:21 CLST 2020]  ---------------- INICIO PEQUEÑO SALVADO ----------------
+[Sat Sep 19 23:57:21 CLST 2020]  Salvando los personajes y sus cuentas: 
+[Sat Sep 19 23:57:21 CLST 2020]   -> Salvando a Rizac ... [Sat Sep 19 23:57:22 CLST 2020]   [ONLINE]  100%
+[Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 1
+[Sat Sep 19 23:57:22 CLST 2020]  Salvando los gremios: [Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 1
+[Sat Sep 19 23:57:22 CLST 2020]  Salvando los cercados: [Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 0
+[Sat Sep 19 23:57:22 CLST 2020]  Salvando las monturas: [Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 0
+[Sat Sep 19 23:57:22 CLST 2020]  Salvando las casas: [Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 4
+[Sat Sep 19 23:57:22 CLST 2020]  Salvando los cofres: [Sat Sep 19 23:57:22 CLST 2020]  Finalizó con 14
+[Sat Sep 19 23:57:22 CLST 2020]  ------------ Pequeño salvado ejecutado por completo 100% ------------
+[Sun Sep 20 00:24:57 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Sun Sep 20 00:24:57 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sun Sep 20 00:24:57 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sun Sep 20 00:24:57 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sun Sep 20 00:24:57 CLST 2020]  100%
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sun Sep 20 00:24:57 CLST 2020]  Salvando los personajes: 
+[Sun Sep 20 00:24:57 CLST 2020]   -> Salvando a Rizac ... [Sun Sep 20 00:24:57 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,30,10000,155,631993940,100,41,0,0,0,1,13353,745,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7395,151,100,'65,6,b;72,1,c;61,1,d;66,1,e;68,1,f;63,1,g;74,1,h;64,1,i;79,1,j;78,1,k;71,1,l;62,1,m;69,1,n;77,1,o;73,1,z;67,1,A;70,1,B;75,1,C;76,1,D;80,1,E','643|656|657|721|658|659|660|724|725|598|599|600|601|666|602|604|605|606|672|609|674|548|740|613|741|614|617|682|685|622|634','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'',-1,'0,0']
+[Sun Sep 20 00:24:57 CLST 2020]   [ONLINE]  100%
+[Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 1
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los mercantes: 
+[Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los prismas: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los gremios: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 1
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los recaudadores: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los cercados: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando las monturas: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando las casas: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 1053
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los cofres: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 14
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los rankings PVP: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 7
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando los rankings Koliseo: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 0
+[Sun Sep 20 00:24:57 CLST 2020]  Salvando las cuentas: [Sun Sep 20 00:24:57 CLST 2020]  Finalizó con 1
+[Sun Sep 20 00:24:57 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sun Sep 20 00:24:57 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Sun Sep 20 00:24:57 CLST 2020]  ... IS OK  ########
+[Sun Sep 20 00:24:58 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Sun Sep 20 00:24:58 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########

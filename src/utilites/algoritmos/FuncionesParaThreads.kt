@@ -153,13 +153,6 @@ object FuncionesParaThreads {
         }
     }
 
-    fun GarbageCollector() {
-        try {
-            System.gc()
-        } catch (e: Exception) {
-            AtlantaMain.redactarLogServidorln(e.toString())
-        }
-    }
 
     fun SubirEstrellas() {
         try {
@@ -386,7 +379,7 @@ object FuncionesParaThreads {
             }
             if (AtlantaMain.SEGUNDOS_RESET_RATES > 0) {
                 if (Formulas.segundosON() % AtlantaMain.SEGUNDOS_RESET_RATES == 0) {
-                    thread(true, true, null, null, 5) { ResetRates() }
+                    thread(true, isDaemon = true, contextClassLoader = null, name = null, priority = 5) { ResetRates() }
                 }
             }
             if (AtlantaMain.SEGUNDOS_LIVE_ACTION > 0) {

@@ -554,6 +554,8 @@ object AtlantaMain {
 
     @JvmField
     var PARAM_CINEMATIC_CREAR_PERSONAJE = true
+
+    @JvmField
     var PARAM_REGISTRO_LOGS_JUGADORES = false
     private var PARAM_REGISTRO_LOGS_SQL = false
 
@@ -1095,7 +1097,6 @@ object AtlantaMain {
     var NO_RARITY_TEMPLATES = emptyList<Int>().toMutableList()
     var RARITY_TYPES = Constantes.TIPOS_EQUIPABLES
     var RANDOMIZE_PORT = true
-    var ALL_LOADED = false
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -1141,7 +1142,6 @@ object AtlantaMain {
         println("Creando el Servidor ...")
         val xxx = System.currentTimeMillis()
         Mundo.crearServidor()
-        ALL_LOADED = true
         println("Charged in ${System.currentTimeMillis() - xxx}ms")
         ExchangeClient.INSTANCE?.start()
 //        IniciarSincronizacion()

@@ -3914,4 +3914,30 @@ object GestorSalida {
         imprimir("ENVIANDO SIMULACION OGRINAS: ", packet)
     }
 
+    fun ENVIAR_MENSAJE_PANEL_REROLL(ss: Personaje?, msj: String, state: Boolean, orb: String = "") {
+        ss ?: return
+        val s = if (state) "1" else "0"
+        val packet = "Zw$msj;$s;$orb"
+        enviarEnCola(ss, packet, true)
+    }
+
+    fun CERRAR_PANEL_REROLL(ss: Personaje?) {
+        ss ?: return
+        val packet = "Zx"
+        enviarEnCola(ss, packet, true)
+    }
+
+    fun ABRIR_PANEL_REROLL(ss: Personaje?) {
+        ss ?: return
+        val packet = "Zy"
+        enviarEnCola(ss, packet, true)
+    }
+
+    fun STATS_PANEL_REROLL(ss: Personaje?, obj: Objeto?) {
+        ss ?: return
+        obj ?: return
+        val modelo = obj.objModelo?.id ?: return
+        val packet = "Zz$modelo|${obj.convertirStatsAString(false)}"
+        enviarEnCola(ss, packet, true)
+    }
 }

@@ -635,6 +635,7 @@ object Constantes {
     const val SERVICIO_MONTURA_CAMALEON = 10
     const val SERVICIO_ESCOGER_NIVEL = 11
     const val SERVICIO_ALINEACION_MERCENARIO = 12
+    const val SERVICIO_PANEL_REROLL = 13
     const val SERVICIO_ABONO_DIA = 21
     const val SERVICIO_ABONO_SEMANA = 22
     const val SERVICIO_ABONO_MES = 23
@@ -1352,6 +1353,7 @@ object Constantes {
                     + OFICIO_SASTREMAGO + ";" + OFICIO_ESCULTORMAGO_BASTONES + ";" + OFICIO_ESCULTORMAGO_VARITAS + ";"
                     + OFICIO_ESCULTORMAGO_ARCOS + ";" + OFICIO_FORJAMAGO_DAGAS + ";" + OFICIO_FORJAMAGO_ESPADAS + ";"
                     + OFICIO_FORJAMAGO_MARTILLOS + ";" + OFICIO_FORJAMAGO_PALAS + ";" + OFICIO_FORJAMAGO_HACHAS + ";" + OFICIO_MANITAS)
+    const val SKILL_REROLLER = 167
 
     // REPORTES
     const val REPORTE_BUGS: Byte = 0
@@ -3194,13 +3196,14 @@ object Constantes {
             oficio: StatOficio?
     ): ArrayList<Trabajo> {
         val skills = ArrayList<Trabajo>()
-        val tiempoGanado = Math.min(nivel, 100) * 100
+        val tiempoGanado = nivel.coerceAtMost(100) * 100
         when (idOficio) {
             OFICIO_BASE -> {
                 skills.add(Trabajo(SKILL_PELAR_PATATAS, 1, 1, true, 30, 0, oficio))
                 skills.add(Trabajo(SKILL_UTILIZAR_BANCO, 1, 1, true, 30, 0, oficio))
                 skills.add(Trabajo(SKILL_MACHACAR_RECURSOS, 3, 3, true, 30, 0, oficio))
                 skills.add(Trabajo(SKILL_ROMPER_OBJETO, 7, 7, true, 30, 0, oficio))
+                skills.add(Trabajo(SKILL_REROLLER, 3, 3, true, 30, 0, oficio))
             }
             OFICIO_JOYERO -> {
                 skills.add(
