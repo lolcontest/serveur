@@ -1586,8 +1586,9 @@ class ServidorSocket(val session: IoSession) {
                                 val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
                                 val objmodelo = obj.objModelo
                                         ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
+                                val cantobjrequerido = personaje?.tieneObjetoIDModeloCantidad(objrequerido?.id ?: -1)
                                 if (rarityReroll.canReroll(obj, personaje)) {
-                                    GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "Press confirm to proceed", true, objrequerido?.id.toString())
+                                    GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "Press confirm to proceed\nYou can do it $cantobjrequerido times", true, objrequerido?.id.toString())
                                     GestorSalida.STATS_PANEL_REROLL(personaje, obj)
                                 } else {
                                     if (AtlantaMain.RARITY_TYPES.contains(objmodelo.tipo.toInt())) {
@@ -1614,7 +1615,6 @@ class ServidorSocket(val session: IoSession) {
                                         GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "You dont have any ${objrequerido?.nombre} now", false)
                                     }
                                 }
-                                personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
                             } else {
                                 GestorSalida.CERRAR_PANEL_REROLL(personaje)
                             }
