@@ -289,7 +289,7 @@ class Servicio(
                 } else {
                     enviar(_perso, "bM")
                 }
-                Constantes.SERVICIO_PANEL_REROLL -> GestorSalida.ABRIR_PANEL_REROLL(_perso)
+                Constantes.SERVICIO_PANEL_REROLL -> GestorSalida.ABRIR_PANEL_REROLL(_perso, true)
                 Constantes.SERVICIO_CREA_TU_ITEM -> ENVIAR_bB_PANEL_CREAR_ITEM(_perso)
                 Constantes.SERVICIO_SISTEMA_ITEMS -> ENVIAR_bSP_PANEL_ITEMS(_perso)
                 Constantes.SERVICIO_CAMBIO_EMBLEMA -> {
@@ -302,15 +302,15 @@ class Servicio(
                     }
                     if (!packet.isEmpty()) {
                         val infos =
-                            packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
-                        val escudoID = Integer.toString(infos[0].toInt(), 36)
-                        val colorEscudo = Integer.toString(infos[1].toInt(), 36)
-                        val emblemaID = Integer.toString(infos[2].toInt(), 36)
-                        val colorEmblema = Integer.toString(infos[3].toInt(), 36)
+                                packet.substring(3).split(Pattern.quote("|").toRegex()).toTypedArray()
+                        val escudoID = infos[0].toInt().toString(36)
+                        val colorEscudo = infos[1].toInt().toString(36)
+                        val emblemaID = infos[2].toInt().toString(36)
+                        val colorEmblema = infos[3].toInt().toString(36)
                         val nombreGremio =
-                            infos[4].substring(0, 1).toUpperCase() + infos[4].substring(1).toLowerCase()
+                                infos[4].substring(0, 1).toUpperCase() + infos[4].substring(1).toLowerCase()
                         if (nombreGremio.length < 2 || nombreGremio.length > 20 || !_perso.gremio.nombre
-                                .equals(nombreGremio, ignoreCase = true) && nombreGremioUsado(nombreGremio)
+                                        .equals(nombreGremio, ignoreCase = true) && nombreGremioUsado(nombreGremio)
                         ) {
                             ENVIAR_gC_CREAR_PANEL_GREMIO(_perso, "Ean")
                             return

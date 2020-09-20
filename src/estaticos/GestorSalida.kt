@@ -3927,8 +3927,15 @@ object GestorSalida {
         enviarEnCola(ss, packet, true)
     }
 
-    fun ABRIR_PANEL_REROLL(ss: Personaje?) {
+    fun ABRIR_PANEL_REROLL(ss: Personaje?, openbyServices: Boolean = false) {
         ss ?: return
+        if (openbyServices) {
+            try {
+                ENVIAR_bV_CERRAR_PANEL(ss)
+                Thread.sleep(250)
+            } catch (e: Exception) {
+            }
+        }
         val packet = "Zy"
         enviarEnCola(ss, packet, true)
         ENVIAR_MENSAJE_PANEL_REROLL(ss, "Youre welcome to the Re rolling Panel, You need to put a item and follow the instructions to make a reroll." +
