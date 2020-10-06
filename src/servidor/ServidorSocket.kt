@@ -297,6 +297,7 @@ class ServidorSocket(val session: IoSession) {
     var packetAnterior = ""
     var idioma = "es"
     var ult10packets = arrayListOf<ObjetoInteractivo>()
+    var rollingpanel = -1
 
     fun kick() {
         cerrarSocket(true, "Cerrado Forzado")
@@ -1578,16 +1579,16 @@ class ServidorSocket(val session: IoSession) {
                 }
                 else -> {
                     when (packet[2]) {
-                        'w' -> {
+                        'w' -> { // Simular
                             try {
                                 val objID = packet.substring(3).toInt()
                                 val obj = Mundo.getObjeto(objID)
                                         ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
-                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
+                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj, rollingpanel))
                                 val objmodelo = obj.objModelo
                                         ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
                                 val cantobjrequerido = personaje?.tieneObjetoIDModeloCantidad(objrequerido?.id ?: -1)
-                                if (rarityReroll.canReroll(obj, personaje)) {
+                                if (rarityReroll.canReroll(obj, personaje, rollingpanel)) {
                                     GestorSalida.ENVIAR_MENSAJE_PANEL_REROLL(personaje, "Press confirm to proceed\nYou can do it $cantobjrequerido times", true, objrequerido?.id.toString())
                                     GestorSalida.STATS_PANEL_REROLL(personaje, obj)
                                 } else {
@@ -1600,13 +1601,13 @@ class ServidorSocket(val session: IoSession) {
                             } catch (e: Exception) {
                             }
                         }
-                        'W' -> {
+                        'W' -> { // Confirmar
                             val objID = packet.substring(3).toInt()
                             val obj = Mundo.getObjeto(objID)
                                     ?: return GestorSalida.CERRAR_PANEL_REROLL(personaje)
-                            if (rarityReroll.Reroll(obj, personaje)) {
+                            if (rarityReroll.Reroll(obj, personaje, rollingpanel)) {
                                 GestorSalida.STATS_PANEL_REROLL(personaje, obj)
-                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj))
+                                val objrequerido = Mundo.getObjetoModelo(GestorSQL.GET_REROLL_REQUIRED_OBJ_ID(obj, rollingpanel))
                                 val cantobjrequerido = personaje?.tieneObjetoIDModeloCantidad(objrequerido?.id ?: -1)
                                 if (cantobjrequerido != null) {
                                     if (cantobjrequerido > 0) {
@@ -7676,6 +7677,7 @@ class ServidorSocket(val session: IoSession) {
                     }
                     "rer" -> {
                         try {
+                            rollingpanel = 2
                             GestorSalida.ABRIR_PANEL_REROLL(personaje)
                         } catch (e: Exception) {
                         }
@@ -7748,7 +7750,7 @@ class ServidorSocket(val session: IoSession) {
                                             true
                                         }
                                         args[1].equals("-y", true) -> {
-                                            if (rarityReroll.Reroll(obj, personaje)) {
+                                            if (rarityReroll.Reroll(obj, personaje, 2)) {
                                                 personaje?.sendMessage("Su objeto ha sido re sorteado, que tenga un buen dia", "Votre article a été redessiné, passez une bonne journée", 2)
                                             } else {
                                                 personaje?.sendMessage("Usted no tenia el objeto requerido para esta accion, el cual es: $runeName", "Vous n'aviez pas l'objet requis pour cette action, qui est : $runeName", 3)

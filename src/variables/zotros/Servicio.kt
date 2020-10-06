@@ -289,7 +289,18 @@ class Servicio(
                 } else {
                     enviar(_perso, "bM")
                 }
-                Constantes.SERVICIO_PANEL_REROLL -> GestorSalida.ABRIR_PANEL_REROLL(_perso, true)
+                Constantes.SERVICIO_PANEL_REROLL_NORMAL -> {
+                    _perso.servidorSocket?.rollingpanel = 2
+                    GestorSalida.ABRIR_PANEL_REROLL(_perso, true)
+                }
+                Constantes.SERVICIO_PANEL_REROLL_ALL -> {
+                    _perso.servidorSocket?.rollingpanel = 1
+                    GestorSalida.ABRIR_PANEL_REROLL(_perso, true)
+                }
+                Constantes.SERVICIO_PANEL_REROLL_PERFECT -> {
+                    _perso.servidorSocket?.rollingpanel = 3
+                    GestorSalida.ABRIR_PANEL_REROLL(_perso, true)
+                }
                 Constantes.SERVICIO_CREA_TU_ITEM -> ENVIAR_bB_PANEL_CREAR_ITEM(_perso)
                 Constantes.SERVICIO_SISTEMA_ITEMS -> ENVIAR_bSP_PANEL_ITEMS(_perso)
                 Constantes.SERVICIO_CAMBIO_EMBLEMA -> {

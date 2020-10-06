@@ -635,7 +635,9 @@ object Constantes {
     const val SERVICIO_MONTURA_CAMALEON = 10
     const val SERVICIO_ESCOGER_NIVEL = 11
     const val SERVICIO_ALINEACION_MERCENARIO = 12
-    const val SERVICIO_PANEL_REROLL = 13
+    const val SERVICIO_PANEL_REROLL_NORMAL = 13
+    const val SERVICIO_PANEL_REROLL_ALL = 14
+    const val SERVICIO_PANEL_REROLL_PERFECT = 15
     const val SERVICIO_ABONO_DIA = 21
     const val SERVICIO_ABONO_SEMANA = 22
     const val SERVICIO_ABONO_MES = 23

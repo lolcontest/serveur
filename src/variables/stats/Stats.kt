@@ -6,7 +6,7 @@ import variables.personaje.Personaje
 import java.util.*
 
 class Stats {
-    private val _statsIDs: MutableMap<Int, Int>? = TreeMap()
+    val _statsIDs: MutableMap<Int, Int>? = TreeMap()
     var statHechizos: ArrayList<String>? = null
         private set
     var statRepetidos: ArrayList<String>? = null
@@ -314,6 +314,18 @@ class Stats {
     fun convertirStatsAString(): String {
         val str = StringBuilder()
         for ((key, value) in _statsIDs!!) {
+            if (str.isNotEmpty()) {
+                str.append(",")
+            }
+            str.append(Integer.toHexString(key)).append("#").append(Integer.toHexString(value)).append("#0#0")
+        }
+        return str.toString()
+    }
+
+    fun convertirStatAString(statID: Int): String {
+        val str = StringBuilder()
+        for ((key, value) in _statsIDs!!) {
+            if (key != statID) continue
             if (str.isNotEmpty()) {
                 str.append(",")
             }

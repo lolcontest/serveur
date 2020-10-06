@@ -30,18 +30,42 @@ class rarityTemplate(val id: Int, val name: String, val color: Int, val dropProb
         return prev
     }
 
-    private fun getcolorstat(): String {
+    fun getcolorstat(): String {
         return if (color != -1) {
             Integer.toHexString(Constantes.STAT_COLOR_NOMBRE_OBJETO) + "#$color"
         } else ""
     }
 
-    private fun getstatsSlot1(level: Int): String {
+    fun getstatsSlot1(level: Int): String {
         return if (max(level, getmaxkeyMap(slot1)) == level) {
             slot1[getmaxkeyMap(slot1)] ?: ""
         } else {
             slot1[level] ?: ""
         }
+    }
+
+    fun searchFirststatsSlot1(level: Short, list: MutableList<Int>): String {
+        val stats = getstatsSlot1(level.toInt())
+        if (stats.isNotEmpty()) {
+            for (s in stats.split(",")) {
+                if (list.contains(s.split("#").first().toInt(radix = 16))) {
+                    return s
+                }
+            }
+        }
+        return ""
+    }
+
+    fun searchFirststatsSlot2(level: Short, list: MutableList<Int>): String {
+        val stats = getstatsSlot2(level.toInt())
+        if (stats.isNotEmpty()) {
+            for (s in stats.split(",")) {
+                if (list.contains(s.split("#").first().toInt(radix = 16))) {
+                    return s
+                }
+            }
+        }
+        return ""
     }
 
     private fun getstatsSlot2(level: Int): String {
@@ -50,6 +74,48 @@ class rarityTemplate(val id: Int, val name: String, val color: Int, val dropProb
         } else {
             slot2[level] ?: ""
         }
+    }
+
+    fun getnumberofstatsSlot1(level: Int, cant: Int): String {
+        var stats = ""
+        val slot = getstatsSlot1(level).split(",")
+        var c = 0
+        val statsalready = emptyArray<Int>().toMutableList()
+        try {
+            while (c < cant) {
+                val stat = slot.random()
+                val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
+                if (statsalready.contains(statid)) continue
+                if (Math.random() <= rarityProb.getstatprob(statid)) {
+                    statsalready.add(statid)
+                    stats += "$stat,"
+                    c += 1
+                }
+            }
+        } catch (e: Exception) {
+        }
+        return stats.dropLastWhile { it == ',' }
+    }
+
+    fun getnumberofstatsSlot2(level: Int, cant: Int): String {
+        var stats = ""
+        val slot = getstatsSlot2(level).split(",")
+        var c = 0
+        val statsalready = emptyArray<Int>().toMutableList()
+        try {
+            while (c < cant) {
+                val stat = slot.random()
+                val statid = ObjetoModelo.statSimiliar(stat.split("#").first().toInt(radix = 16))
+                if (statsalready.contains(statid)) continue
+                if (Math.random() <= rarityProb.getstatprob(statid)) {
+                    statsalready.add(statid)
+                    stats += "$stat,"
+                    c += 1
+                }
+            }
+        } catch (e: Exception) {
+        }
+        return stats.dropLastWhile { it == ',' }
     }
 
     fun getstats(level: Int): String {
@@ -86,8 +152,7 @@ class rarityTemplate(val id: Int, val name: String, val color: Int, val dropProb
             }
         } catch (e: Exception) {
         }
-        stats.dropLastWhile { it == ',' }
-        return stats
+        return stats.dropLastWhile { it == ',' }
     }
 
     init {

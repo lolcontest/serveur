@@ -4089,10 +4089,10 @@ object GestorSQL {
 
     }
 
-    fun GET_REROLL_REQUIRED_OBJ_ID(objeto: Objeto): Int {
+    fun GET_REROLL_REQUIRED_OBJ_ID(objeto: Objeto, rerolltype: Int = 2): Int {
         var r = -1
         try {
-            val resultado = consultaSQL("select IdItem from rarityrerollitems where lvlmax>=${objeto.objModelo?.nivel} and lvlmin <= ${objeto.objModelo?.nivel} and rarityid = ${rarityReroll.getRarity(objeto)?.id};", _bdEstatica!!)
+            val resultado = if (rerolltype == 2) consultaSQL("select IdItem from rarityrerollitems where lvlmax>=${objeto.objModelo?.nivel} and lvlmin <= ${objeto.objModelo?.nivel} and rarityid = ${rarityReroll.getRarity(objeto)?.id} and typeofroll=$rerolltype;", _bdEstatica!!) else consultaSQL("select IdItem from rarityrerollitems where lvlmax>=${objeto.objModelo?.nivel} and lvlmin <= ${objeto.objModelo?.nivel} and typeofroll=$rerolltype;", _bdEstatica!!)
             while (resultado.next()) {
                 r = resultado.getInt("IdItem")
             }

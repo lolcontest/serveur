@@ -6,6 +6,7 @@ import servidor.ServidorServer
 import servidor.ServidorSocket
 import utilites.algoritmos.FuncionesParaThreads
 import utilites.buscadores.Buscador
+import utilites.itemrarity.rarityReroll
 import variables.casa.Casa
 import variables.hechizo.EfectoHechizo
 import variables.hechizo.Hechizo
@@ -8377,16 +8378,16 @@ object Comandos {
 
                 if (!_perso.tieneObjetoID(obj.id) && _cuenta.admin < 5) {
                     GestorSalida.ENVIAR_M145_MENSAJE_PANEL_INFORMACION(
-                        _perso,
-                        "Alto ahi maquinola, ¿que haces intentando personalizarle el item a otros?\nte llego la fbi papu"
+                            _perso,
+                            "Alto ahi maquinola, ¿que haces intentando personalizarle el item a otros?\nte llego la fbi papu"
                     )
                     return
                 }
                 GestorSalida.ENVIAR_BAT2_CONSOLA(
-                    _perso, "Cambio stats del objeto $idInt: \nAntiguo Stats - " + obj
+                        _perso, "Cambio stats del objeto $idInt: \nAntiguo Stats - " + obj
                         .convertirStatsAString(true) + "\nNuevos Stats - " + str
                 )
-                obj.convertirStringAStats_Base(str.toString())
+                obj.convertirStringAStats_Base(str.toString() + "${if (AtlantaMain.RARITY_SYSTEM) ",${rarityReroll.getRarity(obj)?.getcolorstat()}" else ""}")
                 if (AtlantaMain.PARAM_NOMBRE_ADMIN && _perso.cuenta.admin < 5) {
                     val intercambiable = ObjetoModelo.stringFechaIntercambiable(3650)
                     obj.addStatTexto(Constantes.STAT_PERTENECE_Y_NO_VENDER, "0#0#0#" + _perso.nombre)
