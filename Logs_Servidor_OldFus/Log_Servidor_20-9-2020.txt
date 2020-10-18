@@ -661,3 +661,25 @@ java.lang.NumberFormatException: For input string: "w741"
 [Sun Sep 20 04:45:37 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
 ---------- INICIO DEL SERVER ----------
 [Sun Sep 20 04:45:44 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Sun Sep 20 04:45:44 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Sun Sep 20 04:53:51 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Sun Sep 20 04:53:51 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Sun Sep 20 04:53:51 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Sun Sep 20 04:53:51 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Sun Sep 20 04:53:51 CLST 2020]  100%
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Sun Sep 20 04:53:51 CLST 2020]  Salvando los personajes: 
+[Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los mercantes: 
+[Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los prismas: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los gremios: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 1
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los recaudadores: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los cercados: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando las monturas: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando las casas: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 1053
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los cofres: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 14
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los rankings PVP: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 7
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando los rankings Koliseo: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  Salvando las cuentas: [Sun Sep 20 04:53:51 CLST 2020]  Finalizó con 0
+[Sun Sep 20 04:53:51 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Sun Sep 20 04:53:51 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Sun Sep 20 04:53:51 CLST 2020]  ... IS OK  ########
+[Sun Sep 20 04:53:52 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Sun Sep 20 04:53:52 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########

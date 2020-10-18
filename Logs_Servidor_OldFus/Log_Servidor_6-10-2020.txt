@@ -1,0 +1,849 @@
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 02:36:18 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 13 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 299 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 300 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 301 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 440 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 441 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 442 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 443 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 263 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 262 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 261 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 260 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 259 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 258 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 257 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 246 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 247 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 248 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 249 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 250 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 251 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 252 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 253 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 254 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 255 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 12 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 256 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 18 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 19 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 17 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 16 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 15 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 14 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 11 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 10 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 9 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 8 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 7 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 6 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 1 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 2 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 3 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 4 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 5 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 503 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 504 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 505 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 506 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 507 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 508 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 509 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 510 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 511 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 512 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 513 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 514 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 515 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 512 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 513 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 514 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 515 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 503 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 504 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 505 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 506 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 507 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 508 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 509 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 510 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 511 pertenece a Hevad(36), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  SAVE SQL [Hevad] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [36,'Hevad',0,1,-1,-1,-1,1766,0,0,10000,11,28014,100,10,0,0,0,1,15000,0,0,0,50,0,0,1,0,'*#%!pi$:?^¡@~',10335,33,100,'3,1,b;6,1,c;17,5,d;4,1,e;2,1,f;1,1,g','','10300,337','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,1,'','','','','ALL',0,'',0,'',-1,'0,0']
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 297 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 298 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 426 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 427 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 428 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 429 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 430 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 431 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 432 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 435 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 436 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 437 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 297 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 298 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 426 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 427 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 428 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 429 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 430 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 431 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 432 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 435 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 436 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 437 pertenece a Mocay(32), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  SAVE SQL [Mocay] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [32,'Mocay',0,1,-1,-1,-1,8007621,69,345,10000,70,22387076,100,10,0,0,0,1,2,0,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',8731,238,100,'3,1,b;6,1,c;17,1,d;4,1,e;2,1,f;1,1,g;9,1,h;18,1,i;20,1,j;14,1,k;19,1,l;5,1,m;16,1,n;8,1,o;12,1,z;11,1,A;10,1,B','736|737|738|739|325|433|306|434|726|728|729|730|731|732|733|734|318|735','7398,299','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','64,200000;27,306000',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','','','ALL',0,'',0,'',-1,'0,0']
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 237 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 238 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 239 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 237 pertenece a Vila(16), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 238 pertenece a Vila(16), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 239 pertenece a Vila(16), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  SAVE SQL [Vila] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [16,'Vila',0,1,14004764,15190865,15190865,62835,169,0,10000,200,8131262323,100,10,0,0,0,1,5,0,289,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7411,271,100,'3,1,b;6,1,o;17,6,d;4,1,e;2,1,f;1,1,g;9,1,h;18,1,i;20,1,j;14,1,k;19,1,l;5,1,m;16,1,n;8,6,c;12,1,z;11,1,A;10,1,B;7,1,C;15,1,D;13,1,E;1901,1,F;366,1,G','192|193|195|196|197|198|199|200|201|202|203|204|205|206|240|245|190|191','7398,299','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','2,0;24,0',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','','','ALL',0,'',1,'',-1,'0,0']
+[Tue Oct 06 02:36:18 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 444 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 445 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 446 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 447 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 448 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 449 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 450 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 451 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 452 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 453 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 444 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 445 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 446 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 447 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 448 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 449 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 450 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 451 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 452 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 453 pertenece a Wugot(35), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  SAVE SQL [Wugot] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [35,'Wugot',1,1,6345712,6353118,1573282,1890,39,195,10000,50,5350000,100,11,0,0,0,1,13353,0,0,0,50,0,0,1,0,'*#%!pi$:?^¡@~',8732,342,100,'3,1,b;6,1,c;17,5,d;4,1,e;2,1,f;1,1,g;9,1,h;18,1,i;20,1,j;14,1,k;19,1,l;5,1,m;16,1,n;8,1,o','516|454|455|456|457|458|459|460|461|462|463|464|465|466|467|468|469|470|471|472|473|474|475|476|477|478|479|480|481|482|483|484|485|486|487|488|489|490|491|492|493|494|495|496|497|498|499|500|501|502','10300,337','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','63,1000000',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,1,'','','','','ALL',0,'',0,'',-1,'0,0']
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 173 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 174 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 175 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 176 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 177 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 178 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 179 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 180 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 181 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 182 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 183 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 184 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 185 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 186 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 207 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 208 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 209 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 210 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 211 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 212 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 213 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 214 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 215 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 216 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 217 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 218 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 219 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 220 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 221 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 222 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 223 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 224 esta bug porque no tiene objModelo 24740
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 225 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 226 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 227 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 228 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 229 esta bug porque no tiene objModelo 24730
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 230 esta bug porque no tiene objModelo 24770
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 231 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 232 esta bug porque no tiene objModelo 24780
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 233 esta bug porque no tiene objModelo 24750
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 234 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  La id del objeto 235 esta bug porque no tiene objModelo 24760
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 207 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 208 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 209 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 210 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 211 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 212 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 213 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 214 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 215 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 216 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 217 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 218 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 219 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 220 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 221 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 222 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:18 CLST 2020]  El objetoID 223 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 224 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 225 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 226 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 227 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 228 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 229 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 230 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 231 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 232 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 233 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 234 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 235 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 173 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 174 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 175 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 176 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 177 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 178 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 179 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 180 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 181 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 182 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 183 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 184 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 185 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  El objetoID 186 pertenece a Kalar(31), no existe
+[Tue Oct 06 02:36:19 CLST 2020]  SAVE SQL [Kalar] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [31,'Kalar',0,1,-1,-1,-1,1499907,199,995,10000,200,7407378574,100,10,0,0,0,1,4,0,0,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7411,231,100,'3,6,b;6,6,c;17,6,d;4,6,e;2,6,f;1,6,g;9,6,h;18,6,i;20,6,j;14,6,k;19,6,l;5,6,m;16,6,n;8,6,o;12,6,z;11,6,A;10,6,B;7,6,C;15,6,D;13,6,E;1901,6,F','','7398,299','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','','','ALL',0,'',0,'',-1,'0,0']
+[Tue Oct 06 02:43:59 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 02:43:59 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 02:43:59 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 02:43:59 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 02:43:59 CLST 2020]  100%
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 02:43:59 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 02:43:59 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 02:43:59 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,328,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 02:43:59 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los prismas: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los gremios: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los cercados: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando las monturas: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando las casas: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los cofres: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 14
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 7
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:43:59 CLST 2020]  Salvando las cuentas: [Tue Oct 06 02:43:59 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:43:59 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 02:43:59 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 02:43:59 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 02:44:00 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 02:44:00 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 02:44:40 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 02:44:41 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 02:47:11 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 02:47:11 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 02:47:11 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 02:47:11 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 02:47:11 CLST 2020]  100%
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 02:47:11 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 02:47:11 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 02:47:11 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,254,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 02:47:11 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando los prismas: [Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando los gremios: [Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando los cercados: [Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando las monturas: [Tue Oct 06 02:47:11 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:11 CLST 2020]  Salvando las casas: [Tue Oct 06 02:47:12 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 02:47:12 CLST 2020]  Salvando los cofres: [Tue Oct 06 02:47:12 CLST 2020]  Finalizó con 14
+[Tue Oct 06 02:47:12 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 02:47:12 CLST 2020]  Finalizó con 7
+[Tue Oct 06 02:47:12 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 02:47:12 CLST 2020]  Finalizó con 0
+[Tue Oct 06 02:47:12 CLST 2020]  Salvando las cuentas: [Tue Oct 06 02:47:12 CLST 2020]  Finalizó con 1
+[Tue Oct 06 02:47:12 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 02:47:12 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 02:47:12 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 02:47:13 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 02:47:13 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 02:47:15 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 02:47:15 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 03:28:39 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 03:28:39 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 03:28:39 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 03:28:39 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 03:28:39 CLST 2020]  100%
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 03:28:39 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 03:28:39 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 03:28:39 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 03:28:39 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 1
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los prismas: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los gremios: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 1
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los cercados: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando las monturas: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando las casas: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los cofres: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 14
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 7
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 0
+[Tue Oct 06 03:28:39 CLST 2020]  Salvando las cuentas: [Tue Oct 06 03:28:39 CLST 2020]  Finalizó con 1
+[Tue Oct 06 03:28:39 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 03:28:39 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 03:28:39 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 03:28:40 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 03:28:40 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:09:43 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:09:43 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:11:41 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:11:41 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:11:41 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:11:41 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:11:41 CLST 2020]  100%
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:11:41 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:11:41 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:11:41 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:11:41 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando las casas: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:11:41 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:11:41 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:11:41 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:11:41 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:11:41 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:11:42 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:11:42 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:11:46 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:11:46 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:14:28 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:14:28 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:14:28 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:14:28 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:14:28 CLST 2020]  100%
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:14:28 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:14:28 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:14:28 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:14:28 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando las casas: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:14:28 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:14:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:14:28 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:14:28 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:14:28 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:14:29 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:14:29 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:14:33 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:14:33 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:15:48 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:15:48 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:15:48 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:15:48 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:15:48 CLST 2020]  100%
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:15:48 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:15:48 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:15:48 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:15:48 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando las casas: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:15:48 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:15:48 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:15:48 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:15:48 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:15:48 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:15:49 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:15:49 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:15:52 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:15:53 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:18:07 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:18:07 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:18:07 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:18:07 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:18:07 CLST 2020]  100%
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:18:07 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:18:07 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:18:07 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:18:07 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando las casas: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:18:07 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:18:07 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:18:07 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:18:07 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:18:07 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:18:08 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:18:08 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:21:11 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:21:11 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:22:35 CLST 2020]  EXCEPTION Packet ZsW666, Atlanta_Servicios java.util.ConcurrentModificationException
+java.util.ConcurrentModificationException
+	at java.base/java.util.TreeMap.forEach(TreeMap.java:1005)
+	at utilites.itemrarity.rarityReroll.perfectreroll(rarityReroll.kt:37)
+	at utilites.itemrarity.rarityReroll.rerollPerfect(rarityReroll.kt:87)
+	at utilites.itemrarity.rarityReroll.Reroll(rarityReroll.kt:149)
+	at servidor.ServidorSocket.Atlanta_Servicios(ServidorSocket.kt:1608)
+	at servidor.ServidorSocket.analizar_Atlanta(ServidorSocket.kt:1352)
+	at servidor.ServidorSocket.analizar_Packets(ServidorSocket.kt:674)
+	at servidor.ServidorSocket$threadPackets$1.invoke(ServidorSocket.kt:453)
+	at servidor.ServidorSocket$threadPackets$1.invoke(ServidorSocket.kt:261)
+	at kotlin.concurrent.ThreadsKt$thread$thread$1.run(Thread.kt:30)
+[Tue Oct 06 04:22:35 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:22:35 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:22:35 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:22:35 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:22:35 CLST 2020]  100%
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:22:35 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:22:35 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:22:35 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,338,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:22:35 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando las casas: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:22:35 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:22:35 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:22:35 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:22:35 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:22:35 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:22:36 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:22:36 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:26:20 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:26:21 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:30:47 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:30:47 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:30:47 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:30:47 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:30:47 CLST 2020]  100%
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:30:47 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:30:47 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:30:47 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:30:47 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando las casas: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:30:47 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:30:47 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:30:47 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:30:47 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:30:47 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:30:48 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:30:48 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:30:51 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:30:52 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:34:28 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:34:28 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:34:28 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:34:28 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:34:28 CLST 2020]  100%
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:34:28 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:34:28 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:34:28 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:34:28 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando las casas: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:34:28 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:34:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:34:28 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:34:28 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:34:28 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:34:29 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:34:29 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:34:33 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:34:33 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:37:23 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:37:23 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:37:23 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:37:23 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:37:23 CLST 2020]  100%
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:37:23 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:37:23 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:37:23 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|823','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:37:23 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando las casas: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:37:23 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:37:23 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:37:23 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:37:23 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:37:23 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:37:24 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:37:24 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:37:40 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:37:40 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:39:22 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:39:22 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:39:22 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:39:22 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:39:22 CLST 2020]  100%
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:39:22 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:39:22 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:39:22 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:39:22 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando las casas: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:39:22 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:39:22 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:39:22 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:39:22 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:39:22 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:39:23 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:39:23 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:39:26 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:39:27 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:46:28 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:46:28 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:46:28 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:46:28 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:46:28 CLST 2020]  100%
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:46:28 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:46:28 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:46:28 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:46:28 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando las casas: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:46:28 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:46:28 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:46:28 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:46:28 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:46:28 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:46:29 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:46:29 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:46:32 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:46:32 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:48:00 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:48:00 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:48:00 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:48:00 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:48:00 CLST 2020]  100%
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:48:00 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:48:00 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:48:00 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:48:00 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando las casas: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:00 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:48:00 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:00 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:48:00 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:48:00 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:48:01 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:48:01 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:48:11 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:48:11 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:48:46 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:48:46 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:48:46 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:48:46 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:48:46 CLST 2020]  100%
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:48:46 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:48:46 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:48:46 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:48:46 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando las casas: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:48:46 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:48:46 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:48:46 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:48:46 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:48:46 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:48:47 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:48:47 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:48:50 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:48:51 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 04:54:29 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 04:54:29 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 04:54:29 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 04:54:29 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 04:54:29 CLST 2020]  100%
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 04:54:29 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 04:54:29 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 04:54:29 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,326,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 04:54:29 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los prismas: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los gremios: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los cercados: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando las monturas: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando las casas: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los cofres: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 14
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 7
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 0
+[Tue Oct 06 04:54:29 CLST 2020]  Salvando las cuentas: [Tue Oct 06 04:54:29 CLST 2020]  Finalizó con 1
+[Tue Oct 06 04:54:29 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 04:54:29 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 04:54:29 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 04:54:30 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 04:54:30 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 04:54:34 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 04:54:34 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:06:25 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:06:25 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:06:25 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:06:25 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:06:25 CLST 2020]  100%
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:06:25 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:06:25 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:06:25 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,357,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:06:25 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando las casas: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:06:25 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:06:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:06:25 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:06:25 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:06:25 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 05:06:26 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:06:26 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:07:07 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:07:08 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:12:18 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:12:18 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:12:18 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:12:18 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:12:18 CLST 2020]  100%
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:12:18 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:12:18 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:12:18 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,339,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:12:18 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando las casas: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:12:18 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:12:18 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:12:18 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:12:18 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:12:18 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 05:12:19 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:12:19 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:12:23 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:12:23 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:18:22 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:18:22 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:18:22 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:18:23 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:18:23 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:18:25 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:18:25 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:24:25 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:24:25 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:24:25 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:24:25 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:24:25 CLST 2020]  100%
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:24:25 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:24:25 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:24:25 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,342,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:24:25 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando las casas: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:25 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:24:25 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:24:25 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:24:25 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:24:25 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 05:24:26 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:24:26 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:24:30 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:24:30 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:24:35 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:24:35 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:24:35 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:24:35 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:24:35 CLST 2020]  100%
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:24:35 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando las casas: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:24:35 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:24:35 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:24:35 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:24:35 CLST 2020]  ... IS OK  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:24:40 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:24:41 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:29:50 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:29:50 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:29:50 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:29:50 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:29:50 CLST 2020]  100%
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:29:50 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:29:50 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:29:50 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,330,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:29:50 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando las casas: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:29:50 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:29:50 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:29:50 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:29:50 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:29:50 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 05:29:51 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:29:51 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:29:54 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:29:55 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:36:56 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:36:56 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:36:56 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:36:56 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:36:56 CLST 2020]  100%
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:36:56 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:36:56 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:36:56 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7409,344,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|835|836|837|838|839|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:36:56 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando las casas: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:36:56 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:36:56 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:36:56 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:36:56 CLST 2020]   ########  CERRANDO SERVERSOCKET...  [Tue Oct 06 05:36:56 CLST 2020]  ... IS OK  ########
+[Tue Oct 06 05:36:57 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:36:57 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########
+---------- INICIO DEL SERVER ----------
+[Tue Oct 06 05:37:00 CLST 2020]  El objeto modelo  no existe y no se le puede asignar a un objeto set[Tue Oct 06 05:37:01 CLST 2020]  EL PERSONAJE Filsde-Chien (28) CON CUENTA 13721 POSSE 782014431
+[Tue Oct 06 05:55:00 CLST 2020]   ######## INICIANDO CIERRE DEL SERVIDOR  ########
+[Tue Oct 06 05:55:00 CLST 2020]  ---------------- INICIO SALVADO ----------------
+[Tue Oct 06 05:55:00 CLST 2020]  Se invoco el metodo salvar Servidor (MUNDO DOFUS) 
+[Tue Oct 06 05:55:00 CLST 2020]  Iniciando salvado de registros JUGADORES Y SQL ... [Tue Oct 06 05:55:00 CLST 2020]  100%
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando Kamas de la Ruleta de Jalato[Tue Oct 06 05:55:00 CLST 2020]  Salvando los personajes: 
+[Tue Oct 06 05:55:00 CLST 2020]   -> Salvando a Rizac ... [Tue Oct 06 05:55:00 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7360,303,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|835|836|837|838|839|840|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:55:00 CLST 2020]   [ONLINE]  100%
+[Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando los mercantes: 
+[Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando los prismas: [Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando los gremios: [Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando los recaudadores: [Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando los cercados: [Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando las monturas: [Tue Oct 06 05:55:00 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:00 CLST 2020]  Salvando las casas: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+[Tue Oct 06 05:55:01 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7360,303,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|835|836|837|838|839|840|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:55:01 CLST 2020]  SAVE SQL [Rizac] ==>: 'REPLACE INTO personajes VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);', parameters : [6,'Rizac',1,4,-1,-1,-1,7034,140,0,10000,155,631993940,100,41,0,0,0,1,13353,745,30,0,0,0,0,1,0,'*#%!pi$:?^¡@~',7360,303,100,'65,6,b;72,6,c;61,6,d;66,6,e;68,6,f;63,6,g;74,6,h;64,6,i;79,6,j;78,6,k;71,6,l;62,6,m;69,6,n;77,6,o;73,6,z;67,5,A;70,5,B;75,5,C;76,5,D;80,5,E','832|833|834|835|836|837|838|839|840|788|791|792|600|666|794|795|796|799|609|802|804|613|742|614|807|809|617|811|812|622|816|817|818|819|820|821|822|824|825|826|827|828|829|830|831','7392,282','164,528,844,935,951,1158,1242,1841,2191,3022,3250,4263,4739,5295,6137,6855,6954,7411,8037,8088,8125,8163,8437,8785,9454,10297,10304,10317,10349,10643,11170,11210','',0,-1,0,'',0,0,0,0,0,0,0,8200,8,0,7667711,'','','118,+89','','ALL',0,'',0,'1|aa|1|812,0;802,1;799,3;796,4;811,5;794,6;807,7',-1,'0,0']
+[Tue Oct 06 05:55:01 CLST 2020]  Finalizó con 1053
+[Tue Oct 06 05:55:01 CLST 2020]  Salvando los cofres: [Tue Oct 06 05:55:01 CLST 2020]  Finalizó con 14
+[Tue Oct 06 05:55:01 CLST 2020]  Salvando los rankings PVP: [Tue Oct 06 05:55:01 CLST 2020]  Finalizó con 7
+[Tue Oct 06 05:55:01 CLST 2020]  Salvando los rankings Koliseo: [Tue Oct 06 05:55:01 CLST 2020]  Finalizó con 0
+[Tue Oct 06 05:55:01 CLST 2020]  Salvando las cuentas: [Tue Oct 06 05:55:01 CLST 2020]  Finalizó con 1
+[Tue Oct 06 05:55:01 CLST 2020]  ------------ Se salvó exitosamente el servidor 100% ------------
+[Tue Oct 06 05:55:01 CLST 2020]  EXCEPTION MIENTRAS SE CERRABA EL SERVIDOR : java.lang.NullPointerException
+java.lang.NullPointerException
+	at estaticos.GestorSalida.ENVIAR_GDF_ESTADO_OBJETO_INTERACTIVO(GestorSalida.kt:2351)
+	at variables.mapa.interactivo.ObjetoInteractivo.setBonusEstrellas(ObjetoInteractivo.kt:57)
+	at variables.mapa.interactivo.ObjetoInteractivo.getBonusEstrellas(ObjetoInteractivo.kt:42)
+	at estaticos.Mundo.salvarMapasEstrellas(Mundo.kt:1555)
+	at estaticos.AtlantaMain.cerrarServer(AtlantaMain.kt:3482)
+	at estaticos.AtlantaMain.access$cerrarServer(AtlantaMain.kt:31)
+	at estaticos.AtlantaMain$main$1.run(AtlantaMain.kt:1103)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+[Tue Oct 06 05:55:01 CLST 2020]   ########  IMPRIMIENDO LOGS PLAYERS  ########
+[Tue Oct 06 05:55:01 CLST 2020]   ########  SERVIDOR CERRO CON EXITO  ########

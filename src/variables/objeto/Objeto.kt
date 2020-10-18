@@ -1213,12 +1213,12 @@ class Objeto {
         if (cantidad < 1) {
             cantidad = 1
         }
-        if (!AtlantaMain.RARITY_SYSTEM) {
-            return Objeto(0, objModeloID, cantidad, pos, convertirStatsAString(true), 0, 0)
+        return if (!AtlantaMain.RARITY_SYSTEM) {
+            Objeto(0, objModeloID, cantidad, pos, convertirStatsAString(true), 0, 0)
         } else {
             val copy = Objeto(0, objModeloID, cantidad, pos, convertirStatsAString(true), 0, 0)
             copy.convertirStringAStats_Base(convertirStatsAString(true))
-            return copy
+            copy
         }
     }
 
