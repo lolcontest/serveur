@@ -1,6 +1,7 @@
 package estaticos
 
 //import servidor.ServidorThread.Reiniciar
+import estaticos.Mundo.releaseMemory
 import estaticos.database.GestorSQL
 import servidor.ServidorServer
 import servidor.ServidorSocket
@@ -30,7 +31,6 @@ import variables.zotros.Accion
 import variables.zotros.Almanax
 import java.util.*
 import java.util.regex.Pattern
-import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 import kotlin.math.abs
 import kotlin.math.max
@@ -46,7 +46,7 @@ object Comandos {
                 return
             }
             val infos = mensaje.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            val comando = infos[0].toUpperCase()
+            val comando = infos[0].uppercase(Locale.getDefault())
             var rangoJugador = _cuenta.admin
             val rangoComando = Mundo.getRangoComando(comando)
             if (rangoComando == -1) {
@@ -95,7 +95,7 @@ object Comandos {
         var numShort: Short = 1
         val strB = StringBuilder()
         var mapa: Mapa? = _perso.mapa
-        when (comando.toUpperCase()) {
+        when (comando.uppercase(Locale.getDefault())) {
             "CELDA_A_HASH" -> try {
                 celdaID = java.lang.Short.parseShort(infos[1])
                 GestorSalida.ENVIAR_BAT2_CONSOLA(
@@ -1184,7 +1184,7 @@ object Comandos {
         var strB = StringBuilder()
         val mapa = _perso.mapa
         var motivo = ""
-        when (comando.toUpperCase()) {
+        when (comando.uppercase(Locale.getDefault())) {
             "WW", "W", "Winner" -> try {
                 try {
                     numInt = Integer.parseInt(infos[1])
@@ -1896,7 +1896,7 @@ object Comandos {
         // NPC npc;
         // PreguntaNPC pregunta;
         // RespuestaNPC respuesta;
-        when (comando.toUpperCase()) {
+        when (comando.uppercase(Locale.getDefault())) {
             "KICK_MERCHANT", "KICK_MERCHAND", "VOTAR_MERCANTE", "EXPULSAR_MERCANTE" -> try {
                 if (infos.size > 1) {
                     objetivo = Mundo.getPersonajePorNombre(infos[1])
@@ -3720,7 +3720,7 @@ object Comandos {
             "BUSCAR_PREGUNTA", "BUSCAR_PREGUNTAS", "SEARCH_QUESTIONS", "SEARCH_QUESTION" -> try {
                 infos = mensaje.split(" ".toRegex(), 2).toTypedArray()
                 val buscar = infos[1]
-                GestorSalida.enviar(_perso, "DBQ" + buscar.toUpperCase())
+                GestorSalida.enviar(_perso, "DBQ" + buscar.uppercase(Locale.getDefault()))
             } catch (e: Exception) {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Ocurrio una excepcion")
             }
@@ -3728,7 +3728,7 @@ object Comandos {
             "BUSCAR_RESPUESTA", "BUSCAR_RESPUESTAS", "SEARCH_ANSWERS", "SEARCH_ANSWER" -> try {
                 infos = mensaje.split(" ".toRegex(), 2).toTypedArray()
                 val buscar = infos[1]
-                GestorSalida.enviar(_perso, "DBA" + buscar.toUpperCase())
+                GestorSalida.enviar(_perso, "DBA" + buscar.uppercase(Locale.getDefault()))
             } catch (e: Exception) {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Ocurrio una excepcion")
             }
@@ -3801,7 +3801,9 @@ object Comandos {
                         if (id != -100 && a.id != id) {
                             continue
                         }
-                        if (args.isNotEmpty() && !a.args.toUpperCase().contains(args.toUpperCase())) {
+                        if (args.isNotEmpty() && !a.args.uppercase(Locale.getDefault())
+                                .contains(args.uppercase(Locale.getDefault()))
+                        ) {
                             continue
                         }
                         b = true
@@ -5020,7 +5022,7 @@ object Comandos {
         val strB = StringBuilder()
         var objetivo: Personaje? = null
         val hechizo: Hechizo?// *0287014
-        when (comando.toUpperCase()) {
+        when (comando.uppercase(Locale.getDefault())) {
             "SET_SPELLS_MOB", "SET_HECHIZOS_MOB" -> {
                 try {
                     id = Integer.parseInt(infos[1])
@@ -7089,7 +7091,7 @@ object Comandos {
         var cuenta: Cuenta?
         var str = StringBuilder()
         var args = ""
-        when (comando.toUpperCase()) {
+        when (comando.uppercase(Locale.getDefault())) {
             "RELOAD_CONFIG", "CARGAR_CONFIGURACION", "LOAD_CONFIG", "REFRESH_CONFIG" -> AtlantaMain.cargarConfiguracion(
                 _perso
             )
@@ -8042,7 +8044,7 @@ object Comandos {
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "El PARAM_ANTI_DDOS cambio a $boleano")
             }
             "RECOLECTOR_BASURA", "GC", "GARBAGE_COLLECTOR" -> try {
-                System.gc()
+                releaseMemory()
                 GestorSalida.ENVIAR_BAT2_CONSOLA(_perso, "Se inicio el garbage collector")
             } catch (e: Exception) {
                 AtlantaMain.redactarLogServidorln("COMANDO GARBAGE COLLECTOR $e")

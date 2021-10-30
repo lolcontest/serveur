@@ -156,6 +156,10 @@ class ObjetoInteractivo(private val _mapa: Mapa, private val _celda: Celda, val 
         _tiempoProxSubidaEstrella = -1
     }
 
+    fun isRecharging(): Boolean {
+        return _tiempoProxRecarga > System.currentTimeMillis()
+    }
+
     fun recargando(forzado: Boolean) {
         if (_tiempoProxRecarga <= 0) {
             return

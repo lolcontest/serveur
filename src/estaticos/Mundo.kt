@@ -151,7 +151,6 @@ import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.regex.Pattern
-import kotlin.collections.HashMap
 
 
 //import com.mysql.jdbc.PreparedStatement;
@@ -695,7 +694,7 @@ object Mundo {
     }
 
     fun addComando(comando: String, rango: Int) {
-        COMANDOS[comando.toUpperCase()] = rango
+        COMANDOS[comando.uppercase(Locale.getDefault())] = rango
     }
 
     fun getRangoComando(comando: String?): Int {
@@ -933,7 +932,7 @@ object Mundo {
                 }
                 pos++
                 if (!buscar.isEmpty()) {
-                    if (!perso.nombre.toUpperCase().contains(buscar)) {
+                    if (!perso.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -980,7 +979,7 @@ object Mundo {
                 }
                 pos++
                 if (!buscar.isEmpty()) {
-                    if (!perso.nombre.toUpperCase().contains(buscar)) {
+                    if (!perso.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -1030,7 +1029,7 @@ object Mundo {
                 }
                 pos++
                 if (buscar.isNotEmpty()) {
-                    if (!perso.nombre.toUpperCase().contains(buscar)) {
+                    if (!perso.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -1079,7 +1078,7 @@ object Mundo {
                 }
                 pos++
                 if (!buscar.isEmpty()) {
-                    if (!perso.nombre.toUpperCase().contains(buscar)) {
+                    if (!perso.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -1134,7 +1133,7 @@ object Mundo {
                 }
                 pos++
                 if (!buscar.isEmpty()) {
-                    if (!perso.nombre.toUpperCase().contains(buscar)) {
+                    if (!perso.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -1173,7 +1172,7 @@ object Mundo {
                 }
                 pos++
                 if (!buscar.isEmpty()) {
-                    if (!gremio.nombre.toUpperCase().contains(buscar)) {
+                    if (!gremio.nombre.uppercase(Locale.getDefault()).contains(buscar)) {
                         continue
                     }
                 }
@@ -2188,8 +2187,21 @@ object Mundo {
 
     fun releaseMemory() {
         salvarMapasEstrellas()
-        MAPAS = MAPAS.filter { it.value?.contieneMobPiedra() == true || it.value?.containsmobfixwithtime == true || it.value?.prePelea != true || it.value?.peleas?.isNotEmpty() == true || it.value?.recaudador != null || it.value?.prisma != null || it.value?.cercado != null || it.value?.cantPersonajes() != 0 || it.value?.cantMercantes() != 0 }.toMutableMap()
-        PERSONAJES.values.asSequence().filter { !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) && !MAPAS.contains(it.mapa.id) }.forEach {
+        MAPAS = MAPAS.filter {
+            it.value?.RechargingInteractives() == true
+                    || it.value?.contieneMobPiedra() == true
+                    || it.value?.containsmobfixwithtime == true
+                    || it.value?.prePelea != true
+                    || it.value?.peleas?.isNotEmpty() == true
+                    || it.value?.recaudador != null
+                    || it.value?.prisma != null
+                    || it.value?.cercado != null
+                    || it.value?.cantPersonajes() != 0
+                    || it.value?.cantMercantes() != 0
+        }.toMutableMap()
+        PERSONAJES.values.asSequence().filter {
+            !it.enLinea() && it.pelea == null && (it.getmap2() != null && it.cell2 != null) && !MAPAS.contains(it.mapa.id)
+        }.forEach {
             it.MapidStart = it.mapa.id.toInt()
             it.CellidStart = it.celda.id.toInt()
             it.mapa = null
@@ -2270,12 +2282,14 @@ object Mundo {
     }
 
     fun getCuentaPorNombre(nombre: String): Cuenta? {
-        return if (_CUENTAS_POR_NOMBRE[nombre.toLowerCase()] != null) cuentas[_CUENTAS_POR_NOMBRE[nombre.toLowerCase()]!!] else null
+        return if (_CUENTAS_POR_NOMBRE[nombre.lowercase(Locale.getDefault())] != null) cuentas[_CUENTAS_POR_NOMBRE[nombre.lowercase(
+            Locale.getDefault()
+        )]!!] else null
     }
 
     fun addCuenta(cuenta: Cuenta) {
         cuentas[cuenta.id] = cuenta
-        _CUENTAS_POR_NOMBRE[cuenta.nombre.toLowerCase()] = cuenta.id
+        _CUENTAS_POR_NOMBRE[cuenta.nombre.lowercase(Locale.getDefault())] = cuenta.id
     }
 
     @JvmStatic

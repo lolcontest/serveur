@@ -40,7 +40,6 @@ import variables.zotros.Prisma
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.regex.Pattern
-import kotlin.collections.ArrayList
 import kotlin.system.exitProcess
 
 class Mapa {
@@ -198,8 +197,8 @@ class Mapa {
                     }
                     if (AtlantaMain.MODO_DEBUG) {
                         println(
-                                "  --> Agregando grupoMob mapaID: " + id + ", estrellas: " + estrellas + ", heroico: "
-                                        + heroico
+                            "  --> Agregando grupoMob mapaID: " + id + ", estrellas: " + estrellas + ", heroico: "
+                                    + heroico
                         )
                     }
                     val grupoMob = getGrupoMobInicioServer(heroico, estrellas.toInt()) ?: break // neutral
@@ -387,7 +386,17 @@ class Mapa {
 
     fun contieneMobPiedra(): Boolean {
         return grupoMobsTotales?.any { it.value.tipo == TipoGrupo.SOLO_UNA_PELEA }
-                ?: _grupoMobsEnCola?.any { it.tipo == TipoGrupo.SOLO_UNA_PELEA } ?: false
+            ?: _grupoMobsEnCola?.any { it.tipo == TipoGrupo.SOLO_UNA_PELEA } ?: false
+    }
+
+    fun RechargingInteractives(): Boolean {
+        var r = false
+        celdas.values.forEach {
+            if (it.objetoInteractivo?.isRecharging() == true) {
+                r = true
+            }
+        }
+        return r
     }
 
     private fun aptoParaPelea(cant1: Int, cant2: Int): Int {
